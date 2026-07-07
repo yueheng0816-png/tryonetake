@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OneTake Gallery Prompts</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f8f9fa; color: #1a1a2e; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.25rem; }
+  .subtitle { color: #666; margin-bottom: 2rem; font-size: 0.95rem; }
+  h2 { font-size: 1.3rem; margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e0e0e0; }
+  .card { background: #fff; border: 1px solid #e8e8e8; border-radius: 12px; padding: 1.25rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+  .card-header { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+  .badge { display: inline-flex; align-items: center; gap: 0.35rem; padding: 0.2rem 0.65rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+  .badge-female { background: #fce4ec; color: #c62828; }
+  .badge-male { background: #e3f2fd; color: #1565c0; }
+  .tag { font-size: 0.8rem; color: #888; }
+  .prompt-wrap { position: relative; }
+  .prompt { background: #f5f5f5; border: 1px solid #e8e8e8; border-radius: 8px; padding: 1rem 3.5rem 1rem 1rem; font-size: 0.9rem; line-height: 1.6; color: #333; word-break: break-word; }
+  .copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; width: 36px; height: 36px; border: 1px solid #ddd; border-radius: 8px; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; font-size: 1rem; }
+  .copy-btn:hover { background: #f0f0f0; border-color: #aaa; }
+  .copy-btn.copied { background: #e8f5e9; border-color: #4caf50; }
+  .toast { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); background: #1a1a2e; color: #fff; padding: 0.65rem 1.5rem; border-radius: 25px; font-size: 0.9rem; pointer-events: none; opacity: 0; transition: opacity 0.2s; z-index: 100; }
+  .toast.show { opacity: 1; }
+  .copy-all { display: inline-block; margin-bottom: 1rem; padding: 0.55rem 1.25rem; background: #1a1a2e; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-size: 0.9rem; transition: background 0.15s; }
+  .copy-all:hover { background: #333; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📸 OneTake Gallery Prompts</h1>
+  <p class="subtitle">16 prompts for generating landing page example images on Replicate (FLUX.2 [pro] or [max])</p>
+
+  <h2>Gallery 1 · Shoulders-up Portraits <span style="font-weight:400;color:#888;font-size:0.9rem;">(example-1 ~ example-8.jpg)</span></h2>
+
+  <div class="card" data-prompt="Warm confident smile with direct eye contact, clean white studio background, soft diffused professional lighting, charcoal grey blazer over cream silk blouse, shoulders-up portrait, approachable corporate leader, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#1</span>
+      <span class="badge badge-female">♀ Female</span>
+      <span class="tag">Executive · 白底 studio</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Warm confident smile with direct eye contact, clean white studio background, soft diffused professional lighting, charcoal grey blazer over cream silk blouse, shoulders-up portrait, approachable corporate leader, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Friendly engaged expression, modern open-plan office with soft natural window light, smart casual outfit navy quarter-zip sweater, medium shot, startup tech professional, subtle bokeh background, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#2</span>
+      <span class="badge badge-male">♂ Male</span>
+      <span class="tag">Tech · 现代办公室</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Friendly engaged expression, modern open-plan office with soft natural window light, smart casual outfit navy quarter-zip sweater, medium shot, startup tech professional, subtle bokeh background, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Compassionate warm smile, bright modern medical office with soft daylight, white lab coat over teal scrubs, shoulders-up portrait, trustworthy healthcare professional, clean clinical but warm atmosphere, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#3</span>
+      <span class="badge badge-female">♀ Female</span>
+      <span class="tag">Medical · 诊所白大褂</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Compassionate warm smile, bright modern medical office with soft daylight, white lab coat over teal scrubs, shoulders-up portrait, trustworthy healthcare professional, clean clinical but warm atmosphere, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Serious composed expression with slight confidence, charcoal grey suit with light blue dress shirt and subtle tie, dark grey studio backdrop with subtle gradient, dramatic rim lighting, waist-up portrait, investment banker authority, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#4</span>
+      <span class="badge badge-male">♂ Male</span>
+      <span class="tag">Finance · 深灰 studio</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Serious composed expression with slight confidence, charcoal grey suit with light blue dress shirt and subtle tie, dark grey studio backdrop with subtle gradient, dramatic rim lighting, waist-up portrait, investment banker authority, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Genuine warm laugh, trendy creative studio with exposed brick and warm pendant lights, stylish cream blazer over black top, shoulders-up, modern creative director, approachable and authentic, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#5</span>
+      <span class="badge badge-female">♀ Female</span>
+      <span class="tag">Creative · 创意空间</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Genuine warm laugh, trendy creative studio with exposed brick and warm pendant lights, stylish cream blazer over black top, shoulders-up, modern creative director, approachable and authentic, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Confident composed expression, rich wood-paneled office backdrop with law books, dark charcoal suit with subtle pinstripe, white shirt and burgundy tie, soft warm lighting, waist-up portrait, experienced attorney, timeless professional, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#6</span>
+      <span class="badge badge-male">♂ Male</span>
+      <span class="tag">Legal · 木色律所</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Confident composed expression, rich wood-paneled office backdrop with law books, dark charcoal suit with subtle pinstripe, white shirt and burgundy tie, soft warm lighting, waist-up portrait, experienced attorney, timeless professional, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Poised intelligent smile, modern glass-walled office with soft city window light, light grey tailored blazer over white blouse, shoulders-up, management consultant, crisp and approachable, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#7</span>
+      <span class="badge badge-female">♀ Female</span>
+      <span class="tag">Consulting · 玻璃窗光</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Poised intelligent smile, modern glass-walled office with soft city window light, light grey tailored blazer over white blouse, shoulders-up, management consultant, crisp and approachable, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Relaxed genuine smile, outdoor urban setting with green foliage bokeh, smart casual sage green unstructured blazer over white open-collar shirt, soft golden hour lighting, shoulders-up, approachable entrepreneur, warm natural atmosphere, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#8</span>
+      <span class="badge badge-male">♂ Male</span>
+      <span class="tag">General · 户外自然光</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Relaxed genuine smile, outdoor urban setting with green foliage bokeh, smart casual sage green unstructured blazer over white open-collar shirt, soft golden hour lighting, shoulders-up, approachable entrepreneur, warm natural atmosphere, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <h2>Gallery 2 · Pose & Setting Diversity <span style="font-weight:400;color:#888;font-size:0.9rem;">(example-9 ~ example-16.jpg)</span></h2>
+
+  <div class="card" data-prompt="Structured blazer with elegant blouse, professional desk presence, seated at a sleek modern minimalist desk, slight forward lean with hands resting naturally, warm engaging expression as if in conversation, soft window-light simulation from side, waist-up, modern executive at work, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#9</span>
+      <span class="badge badge-female">♀ Female</span>
+      <span class="tag">Executive · 坐于办公桌前</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Structured blazer with elegant blouse, professional desk presence, seated at a sleek modern minimalist desk, slight forward lean with hands resting naturally, warm engaging expression as if in conversation, soft window-light simulation from side, waist-up, modern executive at work, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Sharp navy suit, standing confidently, professional dynamism, standing and leaning slightly against a modern high table or standing desk, confident engaged expression, arms relaxed at sides or one hand resting, clean studio background, three-point lighting, three-quarter length, dynamic professional presence, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#10</span>
+      <span class="badge badge-male">♂ Male</span>
+      <span class="tag">Tech · 站立倚靠高桌</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Sharp navy suit, standing confidently, professional dynamism, standing and leaning slightly against a modern high table or standing desk, confident engaged expression, arms relaxed at sides or one hand resting, clean studio background, three-point lighting, three-quarter length, dynamic professional presence, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Crisp white doctor's coat over soft jewel-tone blouse, stethoscope, attentive physician presence, seated at a clean modern consultation desk, slight forward lean with hands gently clasped, warm engaged expression as if listening to a patient, bright clinic room with soft medical equipment blurred behind, even medical-grade lighting, waist-up, compassionate physician in conversation, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#11</span>
+      <span class="badge badge-female">♀ Female</span>
+      <span class="tag">Medical · 诊室坐姿问诊</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Crisp white doctor's coat over soft jewel-tone blouse, stethoscope, attentive physician presence, seated at a clean modern consultation desk, slight forward lean with hands gently clasped, warm engaged expression as if listening to a patient, bright clinic room with soft medical equipment blurred behind, even medical-grade lighting, waist-up, compassionate physician in conversation, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Tailored charcoal suit with subtle pinstripe, crisp white shirt, standing in an elegant law firm lobby with marble floors and classic architectural details softly blurred, one hand relaxed at side, confident composed expression, natural light from tall windows, full-length, distinguished law firm partner, established presence, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#12</span>
+      <span class="badge badge-male">♂ Male</span>
+      <span class="tag">Legal · 律所大堂站姿全身</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Tailored charcoal suit with subtle pinstripe, crisp white shirt, standing in an elegant law firm lobby with marble floors and classic architectural details softly blurred, one hand relaxed at side, confident composed expression, natural light from tall windows, full-length, distinguished law firm partner, established presence, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Elegant cream cashmere sweater with delicate gold necklace, seated at a window table in a bright modern minimalist cafe, warm natural window light from side, relaxed genuine half-smile, artisanal coffee cup on table softly out of focus, lifestyle professional portrait, authentic remote-work era vibe, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#13</span>
+      <span class="badge badge-female">♀ Female</span>
+      <span class="tag">Creative · 咖啡馆窗边坐姿</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Elegant cream cashmere sweater with delicate gold necklace, seated at a window table in a bright modern minimalist cafe, warm natural window light from side, relaxed genuine half-smile, artisanal coffee cup on table softly out of focus, lifestyle professional portrait, authentic remote-work era vibe, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Dark charcoal suit with subtle glen plaid pattern, white shirt and burgundy tie, seated at the head of a polished boardroom table, leaning slightly forward with hands clasped on the table, intense focused gaze directly at camera, dramatic overhead lighting, waist-up, commanding leadership, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#14</span>
+      <span class="badge badge-male">♂ Male</span>
+      <span class="tag">Finance · 董事会桌前坐姿</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Dark charcoal suit with subtle glen plaid pattern, white shirt and burgundy tie, seated at the head of a polished boardroom table, leaning slightly forward with hands clasped on the table, intense focused gaze directly at camera, dramatic overhead lighting, waist-up, commanding leadership, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Soft wool cardigan over silk shell in warm earth tones, seated in a cozy professor's office surrounded by overflowing bookshelves and academic papers, warm knowing smile, desk lamp and window light creating intimate scholarly atmosphere, waist-up, tenured professor in their element, intellectual home, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#15</span>
+      <span class="badge badge-female">♀ Female</span>
+      <span class="tag">Academia · 教授书房坐姿</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Soft wool cardigan over silk shell in warm earth tones, seated in a cozy professor's office surrounded by overflowing bookshelves and academic papers, warm knowing smile, desk lamp and window light creating intimate scholarly atmosphere, waist-up, tenured professor in their element, intellectual home, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+  <div class="card" data-prompt="Smart casual dark grey blazer over light blue open-collar shirt, leaning on a riverside railing with water and city reflection behind, relaxed reflective expression, soft afternoon light, waist-up, thoughtful urban professional, serene moment, photorealistic, natural skin texture">
+    <div class="card-header">
+      <span style="font-weight:700;">#16</span>
+      <span class="badge badge-male">♂ Male</span>
+      <span class="tag">Consulting · 河边倚靠栏杆</span>
+    </div>
+    <div class="prompt-wrap">
+      <div class="prompt">Smart casual dark grey blazer over light blue open-collar shirt, leaning on a riverside railing with water and city reflection behind, relaxed reflective expression, soft afternoon light, waist-up, thoughtful urban professional, serene moment, photorealistic, natural skin texture</div>
+      <button class="copy-btn" title="Copy prompt" onclick="copyPrompt(this)">📋</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">Copied!</div>
+
+<script>
+function copyPrompt(btn) {
+  const prompt = btn.closest('.card').dataset.prompt;
+  navigator.clipboard.writeText(prompt).then(() => {
+    btn.textContent = '✅';
+    btn.classList.add('copied');
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => { btn.textContent = '📋'; btn.classList.remove('copied'); toast.classList.remove('show'); }, 1500);
+  });
+}
+</script>
+</body>
+</html>

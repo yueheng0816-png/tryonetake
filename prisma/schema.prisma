@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  clerkId   String   @unique
+  email     String
+  orders    Order[]
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id              String   @id @default(cuid())
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  plan            String   // "starter" | "pro"
+  stylePreference String   @default("balanced") // "natural" | "balanced" | "polished"
+  gender          String   @default("male") // "male" | "female" — for outfit descriptions
+  profession      String   @default("general") // Profession enum value — for prompt category weights
+  amount          Int      // cents: 1900 or 3500
+  status               String   @default("pending") // "pending" | "paid" | "generating" | "completed" | "failed"
+  stripeSessionId      String?  @unique
+  stripePaymentIntentId String?
+  predictionIds        String[] @default([]) // Replicate prediction IDs (30 per order)
+  promptIds            String[] @default([]) // Prompt template IDs — same order as predictionIds
+  completedPredictions Int      @default(0)
+  failedPredictions    Int      @default(0) // Number of failed predictions
+  inputPhotos          String[] @default([]) // Vercel Blob URLs
+  outputPhotos         String[] @default([]) // Vercel Blob URLs — index-aligned with predictionIds/promptIds
+  downloadedIndices    Int[]    @default([]) // Which output indices the user downloaded (positive feedback)
+  credit               Int      @default(0) // credits remaining
+  refundedAmount       Int      @default(0) // cents refunded
+  refundStatus         String?  // null | "full" | "partial"
+  errorMessages        String[] @default([]) // Per-slot error strings for failure diagnosis
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+}

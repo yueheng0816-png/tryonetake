@@ -1,0 +1,47 @@
+统计维度,数值,说明
+模板总数,64,
+活跃模板（生产使用）,58,状态为 active
+实验模板（测试中）,4,exec-private-jet / creative-mirror-reflection / creative-aerial-drone / outdoor-snow-crisp
+已废弃,0,
+每次订单抽取数量,30,从58个活跃模板中随机选取
+缓冲率,48%,58活跃 ÷ 30抽取 = 1.93倍余量
+,,
+--- 按分类统计 ---,,
+分类,数量,占比
+STUDIO CLASSIC 经典影棚,12,18.80%
+MODERN TECH 现代科技,12,18.80%
+EXECUTIVE 高管精英,13,20.30%
+CREATIVE 创意行业,14,21.90%
+OUTDOOR NATURAL 户外自然,13,20.30%
+,,
+--- 按背景类型统计 ---,,
+背景类型,数量,说明
+影棚内景,18,studio / seamless backdrop
+办公室/室内场景,21,office / indoor / lounge
+户外场景,19,outdoor / nature / urban
+特殊场景,6,gallery / stage / event / private jet
+,,
+--- 按姿势统计 ---,,
+姿势类型,数量,说明
+齐肩肖像（shoulders-up）,26,最常见的 headshot 构图
+半身像（waist-up）,21,含手势和更多服装
+全身像（full-body/full-length）,6,corner office / walking / power stance
+坐姿,6,seated / lounge / bench
+行走/动态,7,walking / mid-stride / dynamic
+,,
+--- 按服装正式度统计 ---,,
+正式度,数量,说明
+正装（suit/blazer/tuxedo）,22,西装/燕尾服
+商务休闲（smart casual）,21,blazer无领带/针织衫
+休闲（casual/creative）,17,tee/polo/denim/leather
+特殊,4,turtleneck / scrubs suggestion
+,,
+--- 已知差距 ---,,
+缺失类型,建议补充数量,优先级
+纯白背景高调照（LinkedIn最主流风格）,4月6日,?? 高
+男/女差异化着装模板,6月8日,?? 高
+医疗行业（白大褂/诊所）,2月3日,?? 中
+法律行业（律所/书架）,2月3日,?? 中
+双臂交叉pose（企业照高频使用）,2月3日,?? 中
+同一pose不同服装的""脱外套""变体,2月3日,?? 低
+团队/同事虚化背景,1月2日,?? 低

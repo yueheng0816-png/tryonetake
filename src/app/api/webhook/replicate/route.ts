@@ -40,7 +40,7 @@ export async function POST(req: Request) {
 
       if (allDone && order.failedPredictions > 0) {
         const user = await db.user.findUnique({ where: { id: order.userId } });
-        handleOrderCompletion({ orderId: order.id, paymentIntentId: order.stripePaymentIntentId ?? null, userEmail: user?.email ?? "", plan: order.plan, orderAmount: order.amount, totalPredictions: order.predictionIds.filter(Boolean).length, failedPredictions: order.failedPredictions, errorMessages: order.errorMessages }).catch(e => console.error("[OneTake] handleOrderCompletion failed:", e));
+        handleOrderCompletion({ orderId: order.id, checkoutId: order.stripeSessionId ?? null, userEmail: user?.email ?? "", plan: order.plan, orderAmount: order.amount, totalPredictions: order.predictionIds.filter(Boolean).length, failedPredictions: order.failedPredictions, errorMessages: order.errorMessages }).catch(e => console.error("[OneTake] handleOrderCompletion failed:", e));
       }
     } else if (body.status === "failed") {
       const completedCount = order.completedPredictions + 1;
@@ -60,7 +60,7 @@ export async function POST(req: Request) {
         const updatedOrder = await db.order.findUnique({ where: { id: orderId } });
         if (updatedOrder && updatedOrder.failedPredictions > 0) {
           const user = await db.user.findUnique({ where: { id: updatedOrder.userId } });
-          handleOrderCompletion({ orderId: updatedOrder.id, paymentIntentId: updatedOrder.stripePaymentIntentId ?? null, userEmail: user?.email ?? "", plan: updatedOrder.plan, orderAmount: updatedOrder.amount, totalPredictions: updatedOrder.predictionIds.filter(Boolean).length, failedPredictions: updatedOrder.failedPredictions, errorMessages: updatedOrder.errorMessages }).catch(e => console.error("[OneTake] handleOrderCompletion failed:", e));
+          handleOrderCompletion({ orderId: updatedOrder.id, checkoutId: updatedOrder.stripeSessionId ?? null, userEmail: user?.email ?? "", plan: updatedOrder.plan, orderAmount: updatedOrder.amount, totalPredictions: updatedOrder.predictionIds.filter(Boolean).length, failedPredictions: updatedOrder.failedPredictions, errorMessages: updatedOrder.errorMessages }).catch(e => console.error("[OneTake] handleOrderCompletion failed:", e));
         }
       }
     }

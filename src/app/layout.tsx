@@ -100,7 +100,13 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <ClerkProvider>
+        <ClerkProvider
+          allowedRedirectOrigins={[
+            "https://tryonetake.com",
+            "https://www.tryonetake.com",
+            "https://ai-headshot-kohl.vercel.app",
+          ]}
+        >
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

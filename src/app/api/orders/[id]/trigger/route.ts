@@ -1,24 +1,8 @@
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { db, ensureUser } from "@/lib/db";
-import { stripe } from "@/lib/stripe";
 import { startBatchGeneration } from "@/lib/replicate";
 
-/**
- * POST /api/orders/[id]/trigger
- *
- * Fallback for local dev without Stripe webhooks.
- *
- * 1. Checks if the Stripe Checkout session is paid
- * 2. If paid and order is still "pending", marks it "paid"
- * 3. Starts AI generation in the background (no await — fire & forget)
- * 4. Returns immediately so the frontend can start showing skeletons
- *
- * Generation runs async and updates the order when predictions are created.
- * The check endpoint picks them up on the next poll cycle.
- *
- * Idempotent — safe to call multiple times.
- */
 export async function POST(
   _req: Request,
   { params }: { params: Promise<{ id: string }> }
@@ -73,35 +57,20 @@ export async function POST(
     });
   }
 
-  // Verify payment with Stripe
+  // Creem redirects to success_url only after payment — assume paid
   if (!order.stripeSessionId) {
     return NextResponse.json({
       status: "pending",
       triggered: false,
-      reason: "No Stripe session found",
+      reason: "No checkout session found",
     });
   }
 
   try {
-    const session = await stripe.checkout.sessions.retrieve(
-      order.stripeSessionId
-    );
-
-    if (session.payment_status !== "paid") {
-      return NextResponse.json({
-        status: "pending",
-        triggered: false,
-        reason: "Payment not completed yet",
-      });
-    }
-
-    // Payment confirmed — mark as paid + save paymentIntentId for refunds
-    const paymentIntentId = typeof session.payment_intent === "string"
-      ? session.payment_intent
-      : (session.payment_intent as unknown as { id?: string } | null)?.id;
+    // Mark as paid (Creem webhook may have done this already, idempotent)
     await db.order.update({
       where: { id },
-      data: { status: "paid", stripePaymentIntentId: paymentIntentId ?? undefined },
+      data: { status: "paid" },
     });
 
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -142,7 +111,6 @@ export async function POST(
       })
       .catch(async (error) => {
         console.error(`[OneTake] Background generation crashed for ${id}:`, error);
-        // Mark as failed so user can retry
         await db.order.update({
           where: { id },
           data: { status: "failed" },

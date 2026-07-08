@@ -2,8 +2,8 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
-const ADMIN_EMAIL = "yueheng0816@gmail.com";
-const FROM_EMAIL = "OneTake <noreply@onetake.ai>";
+const ADMIN_EMAIL = "support@tryonetake.com";
+const FROM_EMAIL = "OneTake <noreply@tryonetake.com>";
 
 export function isEmailConfigured(): boolean {
   const key = process.env.RESEND_API_KEY;
@@ -44,7 +44,7 @@ export async function sendUserRefundEmail(params: {
           </table>
           <p style="color:#666;font-size:14px">The refund will appear on your card within 5–10 business days.</p>
           ${!isFullRefund ? `<p style="color:#666;font-size:14px">Your ${successCount} successful photos are still available in your dashboard.</p>` : ""}
-          <p style="color:#999;font-size:12px;margin-top:24px">Questions? Reply to this email or contact yueheng0816@gmail.com</p>
+          <p style="color:#999;font-size:12px;margin-top:24px">Questions? Reply to this email or contact support@tryonetake.com</p>
         </div>
       `,
     });

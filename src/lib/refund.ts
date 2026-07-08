@@ -1,4 +1,4 @@
-import { stripe } from "@/lib/stripe";
+import { createRefund } from "@/lib/creem";
 import { db } from "@/lib/db";
 
 // ── Failure Diagnosis ──────────────────────────────────────
@@ -40,36 +40,32 @@ export function diagnoseFailures(errorMessages: string[]): Diagnosis {
   }
   return {
     category: "unknown",
-    userMessage: "Something went wrong during generation and we weren't able to produce your headshots. Your payment has been fully refunded. If you need immediate assistance, contact yueheng0816@gmail.com.",
+    userMessage: "Something went wrong during generation and we weren't able to produce your headshots. Your payment has been fully refunded. If you need immediate assistance, contact support@tryonetake.com.",
     adminMessage: "Unknown failure. Sample: " + errorMessages.slice(0, 5).join(" | "),
   };
 }
 
-// ── Stripe Refund ──────────────────────────────────────────
+// ── Creem Refund ───────────────────────────────────────────
 
 export async function executeRefund(params: {
   orderId: string;
-  paymentIntentId: string;
+  checkoutId: string;
   amount: number;
   reason: string;
 }): Promise<{ success: boolean; refundId?: string; error?: string }> {
-  const { orderId, paymentIntentId, amount, reason } = params;
-  if (!paymentIntentId) return { success: false, error: "No paymentIntentId" };
+  const { orderId, checkoutId, amount, reason } = params;
+  if (!checkoutId) return { success: false, error: "No checkoutId" };
   if (amount <= 0) return { success: true, refundId: "zero-amount" };
-  try {
-    const refund = await stripe.refunds.create({
-      payment_intent: paymentIntentId,
-      amount,
-      reason: "requested_by_customer",
-      metadata: { orderId, diagnosis: reason.slice(0, 500) },
-    });
-    console.log("[OneTake] Refund: " + refund.id + " $" + (amount / 100).toFixed(2) + " order " + orderId);
-    return { success: true, refundId: refund.id };
-  } catch (error) {
-    const msg = error instanceof Error ? error.message : String(error);
-    console.error("[OneTake] Refund failed order " + orderId + ":", msg);
-    return { success: false, error: msg };
+
+  const result = await createRefund({ checkoutId, amount, reason });
+
+  if (result.success) {
+    console.log("[OneTake] Refund: " + result.refundId + " $" + (amount / 100).toFixed(2) + " order " + orderId);
+  } else {
+    console.error("[OneTake] Refund failed order " + orderId + ":", result.error);
   }
+
+  return result;
 }
 
 // ── Orchestrator ───────────────────────────────────────────
@@ -85,7 +81,7 @@ export interface RefundResult {
 
 export async function handleOrderCompletion(params: {
   orderId: string;
-  paymentIntentId: string | null;
+  checkoutId: string | null;
   userEmail: string;
   plan: string;
   orderAmount: number;
@@ -94,7 +90,7 @@ export async function handleOrderCompletion(params: {
   errorMessages: string[];
 }): Promise<RefundResult> {
   const {
-    orderId, paymentIntentId, userEmail, plan,
+    orderId, checkoutId, userEmail, plan,
     orderAmount, totalPredictions, failedPredictions, errorMessages,
   } = params;
   const successCount = totalPredictions - failedPredictions;
@@ -112,10 +108,10 @@ export async function handleOrderCompletion(params: {
     : Math.round((orderAmount * failedPredictions) / totalPredictions);
   const diagnosis = diagnoseFailures(errorMessages);
 
-  if (paymentIntentId) {
-    await executeRefund({ orderId, paymentIntentId, amount: refundAmount, reason: diagnosis.userMessage });
+  if (checkoutId) {
+    await executeRefund({ orderId, checkoutId, amount: refundAmount, reason: diagnosis.userMessage });
   } else {
-    console.error("[OneTake] Order " + orderId + ": Cannot refund - no paymentIntentId");
+    console.error("[OneTake] Order " + orderId + ": Cannot refund - no checkoutId");
   }
 
   const refundStatus: "full" | "partial" = isAllFailed ? "full" : "partial";

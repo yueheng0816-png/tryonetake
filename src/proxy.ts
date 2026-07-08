@@ -1,6 +1,12 @@
 import { clerkMiddleware } from "@clerk/nextjs/server";
 
-export const proxy = clerkMiddleware();
+export const proxy = clerkMiddleware({
+  authorizedParties: [
+    "https://tryonetake.com",
+    "https://www.tryonetake.com",
+    "https://ai-headshot-kohl.vercel.app",
+  ],
+});
 
 export const config = {
   matcher: [

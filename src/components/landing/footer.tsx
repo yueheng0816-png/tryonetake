@@ -13,7 +13,7 @@ const footerLinks = {
     { label: "Refund Policy", href: "/refund" },
   ],
   Contact: [
-    { label: "yueheng0816@gmail.com", href: "mailto:yueheng0816@gmail.com" },
+    { label: "support@tryonetake.com", href: "mailto:support@tryonetake.com" },
     { label: "Twitter / X", href: "#" },
   ],
 };

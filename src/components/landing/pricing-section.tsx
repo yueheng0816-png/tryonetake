@@ -62,7 +62,7 @@ const plans = [
       "Flexible billing",
     ],
     cta: "Contact us",
-    href: "mailto:yueheng0816@gmail.com",
+    href: "mailto:support@tryonetake.com",
     featured: false,
   },
 ];

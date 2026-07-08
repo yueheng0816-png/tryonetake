@@ -227,7 +227,7 @@ export default function ResultsPage() {
                 : `Partial refund of $${(order.refundedAmount / 100).toFixed(2)} — ${order.failedPredictions} out of ${PHOTOS_PER_ORDER} photos failed to generate.`}
             </p>
             <p className="mt-1 text-xs text-amber-600">
-              The refund will appear on your card within 5–10 business days. Questions? Contact yueheng0816@gmail.com
+              The refund will appear on your card within 5–10 business days. Questions? Contact support@tryonetake.com
             </p>
           </div>
         </div>

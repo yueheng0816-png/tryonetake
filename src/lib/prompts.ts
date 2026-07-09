@@ -64,6 +64,23 @@ export interface PromptTemplate {
    * with the gender-appropriate variant at distribution time.
    */
   outfitVariants?: { male: string; female: string };
+  /**
+   * Explicit gender target for this template.
+   * - "neutral" (or undefined): suitable for any gender
+   * - "male": only assign to male users
+   * - "female": only assign to female users
+   */
+  gender?: Gender | "neutral";
+  /**
+   * Expression described in the prompt.
+   * Used to match templates to user photos with compatible expressions,
+   * reducing identity drift when the prompt forces a different facial expression.
+   * - "smile": open or closed smile, laugh, joyful
+   * - "serious": authoritative, intense, composed, no smile
+   * - "neutral": relaxed, calm, thoughtful, subtle expression
+   * - "any": expression is not the focal point (scene-driven templates)
+   */
+  expression?: "smile" | "serious" | "neutral" | "any";
 }
 
 // ============================================================
@@ -137,38 +154,42 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-warm-smile",
     prompt:
-      "Warm confident smile with direct eye contact, clean white studio background, soft diffused professional lighting, navy blazer over white shirt, shoulders-up portrait, approachable corporate professional",
+      "Warm confident presence, direct eye contact, clean white studio background, soft diffused professional lighting, navy blazer over white shirt, shoulders-up portrait, approachable corporate professional",
     status: "active",
     performance: "untested",
     tags: ["studio", "corporate", "smile", "classic"],
     category: "studio_core",
+    expression: "smile",
   },
   {
     id: "studio-serious-exec",
     prompt:
-      "Serious composed executive expression, slight chin lift, charcoal grey suit with light blue shirt, dark grey studio backdrop, dramatic rim lighting, waist-up portrait, boardroom authority",
+      "Composed executive presence, slight chin lift, charcoal grey suit with light blue shirt, dark grey studio backdrop, dramatic rim lighting, waist-up portrait, boardroom authority",
     status: "active",
     performance: "untested",
     tags: ["studio", "executive", "serious", "power"],
     category: "studio_core",
+    expression: "serious",
   },
   {
     id: "studio-gentle-closed",
     prompt:
-      "Gentle closed-lip smile, soft friendly eyes, cream textured studio backdrop, beige blazer with neutral top, soft wrap-around lighting, shoulders-up, warm trustworthy professional",
+      "Gentle relaxed expression, soft friendly eyes, cream textured studio backdrop, beige blazer with neutral top, soft wrap-around lighting, shoulders-up, warm trustworthy professional",
     status: "active",
     performance: "untested",
     tags: ["studio", "friendly", "warm", "approachable"],
     category: "studio_core",
+    expression: "smile",
   },
   {
     id: "studio-confident-arms",
     prompt:
-      "Confident expression with slight smirk, arms crossed, navy suit with white open-collar shirt, white studio background, even three-point lighting, waist-up corporate portrait, modern professional",
+      "Confident demeanor, arms crossed, navy suit with white open-collar shirt, white studio background, even three-point lighting, waist-up corporate portrait, modern professional",
     status: "active",
     performance: "untested",
     tags: ["studio", "confident", "crossed-arms", "corporate"],
     category: "studio_core",
+    expression: "neutral",
   },
   {
     id: "studio-minimal-black",
@@ -178,15 +199,17 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["studio", "minimalist", "creative", "turtleneck"],
     category: "studio_core",
+    expression: "neutral",
   },
   {
     id: "studio-bright-laugh",
     prompt:
-      "Mid-laugh genuine candid expression, bright white studio with subtle vignette, light grey blazer over pastel shirt, beauty dish lighting, shoulders-up, joyful approachable leader",
+      "Composed natural moment, bright white studio with subtle vignette, light grey blazer over pastel shirt, beauty dish lighting, shoulders-up, approachable leader with quiet confidence",
     status: "experimental", // v3: demoted — big laugh risky unless source photo matches
     performance: "untested",
-    tags: ["studio", "candid", "joy", "approachable", "risk:laugh"],
+    tags: ["studio", "candid", "natural", "approachable", "risk:laugh"],
     category: "studio_core",
+    expression: "smile",
   },
   {
     id: "studio-thoughtful-gaze",
@@ -196,62 +219,70 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["studio", "thoughtful", "academic", "intellectual"],
     category: "studio_core",
+    expression: "neutral",
   },
   {
     id: "studio-relaxed-seated",
     prompt:
-      "Relaxed seated pose in modern office chair, angled slightly away then looking back at camera, approachable smile, light grey suit, white studio background, soft even lighting, waist-up, friendly executive",
+      "Relaxed seated pose in modern office chair, angled slightly away then looking back at camera, approachable demeanor, light grey suit, white studio background, soft even lighting, waist-up, approachable executive",
     status: "active",
     performance: "untested",
     tags: ["studio", "seated", "relaxed", "executive"],
     category: "studio_core",
+    expression: "smile",
   },
   {
     id: "studio-power-stance",
     prompt:
-      "Standing confident pose, one hand in pocket, slight three-quarter turn toward camera, charcoal suit with crisp white shirt, dark studio backdrop with subtle hair light separation, full-length if possible, commanding presence",
+      "Standing confident pose, one hand in pocket, slight three-quarter turn toward camera, charcoal suit with crisp white shirt, dark studio backdrop with subtle hair light separation, waist-up, commanding executive presence",
     status: "active",
     performance: "untested",
-    tags: ["studio", "standing", "power", "full-body"],
+    tags: ["studio", "standing", "power", "executive"],
     category: "studio_core",
+    expression: "serious",
   },
   {
     id: "studio-soft-feminine",
     prompt:
-      "Warm inviting smile, soft glamour lighting with butterfly pattern, cream blazer over silk blouse, pale pink studio backdrop, shoulders-up, approachable yet polished, modern professional feminine aesthetic",
+      "Warm inviting presence, soft glamour lighting with butterfly pattern, cream blazer over silk blouse, pale pink studio backdrop, shoulders-up, approachable yet polished, modern professional feminine aesthetic",
     status: "active",
     performance: "untested",
     tags: ["studio", "soft", "polished", "warm", "feminine"],
     category: "studio_core",
+    expression: "smile",
+    gender: "female",
   },
   {
     id: "studio-headshot-classic",
     prompt:
-      "Classic professional headshot, straight-on symmetrical framing, confident neutral expression, dark suit jacket with white collar showing, medium grey seamless background, traditional two-light setup, shoulders-up, LinkedIn perfect",
+      "Classic professional headshot, straight-on symmetrical framing, confident neutral demeanor, dark suit jacket with white collar showing, medium grey seamless background, traditional two-light setup, shoulders-up, LinkedIn perfect",
     status: "active",
     performance: "untested",
     tags: ["studio", "classic", "linkedin", "neutral"],
     category: "studio_core",
+    expression: "neutral",
   },
   {
     id: "studio-creative-color",
     prompt:
-      "Slight playful smile, forest green blazer over black top, vibrant teal studio backdrop, clamshell lighting setup, shoulders-up, creative industry professional, distinctive personal brand",
+      "Relaxed confident presence, forest green blazer over black top, vibrant teal studio backdrop, clamshell lighting setup, shoulders-up, creative industry professional, distinctive personal brand",
     status: "active",
     performance: "untested",
     tags: ["studio", "creative", "colorful", "distinctive"],
     category: "studio_core",
+    expression: "smile",
   },
 
   // ── NEW Studio White (+6) ─────────────────────────────────
   {
     id: "studio-white-formal-smile",
     prompt:
-      "{outfit}, clean pure white seamless studio background, warm confident closed-lip smile, butterfly lighting with soft fill, shoulders-up tight crop, LinkedIn gold standard corporate headshot, eyes sharp and engaged",
+      "{outfit}, clean pure white seamless studio background, warm confident demeanor, butterfly lighting with soft fill, shoulders-up tight crop, LinkedIn gold standard corporate headshot, eyes sharp and engaged",
     status: "active",
     performance: "untested",
     tags: ["studio", "white-bg", "formal", "smile", "linkedin"],
     category: "studio_core",
+    expression: "smile",
     outfitVariants: {
       male: "navy suit with crisp white dress shirt and burgundy silk tie",
       female: "tailored navy blazer over cream silk blouse with subtle gold necklace",
@@ -260,11 +291,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-white-formal-neutral",
     prompt:
-      "{outfit}, pure white seamless studio background, composed neutral professional expression with slight jaw tension for authority, classic two-light setup with even illumination, shoulders-up traditional crop, conservative corporate portrait",
+      "{outfit}, pure white seamless studio background, composed professional presence with quiet authority, classic two-light setup with even illumination, shoulders-up traditional crop, conservative corporate portrait",
     status: "active",
     performance: "untested",
     tags: ["studio", "white-bg", "formal", "neutral", "corporate"],
     category: "studio_core",
+    expression: "neutral",
     outfitVariants: {
       male: "charcoal suit with light blue dress shirt and subtle patterned tie",
       female: "black tailored blazer with white silk shell and pearl stud earrings",
@@ -273,11 +305,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-white-biz-casual",
     prompt:
-      "{outfit}, bright white studio background with subtle vignette, relaxed approachable smile, soft diffused wrap-around lighting, shoulders-up, modern business casual corporate portrait, tech-friendly vibe",
+      "{outfit}, bright white studio background with subtle vignette, relaxed approachable expression, soft diffused wrap-around lighting, shoulders-up, modern business casual corporate portrait, tech-friendly vibe",
     status: "active",
     performance: "untested",
     tags: ["studio", "white-bg", "biz-casual", "relaxed", "modern"],
     category: "studio_core",
+    expression: "smile",
     outfitVariants: {
       male: "navy blazer over crisp white shirt, open collar no tie, relaxed professional",
       female: "cream tailored blazer over soft neutral-toned blouse, approachable elegance",
@@ -286,11 +319,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-white-exec-power",
     prompt:
-      "{outfit}, pure white studio background, confident powerful expression with slight smirk, dramatic clamshell lighting with subtle hair light separation, shoulders-up, executive presence, boardroom-ready authority portrait",
+      "{outfit}, pure white studio background, confident powerful presence, dramatic clamshell lighting with subtle hair light separation, shoulders-up, executive presence, boardroom-ready authority portrait",
     status: "active",
     performance: "untested",
     tags: ["studio", "white-bg", "executive", "power", "authority"],
     category: "studio_core",
+    expression: "serious",
     outfitVariants: {
       male: "bespoke charcoal suit with crisp white shirt and dark power tie, cufflinks visible",
       female: "structured black blazer with statement necklace, silk camisole underneath, power presence",
@@ -299,11 +333,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-white-warm-approachable",
     prompt:
-      "{outfit}, clean white studio backdrop, warm genuine smile showing approachability, ultra-soft butterfly lighting with heavy diffusion, shoulders-up, friendly yet professional, connects with viewer, ideal for client-facing roles",
+      "{outfit}, clean white studio backdrop, warm natural presence, approachable, ultra-soft butterfly lighting with heavy diffusion, shoulders-up, personable yet professional, connects with viewer, ideal for client-facing roles",
     status: "active",
     performance: "untested",
     tags: ["studio", "white-bg", "warm", "approachable", "friendly"],
     category: "studio_core",
+    expression: "smile",
     outfitVariants: {
       male: "light grey suit jacket over soft blue button-down shirt, warm approachable professional",
       female: "soft blush-toned blazer over ivory blouse, warm and inviting professional presence",
@@ -317,6 +352,7 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["studio", "white-bg", "modern", "minimal", "contemporary"],
     category: "studio_core",
+    expression: "neutral",
     outfitVariants: {
       male: "dark slim-fit suit with white shirt, no tie, modern tailored silhouette",
       female: "sleek neutral-toned sheath dress with structured blazer, modern professional elegance",
@@ -327,11 +363,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-dark-power",
     prompt:
-      "{outfit}, deep charcoal seamless studio background, intense confident expression, dramatic single key light from 45 degrees with strong contrast, subtle rim light for hair separation, shoulders-up, modern power portrait, cinematic feel",
+      "{outfit}, deep charcoal seamless studio background, confident presence, dramatic single key light from 45 degrees with strong contrast, subtle rim light for hair separation, shoulders-up, modern power portrait, cinematic feel",
     status: "active",
     performance: "untested",
     tags: ["studio", "dark-bg", "power", "dramatic", "cinematic"],
     category: "studio_core",
+    expression: "serious",
     outfitVariants: {
       male: "black suit with black dress shirt, no tie, sleek powerful silhouette",
       female: "dark charcoal blazer with elegant neckline, understated diamond stud, commanding presence",
@@ -345,6 +382,7 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["studio", "gray-bg", "modern", "versatile", "corporate"],
     category: "studio_core",
+    expression: "neutral",
     outfitVariants: {
       male: "navy suit jacket with light blue shirt, professional and versatile",
       female: "grey marl blazer over white blouse, professional versatile look",
@@ -353,11 +391,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-navy-exec",
     prompt:
-      "{outfit}, rich navy blue seamless studio background, executive calm confidence, soft key light with gentle fill, slight shadow on one side for depth, shoulders-up, distinguished leadership portrait, C-suite quality",
+      "{outfit}, rich navy blue seamless studio background, executive calm confidence, soft key light with gentle fill, slight shadow on one side for depth, shoulders-up, refined leadership portrait, C-suite quality",
     status: "active",
     performance: "untested",
     tags: ["studio", "navy-bg", "executive", "leadership", "c-suite"],
     category: "studio_core",
+    expression: "neutral",
     outfitVariants: {
       male: "grey suit with white shirt and navy patterned tie, executive polish",
       female: "cream blazer with elegant gold accessories, executive warmth and authority",
@@ -366,11 +405,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-charcoal-soft",
     prompt:
-      "{outfit}, charcoal grey textured studio backdrop, warm approachable half-smile, large softbox key light with heavy diffusion for flattering soft shadows, shoulders-up, executive with human touch, trustworthy authority",
+      "{outfit}, charcoal grey textured studio backdrop, warm approachable expression, large softbox key light with heavy diffusion for flattering soft shadows, shoulders-up, executive with human touch, trustworthy authority",
     status: "active",
     performance: "untested",
     tags: ["studio", "charcoal-bg", "soft", "trustworthy", "executive"],
     category: "studio_core",
+    expression: "smile",
     outfitVariants: {
       male: "charcoal suit with soft white shirt, no tie for approachable executive look",
       female: "deep burgundy blazer over neutral silk top, warm and authoritative",
@@ -381,11 +421,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-desk-seated",
     prompt:
-      "{outfit}, seated at a sleek modern minimalist desk, slight forward lean with hands resting naturally, warm engaging expression as if in conversation, soft window-light simulation from side, waist-up, modern executive at work",
+      "{outfit}, seated at a sleek modern minimalist desk, slight forward lean with hands resting naturally, warm engaging presence as if in conversation, soft window-light simulation from side, waist-up, modern executive at work",
     status: "active",
     performance: "untested",
     tags: ["studio", "desk", "seated", "executive", "engaged"],
     category: "studio_core",
+    expression: "smile",
     outfitVariants: {
       male: "tailored navy suit with white shirt, professional at work",
       female: "structured blazer with elegant blouse, professional desk presence",
@@ -399,6 +440,7 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["studio", "window-light", "natural", "elegant", "relaxed"],
     category: "studio_core",
+    expression: "neutral",
     outfitVariants: {
       male: "light grey suit with open collar white shirt, natural relaxed polish",
       female: "soft-toned blazer with delicate jewelry, natural light elegance",
@@ -407,11 +449,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-modern-chair",
     prompt:
-      "{outfit}, seated in a contemporary designer armchair, relaxed but professional posture with one arm resting on chair side, knowing slight smile, studio backdrop with subtle gradient, soft even lighting, waist-up, creative executive portrait",
+      "{outfit}, seated in a contemporary designer armchair, relaxed but professional posture with one arm resting on chair side, knowing relaxed expression, studio backdrop with subtle gradient, soft even lighting, waist-up, creative executive portrait",
     status: "active",
     performance: "untested",
     tags: ["studio", "chair", "seated", "creative", "relaxed"],
     category: "studio_core",
+    expression: "smile",
     outfitVariants: {
       male: "dark blazer over fine-gauge knit sweater, smart casual executive",
       female: "elegant cardigan-jacket over silk shell, relaxed executive warmth",
@@ -420,11 +463,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "studio-standing-lean",
     prompt:
-      "{outfit}, standing and leaning slightly against a modern high table or standing desk, confident engaged expression, arms relaxed at sides or one hand resting, clean studio background, three-point lighting, three-quarter length, dynamic professional presence",
+      "{outfit}, standing and leaning slightly against a modern high table or standing desk, confident engaged expression, arms relaxed at sides or one hand resting, clean studio background, three-point lighting, waist-up, dynamic professional presence, natural proportions",
     status: "active",
     performance: "untested",
     tags: ["studio", "standing", "leaning", "dynamic", "confident"],
     category: "studio_core",
+    expression: "neutral",
     outfitVariants: {
       male: "sharp navy suit, standing confidently, professional dynamism",
       female: "tailored jumpsuit or sleek separates, standing with quiet confidence",
@@ -435,47 +479,60 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "exec-modern-monochrome",
     prompt:
-      "High-contrast black and white style portrait, intense thoughtful expression, black turtleneck, dark seamless background with dramatic single light source creating strong shadows, artistic executive portrait, timeless",
-    status: "active",
+      "High-contrast black and white style portrait, intense thoughtful presence, black turtleneck, dark seamless background with dramatic single light source creating strong shadows, artistic executive portrait, timeless",
+    status: "experimental",
     performance: "untested",
     tags: ["studio", "dramatic", "monochrome", "artistic"],
     category: "studio_core",
+    expression: "serious",
   },
   {
     id: "tech-podcast-guest",
     prompt:
-      "Expression mid-conversation as if answering an interesting question, professional podcast setup with microphone and acoustic panels blurred behind, dark polo or casual blazer, warm video light, authentic media professional",
+      "Mid-conversation as if answering an interesting question, professional podcast setup with microphone and acoustic panels blurred behind, dark polo or casual blazer, warm video light, authentic media professional",
     status: "active",
     performance: "untested",
     tags: ["studio", "media", "conversational", "modern"],
     category: "studio_core",
+    expression: "smile",
   },
   {
     id: "creative-moody-shadow",
     prompt:
-      "Dramatic chiaroscuro lighting, half face in shadow half illuminated, intense artistic expression, dark creative attire, black seamless background, fine-art portrait, bold creative director",
-    status: "active",
+      "Dramatic chiaroscuro lighting, half face in shadow half illuminated, intense artistic presence, dark creative attire, black seamless background, fine-art portrait, bold creative director",
+    status: "experimental",
     performance: "untested",
     tags: ["studio", "dramatic", "fine-art", "bold"],
     category: "studio_core",
+    expression: "serious",
   },
   {
     id: "creative-color-pop",
     prompt:
-      "Bold colorful portrait, vibrant solid-color backdrop matching outfit accent, joyful genuine expression, creative industry professional, clamshell lighting with color gel rim light, shoulders-up, energetic personal brand",
+      "Bold colorful portrait, vibrant solid-color backdrop, {outfit}, focused creative presence, creative industry professional, clamshell lighting with color gel rim light, shoulders-up, distinctive personal brand",
     status: "active",
     performance: "untested",
-    tags: ["studio", "colorful", "energetic", "bold"],
+    tags: ["studio", "colorful", "distinctive", "bold"],
     category: "studio_core",
+    expression: "smile",
+    outfitVariants: {
+      male: "navy casual blazer over a crisp white shirt with a pop of color in the pocket square, modern creative professional",
+      female: "bold jewel-tone blazer over a silk shell, statement accessory that complements the backdrop, vibrant elegance",
+    },
   },
   {
     id: "creative-studio-action",
     prompt:
-      "In a creative studio or workshop, surrounded by tools of the trade blurred (camera gear, design materials, art supplies), mid-action engaged expression, authentic work attire, practical lighting, waist-up, maker creative professional",
+      "In a creative studio or workshop, surrounded by tools of the trade blurred (camera gear, design materials, art supplies), {outfit}, mid-action engaged expression, practical lighting, waist-up, maker creative professional",
     status: "active",
     performance: "untested",
     tags: ["studio", "workshop", "action", "maker"],
     category: "studio_core",
+    expression: "neutral",
+    outfitVariants: {
+      male: "dark henley shirt or casual button-down with rolled sleeves, relaxed creative professional in their element",
+      female: "soft linen button-down or artisan-crafted top with sleeves rolled, authentic creative workspace presence",
+    },
   },
 
   // ──────────────────────────────────────────────────────────
@@ -486,11 +543,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "tech-open-office",
     prompt:
-      "Confident subtle smirk, blurred modern open-plan office with glass walls and natural window light behind, smart casual white button-down with rolled sleeves, waist-up, startup founder, authentic tech vibe",
+      "Confident relaxed demeanor, blurred modern open-plan office with glass walls and natural window light behind, smart casual white button-down with rolled sleeves, waist-up, startup founder, authentic tech vibe",
     status: "active",
     performance: "untested",
     tags: ["office", "tech", "casual", "startup"],
     category: "office",
+    expression: "smile",
   },
   {
     id: "tech-standing-desk",
@@ -500,6 +558,7 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["office", "tech", "standing", "engaged"],
     category: "office",
+    expression: "neutral",
   },
   {
     id: "tech-lounge-seated",
@@ -509,139 +568,158 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["office", "lounge", "seated", "lifestyle"],
     category: "office",
+    expression: "neutral",
   },
   {
     id: "tech-conference-room",
     prompt:
-      "Standing in front of a whiteboard with faint strategy diagrams blurred, explaining gesture with hands, confident knowledgeable expression, business casual blazer no tie, modern conference room, thought-leader portrait",
+      "Standing in front of a whiteboard with faint strategy diagrams blurred, explaining gesture with hands, confident knowledgeable presence, business casual blazer no tie, modern conference room, thought-leader portrait",
     status: "active",
     performance: "untested",
     tags: ["office", "conference", "standing", "leader"],
     category: "office",
+    expression: "neutral",
   },
   {
     id: "tech-monitor-glow",
     prompt:
-      "Working late aesthetic, face softly lit by monitor glow with practical desk lamp fill, focused expression transitioning to a slight smile, dark modern office, dark crew neck sweater, intimate authentic tech portrait",
+      "Working late aesthetic, face softly lit by monitor glow with practical desk lamp fill, focused demeanor, dark modern office, dark crew neck sweater, intimate authentic tech portrait",
     status: "active",
     performance: "untested",
     tags: ["office", "moody", "authentic", "tech"],
     category: "office",
+    expression: "neutral",
   },
   {
     id: "tech-coworking",
     prompt:
-      "Warm collaborative expression, blurred vibrant coworking space with colorful furniture and people, light denim shirt open over white tee, shoulders-up, community-oriented professional, modern work culture",
+      "Warm collaborative presence, blurred vibrant coworking space with colorful furniture and people, light denim shirt open over white tee, shoulders-up, community-oriented professional, modern work culture",
     status: "active",
     performance: "untested",
     tags: ["office", "coworking", "casual", "community"],
     category: "office",
+    expression: "smile",
   },
   {
     id: "exec-corner-office",
     prompt:
-      "Standing in a premium corner office with floor-to-ceiling windows showing city skyline, arms relaxed at sides, authoritative calm expression, charcoal bespoke suit with subtle pinstripe, natural window backlight with subtle fill, full-length, C-suite presence",
+      "Standing in a premium corner office with floor-to-ceiling windows showing city skyline, arms relaxed at sides, authoritative calm presence, charcoal bespoke suit with subtle pinstripe, natural window backlight with subtle fill, waist-up, C-suite executive portrait",
     status: "active",
     performance: "untested",
     tags: ["office", "executive", "standing", "c-suite"],
     category: "office",
+    expression: "serious",
   },
   {
     id: "exec-boardroom-head",
     prompt:
-      "Seated at the head of a polished boardroom table, leaning slightly forward with hands clasped on the table, intense focused gaze directly at camera, dark navy suit with power tie, dramatic overhead lighting, commanding leadership",
+      "Seated at the head of a polished boardroom table, leaning slightly forward with hands clasped on the table, steady focused gaze at camera, dark navy suit with power tie, dramatic overhead lighting, commanding leadership",
     status: "active",
     performance: "untested",
     tags: ["office", "boardroom", "seated", "intense"],
     category: "office",
+    expression: "serious",
   },
   {
     id: "exec-over-the-shoulder",
     prompt:
-      "Over-the-shoulder glance looking back at camera, dramatic confident expression, high-rise office window with twilight cityscape behind, perfectly tailored black suit, cinematic lighting with strong rim light, editorial executive portrait",
+      "Over-the-shoulder glance looking back at camera, dramatic confident presence, high-rise office window with twilight cityscape behind, perfectly tailored black suit, cinematic lighting with strong rim light, editorial executive portrait",
     status: "active",
     performance: "untested",
     tags: ["office", "editorial", "dramatic", "executive"],
     category: "office",
+    expression: "serious",
   },
   {
     id: "exec-leaning-standing",
     prompt:
-      "Leaning against a sleek executive desk, arms loosely crossed, slight knowing smile, bespoke grey suit with subtle pattern, warm ambient office lighting with desk lamp glow, modern penthouse office, confident authority",
+      "Leaning against a sleek executive desk, arms loosely crossed, relaxed confident demeanor, bespoke grey suit with subtle pattern, warm ambient office lighting with desk lamp glow, modern penthouse office, confident authority",
     status: "active",
     performance: "untested",
     tags: ["office", "leaning", "confident", "luxury"],
     category: "office",
+    expression: "smile",
   },
   {
     id: "exec-window-silhouette",
     prompt:
-      "Standing facing a floor-to-ceiling window with city view, silhouette with soft front fill revealing facial features, contemplative leadership expression, sharp suit silhouette, dramatic natural backlight, full-length, visionary CEO portrait",
+      "Standing facing a floor-to-ceiling window with city view, silhouette with soft front fill revealing facial features, {outfit}, contemplative leadership presence, dramatic natural backlight, waist-up, visionary CEO portrait",
     status: "active",
     performance: "untested",
     tags: ["office", "silhouette", "dramatic", "visionary"],
     category: "office",
+    expression: "neutral",
+    outfitVariants: {
+      male: "perfectly tailored dark suit with a crisp dress shirt, sharp executive silhouette against the window",
+      female: "structured sheath dress with a tailored blazer, powerful feminine silhouette against the skyline",
+    },
   },
   {
     id: "exec-handshake",
     prompt:
-      "Mid-handshake pose as if greeting someone off-camera, warm professional smile, classic navy suit, modern corporate lobby with marble and glass blurred behind, dynamic engaged moment, partnership-oriented leader",
+      "Mid-handshake pose as if greeting someone off-camera, warm professional demeanor, classic navy suit, modern corporate lobby with marble and glass blurred behind, dynamic engaged moment, partnership-oriented leader",
     status: "active",
     performance: "untested",
     tags: ["office", "dynamic", "engaged", "handshake"],
     category: "office",
+    expression: "smile",
   },
   {
     id: "exec-thoughtful-window",
     prompt:
-      "Standing by a window looking out thoughtfully, then turning toward camera with a warm knowing smile, dark suit, soft natural daylight, waist-up, reflective leader, approachable yet authoritative",
+      "Standing by a window looking out thoughtfully, then turning toward camera with warm confidence, dark suit, soft natural daylight, waist-up, reflective leader, approachable yet authoritative",
     status: "active",
     performance: "untested",
     tags: ["office", "thoughtful", "natural-light", "reflective"],
     category: "office",
+    expression: "smile",
   },
   {
     id: "exec-walking-hallway",
     prompt:
-      "Walking purposefully down a sleek modern corporate hallway, caught mid-stride looking confidently at camera, sharp tailored suit, motion blur in background, dynamic powerful presence, full-body, leader in motion",
+      "Walking purposefully down a sleek modern corporate hallway, caught mid-stride looking confidently at camera, sharp tailored suit, motion blur in background, dynamic powerful presence, full-body with natural head-to-body proportions, leader in motion",
     status: "experimental", // v3: demoted — dynamic walking risky
     performance: "untested",
     tags: ["office", "walking", "dynamic", "power", "risk:movement"],
     category: "office",
+    expression: "neutral",
   },
 
   // ── NEW Medical (+3) ──────────────────────────────────────
   {
     id: "medical-whitecoat-portrait",
     prompt:
-      "{outfit}, clean modern clinic interior with soft blurred medical equipment in background, warm trustworthy smile, bright even medical-grade lighting, shoulders-up, compassionate healthcare professional portrait",
+      "{outfit}, clean modern clinic interior with soft blurred medical equipment in background, warm trustworthy presence, bright even medical-grade lighting, shoulders-up, compassionate healthcare professional portrait",
     status: "active",
     performance: "untested",
     tags: ["medical", "white-coat", "clinic", "trustworthy", "healthcare"],
     category: "medical_env",
+    expression: "smile",
     outfitVariants: {
       male: "crisp white doctor's coat over navy dress shirt with subtle patterned tie, stethoscope visible",
-      female: "crisp white doctor's coat over soft蓝 or blush blouse, professional healthcare presence",
+      female: "crisp white doctor's coat over soft blue or blush blouse, professional healthcare presence",
     },
   },
   {
     id: "medical-whitecoat-female",
     prompt:
-      "Female medical professional, white doctor's coat over elegant professional blouse, warm compassionate smile, bright clean clinic or hospital corridor softly blurred behind, soft even lighting, shoulders-up, trustworthy female physician portrait",
+      "Female medical professional, white doctor's coat over elegant professional blouse, warm compassionate presence, bright clean clinic or hospital corridor softly blurred behind, soft even lighting, shoulders-up, trustworthy female physician portrait",
     status: "active",
     performance: "untested",
     tags: ["medical", "white-coat", "female", "physician", "compassionate"],
     category: "medical_env",
-    // No outfitVariants — prompt is self-contained for female
+    expression: "smile",
+    gender: "female",
   },
   {
     id: "medical-scrubs-modern",
     prompt:
-      "{outfit}, modern bright medical office or consultation room with warm natural light, calm professional expression, clean modern healthcare environment, waist-up, approachable medical professional, contemporary clinic aesthetic",
+      "{outfit}, modern bright medical office or consultation room with warm natural light, calm professional demeanor, clean modern healthcare environment, waist-up, approachable medical professional, contemporary clinic aesthetic",
     status: "active",
     performance: "untested",
     tags: ["medical", "scrubs", "modern", "approachable", "healthcare"],
     category: "medical_env",
+    expression: "neutral",
     outfitVariants: {
       male: "modern fitted navy scrubs, clean professional medical appearance",
       female: "modern fitted teal or navy scrubs, professional medical appearance",
@@ -652,11 +730,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "medical-consultation-desk",
     prompt:
-      "{outfit}, seated at a clean modern consultation desk, slight forward lean with hands gently clasped, warm engaged expression as if listening to a patient, bright clinic room with soft medical equipment blurred behind, even medical-grade lighting, waist-up, compassionate physician in conversation",
+      "{outfit}, seated at a clean modern consultation desk, slight forward lean with hands gently clasped, warm engaged presence as if listening to a patient, bright clinic room with soft medical equipment blurred behind, even medical-grade lighting, waist-up, compassionate physician in conversation",
     status: "active",
     performance: "untested",
     tags: ["medical", "desk", "consultation", "compassionate", "engaged"],
     category: "medical_env",
+    expression: "smile",
     outfitVariants: {
       male: "crisp white doctor's coat over light blue button-down shirt, stethoscope, attentive physician",
       female: "crisp white doctor's coat over soft jewel-tone blouse, stethoscope, attentive physician presence",
@@ -665,11 +744,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "medical-hospital-corridor",
     prompt:
-      "{outfit}, standing confidently in a bright modern hospital corridor with soft natural light from large windows, calm reassuring expression, clean hospital environment subtly blurred, waist-up, medical professional on rounds, capable and trustworthy",
+      "{outfit}, standing confidently in a bright modern hospital corridor with soft natural light from large windows, calm reassuring presence, clean hospital environment subtly blurred, waist-up, medical professional on rounds, capable and trustworthy",
     status: "active",
     performance: "untested",
     tags: ["medical", "hospital", "corridor", "confident", "trustworthy"],
     category: "medical_env",
+    expression: "neutral",
     outfitVariants: {
       male: "white doctor's coat over navy dress shirt and tie, professional medical authority",
       female: "white doctor's coat over elegant professional blouse, capable and warm medical presence",
@@ -678,11 +758,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "medical-clinic-standing",
     prompt:
-      "{outfit}, standing in a pristine modern medical clinic with sleek design elements softly blurred, arms relaxed at sides, warm professional smile, bright even lighting from large overhead panels, full-length, approachable healthcare leader, contemporary medicine aesthetic",
+      "{outfit}, standing in a pristine modern medical clinic with sleek design elements softly blurred, arms relaxed at sides, warm professional presence, bright even lighting from large overhead panels, waist-up, approachable healthcare leader, contemporary medicine aesthetic",
     status: "active",
     performance: "untested",
     tags: ["medical", "clinic", "standing", "modern", "approachable"],
     category: "medical_env",
+    expression: "smile",
     outfitVariants: {
       male: "tailored white coat over professional attire, standing with quiet confidence",
       female: "tailored white coat over professional dress or slacks, standing with warm authority",
@@ -691,24 +772,26 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "medical-confident-arms",
     prompt:
-      "{outfit}, arms crossed with a confident reassuring expression, standing in front of a softly blurred medical credentials wall or clinic interior, slight knowing smile, professional medical lighting, waist-up, experienced physician, trusted authority",
+      "{outfit}, arms crossed with a confident reassuring demeanor, standing in front of a softly blurred medical credentials wall or clinic interior, calm knowing demeanor, professional medical lighting, waist-up, skilled physician, trusted authority",
     status: "active",
     performance: "untested",
     tags: ["medical", "crossed-arms", "confident", "experienced", "authority"],
     category: "medical_env",
+    expression: "neutral",
     outfitVariants: {
-      male: "white doctor's coat with name badge, dress shirt and tie visible, established physician",
-      female: "white doctor's coat with subtle professional lapel pin, blouse visible, established physician",
+      male: "white doctor's coat with name badge, dress shirt and tie visible, dedicated physician",
+      female: "white doctor's coat with subtle professional lapel pin, blouse visible, dedicated physician",
     },
   },
   {
     id: "medical-window-light",
     prompt:
-      "{outfit}, standing near a large window in a modern medical office, soft natural daylight creating gentle shadows, warm approachable smile, clean contemporary interior with a small plant on the windowsill, waist-up, modern healthcare professional, human connection",
+      "{outfit}, standing near a large window in a modern medical office, soft natural daylight creating gentle shadows, warm approachable presence, clean contemporary interior with a small plant on the windowsill, waist-up, modern healthcare professional, human connection",
     status: "active",
     performance: "untested",
     tags: ["medical", "window-light", "natural", "human", "connection"],
     category: "medical_env",
+    expression: "smile",
     outfitVariants: {
       male: "white coat open over business casual shirt, relaxed professional warmth",
       female: "white coat over soft-toned professional attire, relaxed and genuine medical warmth",
@@ -722,6 +805,7 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["medical", "leader", "team", "executive", "healthcare"],
     category: "medical_env",
+    expression: "serious",
     outfitVariants: {
       male: "white coat over dress shirt with subtle pattern tie, medical leadership authority",
       female: "white coat over structured professional blouse, medical director presence and warmth",
@@ -732,11 +816,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "legal-library-portrait",
     prompt:
-      "{outfit}, standing in a distinguished wood-paneled law library, floor-to-ceiling leather-bound books blurred behind, authoritative composed expression, warm tungsten lighting from brass desk lamp, waist-up, traditional legal professional portrait",
+      "{outfit}, standing in an elegant wood-paneled law library, floor-to-ceiling leather-bound books blurred behind, authoritative composed expression, warm tungsten lighting from brass desk lamp, waist-up, traditional legal professional portrait",
     status: "active",
     performance: "untested",
     tags: ["legal", "library", "wood-paneled", "authoritative", "traditional"],
     category: "legal_env",
+    expression: "serious",
     outfitVariants: {
       male: "charcoal grey suit with white spread-collar shirt and conservative tie, legal authority",
       female: "dark navy suit jacket with white silk blouse, pearl earrings, legal gravitas",
@@ -745,14 +830,15 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "legal-office-classic",
     prompt:
-      "{outfit}, seated in a classic leather wingback chair in a traditional law office, confident steady gaze, brass and mahogany details blurred behind, warm ambient lighting with desk lamp glow, waist-up, established attorney portrait",
+      "{outfit}, seated in a classic leather wingback chair in a traditional law office, confident steady gaze, brass and mahogany details blurred behind, warm ambient lighting with desk lamp glow, waist-up, accomplished attorney portrait",
     status: "active",
     performance: "untested",
-    tags: ["legal", "office", "classic", "attorney", "established"],
+    tags: ["legal", "office", "classic", "attorney", "accomplished"],
     category: "legal_env",
+    expression: "serious",
     outfitVariants: {
-      male: "dark navy pinstripe suit with white shirt and burgundy tie, established counsel presence",
-      female: "tailored charcoal blazer with structured white blouse, established legal professional",
+      male: "dark navy pinstripe suit with white shirt and burgundy tie, accomplished counsel presence",
+      female: "tailored charcoal blazer with structured white blouse, accomplished legal professional",
     },
   },
 
@@ -765,6 +851,7 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["legal", "modern", "office", "contemporary", "forward-thinking"],
     category: "legal_env",
+    expression: "neutral",
     outfitVariants: {
       male: "charcoal modern-cut suit with light blue shirt and subtle pattern tie, contemporary legal professional",
       female: "tailored navy sheath dress with structured blazer, modern legal authority",
@@ -773,11 +860,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "legal-courtroom-subtle",
     prompt:
-      "{outfit}, standing confidently with courtroom wood paneling and the bar subtly blurred in deep background, composed serious-but-approachable expression, traditional courtroom lighting with warm tones, waist-up, trial attorney presence, gravitas with humanity",
+      "{outfit}, standing confidently with courtroom wood paneling and the bar subtly blurred in deep background, composed yet approachable presence, traditional courtroom lighting with warm tones, waist-up, trial attorney presence, gravitas with humanity",
     status: "active",
     performance: "untested",
     tags: ["legal", "courtroom", "traditional", "gravitas", "attorney"],
     category: "legal_env",
+    expression: "neutral",
     outfitVariants: {
       male: "dark navy suit with white spread-collar shirt and conservative tie, courtroom authority",
       female: "dark tailored suit with cream silk shell, courtroom presence and credibility",
@@ -786,11 +874,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "legal-standing-portrait",
     prompt:
-      "{outfit}, standing in an elegant law firm lobby with marble floors and classic architectural details softly blurred, one hand relaxed at side, confident composed expression, natural light from tall windows, full-length, distinguished law firm partner, established presence",
+      "{outfit}, standing in an elegant law firm lobby with marble floors and classic architectural details softly blurred, one hand relaxed at side, confident composed presence, natural light from tall windows, waist-up, accomplished law firm partner, commanding presence",
     status: "active",
     performance: "untested",
-    tags: ["legal", "lobby", "standing", "partner", "distinguished"],
+    tags: ["legal", "lobby", "standing", "partner", "accomplished"],
     category: "legal_env",
+    expression: "serious",
     outfitVariants: {
       male: "bespoke grey suit with white shirt and patterned silk tie, law firm partner gravitas",
       female: "structured black blazer with tailored trousers and subtle jewelry, law firm partner authority",
@@ -799,11 +888,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "legal-desk-document",
     prompt:
-      "{outfit}, seated at a distinguished mahogany desk with legal documents softly out of focus, looking up with a thoughtful knowledgeable expression, brass desk lamp providing warm directional light, waist-up, scholarly attorney, depth of expertise",
+      "{outfit}, seated at a refined mahogany desk with legal documents softly out of focus, looking up with a thoughtful knowledgeable expression, brass desk lamp providing warm directional light, waist-up, scholarly attorney, depth of expertise",
     status: "active",
     performance: "untested",
     tags: ["legal", "desk", "documents", "scholarly", "expertise"],
     category: "legal_env",
+    expression: "neutral",
     outfitVariants: {
       male: "dark suit with reading glasses optionally in hand, scholarly legal mind",
       female: "tailored blazer with refined blouse, glasses optional, sharp legal intellect",
@@ -812,11 +902,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "legal-window-natural",
     prompt:
-      "{outfit}, standing by a tall window in a tasteful law office, soft natural daylight creating a warm approachable atmosphere, genuine slight smile, classic interior with law books visible, waist-up, trusted legal advisor, the lawyer you can talk to",
+      "{outfit}, standing by a tall window in a tasteful law office, soft natural daylight creating a warm approachable atmosphere, genuine relaxed expression, classic interior with law books visible, waist-up, trusted legal advisor, the lawyer you can talk to",
     status: "active",
     performance: "untested",
     tags: ["legal", "window", "natural-light", "approachable", "trusted"],
     category: "legal_env",
+    expression: "smile",
     outfitVariants: {
       male: "navy blazer with open-collar white shirt, approachable legal counsel",
       female: "soft-structured blazer in warm neutral tone, approachable legal counselor",
@@ -825,14 +916,15 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "legal-crossed-arms",
     prompt:
-      "{outfit}, arms crossed with quiet confidence, standing in front of floor-to-ceiling law bookshelves softly blurred, direct steady gaze, warm ambient lighting from classic brass fixtures, waist-up, commanding legal presence, won't back down",
+      "{outfit}, arms crossed with quiet confidence, standing in front of floor-to-ceiling law bookshelves softly blurred, direct steady gaze, warm ambient lighting from classic brass fixtures, waist-up, authoritative legal presence, natural proportions",
     status: "active",
     performance: "untested",
-    tags: ["legal", "crossed-arms", "commanding", "bookshelves", "presence"],
+    tags: ["legal", "crossed-arms", "authoritative", "bookshelves", "presence"],
     category: "legal_env",
+    expression: "serious",
     outfitVariants: {
-      male: "charcoal three-piece suit with crisp white shirt, formidable legal presence",
-      female: "dark burgundy blazer over black shell, arms crossed, formidable yet composed",
+      male: "charcoal three-piece suit with crisp white shirt, authoritative legal presence",
+      female: "dark burgundy blazer over black shell, arms crossed, authoritative yet composed",
     },
   },
 
@@ -840,22 +932,24 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "exec-library",
     prompt:
-      "Standing in a wood-paneled library or study, one hand resting on a leather chair, dignified composed expression, navy blazer with elbow patches or classic suit, warm tungsten lighting from desk lamp and fireplace glow, distinguished academic leader",
+      "Standing in a wood-paneled library or study, one hand resting on a leather chair, dignified composed expression, navy blazer with elbow patches or classic suit, warm tungsten lighting from desk lamp and fireplace glow, respected academic leader",
     status: "active",
     performance: "untested",
-    tags: ["library", "academic", "standing", "distinguished"],
+    tags: ["library", "academic", "standing", "respected"],
     category: "academic_env",
+    expression: "neutral",
   },
 
   // ── NEW Academic (+2) ─────────────────────────────────────
   {
     id: "academic-campus-outdoor",
     prompt:
-      "{outfit}, standing on a historic university campus with ivy-covered brick buildings softly blurred behind, warm intellectual smile, soft morning or golden hour light, waist-up, professor or academic leader, collegial warmth",
+      "{outfit}, standing on a historic university campus with ivy-covered brick buildings softly blurred behind, warm intellectual presence, soft morning or golden hour light, waist-up, professor or academic leader, collegial warmth",
     status: "active",
     performance: "untested",
     tags: ["academic", "campus", "outdoor", "intellectual", "collegial"],
     category: "academic_env",
+    expression: "smile",
     outfitVariants: {
       male: "tweed blazer or navy sport coat over button-down shirt, academic professional",
       female: "structured cardigan or soft blazer over elegant blouse, academic warmth",
@@ -864,11 +958,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "academic-library-scholarly",
     prompt:
-      "{outfit}, standing between tall bookshelves in a grand university library, warm scholarly smile, soft natural light from tall windows mixed with warm interior lighting, waist-up, academic professional, intellectual gravitas",
+      "{outfit}, standing between tall bookshelves in a grand university library, warm scholarly presence, soft natural light from tall windows mixed with warm interior lighting, waist-up, academic professional, intellectual gravitas",
     status: "active",
     performance: "untested",
     tags: ["academic", "library", "scholarly", "intellectual", "university"],
     category: "academic_env",
+    expression: "smile",
     outfitVariants: {
       male: "tweed sport coat with subtle tie or open collar, scholarly professional",
       female: "elegant sweater or blazer with scarf, intellectual and approachable",
@@ -879,11 +974,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "academic-lecture-hall",
     prompt:
-      "{outfit}, standing at a modern lecture podium with tiered seating softly blurred behind, engaging mid-lecture expression as if explaining an important point, one hand gesturing naturally, bright even academic lighting, waist-up, dynamic professor, inspiring educator presence",
+      "{outfit}, standing at a modern lecture podium with tiered seating softly blurred behind, engaging mid-lecture presence as if explaining an important point, one hand gesturing naturally, bright even academic lighting, waist-up, dynamic professor, inspiring educator presence",
     status: "active",
     performance: "untested",
     tags: ["academic", "lecture", "teaching", "dynamic", "professor"],
     category: "academic_env",
+    expression: "neutral",
     outfitVariants: {
       male: "sport coat or blazer over button-down shirt, engaging academic presence",
       female: "structured cardigan or soft blazer over elegant top, inspiring educator",
@@ -892,11 +988,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "academic-office-books",
     prompt:
-      "{outfit}, seated in a cozy professor's office surrounded by overflowing bookshelves and academic papers, warm knowing smile, desk lamp and window light creating intimate scholarly atmosphere, waist-up, tenured professor in their element, intellectual home",
+      "{outfit}, seated in a cozy professor's office surrounded by overflowing bookshelves and academic papers, warm knowing presence, desk lamp and window light creating intimate scholarly atmosphere, waist-up, tenured professor in their element, intellectual home",
     status: "active",
     performance: "untested",
     tags: ["academic", "office", "books", "scholarly", "tenured"],
     category: "academic_env",
+    expression: "smile",
     outfitVariants: {
       male: "tweed jacket with subtle elbow patches, relaxed scholarly warmth",
       female: "cashmere wrap or soft blazer, surrounded by books, intellectual coziness",
@@ -905,11 +1002,12 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "academic-quad-seated",
     prompt:
-      "{outfit}, seated on a classic wooden bench in a leafy university quad, historic campus buildings softly blurred behind, relaxed intellectual smile, golden afternoon light filtering through mature trees, waist-up, collegial professor, timeless academic setting",
+      "{outfit}, seated on a classic wooden bench in a leafy university quad, historic campus buildings softly blurred behind, relaxed intellectual presence, golden afternoon light filtering through mature trees, waist-up, collegial professor, timeless academic setting",
     status: "active",
     performance: "untested",
     tags: ["academic", "outdoor", "quad", "collegial", "timeless"],
     category: "academic_env",
+    expression: "smile",
     outfitVariants: {
       male: "navy blazer over light sweater or oxford shirt, outdoor academic warmth",
       female: "elegant knit or light blazer, outdoor scholarly grace",
@@ -923,6 +1021,7 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["academic", "classroom", "modern", "approachable", "educator"],
     category: "academic_env",
+    expression: "smile",
     outfitVariants: {
       male: "smart casual blazer over open-collar shirt, modern approachable professor",
       female: "contemporary professional blouse with structured cardigan, modern educator warmth",
@@ -939,56 +1038,66 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   {
     id: "outdoor-park-bench",
     prompt:
-      "Seated on a modern park bench, surrounded by soft green foliage bokeh, warm genuine smile, smart casual blazer with chinos, late afternoon golden sunlight filtering through trees, waist-up, approachable authentic professional",
+      "Seated on a modern park bench, surrounded by soft green foliage bokeh, warm genuine presence, smart casual blazer with chinos, late afternoon golden sunlight filtering through trees, waist-up, approachable authentic professional",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "park", "seated", "approachable"],
     category: "lifestyle",
+    expression: "smile",
   },
   {
     id: "outdoor-city-steps",
     prompt:
-      "Seated on modern urban architecture steps in a downtown plaza, confident relaxed posture, business casual attire, bright overcast sky providing perfect diffused light, waist-up, urban professional, city hall or corporate district vibe",
+      "Seated on modern urban architecture steps in a downtown plaza, confident relaxed posture, {outfit}, bright overcast sky providing perfect diffused light, waist-up, urban professional, city hall or corporate district vibe",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "urban", "seated", "corporate"],
     category: "lifestyle",
+    expression: "neutral",
+    outfitVariants: {
+      male: "tailored chinos with a crisp button-down shirt and a lightweight blazer, polished urban professional",
+      female: "wide-leg trousers with a silk blouse and structured blazer, sophisticated city professional",
+    },
   },
   {
     id: "outdoor-campus-walk",
     prompt:
-      "Walking along a tree-lined university campus path, looking at camera with intellectual smile, tweed blazer or academic casual attire, soft morning light, full-body walking shot, professor or academic administrator",
+      "Walking along a tree-lined university campus path, looking at camera with intellectual warmth, tweed blazer or academic casual attire, soft morning light, full-body walking shot with natural proportions, professor or academic administrator",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "campus", "walking", "academic"],
     category: "academic_env",
+    expression: "smile",
   },
   {
     id: "outdoor-beach-casual",
     prompt:
-      "Beach setting at golden hour, relaxed genuine laughter, smart casual linen shirt, ocean horizon bokeh behind with warm sunset tones, shoulders-up, lifestyle entrepreneur, coastal professional, authentic joy",
+      "Beach setting at golden hour, relaxed natural expression, smart casual linen shirt, ocean horizon bokeh behind with warm sunset tones, shoulders-up, lifestyle entrepreneur, coastal professional, authentic contentment",
     status: "experimental", // v3: demoted — laugh + extreme casual, per user request to keep
     performance: "untested",
     tags: ["outdoor", "beach", "golden-hour", "lifestyle", "risk:laugh", "risk:casual"],
     category: "lifestyle",
+    expression: "smile",
   },
   {
     id: "outdoor-market-stroll",
     prompt:
-      "Walking through an upscale outdoor market or shopping district, caught mid-stride looking at camera with natural smile, stylish casual attire, afternoon natural light, lifestyle authentic, cosmopolitan professional",
+      "Walking through an upscale outdoor market or shopping district, caught mid-stride looking at camera with natural ease, stylish casual attire, afternoon natural light, lifestyle authentic, cosmopolitan professional",
     status: "experimental", // v3: demoted — dynamic walking
     performance: "untested",
     tags: ["outdoor", "market", "walking", "cosmopolitan", "risk:movement"],
     category: "lifestyle",
+    expression: "smile",
   },
   {
     id: "outdoor-mountain-view",
     prompt:
-      "Standing on a viewpoint overlooking mountains or hills, fresh air wind slightly moving hair, confident serene expression, outdoor smart jacket, dramatic natural landscape bokeh behind, crisp clear daylight, adventurous leader",
+      "Standing on a viewpoint overlooking mountains or hills, fresh crisp mountain air, confident serene expression, outdoor smart jacket, dramatic natural landscape bokeh behind, crisp clear daylight, adventurous leader",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "mountain", "standing", "adventurous"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "outdoor-riverside",
@@ -998,42 +1107,51 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["outdoor", "water", "reflective", "serene"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "outdoor-garden-party",
     prompt:
-      "At an upscale garden party or networking event, holding a glass, mid-conversation engaged expression, elegant smart casual or cocktail attire, greenery and string lights bokeh, waist-up, social professional, warm evening light",
+      "At an upscale garden party or networking event, holding a glass, {outfit}, mid-conversation natural presence, greenery and string lights bokeh, waist-up, social professional, warm evening light",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "event", "social", "elegant"],
     category: "lifestyle",
+    expression: "smile",
+    outfitVariants: {
+      male: "tailored blazer over an open-collar dress shirt, pocket square, evening networking elegance",
+      female: "cocktail dress or elegant jumpsuit with statement earrings, warm evening sophistication",
+    },
   },
   {
     id: "outdoor-autumn-leaves",
     prompt:
-      "Standing among autumn foliage with warm orange and gold leaves blurred, cozy sophisticated sweater or light coat, genuine warm smile, crisp autumn afternoon light, waist-up, seasonal warmth, authentic professional",
+      "Standing among autumn foliage with warm orange and gold leaves blurred, cozy sophisticated sweater or light coat, genuine warm presence, crisp autumn afternoon light, waist-up, seasonal warmth, authentic professional",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "autumn", "seasonal", "warm"],
     category: "lifestyle",
+    expression: "smile",
   },
   {
     id: "outdoor-bridge-crossing",
     prompt:
-      "Walking across a modern pedestrian bridge with city skyline behind, purposeful stride, confident expression, business attire with long coat, dynamic movement, full-body, metropolitan professional, forward momentum",
+      "Walking across a modern pedestrian bridge with city skyline behind, purposeful stride, confident expression, business attire with long coat, dynamic movement, full-body with natural proportions, metropolitan professional, forward momentum",
     status: "experimental", // v3: demoted — dynamic walking full-body
     performance: "untested",
     tags: ["outdoor", "bridge", "walking", "metropolitan", "risk:movement"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "outdoor-courtyard",
     prompt:
-      "Standing in a serene internal courtyard or atrium with modern architecture and plants, calm centered expression, sophisticated casual attire, soft overhead natural light filtered through structure, full-length, oasis professional",
+      "Standing in a serene internal courtyard or atrium with modern architecture and plants, calm centered expression, sophisticated casual attire, soft overhead natural light filtered through structure, waist-up, oasis professional portrait",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "courtyard", "calm", "architectural"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "outdoor-harbor",
@@ -1043,26 +1161,29 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["outdoor", "harbor", "nautical", "relaxed"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "outdoor-snow-crisp",
     prompt:
-      "Crisp winter day with soft snow-covered background, warm sophisticated coat and scarf, breath visible in cold air, joyful resilient expression, bright overcast winter light creating soft even illumination, shoulders-up, northern professional",
+      "Crisp winter day with soft snow-covered background, warm sophisticated coat and scarf, breath visible in cold air, bright resilient presence, bright overcast winter light creating soft even illumination, shoulders-up, northern professional",
     status: "experimental",
     performance: "untested",
     tags: ["outdoor", "winter", "seasonal", "resilient"],
     category: "lifestyle",
+    expression: "smile",
   },
 
   // ── Existing Tech Lifestyle (4 active + 1 experimental) ────
   {
     id: "tech-cafe-remote",
     prompt:
-      "Warm genuine smile, blurred cozy coffee shop interior with warm pendant lights, casual oatmeal sweater, soft window light from side, shoulders-up, digital nomad remote worker, authentic lifestyle",
+      "Warm genuine presence, blurred cozy coffee shop interior with warm pendant lights, casual oatmeal sweater, soft window light from side, shoulders-up, digital nomad remote worker, authentic lifestyle",
     status: "active",
     performance: "untested",
     tags: ["cafe", "remote", "casual", "lifestyle"],
     category: "lifestyle",
+    expression: "smile",
   },
   {
     id: "tech-brick-wall",
@@ -1072,15 +1193,17 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["urban", "creative", "casual", "edgy"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "tech-rooftop",
     prompt:
-      "Relaxed happy expression, rooftop terrace with city skyline bokeh at golden hour, smart casual navy blazer over white tee, warm natural backlight with reflector fill, shoulders-up, modern entrepreneur",
+      "Relaxed content expression, rooftop terrace with city skyline bokeh at golden hour, smart casual navy blazer over white tee, warm natural backlight with reflector fill, shoulders-up, modern entrepreneur",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "urban", "golden-hour", "entrepreneur"],
     category: "lifestyle",
+    expression: "smile",
   },
   {
     id: "tech-balcony-overlook",
@@ -1090,89 +1213,107 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["outdoor", "city", "confident", "visionary"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "tech-garden-walk",
     prompt:
-      "Walking shot captured mid-stride on a modern corporate campus garden path, looking at camera with natural smile, smart casual outfit with light blazer, golden hour dappled light through trees, full-body, dynamic lifestyle",
+      "Walking shot captured mid-stride on a modern corporate campus garden path, looking at camera with natural ease, smart casual outfit with light blazer, golden hour dappled light through trees, full-body with natural proportions, dynamic lifestyle",
     status: "experimental", // v3: demoted — dynamic walking full-body
     performance: "untested",
     tags: ["outdoor", "walking", "dynamic", "lifestyle", "risk:movement"],
     category: "lifestyle",
+    expression: "smile",
   },
 
   // ── Existing Creative Lifestyle (10 active + 2 experimental) ──
   {
     id: "creative-gallery",
     prompt:
-      "Standing in a contemporary art gallery with abstract paintings blurred on the wall behind, thoughtful appreciative expression, stylish creative professional attire with interesting texture or pattern, gallery track lighting, waist-up, cultural thought leader",
+      "Standing in a contemporary art gallery with abstract paintings blurred on the wall behind, {outfit}, thoughtful appreciative presence, gallery track lighting, waist-up, cultural thought leader",
     status: "active",
     performance: "untested",
     tags: ["gallery", "artistic", "standing", "cultural"],
     category: "lifestyle",
+    expression: "neutral",
+    outfitVariants: {
+      male: "dark slim-fit turtleneck or textured blazer with tailored trousers, art-world sophistication",
+      female: "architectural blazer or sculptural top in monochrome tones, gallery-opening elegance",
+    },
   },
   {
     id: "creative-golden-portrait",
     prompt:
-      "Editorial golden hour portrait, warm backlight creating hair glow, slight turned pose looking back at camera with magnetic expression, neutral earth-tone outfit, outdoor with warm grass or urban texture bokeh, magazine cover quality",
+      "Editorial golden hour portrait, warm backlight creating hair glow, slight turned pose looking back at camera with magnetic presence, neutral earth-tone outfit, outdoor with warm grass or urban texture bokeh, magazine cover quality",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "golden-hour", "editorial", "magazine"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "creative-urban-night",
     prompt:
-      "Nighttime urban portrait, standing under a modern street lamp, city lights and traffic trails bokeh behind, confident mysterious expression, dark stylish coat or leather jacket, cinematic neon-tinged lighting, waist-up, creative nocturnal professional",
-    status: "active",
+      "Nighttime urban portrait, standing under a modern street lamp, city lights and traffic trails bokeh behind, confident mysterious presence, dark stylish coat or leather jacket, cinematic neon-tinged lighting, waist-up, creative nocturnal professional",
+    status: "experimental",
     performance: "untested",
     tags: ["urban", "night", "cinematic", "edgy"],
     category: "lifestyle",
+    expression: "serious",
   },
   {
     id: "creative-architectural",
     prompt:
-      "Standing in a striking modern architectural space with geometric lines and natural light shafts, confident composed expression, architectural minimalist attire in neutral tones, waist-up or full-body, design professional, spatial awareness",
+      "Standing in a striking modern architectural space with geometric lines and natural light shafts, confident composed expression, architectural minimalist attire in neutral tones, waist-up, design professional, spatial awareness",
     status: "active",
     performance: "untested",
     tags: ["architecture", "minimalist", "design", "spatial"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "creative-morning-light",
     prompt:
-      "Soft morning light streaming through a large window, seated on a windowsill with coffee cup, relaxed genuine morning-person smile, casual elegant loungewear or smart casual, lifestyle authentic, warm and inviting",
+      "Soft morning light streaming through a large window, seated on a windowsill with coffee cup, relaxed genuine presence, morning light, casual elegant loungewear or smart casual, lifestyle authentic, warm and inviting",
     status: "active",
     performance: "untested",
     tags: ["indoor", "morning", "lifestyle", "authentic"],
     category: "lifestyle",
+    expression: "smile",
   },
   {
     id: "creative-dappled-shade",
     prompt:
-      "Outdoor under a tree canopy with dappled sunlight creating natural patterns on face, relaxed dreamy expression, light natural-fabric outfit, bokeh green background, waist-up, bohemian creative professional, nature-connected",
+      "Outdoor under a tree canopy with dappled sunlight creating natural patterns on face, relaxed natural presence, light natural-fabric outfit, bokeh green background, waist-up, bohemian creative professional, nature-connected",
     status: "active",
     performance: "untested",
     tags: ["outdoor", "nature", "dreamy", "bohemian"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "creative-rain-window",
     prompt:
-      "Behind a rain-streaked window, contemplative moody expression, warm interior lighting contrasting with cool exterior, cozy knitwear visible, cinematic atmospheric portrait, introspective creative, emotional depth",
+      "Behind a rain-streaked window, contemplative mood, warm interior lighting contrasting with cool exterior, cozy knitwear visible, cinematic atmospheric portrait, introspective creative, emotional depth",
     status: "active",
     performance: "untested",
     tags: ["indoor", "rain", "moody", "introspective"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "creative-bookstore",
     prompt:
-      "Browsing in a charming independent bookstore, looking up from a book with a warm surprised smile, cozy intellectual attire, warm ambient bookstore lighting with shelves blurred, cultured creative professional",
+      "Browsing in a charming independent bookstore, looking up from a book with warm surprise, {outfit}, warm ambient bookstore lighting with shelves blurred, cultured creative professional",
     status: "active",
     performance: "untested",
     tags: ["indoor", "bookstore", "warm", "cultured"],
     category: "lifestyle",
+    expression: "smile",
+    outfitVariants: {
+      male: "soft cashmere crew-neck sweater over a collared shirt, relaxed intellectual warmth",
+      female: "fine-knit cardigan over a silk blouse, cozy cultured elegance",
+    },
   },
   {
     id: "creative-mirror-reflection",
@@ -1182,66 +1323,81 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     performance: "untested",
     tags: ["indoor", "reflection", "editorial", "experimental"],
     category: "lifestyle",
+    expression: "neutral",
   },
   {
     id: "creative-aerial-drone",
     prompt:
-      "Looking up toward camera from a lower angle or drone perspective, confident smile, interesting urban rooftop or open plaza background with geometric patterns, dynamic perspective, modern creative professional, visually striking",
+      "Looking up toward camera from a lower angle or drone perspective, confident expression, interesting urban rooftop or open plaza background with geometric patterns, dynamic perspective, modern creative professional, visually striking",
     status: "experimental",
     performance: "untested",
     tags: ["outdoor", "drone", "dynamic", "experimental"],
     category: "lifestyle",
+    expression: "smile",
   },
   {
     id: "creative-vinyl-lounge",
     prompt:
-      "In a stylish mid-century modern lounge with vinyl records or design books nearby, relaxed cultured expression, retro-modern smart casual attire, warm analog lighting, music creative or design professional, tasteful aesthetic",
+      "In a stylish mid-century modern lounge with vinyl records or design books nearby, {outfit}, relaxed cultured expression, warm analog lighting, music creative or design professional, tasteful aesthetic",
     status: "active",
     performance: "untested",
     tags: ["indoor", "retro", "cultured", "stylish"],
     category: "lifestyle",
+    expression: "neutral",
+    outfitVariants: {
+      male: "fine-gauge merino turtleneck or textured blazer with tailored dark jeans, retro-modern sophistication",
+      female: "cashmere wrap or sculptural knit top with wide-leg trousers, mid-century modern elegance",
+    },
   },
 
   // ── Existing Event/Stage (2) ───────────────────────────────
   {
     id: "exec-gala-portrait",
     prompt:
-      "Black-tie formal event portrait, confident polished smile, tuxedo or formal evening attire, elegant event venue with subtle chandelier bokeh and warm ambient light, shoulders-up, award-ceremony professional, prestige",
+      "Black-tie formal event portrait, confident polished presence, tuxedo or formal evening attire, elegant event venue with subtle chandelier bokeh and warm ambient light, shoulders-up, award-ceremony professional, prestige",
     status: "active",
     performance: "untested",
     tags: ["event", "formal", "prestige", "elegant"],
     category: "lifestyle",
+    expression: "smile",
   },
   {
     id: "exec-speaker-stage",
     prompt:
-      "On a TED-style conference stage, standing at a minimal podium or hands-free with a wireless mic, passionate knowledgeable expression mid-speech, business formal attire, dramatic stage lighting with audience bokeh, waist-up, thought leader",
+      "On a TED-style conference stage, standing at a minimal podium or hands-free with a wireless mic, {outfit}, passionate knowledgeable presence, mid-speech, dramatic stage lighting with audience bokeh, waist-up, thought leader",
     status: "active",
     performance: "untested",
     tags: ["stage", "speaker", "dynamic", "thought-leader"],
     category: "lifestyle",
+    expression: "neutral",
+    outfitVariants: {
+      male: "tailored dark blazer over a crisp open-collar shirt, no tie, modern speaker presence",
+      female: "structured blazer over a silk shell with tailored trousers, commanding stage presence",
+    },
   },
 
   // ── Existing Luxury (1 experimental) ──────────────────────
   {
     id: "exec-private-jet",
     prompt:
-      "Seated in a luxurious private aviation cabin, relaxed confident smile, smart casual elegant attire, warm interior lighting, window showing clouds, aspirational executive lifestyle portrait",
+      "Seated in a luxurious private aviation cabin, relaxed confident presence, smart casual elegant attire, warm interior lighting, window showing clouds, aspirational executive lifestyle portrait",
     status: "experimental", // v3: already experimental, stays — too aspirational for "professional headshot" positioning
     performance: "untested",
     tags: ["luxury", "travel", "aspirational", "seated"],
     category: "lifestyle",
+    expression: "smile",
   },
 
   // ── NEW Lifestyle (+1) ────────────────────────────────────
   {
     id: "lifestyle-cafe-modern",
     prompt:
-      "{outfit}, seated at a window table in a bright modern minimalist cafe, warm natural window light from side, relaxed genuine half-smile, artisanal coffee cup on table softly out of focus, lifestyle professional portrait, authentic remote-work era vibe",
+      "{outfit}, seated at a window table in a bright modern minimalist cafe, warm natural window light from side, relaxed genuine expression, artisanal coffee cup on table softly out of focus, lifestyle professional portrait, authentic remote-work era vibe",
     status: "active",
     performance: "untested",
     tags: ["cafe", "modern", "lifestyle", "authentic", "remote"],
     category: "lifestyle",
+    expression: "smile",
     outfitVariants: {
       male: "smart casual: fine-gauge navy sweater over white collared shirt, relaxed professional",
       female: "smart casual: soft cashmere wrap or elegant knit, relaxed professional with warmth",
@@ -1286,16 +1442,24 @@ export function getTemplatesByTag(tag: string): PromptTemplate[] {
 // ============================================================
 
 /**
+ * Expression type used for matching templates to user photos.
+ * Derived from photo analysis before generation.
+ */
+export type Expression = "smile" | "serious" | "neutral";
+
+/**
  * Select 30 unique templates for an order based on the user's
- * profession and gender.
+ * profession, gender, and optionally the expression in each photo.
  *
  * Strategy:
  *  1. Read the profession → category weight matrix.
  *  2. Allocate 30 slots across categories per the weights.
  *  3. For each category: collect active templates, shuffle, take slots.
- *  4. Resolve {outfit} placeholders with gender-appropriate text.
- *  5. Shuffle the final selection (mix categories naturally).
- *  6. Assign round-robin to the user's photos.
+ *  4. If photoExpressions provided: assign templates to photos with
+ *     matching expressions (~70% match rate), falling back to "any"
+ *     expression templates then cross-expression when needed.
+ *  5. Resolve {outfit} placeholders with gender-appropriate text.
+ *  6. Shuffle within each photo's group (mix categories naturally).
  *
  * Fallback: if a category runs short of templates, redistribute
  * unused slots to studio_core (always the largest pool).
@@ -1304,7 +1468,10 @@ export function distributePromptsV3(
   photoCount: number,
   _plan: "starter" | "pro",
   gender: Gender,
-  profession: Profession
+  profession: Profession,
+  /** Expression detected in each photo, same length as photos.
+   *  `null` means unknown — treated as "any". */
+  photoExpressions?: Array<Expression | null>
 ): { photoIndex: number; promptId: string; prompt: string }[] {
   const TOTAL = 30;
   const weights = PROFESSION_WEIGHTS[profession];
@@ -1321,23 +1488,23 @@ export function distributePromptsV3(
   }
 
   // 2. Adjust rounding to hit exactly 30
-  // Add/remove from studio_core (always has largest pool)
   const diff = TOTAL - allocatedTotal;
   if (diff !== 0) {
     allocation["studio_core"] = (allocation["studio_core"] ?? 0) + diff;
   }
 
-  // 3. Collect templates per category
+  // 3. Collect templates per category (with gender filter)
   const selected: PromptTemplate[] = [];
   const surplusSlots: { category: PromptCategory; needed: number; available: number }[] = [];
 
   for (const [cat, slots] of Object.entries(allocation) as [PromptCategory, number][]) {
     if (slots <= 0) continue;
 
-    const pool = getActiveByCategory(cat);
+    const pool = getActiveByCategory(cat).filter(
+      (t) => !t.gender || t.gender === "neutral" || t.gender === gender
+    );
 
     if (pool.length === 0) {
-      // No templates in this category — redistribute to studio_core
       console.warn(
         `[OneTake] No active templates in "${cat}" for profession "${profession}". ` +
           `Redistributing ${slots} slots to studio_core.`
@@ -1347,7 +1514,6 @@ export function distributePromptsV3(
     }
 
     if (pool.length < slots) {
-      // Not enough unique templates — note surplus for redistribution
       surplusSlots.push({ category: cat, needed: slots, available: pool.length });
     }
 
@@ -1358,14 +1524,12 @@ export function distributePromptsV3(
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
 
-    // Take what we need (cycle if pool is smaller than slots)
     for (let i = 0; i < slots; i++) {
       selected.push(shuffled[i % shuffled.length]);
     }
   }
 
-  // 4. Handle surplus: if a category had fewer templates than needed,
-  //    we already cycled within the pool. Log a warning.
+  // 4. Handle surplus / padding
   for (const surplus of surplusSlots) {
     console.warn(
       `[OneTake] Category "${surplus.category}" has only ${surplus.available} active templates ` +
@@ -1373,7 +1537,6 @@ export function distributePromptsV3(
     );
   }
 
-  // 5. If we somehow have fewer than 30 (shouldn't happen), pad from studio_core
   if (selected.length < TOTAL) {
     const shortfall = TOTAL - selected.length;
     const studioPool = getActiveByCategory("studio_core");
@@ -1390,13 +1553,7 @@ export function distributePromptsV3(
     );
   }
 
-  // 6. Shuffle the final selection to naturally intermix categories
-  for (let i = selected.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [selected[i], selected[j]] = [selected[j], selected[i]];
-  }
-
-  // 7. Resolve {outfit} placeholders → gender-appropriate text
+  // 5. Resolve {outfit} placeholders
   const resolved = selected.map((t) => {
     let prompt = t.prompt;
     if (t.outfitVariants && prompt.includes("{outfit}")) {
@@ -1406,7 +1563,22 @@ export function distributePromptsV3(
     return { ...t, prompt };
   });
 
-  // 8. Round-robin photo assignment
+  // 6. Expression-aware photo assignment
+  const hasExpressions =
+    photoExpressions &&
+    photoExpressions.length > 0 &&
+    photoExpressions.some((e) => e !== null);
+
+  if (hasExpressions) {
+    return assignWithExpressionMatching(resolved, photoCount, photoExpressions!);
+  }
+
+  // 7. Fallback: shuffle + round-robin (no expression data)
+  for (let i = resolved.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [resolved[i], resolved[j]] = [resolved[j], resolved[i]];
+  }
+
   const assignments: {
     photoIndex: number;
     promptId: string;
@@ -1419,6 +1591,203 @@ export function distributePromptsV3(
       promptId: resolved[i].id,
       prompt: resolved[i].prompt,
     });
+  }
+
+  return assignments;
+}
+
+/**
+ * Assign templates to photos by matching expression where possible.
+ *
+ * Algorithm:
+ *  1. Group templates into expression buckets (smile, serious, neutral, any).
+ *  2. For each photo with a known expression, try to fill its slots
+ *     from the matching expression bucket (target ~70% match).
+ *  3. Fill remaining slots from the "any" bucket.
+ *  4. If still short, borrow from non-matching expression buckets.
+ *  5. Shuffle each photo's assigned templates for category intermix.
+ *
+ * This reduces identity drift caused by forcing a smile template onto
+ * a serious-faced source photo (or vice versa).
+ */
+function assignWithExpressionMatching(
+  templates: PromptTemplate[],
+  photoCount: number,
+  photoExpressions: Array<Expression | null>
+): { photoIndex: number; promptId: string; prompt: string }[] {
+  const TOTAL = 30;
+  const slotsPerPhoto = Math.floor(TOTAL / photoCount);
+  const remainder = TOTAL % photoCount;
+
+  // How many templates each photo should get
+  const photoSlots: number[] = [];
+  for (let i = 0; i < photoCount; i++) {
+    photoSlots.push(slotsPerPhoto + (i < remainder ? 1 : 0));
+  }
+
+  // Group templates by expression
+  const buckets: Record<string, PromptTemplate[]> = {
+    smile: [],
+    serious: [],
+    neutral: [],
+    any: [],
+  };
+
+  for (const t of templates) {
+    const expr = t.expression ?? "any";
+    if (buckets[expr]) {
+      buckets[expr].push(t);
+    } else {
+      buckets["any"].push(t);
+    }
+  }
+
+  // Also treat templates with undefined/null expression as "any"
+  // (already handled above, but also collect any without the field)
+  for (const t of templates) {
+    if (!t.expression || !["smile", "serious", "neutral"].includes(t.expression)) {
+      if (!buckets["any"].includes(t)) {
+        // already in bucket
+      }
+    }
+  }
+
+  // Shuffle each bucket
+  for (const key of Object.keys(buckets)) {
+    const arr = buckets[key];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
+  // Assign per photo: preference for matching expression
+  const perPhoto: PromptTemplate[][] = Array.from({ length: photoCount }, () => []);
+  // Track usage: a template can be used by at most one photo (avoid dupes within same order)
+  const used = new Set<string>();
+
+  // Pass 1: assign matching-expression templates to each photo
+  for (let p = 0; p < photoCount; p++) {
+    const expr = photoExpressions[p] ?? null;
+    const target = photoSlots[p];
+    const matchTarget = Math.ceil(target * 0.7); // aim for 70% matching
+
+    if (expr && buckets[expr]) {
+      const matchBucket = buckets[expr];
+      let assigned = 0;
+
+      for (let i = matchBucket.length - 1; i >= 0 && assigned < matchTarget; i--) {
+        const t = matchBucket[i];
+        if (used.has(t.id)) continue;
+        perPhoto[p].push(t);
+        used.add(t.id);
+        matchBucket.splice(i, 1); // remove from available pool
+        assigned++;
+      }
+
+      if (assigned > 0) {
+        console.log(
+          `[OneTake] Photo ${p} (${expr}): ${assigned}/${target} matched from "${expr}" bucket`
+        );
+      }
+    }
+  }
+
+  // Pass 2: fill remaining slots from "any" bucket
+  for (let p = 0; p < photoCount; p++) {
+    const remaining = photoSlots[p] - perPhoto[p].length;
+    if (remaining <= 0) continue;
+
+    let filled = 0;
+    for (let i = buckets["any"].length - 1; i >= 0 && filled < remaining; i--) {
+      const t = buckets["any"][i];
+      if (used.has(t.id)) continue;
+      perPhoto[p].push(t);
+      used.add(t.id);
+      buckets["any"].splice(i, 1);
+      filled++;
+    }
+  }
+
+  // Pass 3: fill any remaining slots from ANY available template (cross-expression)
+  // Collect all remaining unused templates
+  const remainingPool: PromptTemplate[] = [];
+  for (const key of Object.keys(buckets)) {
+    for (const t of buckets[key]) {
+      if (!used.has(t.id)) {
+        remainingPool.push(t);
+      }
+    }
+  }
+  // Shuffle remaining pool
+  for (let i = remainingPool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [remainingPool[i], remainingPool[j]] = [remainingPool[j], remainingPool[i]];
+  }
+
+  let poolIdx = 0;
+  for (let p = 0; p < photoCount; p++) {
+    while (perPhoto[p].length < photoSlots[p] && poolIdx < remainingPool.length) {
+      const t = remainingPool[poolIdx];
+      if (!used.has(t.id)) {
+        perPhoto[p].push(t);
+        used.add(t.id);
+      }
+      poolIdx++;
+    }
+  }
+
+  // If STILL short (shouldn't happen), cycle from any template
+  if (poolIdx >= remainingPool.length) {
+    const allCycle = templates.filter((t) => !used.has(t.id));
+    // If all used, recycle from start (worst case)
+    const cycle = allCycle.length > 0 ? allCycle : templates;
+    let ci = 0;
+    for (let p = 0; p < photoCount; p++) {
+      while (perPhoto[p].length < photoSlots[p]) {
+        const t = cycle[ci % cycle.length];
+        if (!used.has(t.id)) {
+          perPhoto[p].push(t);
+          used.add(t.id);
+        }
+        ci++;
+      }
+    }
+  }
+
+  // Shuffle each photo's templates for category intermix
+  for (let p = 0; p < photoCount; p++) {
+    const arr = perPhoto[p];
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  }
+
+  // Build final assignments array
+  const assignments: { photoIndex: number; promptId: string; prompt: string }[] = [];
+  for (let p = 0; p < photoCount; p++) {
+    for (const t of perPhoto[p]) {
+      assignments.push({
+        photoIndex: p,
+        promptId: t.id,
+        prompt: t.prompt,
+      });
+    }
+  }
+
+  // Log expression distribution summary
+  if (assignments.length > 0) {
+    const matchCount = assignments.filter((a) => {
+      const expr = photoExpressions[a.photoIndex];
+      const tpl = templates.find((t) => t.id === a.promptId);
+      return expr && tpl?.expression === expr;
+    }).length;
+    const matchPct = Math.round((matchCount / assignments.length) * 100);
+    console.log(
+      `[OneTake] Expression match summary: ${matchCount}/${assignments.length} (${matchPct}%) ` +
+        `templates matched to photo expressions`
+    );
   }
 
   return assignments;

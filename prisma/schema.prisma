@@ -37,6 +37,7 @@ model Order {
   refundedAmount       Int      @default(0) // cents refunded
   refundStatus         String?  // null | "full" | "partial"
   errorMessages        String[] @default([]) // Per-slot error strings for failure diagnosis
+  version              Int      @default(0)  // Optimistic concurrency control
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
 }

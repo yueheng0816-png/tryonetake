@@ -3,6 +3,22 @@ import { db } from "@/lib/db";
 import { PHOTOS_PER_ORDER } from "@/lib/constants";
 import { handleOrderCompletion } from "@/lib/refund";
 
+/**
+ * Optimistic-lock retry helper.
+ *
+ * Uses the `version` column as an optimistic concurrency control:
+ *  1. Read current order state (includes version N)
+ *  2. Build new outputPhotos / counters
+ *  3. UPDATE WHERE version = N AND SET version = N+1
+ *  4. If Prisma throws P2025 (version already bumped by another webhook),
+ *     re-read and retry — up to MAX_RETRIES times.
+ *
+ * This eliminates the read-modify-write race condition where two
+ * concurrent webhooks could silently overwrite each other's outputPhotos
+ * updates (the root cause of the "29 out of 30" display bug).
+ */
+const MAX_RETRIES = 5;
+
 export async function POST(req: Request) {
   const { searchParams } = new URL(req.url);
   const orderId = searchParams.get("orderId");
@@ -14,60 +30,155 @@ export async function POST(req: Request) {
   try { body = await req.json(); } catch { return new NextResponse("Invalid JSON", { status: 400 }); }
 
   const slotIndex = indexStr ? parseInt(indexStr, 10) : -1;
+  const isSucceeded = body.status === "succeeded";
+  const isFailed = body.status === "failed";
+
   console.log(`[OneTake] Replicate webhook: order=${orderId} slot=${slotIndex} prediction=${body.id} status=${body.status}`);
 
-  try {
-    const order = await db.order.findUnique({ where: { id: orderId } });
-    if (!order) return new NextResponse("Order not found", { status: 404 });
-    if (order.status === "completed") return NextResponse.json({ received: true });
+  // Extract output URL for successful predictions
+  let outputUrl: string | null = null;
+  if (isSucceeded) {
+    if (typeof body.output === "string") outputUrl = body.output;
+    else if (Array.isArray(body.output) && body.output.length > 0 && typeof body.output[0] === "string") outputUrl = body.output[0];
+  }
 
-    if (body.status === "succeeded") {
-      let outputUrl: string | null = null;
-      if (typeof body.output === "string") outputUrl = body.output;
-      else if (Array.isArray(body.output) && body.output.length > 0 && typeof body.output[0] === "string") outputUrl = body.output[0];
+  const errorMsg = isFailed
+    ? (typeof body.error === "string" ? body.error : JSON.stringify(body.error ?? "Unknown error"))
+    : "";
 
+  // ── Optimistic-lock retry loop ──────────────────────────
+  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    try {
+      const order = await db.order.findUnique({
+        where: { id: orderId },
+        select: {
+          id: true,
+          userId: true,
+          status: true,
+          plan: true,
+          amount: true,
+          stripeSessionId: true,
+          predictionIds: true,
+          outputPhotos: true,
+          completedPredictions: true,
+          failedPredictions: true,
+          errorMessages: true,
+          version: true,
+        },
+      });
+
+      if (!order) return new NextResponse("Order not found", { status: 404 });
+      if (order.status === "completed") return NextResponse.json({ received: true });
+
+      // ── Build new state ──────────────────────────────────
       const outputPhotos = [...order.outputPhotos];
       if (slotIndex >= 0 && slotIndex < PHOTOS_PER_ORDER) {
+        // Pad array to include this slot
         while (outputPhotos.length <= slotIndex) outputPhotos.push("");
-        outputPhotos[slotIndex] = outputUrl ?? "";
-      } else if (outputUrl) { outputPhotos.push(outputUrl); }
 
-      const completedCount = order.completedPredictions + 1;
-      const allDone = completedCount >= order.predictionIds.filter(Boolean).length;
-
-      await db.order.update({ where: { id: orderId }, data: { outputPhotos, completedPredictions: completedCount, status: allDone ? "completed" : "generating" } });
-      console.log(`[OneTake] Order ${orderId}: ${completedCount}/${PHOTOS_PER_ORDER} completed (slot ${slotIndex})${allDone ? " - ALL DONE!" : ""}`);
-
-      if (allDone && order.failedPredictions > 0) {
-        const user = await db.user.findUnique({ where: { id: order.userId } });
-        handleOrderCompletion({ orderId: order.id, checkoutId: order.stripeSessionId ?? null, userEmail: user?.email ?? "", plan: order.plan, orderAmount: order.amount, totalPredictions: order.predictionIds.filter(Boolean).length, failedPredictions: order.failedPredictions, errorMessages: order.errorMessages }).catch(e => console.error("[OneTake] handleOrderCompletion failed:", e));
-      }
-    } else if (body.status === "failed") {
-      const completedCount = order.completedPredictions + 1;
-      const allDone = completedCount >= order.predictionIds.filter(Boolean).length;
-
-      const outputPhotos = [...order.outputPhotos];
-      if (slotIndex >= 0 && slotIndex < PHOTOS_PER_ORDER) {
-        while (outputPhotos.length <= slotIndex) outputPhotos.push("");
-        if (!outputPhotos[slotIndex]) outputPhotos[slotIndex] = "";
+        if (isSucceeded && outputUrl) {
+          // Don't overwrite an already-populated slot (defense against duplicate webhooks)
+          if (!outputPhotos[slotIndex]) {
+            outputPhotos[slotIndex] = outputUrl;
+          }
+        }
+        // For failed predictions, leave slot empty (already "")
+      } else if (isSucceeded && outputUrl) {
+        // Legacy: no slot index — append
+        outputPhotos.push(outputUrl);
       }
 
-      const errorMsg = typeof body.error === "string" ? body.error : JSON.stringify(body.error ?? "Unknown error");
-      await db.order.update({ where: { id: orderId }, data: { outputPhotos, completedPredictions: completedCount, failedPredictions: { increment: 1 }, errorMessages: { push: errorMsg }, status: allDone ? "completed" : "generating" } });
-      console.warn(`[OneTake] Order ${orderId}: prediction ${body.id} FAILED at slot ${slotIndex} - ${completedCount}/${PHOTOS_PER_ORDER}`);
+      // totalExpected: prefer exact count from predictionIds;
+      // fall back to PHOTOS_PER_ORDER for the race window before
+      // startBatchGeneration writes predictionIds to DB
+      const totalExpected = order.predictionIds.length > 0
+        ? order.predictionIds.filter(Boolean).length
+        : PHOTOS_PER_ORDER;
+      const completedCount = order.completedPredictions + 1;
+      const allDone = completedCount >= totalExpected;
 
+      // ── Atomic update with optimistic lock ───────────────
+      await db.order.update({
+        where: {
+          id: orderId,
+          version: order.version, // ← optimistic lock: only succeeds if version unchanged
+        },
+        data: {
+          outputPhotos,
+          completedPredictions: completedCount,
+          version: { increment: 1 },
+          status: allDone ? "completed" : "generating",
+          ...(isFailed
+            ? {
+                failedPredictions: { increment: 1 },
+                errorMessages: { push: errorMsg },
+                // Keep empty slot for failed prediction
+              }
+            : {}),
+        },
+      });
+
+      console.log(
+        `[OneTake] Order ${orderId}: ${completedCount}/${totalExpected} completed (slot ${slotIndex})${allDone ? " - ALL DONE!" : ""}`
+      );
+
+      // ── Handle completion ────────────────────────────────
       if (allDone) {
-        const updatedOrder = await db.order.findUnique({ where: { id: orderId } });
-        if (updatedOrder && updatedOrder.failedPredictions > 0) {
-          const user = await db.user.findUnique({ where: { id: updatedOrder.userId } });
-          handleOrderCompletion({ orderId: updatedOrder.id, checkoutId: updatedOrder.stripeSessionId ?? null, userEmail: user?.email ?? "", plan: updatedOrder.plan, orderAmount: updatedOrder.amount, totalPredictions: updatedOrder.predictionIds.filter(Boolean).length, failedPredictions: updatedOrder.failedPredictions, errorMessages: updatedOrder.errorMessages }).catch(e => console.error("[OneTake] handleOrderCompletion failed:", e));
+        // Re-read to get accurate final counts
+        const finalOrder = await db.order.findUnique({
+          where: { id: orderId },
+          select: {
+            id: true,
+            userId: true,
+            plan: true,
+            amount: true,
+            stripeSessionId: true,
+            failedPredictions: true,
+            errorMessages: true,
+            predictionIds: true,
+          },
+        });
+
+        if (finalOrder && finalOrder.failedPredictions > 0) {
+          const { default: userModule } = await import("@clerk/nextjs/server");
+          // We don't have the user context here, so we use the userId from the order
+          const user = await db.user.findUnique({ where: { id: finalOrder.userId } });
+          handleOrderCompletion({
+            orderId: finalOrder.id,
+            checkoutId: finalOrder.stripeSessionId ?? null,
+            userEmail: user?.email ?? "",
+            plan: finalOrder.plan,
+            orderAmount: finalOrder.amount,
+            totalPredictions: finalOrder.predictionIds.filter(Boolean).length || PHOTOS_PER_ORDER,
+            failedPredictions: finalOrder.failedPredictions,
+            errorMessages: finalOrder.errorMessages,
+          }).catch((e: unknown) => console.error("[OneTake] handleOrderCompletion failed:", e));
         }
       }
-    }
 
-    return NextResponse.json({ received: true });
-  } catch (error) {
-    console.error("[OneTake] Replicate webhook error:", error);
-    return new NextResponse("Internal error", { status: 500 });
+      return NextResponse.json({ received: true });
+    } catch (error: unknown) {
+      // P2025 = Prisma "Record to update not found" — our version lock was stale
+      const code = (error as { code?: string })?.code;
+      if (code === "P2025") {
+        console.warn(
+          `[OneTake] Optimistic lock retry for order ${orderId} slot ${slotIndex} ` +
+            `(attempt ${attempt + 1}/${MAX_RETRIES})`
+        );
+        // Random jitter: 30–150ms to desynchronize concurrent writers
+        await new Promise((r) => setTimeout(r, 30 + Math.random() * 120));
+        continue;
+      }
+
+      console.error("[OneTake] Replicate webhook error:", error);
+      return new NextResponse("Internal error", { status: 500 });
+    }
   }
+
+  // Exhausted all retries — this should be extremely rare
+  console.error(
+    `[OneTake] CRITICAL: Failed to update order ${orderId} slot ${slotIndex} ` +
+      `after ${MAX_RETRIES} optimistic-lock retries`
+  );
+  return new NextResponse("Conflict — retry later", { status: 409 });
 }

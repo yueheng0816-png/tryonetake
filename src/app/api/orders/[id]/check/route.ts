@@ -9,10 +9,8 @@ import { getPrediction, PHOTOS_PER_ORDER } from "@/lib/replicate";
  * Polls Replicate for pending predictions and updates the order.
  * Required for local dev because Replicate webhooks can't reach localhost.
  *
- * For each prediction:
- *   "succeeded" → save output to outputPhotos[i]
- *   "failed"    → leave empty
- *   other       → still processing, skip
+ * Uses optimistic locking (version field) to prevent race conditions
+ * with concurrent webhook deliveries.
  */
 export async function GET(
   _req: Request,
@@ -25,102 +23,133 @@ export async function GET(
 
   const { id } = await params;
 
-  const order = await db.order.findUnique({
-    where: { id },
-    select: {
-      id: true,
-      userId: true,
-      status: true,
-      predictionIds: true,
-      outputPhotos: true,
-    },
-  });
+  // ── Optimistic-lock retry loop ──────────────────────────
+  const MAX_RETRIES = 3;
+  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    const order = await db.order.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        userId: true,
+        status: true,
+        predictionIds: true,
+        outputPhotos: true,
+        version: true,
+      },
+    });
 
-  if (!order) {
-    return new NextResponse("Not found", { status: 404 });
-  }
-
-  const user = await ensureUser(userId);
-  if (order.userId !== user.id) {
-    return new NextResponse("Not found", { status: 404 });
-  }
-
-  // Accept both "paid" and "generating" — trigger may have created predictions
-  // but failed to update status (edge case)
-  if (order.status !== "generating" && order.status !== "paid") {
-    return NextResponse.json({ status: order.status, updated: false });
-  }
-
-  // Initialize a fixed-size array with empty strings.
-  // Prevents sparse-array undefined entries that Prisma rejects.
-  const totalSlots = order.predictionIds.length;
-  const outputPhotos: string[] = new Array(totalSlots).fill("");
-  let completed = 0;
-
-  // Restore any previously saved outputs
-  for (let i = 0; i < Math.min(order.outputPhotos.length, totalSlots); i++) {
-    const existing = order.outputPhotos[i];
-    if (existing && existing !== "__failed__") {
-      outputPhotos[i] = existing;
-      completed++;
-    } else if (existing === "__failed__") {
-      outputPhotos[i] = ""; // failed slot — keep as empty, count as done
-      completed++;
+    if (!order) {
+      return new NextResponse("Not found", { status: 404 });
     }
-  }
 
-  let newlyCompleted = 0;
+    const user = await ensureUser(userId);
+    if (order.userId !== user.id) {
+      return new NextResponse("Not found", { status: 404 });
+    }
 
-  for (let i = 0; i < totalSlots; i++) {
-    const predictionId = order.predictionIds[i];
-    if (!predictionId) continue;
+    // Accept both "paid" and "generating"
+    if (order.status !== "generating" && order.status !== "paid") {
+      return NextResponse.json({ status: order.status, updated: false });
+    }
 
-    // Already have output for this slot (restored above or from previous polls)
-    if (outputPhotos[i]) continue;
+    // Initialize a fixed-size array with empty strings.
+    const totalSlots = order.predictionIds.length;
+    const outputPhotos: string[] = new Array(totalSlots).fill("");
+    let completed = 0;
 
-    try {
-      const prediction = await getPrediction(predictionId);
-      if (!prediction) continue;
-
-      if (prediction.status === "succeeded") {
-        const output = Array.isArray(prediction.output)
-          ? prediction.output[0]
-          : prediction.output;
-        if (typeof output === "string" && output.length > 0) {
-          outputPhotos[i] = output;
-          newlyCompleted++;
-          completed++;
-        }
-      } else if (prediction.status === "failed") {
-        // Keep as "" — already initialized, just count as done
+    // Restore any previously saved outputs
+    for (let i = 0; i < Math.min(order.outputPhotos.length, totalSlots); i++) {
+      const existing = order.outputPhotos[i];
+      if (existing && existing !== "__failed__") {
+        outputPhotos[i] = existing;
+        completed++;
+      } else if (existing === "__failed__") {
+        outputPhotos[i] = ""; // failed slot — keep as empty, count as done
         completed++;
       }
-      // else: still "starting" or "processing" — skip
-    } catch {
-      // Network error polling this prediction — skip, try next poll
     }
-  }
 
-  // Update order if we got new results
-  if (newlyCompleted > 0) {
-    const allDone =
-      completed >= PHOTOS_PER_ORDER ||
-      completed >= order.predictionIds.filter(Boolean).length;
+    let newlyCompleted = 0;
 
-    await db.order.update({
-      where: { id },
-      data: {
-        outputPhotos, // already clean — no undefined, no "__failed__"
-        completedPredictions: completed,
-        status: allDone ? "completed" : "generating",
-      },
+    for (let i = 0; i < totalSlots; i++) {
+      const predictionId = order.predictionIds[i];
+      if (!predictionId) continue;
+
+      // Already have output for this slot
+      if (outputPhotos[i]) continue;
+
+      try {
+        const prediction = await getPrediction(predictionId);
+        if (!prediction) continue;
+
+        if (prediction.status === "succeeded") {
+          const output = Array.isArray(prediction.output)
+            ? prediction.output[0]
+            : prediction.output;
+          if (typeof output === "string" && output.length > 0) {
+            outputPhotos[i] = output;
+            newlyCompleted++;
+            completed++;
+          }
+        } else if (prediction.status === "failed") {
+          // Keep as "" — already initialized, just count as done
+          completed++;
+        }
+        // else: still "starting" or "processing" — skip
+      } catch {
+        // Network error polling this prediction — skip, try next poll
+      }
+    }
+
+    // Update order if we got new results
+    if (newlyCompleted > 0) {
+      const allDone =
+        completed >= PHOTOS_PER_ORDER ||
+        completed >= order.predictionIds.filter(Boolean).length;
+
+      try {
+        await db.order.update({
+          where: {
+            id,
+            version: order.version, // ← optimistic lock
+          },
+          data: {
+            outputPhotos,
+            completedPredictions: completed,
+            version: { increment: 1 },
+            status: allDone ? "completed" : "generating",
+          },
+        });
+
+        return NextResponse.json({
+          status: allDone ? "completed" : order.status,
+          updated: true,
+          newlyCompleted,
+          totalCompleted: completed,
+        });
+      } catch (error: unknown) {
+        const code = (error as { code?: string })?.code;
+        if (code === "P2025" && attempt < MAX_RETRIES - 1) {
+          // Version conflict — another writer updated concurrently, retry
+          await new Promise((r) => setTimeout(r, 30 + Math.random() * 80));
+          continue;
+        }
+        throw error;
+      }
+    }
+
+    // No new results
+    return NextResponse.json({
+      status: order.status,
+      updated: false,
+      newlyCompleted: 0,
+      totalCompleted: completed,
     });
   }
 
-  return NextResponse.json({
-    status: order.status,
-    updated: newlyCompleted > 0,
-    newlyCompleted,
-    totalCompleted: completed,
-  });
+  // Exhausted retries
+  return NextResponse.json(
+    { status: "error", updated: false, reason: "Retry exhausted" },
+    { status: 409 }
+  );
 }

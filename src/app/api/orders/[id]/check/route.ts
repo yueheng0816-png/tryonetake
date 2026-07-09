@@ -87,6 +87,15 @@ export async function GET(
     const outputPhotos: string[] = new Array(totalSlots).fill("");
     let completed = 0;
 
+    if (needsRecovery) {
+      console.log(
+        `[OneTake] Recovery: order ${id} — ${totalSlots} slots, ` +
+          `${order.predictionIds.filter(Boolean).length} valid prediction IDs, ` +
+          `${order.completedPredictions} completed predictions, ` +
+          `${order.outputPhotos.filter(Boolean).length} existing valid outputs`
+      );
+    }
+
     // Restore any previously saved outputs
     for (let i = 0; i < Math.min(order.outputPhotos.length, totalSlots); i++) {
       const existing = order.outputPhotos[i];
@@ -99,18 +108,38 @@ export async function GET(
       }
     }
 
+    if (needsRecovery) {
+      console.log(
+        `[OneTake] Recovery: restored ${completed} existing outputs from DB`
+      );
+    }
+
     let newlyCompleted = 0;
+    let polledCount = 0;
+    let pollSuccess = 0;
+    let pollFailed = 0;
+    let pollSkipped = 0;
 
     for (let i = 0; i < totalSlots; i++) {
       const predictionId = order.predictionIds[i];
-      if (!predictionId) continue;
+      if (!predictionId) {
+        pollSkipped++;
+        continue;
+      }
 
       // Already have output for this slot
-      if (outputPhotos[i]) continue;
+      if (outputPhotos[i]) {
+        pollSkipped++;
+        continue;
+      }
 
+      polledCount++;
       try {
         const prediction = await getPrediction(predictionId);
-        if (!prediction) continue;
+        if (!prediction) {
+          pollFailed++;
+          continue;
+        }
 
         if (prediction.status === "succeeded") {
           const output = Array.isArray(prediction.output)
@@ -120,15 +149,26 @@ export async function GET(
             outputPhotos[i] = output;
             newlyCompleted++;
             completed++;
+            pollSuccess++;
           }
         } else if (prediction.status === "failed") {
           // Keep as "" — already initialized, just count as done
           completed++;
+          pollFailed++;
         }
         // else: still "starting" or "processing" — skip
       } catch {
+        pollFailed++;
         // Network error polling this prediction — skip, try next poll
       }
+    }
+
+    if (needsRecovery || polledCount > 0) {
+      console.log(
+        `[OneTake] Recovery poll result for ${id}: ` +
+          `polled=${polledCount} success=${pollSuccess} failed=${pollFailed} skipped=${pollSkipped} ` +
+          `newlyCompleted=${newlyCompleted} totalCompleted=${completed}`
+      );
     }
 
     // Update order if we got new results

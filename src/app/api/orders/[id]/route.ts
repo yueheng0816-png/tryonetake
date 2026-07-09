@@ -46,5 +46,18 @@ export async function GET(
 
   // Don't expose internal userId to client
   const { userId: _, ...safeOrder } = order;
+
+  // Diagnostic: log outputPhotos health
+  const totalSlots = order.predictionIds.length;
+  const validOutputs = order.outputPhotos.filter(Boolean).length;
+  const validPredictions = order.predictionIds.filter(Boolean).length;
+  console.log(
+    `[OneTake] GET order ${id}: status=${order.status} ` +
+      `completed=${order.completedPredictions} ` +
+      `predictionIds=${totalSlots}(${validPredictions} valid) ` +
+      `outputPhotos=${order.outputPhotos.length}(${validOutputs} valid) ` +
+      `failed=${order.failedPredictions}`
+  );
+
   return NextResponse.json(safeOrder);
 }

@@ -31,6 +31,7 @@ export default function ResultsPage() {
   const [polling, setPolling] = useState(false);
   const [triggering, setTriggering] = useState(false);
   const [triggerError, setTriggerError] = useState<string | null>(null);
+  const [recovering, setRecovering] = useState(false);
 
   const fetchOrder = useCallback(async () => {
     try {
@@ -39,17 +40,35 @@ export default function ResultsPage() {
       const data = await res.json();
       setOrder(data);
 
-      if (data.status === "generating" || data.status === "paid") {
+      // Detect data corruption: order says "completed" with predictions
+      // done, but outputPhotos has zero valid URLs.
+      // This happens when the old webhook race condition corrupted the
+      // outputPhotos array. Kick off a recovery via the check route.
+      const validOutputs = (data.outputPhotos as string[]).filter(Boolean).length;
+      const needsRecovery =
+        data.status === "completed" &&
+        data.completedPredictions > 0 &&
+        validOutputs === 0;
+
+      if (needsRecovery && !recovering) {
+        setRecovering(true);
+        setPolling(true); // Start polling to recover
+        console.log(
+          `[OneTake] Data corruption detected for ${orderId}: ` +
+            `${data.completedPredictions} predictions done but 0 valid outputs. Starting recovery…`
+        );
+      } else if (data.status === "generating" || data.status === "paid") {
         setPolling(true);
-      } else {
+      } else if (!needsRecovery) {
         setPolling(false);
+        setRecovering(false);
       }
     } catch {
       // Silent fail, retry on next poll
     } finally {
       setLoading(false);
     }
-  }, [orderId]);
+  }, [orderId, recovering]);
 
   useEffect(() => {
     fetchOrder();
@@ -171,6 +190,16 @@ export default function ResultsPage() {
                 {order.completedPredictions > 0
                   ? `${PHOTOS_PER_ORDER - order.completedPredictions} remaining…`
                   : "Starting AI generation…"}
+              </span>
+            </div>
+          )}
+
+          {/* Recovery indicator */}
+          {recovering && !isGenerating && (
+            <div className="flex items-center gap-2 text-sm">
+              <RefreshCw className="h-4 w-4 animate-spin text-amber-500" />
+              <span className="font-medium text-amber-600">
+                Recovering photos from AI service…
               </span>
             </div>
           )}

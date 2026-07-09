@@ -55,9 +55,31 @@ export async function GET(
       return new NextResponse("Not found", { status: 404 });
     }
 
-    // Accept both "paid" and "generating"
-    if (order.status !== "generating" && order.status !== "paid") {
+    // Accept "paid" and "generating" states.
+    // Also accept "completed" if outputPhotos is corrupted —
+    // the old webhook race condition could write all-empty arrays
+    // to completed orders. We detect this by checking whether
+    // completedPredictions > 0 but all outputPhotos are empty.
+    const validOutputCount = order.outputPhotos.filter(Boolean).length;
+    const needsRecovery =
+      order.status === "completed" &&
+      order.predictionIds.length > 0 &&
+      order.completedPredictions > 0 &&
+      validOutputCount < order.predictionIds.filter(Boolean).length;
+
+    if (
+      order.status !== "generating" &&
+      order.status !== "paid" &&
+      !needsRecovery
+    ) {
       return NextResponse.json({ status: order.status, updated: false });
+    }
+
+    if (needsRecovery) {
+      console.log(
+        `[OneTake] Recovery mode for ${id}: completedPredictions=${order.completedPredictions} ` +
+          `but only ${validOutputCount} valid output URLs — re-polling Replicate`
+      );
     }
 
     // Initialize a fixed-size array with empty strings.

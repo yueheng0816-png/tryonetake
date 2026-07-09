@@ -21,6 +21,7 @@ export async function POST(
       userId: true,
       status: true,
       plan: true,
+      amount: true,
       stylePreference: true,
       inputPhotos: true,
       stripeSessionId: true,
@@ -87,26 +88,92 @@ export async function POST(
     })
       .then(async (batch) => {
         const validIds = batch.predictionIds.filter(Boolean);
-        const newStatus = validIds.length > 0 ? "generating" : "paid";
+        const failedCount = batch.predictionIds.length - validIds.length;
 
+        // ── All predictions failed — fail fast ─────────────────
+        if (validIds.length === 0) {
+          await db.order.update({
+            where: { id },
+            data: {
+              status: "failed",
+              predictionIds: batch.predictionIds,
+              promptIds: batch.promptIds,
+              failedPredictions: failedCount,
+              errorMessages: batch.errors,
+            },
+          });
+
+          const { handleOrderCompletion: hoc } = await import("@/lib/refund");
+          const user = await db.user.findUnique({ where: { id: order.userId } });
+          await hoc({
+            orderId: id,
+            checkoutId: order.stripeSessionId ?? null,
+            userEmail: user?.email ?? "",
+            plan: order.plan,
+            orderAmount: order.amount,
+            totalPredictions: batch.predictionIds.length,
+            failedPredictions: failedCount,
+            errorMessages: batch.errors,
+          });
+          console.log(
+            `[OneTake] All ${failedCount} predictions failed for ${id} — refund triggered`
+          );
+          return;
+        }
+
+        // ── Partial failure: save failedPredictions + errors ──
+        // so the webhook handler (or check polling) can trigger
+        // a proportional refund when allDone.
         await db.order.update({
           where: { id },
           data: {
-            status: newStatus,
+            status: "generating",
             predictionIds: batch.predictionIds,
             promptIds: batch.promptIds,
+            ...(failedCount > 0
+              ? {
+                  failedPredictions: failedCount,
+                  errorMessages: batch.errors,
+                }
+              : {}),
           },
         });
 
-        const succeeded = validIds.length;
         console.log(
-          `[OneTake] Background generation complete for ${id}: ${succeeded} predictions created`
+          `[OneTake] Background generation complete for ${id}: ${validIds.length} created` +
+            (failedCount > 0 ? `, ${failedCount} failed` : "")
         );
-        if (batch.errors.length > 0) {
-          console.error(
-            `[OneTake] ${batch.errors.length} prediction errors for ${id}:`,
-            batch.errors.slice(0, 3)
-          );
+
+        // ── Race-condition defense ─────────────────────────────
+        // Webhooks may have already completed all predictions
+        // BEFORE this .then() callback wrote failedPredictions.
+        // In that case the webhook handler would have seen
+        // failedPredictions=0 and skipped the refund.
+        //
+        // Re-read the order now; if it's already "completed",
+        // manually invoke the refund handler.
+        if (failedCount > 0) {
+          const current = await db.order.findUnique({
+            where: { id },
+            select: { status: true, completedPredictions: true, userId: true },
+          });
+          if (current?.status === "completed") {
+            const { handleOrderCompletion: hoc } = await import("@/lib/refund");
+            const user = await db.user.findUnique({ where: { id: current.userId } });
+            await hoc({
+              orderId: id,
+              checkoutId: order.stripeSessionId ?? null,
+              userEmail: user?.email ?? "",
+              plan: order.plan,
+              orderAmount: order.amount,
+              totalPredictions: batch.predictionIds.length,
+              failedPredictions: failedCount,
+              errorMessages: batch.errors,
+            });
+            console.log(
+              `[OneTake] Catch-up refund for ${id}: ${failedCount} failed, order already completed`
+            );
+          }
         }
       })
       .catch(async (error) => {

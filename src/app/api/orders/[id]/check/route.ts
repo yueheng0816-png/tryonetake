@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
 import { db, ensureUser } from "@/lib/db";
 import { getPrediction, PHOTOS_PER_ORDER } from "@/lib/replicate";
+import { handleOrderCompletion } from "@/lib/refund";
 
 /**
  * GET /api/orders/[id]/check
@@ -32,8 +33,15 @@ export async function GET(
         id: true,
         userId: true,
         status: true,
+        plan: true,
+        amount: true,
+        stripeSessionId: true,
         predictionIds: true,
         outputPhotos: true,
+        completedPredictions: true,
+        failedPredictions: true,
+        errorMessages: true,
+        refundStatus: true,
         version: true,
       },
     });
@@ -120,6 +128,34 @@ export async function GET(
             status: allDone ? "completed" : "generating",
           },
         });
+
+        // ── Trigger refund if all done with failures ─────────
+        // This is the safety net for:
+        //  (a) local dev (no webhooks reach localhost)
+        //  (b) race condition where webhooks completed the order
+        //      before the trigger route wrote failedPredictions
+        if (allDone && order.failedPredictions > 0 && !order.refundStatus) {
+          const user = await db.user.findUnique({ where: { id: order.userId } });
+          handleOrderCompletion({
+            orderId: id,
+            checkoutId: order.stripeSessionId ?? null,
+            userEmail: user?.email ?? "",
+            plan: order.plan,
+            orderAmount: order.amount,
+            totalPredictions:
+              order.predictionIds.length > 0
+                ? order.predictionIds.filter(Boolean).length + order.failedPredictions
+                : PHOTOS_PER_ORDER,
+            failedPredictions: order.failedPredictions,
+            errorMessages: order.errorMessages,
+          }).catch((e: unknown) =>
+            console.error("[OneTake] check-route refund handler failed:", e)
+          );
+          console.log(
+            `[OneTake] Check route triggered refund for ${id}: ` +
+              `${order.failedPredictions} failed`
+          );
+        }
 
         return NextResponse.json({
           status: allDone ? "completed" : order.status,

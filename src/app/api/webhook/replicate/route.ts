@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { PHOTOS_PER_ORDER } from "@/lib/constants";
 import { handleOrderCompletion } from "@/lib/refund";
+import { transferToBlob } from "@/lib/blob";
 
 /**
  * Optimistic-lock retry helper.
@@ -79,7 +80,9 @@ export async function POST(req: Request) {
         if (isSucceeded && outputUrl) {
           // Don't overwrite an already-populated slot (defense against duplicate webhooks)
           if (!outputPhotos[slotIndex]) {
-            outputPhotos[slotIndex] = outputUrl;
+            // Transfer to Vercel Blob for permanent storage
+            // (Replicate CDN URLs expire after ~24h)
+            outputPhotos[slotIndex] = await transferToBlob(outputUrl, orderId, slotIndex);
           }
         }
         // For failed predictions, leave slot empty (already "")

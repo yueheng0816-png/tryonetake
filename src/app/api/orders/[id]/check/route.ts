@@ -3,6 +3,7 @@ import { auth } from "@clerk/nextjs/server";
 import { db, ensureUser } from "@/lib/db";
 import { getPrediction, PHOTOS_PER_ORDER } from "@/lib/replicate";
 import { handleOrderCompletion } from "@/lib/refund";
+import { transferToBlob } from "@/lib/blob";
 
 /**
  * GET /api/orders/[id]/check
@@ -146,7 +147,8 @@ export async function GET(
             ? prediction.output[0]
             : prediction.output;
           if (typeof output === "string" && output.length > 0) {
-            outputPhotos[i] = output;
+            // Transfer to Vercel Blob for permanent storage
+            outputPhotos[i] = await transferToBlob(output, id, i);
             newlyCompleted++;
             completed++;
             pollSuccess++;

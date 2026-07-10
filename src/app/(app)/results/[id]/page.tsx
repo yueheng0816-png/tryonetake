@@ -25,6 +25,9 @@ export default function ResultsPage() {
   const router = useRouter();
   const orderId = params.id as string;
 
+  // Debug: confirm hydration
+  console.log("[OneTake] ResultsPage rendering, orderId:", orderId);
+
   const [order, setOrder] = useState<OrderData | null>(null);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Set<number>>(new Set());
@@ -34,10 +37,13 @@ export default function ResultsPage() {
   const [recovering, setRecovering] = useState(false);
 
   const fetchOrder = useCallback(async () => {
+    console.log("[OneTake] fetchOrder called, orderId:", orderId);
     try {
       const res = await fetch(`/api/orders/${orderId}`);
+      console.log("[OneTake] fetchOrder response:", res.status);
       if (!res.ok) throw new Error("Failed to fetch");
       const data = await res.json();
+      console.log("[OneTake] fetchOrder data:", data.status, "outputPhotos:", data.outputPhotos?.filter(Boolean).length);
       setOrder(data);
 
       // Detect data corruption: order says "completed" with predictions

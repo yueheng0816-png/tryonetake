@@ -25,8 +25,15 @@ export default function ResultsPage() {
   const router = useRouter();
   const orderId = params.id as string;
 
-  // Debug: confirm hydration
+  // Debug: confirm hydration and detect remount loops
   console.log("[OneTake] ResultsPage rendering, orderId:", orderId);
+
+  useEffect(() => {
+    console.log("[OneTake] 🔵 ResultsPage MOUNTED, orderId:", orderId);
+    return () => {
+      console.log("[OneTake] 🔴 ResultsPage UNMOUNTED, orderId:", orderId);
+    };
+  }, [orderId]);
 
   const [order, setOrder] = useState<OrderData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -69,9 +76,10 @@ export default function ResultsPage() {
         setPolling(false);
         setRecovering(false);
       }
-    } catch {
-      // Silent fail, retry on next poll
+    } catch (err) {
+      console.error("[OneTake] fetchOrder ERROR:", err);
     } finally {
+      console.log("[OneTake] fetchOrder finally — setting loading=false");
       setLoading(false);
     }
   }, [orderId, recovering]);

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { GalleryGrid } from "@/components/results/gallery-grid";
 import { DownloadBar } from "@/components/results/download-bar";
@@ -42,6 +42,7 @@ export default function ResultsPage() {
   const [triggering, setTriggering] = useState(false);
   const [triggerError, setTriggerError] = useState<string | null>(null);
   const [recovering, setRecovering] = useState(false);
+  const recoveringRef = useRef(false); // ref to break useCallback dependency loop
 
   const fetchOrder = useCallback(async () => {
     console.log("[OneTake] fetchOrder called, orderId:", orderId);
@@ -63,7 +64,8 @@ export default function ResultsPage() {
         data.completedPredictions > 0 &&
         validOutputs === 0;
 
-      if (needsRecovery && !recovering) {
+      if (needsRecovery && !recoveringRef.current) {
+        recoveringRef.current = true;
         setRecovering(true);
         setPolling(true); // Start polling to recover
         console.log(
@@ -73,6 +75,7 @@ export default function ResultsPage() {
       } else if (data.status === "generating" || data.status === "paid") {
         setPolling(true);
       } else if (!needsRecovery) {
+        recoveringRef.current = false;
         setPolling(false);
         setRecovering(false);
       }
@@ -82,7 +85,7 @@ export default function ResultsPage() {
       console.log("[OneTake] fetchOrder finally — setting loading=false");
       setLoading(false);
     }
-  }, [orderId, recovering]);
+  }, [orderId]); // Only orderId as dependency — recovering uses ref to avoid loop
 
   useEffect(() => {
     fetchOrder();

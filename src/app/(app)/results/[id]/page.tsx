@@ -158,10 +158,68 @@ export default function ResultsPage() {
 
   console.log("[OneTake] Render: loading=false, order=", order?.status, "photos=", order?.outputPhotos?.filter(Boolean).length);
 
-  // ── TEMPORARY: Test if React can update the DOM ─────────────
+  if (!order) {
+    return (
+      <div className="container mx-auto max-w-2xl px-4 py-20 text-center">
+        <h2 className="text-xl font-semibold">Order not found</h2>
+        <p className="mt-2 text-muted-foreground">
+          This order doesn&apos;t exist or you don&apos;t have access.
+        </p>
+        <Button className="mt-6" onClick={() => router.push("/generate")}>
+          Create a new order
+        </Button>
+      </div>
+    );
+  }
+
+  const isGenerating =
+    order.status === "paid" || order.status === "generating";
+
   return (
-    <div style={{padding: 100, textAlign: "center", background: "green", color: "white", fontSize: 48}}>
-      ✅ LOADED — {order?.outputPhotos?.filter(Boolean).length} photos ready — {order?.status}
+    <div className="flex min-h-[calc(100vh-4rem)] flex-col">
+      {/* Header */}
+      <div className="border-b bg-background">
+        <div className="container mx-auto flex items-center justify-between px-4 py-4">
+          <div className="flex items-center gap-4">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => router.push("/dashboard")}
+            >
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back
+            </Button>
+            <div>
+              <h1 className="text-lg font-semibold">Your Headshots</h1>
+              <p className="text-sm text-muted-foreground">
+                {order.plan.charAt(0).toUpperCase() + order.plan.slice(1)} plan
+                {isGenerating
+                  ? ` · Generating ${order.completedPredictions}/${PHOTOS_PER_ORDER}`
+                  : ` · ${order.outputPhotos.length} photos`}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Gallery — Step 1: just test gallery renders */}
+      <div className="container mx-auto flex-1 px-4 py-6">
+        <GalleryGrid
+          photos={order.outputPhotos}
+          selected={selected}
+          onToggle={handleToggle}
+          totalSlots={isGenerating ? PHOTOS_PER_ORDER : undefined}
+        />
+      </div>
+
+      {/* Download bar */}
+      <DownloadBar
+        orderId={order.id}
+        photos={order.outputPhotos}
+        selected={selected}
+        onSelectAll={handleSelectAll}
+        onDeselectAll={handleDeselectAll}
+      />
     </div>
   );
 }

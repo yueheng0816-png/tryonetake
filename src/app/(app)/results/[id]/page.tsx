@@ -158,6 +158,14 @@ export default function ResultsPage() {
 
   console.log("[OneTake] Render: loading=false, order=", order?.status, "photos=", order?.outputPhotos?.filter(Boolean).length);
 
+  // ── TEMPORARY: Test if React can update the DOM ─────────────
+  return (
+    <div style={{padding: 100, textAlign: "center", background: "green", color: "white", fontSize: 48}}>
+      ✅ LOADED — {order?.outputPhotos?.filter(Boolean).length} photos ready — {order?.status}
+    </div>
+  );
+
+  /* ORIGINAL RENDER — commented out for testing
   if (!order) {
     return (
       <div className="container mx-auto max-w-2xl px-4 py-20 text-center">
@@ -302,4 +310,4 @@ export default function ResultsPage() {
       />
     </div>
   );
-}
+  */}

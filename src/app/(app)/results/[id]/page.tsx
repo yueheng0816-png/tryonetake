@@ -153,7 +153,7 @@ export default function ResultsPage() {
     );
   }
 
-  console.log("[OneTake] Render: loading=false, order=", order.status, "photos=", order.outputPhotos?.filter(Boolean).length);
+  console.log("[OneTake] Render: loading=false, order=", order?.status, "photos=", order?.outputPhotos?.filter(Boolean).length);
 
   if (!order) {
     return (

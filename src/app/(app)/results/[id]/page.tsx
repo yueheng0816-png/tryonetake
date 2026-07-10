@@ -204,6 +204,7 @@ export default function ResultsPage() {
 
       {/* Gallery — Step 1: just test gallery renders */}
       <div className="container mx-auto flex-1 px-4 py-6">
+        <p style={{fontSize: 30, color: "blue"}}>✅ Step 1: Header OK, Gallery below:</p>
         <GalleryGrid
           photos={order.outputPhotos}
           selected={selected}
@@ -213,6 +214,7 @@ export default function ResultsPage() {
       </div>
 
       {/* Download bar */}
+      {/*
       <DownloadBar
         orderId={order.id}
         photos={order.outputPhotos}
@@ -220,6 +222,7 @@ export default function ResultsPage() {
         onSelectAll={handleSelectAll}
         onDeselectAll={handleDeselectAll}
       />
+      */}
     </div>
   );
 }

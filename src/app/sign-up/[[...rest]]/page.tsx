@@ -58,7 +58,7 @@ const APPEARANCE = {
 
 const TRUST_ITEMS = [
   { icon: Zap, text: "30 headshots in under 5 minutes" },
-  { icon: ShieldCheck, text: "100% money-back guarantee" },
+  { icon: ShieldCheck, text: "Automatic refund if generation fails" },
   { icon: Star, text: "FLUX.2 — state-of-the-art AI model" },
 ];
 
@@ -92,16 +92,13 @@ export default function SignUpPage() {
             ))}
           </ul>
 
-          {/* Quote */}
-          <blockquote className="mt-8 rounded-xl border border-border bg-muted/30 p-4">
-            <p className="text-sm text-muted-foreground italic leading-relaxed">
-              &ldquo;I was skeptical an AI could capture my face, but OneTake nailed it.
-              My LinkedIn profile has never looked better.&rdquo;
+          {/* Guarantee */}
+          <div className="mt-8 rounded-xl border border-border bg-muted/30 p-4">
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              If our AI fails to generate your headshots, you&rsquo;re <strong className="text-foreground">automatically refunded</strong>.
+              A full refund if the whole order fails, or a pro-rata refund if only some images do.
             </p>
-            <p className="mt-2 text-xs text-muted-foreground">
-              — 50,000+ professionals trust OneTake
-            </p>
-          </blockquote>
+          </div>
         </div>
 
         {/* ── Form Panel ── */}

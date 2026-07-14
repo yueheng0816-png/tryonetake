@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "What if I don't like the results?",
-    a: "We offer a 100% money-back guarantee. If you're not satisfied with your headshots, contact us within 7 days and we'll refund your payment — no questions asked.",
+    a: "If our AI fails to generate your headshots due to a technical issue on our end, you're automatically refunded — a full refund if the whole order fails, or a pro-rata refund if only some images fail. If you're unhappy with the look of successfully generated headshots, contact us within 7 days and we'll work with you to find a solution, which may include a courtesy refund on a case-by-case basis. See our Refund Policy for details.",
   },
   {
     q: "Can I use these on LinkedIn or my company website?",
@@ -86,6 +86,25 @@ export function Faq() {
             </div>
           ))}
         </div>
+
+        {/* JSON-LD: FAQPage */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: faqs.map((faq) => ({
+                "@type": "Question",
+                name: faq.q,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: faq.a,
+                },
+              })),
+            }),
+          }}
+        />
       </div>
     </section>
   );

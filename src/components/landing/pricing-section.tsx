@@ -19,7 +19,7 @@ const plans = [
       "10 style variations",
       "Balanced / Natural / Polished",
       "Instant download (ZIP)",
-      "100% money-back guarantee",
+      "Automatic refund if generation fails",
     ],
     cta: "Get Starter",
     href: "/sign-up?plan=starter",
@@ -39,7 +39,7 @@ const plans = [
       "25 style variations",
       "Balanced / Natural / Polished",
       "Instant download (ZIP)",
-      "100% money-back guarantee",
+      "Automatic refund if generation fails",
     ],
     cta: "Get Pro",
     href: "/sign-up?plan=pro",
@@ -78,7 +78,7 @@ export function PricingSection() {
             Simple, transparent pricing
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            One-time payment. No subscription. 100% money-back guarantee.
+            One-time payment. No subscription. Automatic refund if generation fails.
           </p>
         </div>
 
@@ -132,6 +132,41 @@ export function PricingSection() {
             </div>
           ))}
         </div>
+
+        {/* JSON-LD: Product schemas */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: "OneTake Starter",
+                description:
+                  "30 AI-generated professional headshots with FLUX.2 pro model and 10 style variations.",
+                offers: {
+                  "@type": "Offer",
+                  price: "19.00",
+                  priceCurrency: "USD",
+                  availability: "https://schema.org/InStock",
+                },
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "Product",
+                name: "OneTake Pro",
+                description:
+                  "30 AI-generated professional headshots with FLUX.2 max model and 25 style variations.",
+                offers: {
+                  "@type": "Offer",
+                  price: "35.00",
+                  priceCurrency: "USD",
+                  availability: "https://schema.org/InStock",
+                },
+              },
+            ]),
+          }}
+        />
       </div>
     </section>
   );

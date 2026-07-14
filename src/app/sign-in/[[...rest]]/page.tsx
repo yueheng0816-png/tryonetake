@@ -54,7 +54,7 @@ const APPEARANCE = {
 
 const TRUST_ITEMS = [
   { icon: Zap, text: "30 headshots in under 5 minutes" },
-  { icon: ShieldCheck, text: "100% money-back guarantee" },
+  { icon: ShieldCheck, text: "Automatic refund if generation fails" },
   { icon: Star, text: "FLUX.2 — state-of-the-art AI model" },
 ];
 

@@ -4,7 +4,7 @@ const STARTER_PRODUCT_ID = process.env.CREEM_STARTER_PRODUCT_ID!;
 const PRO_PRODUCT_ID = process.env.CREEM_PRO_PRODUCT_ID!;
 
 const BASE_URL =
-  process.env.CREEM_BASE_URL || "https://test-api.creem.io";
+  process.env.CREEM_BASE_URL || "https://api.creem.io";
 
 // ── Plan helpers ──────────────────────────────────────────
 
@@ -97,6 +97,82 @@ export async function createRefund(params: {
     const msg = error instanceof Error ? error.message : String(error);
     console.error("[OneTake] Creem refund failed:", msg);
     return { success: false, error: msg };
+  }
+}
+
+// ── Content Moderation ────────────────────────────────────
+// Required by Creem for all AI image generation platforms.
+// Every prompt sent to a generation model must pass through
+// this endpoint first. Fail-closed: if the moderation API is
+// unreachable, generation must NOT proceed.
+
+export interface ModerationResult {
+  decision: "allow" | "deny" | "flag";
+}
+
+export async function moderatePrompt(
+  prompt: string,
+  externalId?: string
+): Promise<{ success: true; decision: "allow" | "deny" | "flag" } | { success: false; error: string }> {
+  try {
+    const res = await fetch(`${BASE_URL}/v1/moderation/prompt`, {
+      method: "POST",
+      headers: {
+        "x-api-key": CREEM_API_KEY,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt,
+        ...(externalId ? { external_id: externalId } : {}),
+      }),
+      // Fail-closed: 5-second timeout. If Creem is slow, we
+      // block generation rather than letting an unscreened
+      // prompt through.
+      signal: AbortSignal.timeout(5000),
+    });
+
+    if (!res.ok) {
+      const body = await res.text();
+      console.error(
+        `[OneTake] Moderation API error ${res.status}: ${body}`
+      );
+      return { success: false, error: `moderation_unavailable: ${res.status}` };
+    }
+
+    const data = await res.json();
+    const decision = data.decision as string;
+
+    console.log(
+      `[OneTake] Moderation: ${decision}` +
+        (data.id ? ` (id: ${data.id})` : "") +
+        (externalId ? ` for ${externalId}` : "")
+    );
+
+    if (decision === "allow") {
+      return { success: true, decision: "allow" };
+    }
+
+    // Both "deny" and "flag" should block generation per Creem docs.
+    // "flag" means the prompt raised a concern even if not explicitly
+    // prohibited — treat it the same as deny.
+    console.warn(
+      `[OneTake] Moderation blocked prompt (${decision})` +
+        (data.id ? ` id: ${data.id}` : "")
+    );
+    return { success: true, decision: decision as "deny" | "flag" };
+  } catch (error) {
+    const msg = error instanceof Error ? error.message : String(error);
+    const isTimeout =
+      (typeof DOMException !== "undefined" &&
+        error instanceof DOMException &&
+        (error.name === "TimeoutError" || error.name === "AbortError")) ||
+      (error instanceof Error && error.name === "AbortError");
+    console.error(
+      `[OneTake] Moderation API ${isTimeout ? "timeout" : "error"}: ${msg}`
+    );
+    // Fail-closed: treat any network/timeout error as a block.
+    // Never let an unscreened prompt reach a generation model.
+    return { success: false, error: `moderation_unavailable: ${msg}` };
   }
 }
 

@@ -1,3 +1,7 @@
+// ── Imports ─────────────────────────────────────────────────
+
+import { moderatePrompt } from "./creem";
+
 // ── Types ───────────────────────────────────────────────────
 
 export interface PredictionResult {
@@ -182,6 +186,17 @@ export async function createPrediction(params: {
   const resolution = params.plan === "pro" ? "2 MP" : "1 MP";
   const imageUrl = await resolveImageUrl(params.photoUrl);
 
+  // ── Content Moderation (Creem) ───────────────────────────
+  // Required: every prompt must be screened before generation.
+  // Fail-closed: if moderation is unavailable, block generation.
+  const moderation = await moderatePrompt(params.prompt);
+  if (!moderation.success) {
+    return { error: moderation.error };
+  }
+  if (moderation.decision !== "allow") {
+    return { error: `prompt_rejected: ${moderation.decision}` };
+  }
+
   // Go through the global concurrency limiter
   return globalLimiter.enqueue(async () => {
     let lastError = "";
@@ -194,7 +209,7 @@ export async function createPrediction(params: {
           input: {
             input_images: [imageUrl],
             prompt: params.prompt,
-            aspect_ratio: "2:3",
+            aspect_ratio: "3:4",
             resolution,
             output_format: "jpg",
             output_quality: 100,
@@ -269,8 +284,12 @@ export async function startBatchGeneration(params: {
   orderId: string;
   gender?: "male" | "female";
   profession?: string;
+  /** Expression detected in each photo (same order as photoUrls).
+   *  When provided, templates will be matched to photos with compatible
+   *  expressions to reduce identity drift. */
+  photoExpressions?: Array<"smile" | "serious" | "neutral" | null>;
 }): Promise<BatchResult> {
-  const { photoUrls, plan, style, webhookBaseUrl, orderId, gender, profession } = params;
+  const { photoUrls, plan, style, webhookBaseUrl, orderId, gender, profession, photoExpressions } = params;
 
   const { distributePromptsV3, buildFinalPrompt } = await import("./prompts");
 
@@ -278,7 +297,8 @@ export async function startBatchGeneration(params: {
     photoUrls.length,
     plan,
     gender ?? "male",
-    (profession as import("./prompts").Profession) ?? "general"
+    (profession as import("./prompts").Profession) ?? "general",
+    photoExpressions
   );
   const predictionIds: string[] = [];
   const promptIds: string[] = [];

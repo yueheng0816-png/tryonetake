@@ -16,14 +16,50 @@ export const POST = Webhook({
 
     const checkoutId = order?.id as string | undefined;
 
-    // 1. Mark order as paid
-    const dbOrder = await db.order.update({
-      where: { id: orderId },
+    // ── Atomic claim: only one path (webhook or trigger) can win ──
+    // Prevents duplicate generation if Creem retries the webhook
+    // or if both webhook and trigger race to start the batch.
+    const claim = await db.order.updateMany({
+      where: { id: orderId, status: "pending" },
       data: {
         status: "paid",
         stripeSessionId: checkoutId ?? undefined,
       },
     });
+
+    if (claim.count === 0) {
+      console.log(
+        `[OneTake] Creem webhook: order ${orderId} already claimed (status not pending), skipping`
+      );
+      return;
+    }
+
+    // Re-read after claiming to check for duplicate webhook delivery
+    const dbOrder = await db.order.findUnique({
+      where: { id: orderId },
+      select: {
+        id: true,
+        plan: true,
+        stylePreference: true,
+        inputPhotos: true,
+        gender: true,
+        profession: true,
+        predictionIds: true,
+      },
+    });
+
+    if (!dbOrder) {
+      console.error(`[OneTake] Creem webhook: order ${orderId} not found after claim`);
+      return;
+    }
+
+    // Belt-and-suspenders: don't start if predictions already exist
+    if (dbOrder.predictionIds?.some(Boolean)) {
+      console.log(
+        `[OneTake] Creem webhook: order ${orderId} already has predictions, skipping`
+      );
+      return;
+    }
 
     console.log(
       `[OneTake] Creem webhook: order ${orderId} paid (checkout ${checkoutId})`

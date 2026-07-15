@@ -139,10 +139,12 @@ export async function POST(req: Request) {
             failedPredictions: true,
             errorMessages: true,
             predictionIds: true,
+            refundStatus: true,
           },
         });
 
-        if (finalOrder && finalOrder.failedPredictions > 0) {
+        // Guard: only refund once — check refundStatus before proceeding
+        if (finalOrder && finalOrder.failedPredictions > 0 && !finalOrder.refundStatus) {
           const { default: userModule } = await import("@clerk/nextjs/server");
           // We don't have the user context here, so we use the userId from the order
           const user = await db.user.findUnique({ where: { id: finalOrder.userId } });

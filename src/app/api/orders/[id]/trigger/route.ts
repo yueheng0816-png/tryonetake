@@ -49,7 +49,7 @@ export async function POST(
     });
   }
 
-  // Already has prediction IDs (duplicate trigger) — skip
+  // Already has prediction IDs (duplicate trigger or webhook won) — skip
   if (order.predictionIds?.some(Boolean)) {
     return NextResponse.json({
       status: order.status,
@@ -67,13 +67,28 @@ export async function POST(
     });
   }
 
-  try {
-    // Mark as paid (Creem webhook may have done this already, idempotent)
-    await db.order.update({
-      where: { id },
-      data: { status: "paid" },
-    });
+  // ── Atomic claim: only one path (webhook or trigger) can win ──
+  // Uses updateMany with status filter — if the webhook already
+  // claimed this order, count will be 0 and we bail.
+  const claim = await db.order.updateMany({
+    where: { id, status: "pending" },
+    data: { status: "paid" },
+  });
 
+  if (claim.count === 0) {
+    // Webhook already claimed it or order is no longer pending
+    const current = await db.order.findUnique({
+      where: { id },
+      select: { status: true },
+    });
+    return NextResponse.json({
+      status: current?.status ?? "unknown",
+      triggered: false,
+      alreadyTriggered: true,
+    });
+  }
+
+  try {
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
     // Fire & forget — don't await, let it run in background
@@ -155,9 +170,10 @@ export async function POST(
         if (failedCount > 0) {
           const current = await db.order.findUnique({
             where: { id },
-            select: { status: true, completedPredictions: true, userId: true },
+            select: { status: true, completedPredictions: true, userId: true, refundStatus: true },
           });
-          if (current?.status === "completed") {
+          // Guard: only refund if not already refunded (webhook may have beaten us)
+          if (current?.status === "completed" && !current.refundStatus) {
             const { handleOrderCompletion: hoc } = await import("@/lib/refund");
             const user = await db.user.findUnique({ where: { id: current.userId } });
             await hoc({

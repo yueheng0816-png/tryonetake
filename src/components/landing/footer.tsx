@@ -7,6 +7,13 @@ const footerLinks = {
     { label: "FAQ", href: "/#faq" },
     { label: "Compare", href: "/#comparison" },
   ],
+  Resources: [
+    { label: "Blog", href: "/blog" },
+    { label: "LinkedIn Headshots", href: "/use-cases/linkedin-headshots" },
+    { label: "Corporate Headshots", href: "/use-cases/corporate-headshots" },
+    { label: "OneTake vs HeadshotPro", href: "/vs/headshotpro" },
+    { label: "OneTake vs Aragon AI", href: "/vs/aragon-ai" },
+  ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
@@ -14,7 +21,7 @@ const footerLinks = {
   ],
   Contact: [
     { label: "support@tryonetake.com", href: "mailto:support@tryonetake.com" },
-    { label: "Twitter / X", href: "#" },
+    { label: "Twitter / X", href: "https://x.com/tryonetake" },
   ],
 };
 

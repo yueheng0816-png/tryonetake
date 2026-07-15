@@ -9,9 +9,30 @@ import { ThemeSwitcher } from "@/components/landing/theme-switcher";
 export default function Home() {
   return (
     <>
+      {/* JSON-LD: WebApplication */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            name: "OneTake",
+            url: "https://tryonetake.com",
+            description:
+              "Upload 1 photo, get 30 studio-quality AI headshots in under 5 minutes. FLUX.2 AI model.",
+            applicationCategory: "MultimediaApplication",
+            operatingSystem: "Web",
+            offers: {
+              "@type": "Offer",
+              price: "19.00",
+              priceCurrency: "USD",
+            },
+          }),
+        }}
+      />
       <Hero />
       <ExamplesGallery
-        title="Real results from real selfies"
+        title="Sample AI-generated headshots"
         subtitle="Generated from a single photo. No touch-ups, no cherry-picking — just AI that actually knows your face."
         startIndex={0}
         count={8}

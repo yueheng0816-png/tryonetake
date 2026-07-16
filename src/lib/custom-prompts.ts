@@ -36,9 +36,9 @@ interface GeneratedPrompt {
 
 // ── DeepSeek Client (lazy, OpenAI-compatible) ───────────────
 
-let _deepseekClient: ReturnType<typeof import("openai").default.prototype> | null = null;
+let _deepseekClient: import("openai").default | null = null;
 
-async function getDeepSeekClient() {
+async function getDeepSeekClient(): Promise<import("openai").default> {
   if (!_deepseekClient) {
     const { default: OpenAI } = await import("openai");
     _deepseekClient = new OpenAI({

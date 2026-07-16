@@ -32,7 +32,8 @@ export async function POST(req: Request) {
 
   const slotIndex = indexStr ? parseInt(indexStr, 10) : -1;
   const isSucceeded = body.status === "succeeded";
-  const isFailed = body.status === "failed";
+  // "canceled" is a terminal Replicate status — treat the same as failed
+  const isFailed = body.status === "failed" || body.status === "canceled";
 
   console.log(`[OneTake] Replicate webhook: order=${orderId} slot=${slotIndex} prediction=${body.id} status=${body.status}`);
 
@@ -41,10 +42,21 @@ export async function POST(req: Request) {
   if (isSucceeded) {
     if (typeof body.output === "string") outputUrl = body.output;
     else if (Array.isArray(body.output) && body.output.length > 0 && typeof body.output[0] === "string") outputUrl = body.output[0];
+    else if (typeof body.output === "object" && body.output !== null) {
+      // Some Replicate models return { image: "url" }
+      const obj = body.output as Record<string, unknown>;
+      if (typeof obj.image === "string") outputUrl = obj.image;
+    }
   }
 
-  const errorMsg = isFailed
-    ? (typeof body.error === "string" ? body.error : JSON.stringify(body.error ?? "Unknown error"))
+  // Defense: succeeded but no usable output → treat as failure
+  const actualFailed = isFailed || (isSucceeded && !outputUrl);
+  const errorMsg = actualFailed
+    ? (typeof body.error === "string"
+        ? body.error
+        : isSucceeded && !outputUrl
+          ? `No usable output URL from status "${body.status}" (output type: ${typeof body.output})`
+          : JSON.stringify(body.error ?? "Unknown error"))
     : "";
 
   // ── Optimistic-lock retry loop ──────────────────────────
@@ -111,7 +123,7 @@ export async function POST(req: Request) {
           completedPredictions: completedCount,
           version: { increment: 1 },
           status: allDone ? "completed" : "generating",
-          ...(isFailed
+          ...(actualFailed
             ? {
                 failedPredictions: { increment: 1 },
                 errorMessages: { push: errorMsg },

@@ -124,7 +124,10 @@ export async function GET(
     for (let i = 0; i < totalSlots; i++) {
       const predictionId = order.predictionIds[i];
       if (!predictionId) {
+        // No prediction was ever created for this slot (e.g. blocked by
+        // moderation). Count it as done — there's nothing to wait for.
         pollSkipped++;
+        completed++;
         continue;
       }
 
@@ -153,8 +156,8 @@ export async function GET(
             completed++;
             pollSuccess++;
           }
-        } else if (prediction.status === "failed") {
-          // Keep as "" — already initialized, just count as done
+        } else if (prediction.status === "failed" || prediction.status === "canceled") {
+          // Terminal failure states — keep slot empty, count as done
           completed++;
           pollFailed++;
         }

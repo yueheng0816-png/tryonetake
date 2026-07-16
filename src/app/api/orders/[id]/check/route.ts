@@ -120,6 +120,8 @@ export async function GET(
     let pollSuccess = 0;
     let pollFailed = 0;
     let pollSkipped = 0;
+    let newFailures = 0;
+    const failureErrors: string[] = [];
 
     for (let i = 0; i < totalSlots; i++) {
       const predictionId = order.predictionIds[i];
@@ -128,6 +130,8 @@ export async function GET(
         // moderation). Count it as done — there's nothing to wait for.
         pollSkipped++;
         completed++;
+        newFailures++;
+        failureErrors.push(`Slot ${i}: prediction never created`);
         continue;
       }
 
@@ -142,6 +146,9 @@ export async function GET(
         const prediction = await getPrediction(predictionId);
         if (!prediction) {
           pollFailed++;
+          newFailures++;
+          failureErrors.push(`Slot ${i}: prediction ${predictionId} not found`);
+          completed++;
           continue;
         }
 
@@ -155,16 +162,32 @@ export async function GET(
             newlyCompleted++;
             completed++;
             pollSuccess++;
+          } else {
+            // Succeeded but output URL unparseable — treat as failure
+            completed++;
+            pollFailed++;
+            newFailures++;
+            failureErrors.push(
+              `Slot ${i}: succeeded but no usable output URL (type: ${typeof prediction.output})`
+            );
           }
         } else if (prediction.status === "failed" || prediction.status === "canceled") {
           // Terminal failure states — keep slot empty, count as done
           completed++;
           pollFailed++;
+          newFailures++;
+          failureErrors.push(
+            `Slot ${i}: ${prediction.status}${prediction.error ? ` — ${prediction.error}` : ""}`
+          );
         }
         // else: still "starting" or "processing" — skip
-      } catch {
+      } catch (err) {
         pollFailed++;
-        // Network error polling this prediction — skip, try next poll
+        newFailures++;
+        const msg = err instanceof Error ? err.message : String(err);
+        failureErrors.push(`Slot ${i}: poll error — ${msg}`);
+        completed++;
+        // Network error polling this prediction — count as done, try next poll
       }
     }
 
@@ -176,11 +199,14 @@ export async function GET(
       );
     }
 
-    // Update order if we got new results
-    if (newlyCompleted > 0) {
+    // Update order if we got new results or discovered new failures
+    if (newlyCompleted > 0 || newFailures > 0) {
       const allDone =
         completed >= PHOTOS_PER_ORDER ||
         completed >= order.predictionIds.filter(Boolean).length;
+
+      // Combined failed count: what was already in DB + newly discovered
+      const totalFailed = order.failedPredictions + newFailures;
 
       try {
         await db.order.update({
@@ -193,6 +219,12 @@ export async function GET(
             completedPredictions: completed,
             version: { increment: 1 },
             status: allDone ? "completed" : "generating",
+            ...(newFailures > 0
+              ? {
+                  failedPredictions: totalFailed,
+                  errorMessages: { push: failureErrors },
+                }
+              : {}),
           },
         });
 
@@ -201,7 +233,7 @@ export async function GET(
         //  (a) local dev (no webhooks reach localhost)
         //  (b) race condition where webhooks completed the order
         //      before the trigger route wrote failedPredictions
-        if (allDone && order.failedPredictions > 0 && !order.refundStatus) {
+        if (allDone && totalFailed > 0 && !order.refundStatus) {
           const user = await db.user.findUnique({ where: { id: order.userId } });
           handleOrderCompletion({
             orderId: id,
@@ -211,16 +243,16 @@ export async function GET(
             orderAmount: order.amount,
             totalPredictions:
               order.predictionIds.length > 0
-                ? order.predictionIds.filter(Boolean).length + order.failedPredictions
+                ? order.predictionIds.filter(Boolean).length + totalFailed
                 : PHOTOS_PER_ORDER,
-            failedPredictions: order.failedPredictions,
-            errorMessages: order.errorMessages,
+            failedPredictions: totalFailed,
+            errorMessages: [...order.errorMessages, ...failureErrors],
           }).catch((e: unknown) =>
             console.error("[OneTake] check-route refund handler failed:", e)
           );
           console.log(
             `[OneTake] Check route triggered refund for ${id}: ` +
-              `${order.failedPredictions} failed`
+              `${totalFailed} failed (${order.failedPredictions} prior + ${newFailures} new)`
           );
         }
 

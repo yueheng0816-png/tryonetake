@@ -113,21 +113,46 @@ export default function RootLayout({
             "https://ai-headshot-kohl.vercel.app",
           ]}
         >
-          {/* JSON-LD: Organization */}
+          {/* JSON-LD: Organization + WebSite */}
           <script
             type="application/ld+json"
             dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Organization",
-                name: "OneTake",
-                url: siteUrl,
-                logo: `${siteUrl}/favicon.svg`,
-                description:
-                  "Upload 1 photo, get 30 studio-quality AI headshots in under 5 minutes.",
-                email: "support@tryonetake.com",
-                sameAs: [],
-              }),
+              __html: JSON.stringify([
+                {
+                  "@context": "https://schema.org",
+                  "@type": "Organization",
+                  "@id": `${siteUrl}/#organization`,
+                  name: "OneTake",
+                  url: siteUrl,
+                  logo: `${siteUrl}/favicon.svg`,
+                  description:
+                    "Upload 1 photo, get 30 studio-quality AI headshots in under 5 minutes.",
+                  email: "support@tryonetake.com",
+                  sameAs: [
+                    "https://x.com/tryonetake",
+                  ],
+                },
+                {
+                  "@context": "https://schema.org",
+                  "@type": "WebSite",
+                  "@id": `${siteUrl}/#website`,
+                  url: siteUrl,
+                  name: "OneTake",
+                  description:
+                    "Upload 1 photo, get 30 studio-quality AI headshots in under 5 minutes.",
+                  publisher: {
+                    "@id": `${siteUrl}/#organization`,
+                  },
+                  potentialAction: {
+                    "@type": "SearchAction",
+                    target: {
+                      "@type": "EntryPoint",
+                      urlTemplate: `${siteUrl}/blog?q={search_term_string}`,
+                    },
+                    "query-input": "required name=search_term_string",
+                  },
+                },
+              ]),
             }}
           />
           <Navbar />

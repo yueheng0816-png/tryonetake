@@ -27,6 +27,7 @@ export type PromptCategory =
   | "medical_env"
   | "legal_env"
   | "academic_env"
+  | "education_env"
   | "lifestyle";
 
 /** Gender for outfit description resolution */
@@ -43,6 +44,9 @@ export type Profession =
   | "real-estate"
   | "creative"
   | "academia"
+  | "education"
+  | "engineering"
+  | "public-service"
   | "general";
 
 export interface PromptTemplate {
@@ -99,16 +103,19 @@ export interface PromptTemplate {
 //  – General: middle-of-road, safe for any profession
 
 export const PROFESSION_WEIGHTS: Record<Profession, Record<PromptCategory, number>> = {
-  executive:    { studio_core: 50, office: 35, medical_env: 0, legal_env: 0, academic_env: 5, lifestyle: 10 },
-  finance:      { studio_core: 60, office: 25, medical_env: 0, legal_env: 5, academic_env: 0, lifestyle: 10 },
-  legal:        { studio_core: 40, office: 15, medical_env: 0, legal_env: 35, academic_env: 0, lifestyle: 10 },
-  tech:         { studio_core: 40, office: 40, medical_env: 0, legal_env: 0, academic_env: 0, lifestyle: 20 },
-  medical:      { studio_core: 45, office: 10, medical_env: 35, legal_env: 0, academic_env: 5, lifestyle: 5 },
-  consulting:   { studio_core: 50, office: 30, medical_env: 0, legal_env: 0, academic_env: 5, lifestyle: 15 },
-  "real-estate":{ studio_core: 30, office: 15, medical_env: 0, legal_env: 0, academic_env: 0, lifestyle: 55 },
-  creative:     { studio_core: 30, office: 10, medical_env: 0, legal_env: 0, academic_env: 0, lifestyle: 60 },
-  academia:     { studio_core: 40, office: 10, medical_env: 0, legal_env: 5, academic_env: 30, lifestyle: 15 },
-  general:      { studio_core: 50, office: 25, medical_env: 0, legal_env: 0, academic_env: 5, lifestyle: 20 },
+  executive:      { studio_core: 50, office: 35, medical_env: 0, legal_env: 0, academic_env: 5, education_env: 0, lifestyle: 10 },
+  finance:        { studio_core: 60, office: 25, medical_env: 0, legal_env: 5, academic_env: 0, education_env: 0, lifestyle: 10 },
+  legal:          { studio_core: 40, office: 15, medical_env: 0, legal_env: 35, academic_env: 0, education_env: 0, lifestyle: 10 },
+  tech:           { studio_core: 40, office: 40, medical_env: 0, legal_env: 0, academic_env: 0, education_env: 0, lifestyle: 20 },
+  medical:        { studio_core: 45, office: 10, medical_env: 35, legal_env: 0, academic_env: 5, education_env: 0, lifestyle: 5 },
+  consulting:     { studio_core: 50, office: 30, medical_env: 0, legal_env: 0, academic_env: 5, education_env: 0, lifestyle: 15 },
+  "real-estate":  { studio_core: 30, office: 15, medical_env: 0, legal_env: 0, academic_env: 0, education_env: 0, lifestyle: 55 },
+  creative:       { studio_core: 30, office: 10, medical_env: 0, legal_env: 0, academic_env: 0, education_env: 0, lifestyle: 60 },
+  academia:       { studio_core: 40, office: 10, medical_env: 0, legal_env: 5, academic_env: 30, education_env: 0, lifestyle: 15 },
+  education:      { studio_core: 30, office: 5, medical_env: 0, legal_env: 0, academic_env: 10, education_env: 40, lifestyle: 15 },
+  engineering:    { studio_core: 40, office: 30, medical_env: 0, legal_env: 0, academic_env: 5, education_env: 0, lifestyle: 25 },
+  "public-service":{studio_core: 45, office: 30, medical_env: 0, legal_env: 5, academic_env: 5, education_env: 0, lifestyle: 15 },
+  general:        { studio_core: 50, office: 25, medical_env: 0, legal_env: 0, academic_env: 5, education_env: 0, lifestyle: 20 },
 };
 
 // ============================================================
@@ -124,7 +131,10 @@ export const PROFESSION_LABELS: Record<Profession, string> = {
   consulting:   "Consulting & Advisory",
   "real-estate":"Real Estate & Sales",
   creative:     "Creative & Media",
-  academia:     "Academia & Education",
+  academia:     "Higher Education & Research",
+  education:    "K-12 Education & Teaching",
+  engineering:  "Engineering & Technical",
+  "public-service":"Government & Public Service",
   general:      "General Professional",
 };
 
@@ -1028,6 +1038,92 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     },
   },
 
+  // ── NEW Education (+6) ────────────────────────────────────
+  {
+    id: "edu-classroom-bright",
+    prompt:
+      "{outfit}, standing in a bright modern classroom with colorful educational posters and student work softly blurred on walls, warm professional presence, natural daylight from large windows, even soft lighting, waist-up, dedicated teacher, inspiring learning environment",
+    status: "active",
+    performance: "untested",
+    tags: ["education", "classroom", "bright", "teaching", "warm"],
+    category: "education_env",
+    expression: "neutral",
+    outfitVariants: {
+      male: "smart casual button-down shirt with sleeves rolled, approachable professional educator",
+      female: "soft cardigan over comfortable professional blouse, warm approachable teacher presence",
+    },
+  },
+  {
+    id: "edu-whiteboard-teaching",
+    prompt:
+      "{outfit}, standing beside a whiteboard with lesson notes softly blurred, engaged professional presence as if explaining a concept, bright even classroom lighting, waist-up, modern educator, interactive teaching moment",
+    status: "active",
+    performance: "untested",
+    tags: ["education", "whiteboard", "teaching", "interactive", "modern"],
+    category: "education_env",
+    expression: "neutral",
+    outfitVariants: {
+      male: "crisp button-down shirt with tie, professional educator at the board",
+      female: "structured blouse with professional slacks, confident teaching presence",
+    },
+  },
+  {
+    id: "edu-library-reading",
+    prompt:
+      "{outfit}, seated in a colorful elementary school library with children's books and reading nook softly blurred behind, calm professional presence, soft natural light from nearby windows, waist-up, nurturing educator, literacy advocate",
+    status: "active",
+    performance: "untested",
+    tags: ["education", "library", "reading", "nurturing", "calm"],
+    category: "education_env",
+    expression: "neutral",
+    outfitVariants: {
+      male: "casual blazer over open-collar shirt, relaxed educator in library setting",
+      female: "cozy knit cardigan over neutral blouse, warm reading advocate presence",
+    },
+  },
+  {
+    id: "edu-school-hallway",
+    prompt:
+      "{outfit}, standing in a bright school hallway with student lockers and artwork displays softly blurred, professional welcoming presence, overhead fluorescent lighting balanced with natural light from end windows, waist-up, approachable school faculty, first day of school energy",
+    status: "active",
+    performance: "untested",
+    tags: ["education", "hallway", "school", "approachable", "faculty"],
+    category: "education_env",
+    expression: "neutral",
+    outfitVariants: {
+      male: "polo shirt or casual button-down with khakis, approachable school professional",
+      female: "colorful professional blouse with tailored pants, welcoming school presence",
+    },
+  },
+  {
+    id: "edu-desk-planning",
+    prompt:
+      "{outfit}, seated at a teacher's desk with lesson plans and educational materials softly out of focus, calm focused professional presence, desk lamp providing warm light, bright classroom background, waist-up, dedicated educator preparing for students",
+    status: "active",
+    performance: "untested",
+    tags: ["education", "desk", "planning", "dedicated", "focused"],
+    category: "education_env",
+    expression: "neutral",
+    outfitVariants: {
+      male: "collared shirt with subtle pattern, professional yet approachable at desk",
+      female: "soft-toned professional top with delicate necklace, focused educator warmth",
+    },
+  },
+  {
+    id: "edu-outdoor-campus",
+    prompt:
+      "{outfit}, standing outside a modern school building entrance with green campus landscaping softly blurred, bright overcast daylight providing even illumination, professional presence, waist-up, education professional, welcoming school community leader",
+    status: "active",
+    performance: "untested",
+    tags: ["education", "outdoor", "school", "community", "welcoming"],
+    category: "education_env",
+    expression: "neutral",
+    outfitVariants: {
+      male: "smart blazer over open-collar shirt, professional approachable school leader",
+      female: "elegant blazer over soft blouse, school administrator warmth",
+    },
+  },
+
   // ──────────────────────────────────────────────────────────
   // TIER 3 — LIFESTYLE (cafe, outdoor, urban, creative, event)
   // Only matched heavily for Real Estate, Creative, and Tech.
@@ -1401,6 +1497,108 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
     outfitVariants: {
       male: "smart casual: fine-gauge navy sweater over white collared shirt, relaxed professional",
       female: "smart casual: soft cashmere wrap or elegant knit, relaxed professional with warmth",
+    },
+  },
+
+  // ── NEW Engineering / Technical (+4) ───────────────────────
+  {
+    id: "eng-lab-workspace",
+    prompt:
+      "{outfit}, standing in a bright modern laboratory or technical workspace with equipment and instruments softly blurred, capable professional presence, bright even overhead lighting with natural light from windows, waist-up, engineering professional, technical expertise",
+    status: "active",
+    performance: "untested",
+    tags: ["engineering", "lab", "technical", "bright", "workspace"],
+    category: "office",
+    expression: "neutral",
+    outfitVariants: {
+      male: "smart polo or button-down shirt with clean professional appearance, engineering professional",
+      female: "professional blouse with neat tailored look, capable engineering presence",
+    },
+  },
+  {
+    id: "eng-industrial-facility",
+    prompt:
+      "{outfit}, standing in a clean modern industrial facility with machinery and production lines softly blurred in distance, confident capable presence, bright industrial lighting with high ceilings, waist-up, manufacturing or industrial engineer, operational expertise",
+    status: "active",
+    performance: "untested",
+    tags: ["engineering", "industrial", "manufacturing", "confident", "facility"],
+    category: "office",
+    expression: "neutral",
+    outfitVariants: {
+      male: "clean work shirt or polo with company logo area, professional industrial presence",
+      female: "professional top under clean safety vest or smart workwear, capable industrial professional",
+    },
+  },
+  {
+    id: "eng-design-studio",
+    prompt:
+      "{outfit}, in a modern engineering design studio with large monitors displaying CAD models and technical drawings blurred behind, focused professional presence, bright even studio lighting, waist-up, design engineer, innovation and precision",
+    status: "active",
+    performance: "untested",
+    tags: ["engineering", "design", "studio", "innovation", "precision"],
+    category: "office",
+    expression: "neutral",
+    outfitVariants: {
+      male: "smart casual button-down with subtle pattern, modern design engineer",
+      female: "contemporary professional blouse with clean lines, design engineering professional",
+    },
+  },
+  {
+    id: "eng-field-site",
+    prompt:
+      "{outfit}, standing outdoors at a bright construction or infrastructure project site with structures softly blurred behind, capable professional presence, natural daylight under clear sky, waist-up, field engineer, hands-on expertise",
+    status: "active",
+    performance: "untested",
+    tags: ["engineering", "field", "outdoor", "construction", "hands-on"],
+    category: "lifestyle",
+    expression: "neutral",
+    outfitVariants: {
+      male: "clean workwear or polo with hard hat optionally in hand, professional field presence",
+      female: "smart workwear or professional outdoor attire, capable field engineering presence",
+    },
+  },
+
+  // ── NEW Public Service (+3) ────────────────────────────────
+  {
+    id: "public-gov-office",
+    prompt:
+      "{outfit}, standing in a professional government office with official seal or flag softly blurred on wall, composed trustworthy presence, bright even office lighting, waist-up, public service professional, civic dedication",
+    status: "active",
+    performance: "untested",
+    tags: ["public-service", "government", "office", "trustworthy", "official"],
+    category: "office",
+    expression: "neutral",
+    outfitVariants: {
+      male: "dark suit with conservative tie, professional government presence",
+      female: "structured blazer over professional blouse, official public service presence",
+    },
+  },
+  {
+    id: "public-community-center",
+    prompt:
+      "{outfit}, standing in a bright community center or public meeting space with informational displays softly blurred, warm approachable presence, bright natural and interior mixed lighting, waist-up, community-focused public servant, civic engagement",
+    status: "active",
+    performance: "untested",
+    tags: ["public-service", "community", "approachable", "civic", "engagement"],
+    category: "office",
+    expression: "neutral",
+    outfitVariants: {
+      male: "blazer over open-collar dress shirt, approachable public service professional",
+      female: "professional cardigan or blazer over elegant top, community-oriented official",
+    },
+  },
+  {
+    id: "public-courthouse-steps",
+    prompt:
+      "{outfit}, standing on the steps of a classic civic building with columns and institutional architecture softly blurred, composed professional presence, bright natural daylight, waist-up, public official, institutional authority with accessibility",
+    status: "active",
+    performance: "untested",
+    tags: ["public-service", "civic", "official", "authoritative", "accessible"],
+    category: "lifestyle",
+    expression: "neutral",
+    outfitVariants: {
+      male: "navy or charcoal suit with professional tie, authoritative yet accessible official",
+      female: "tailored blazer suit in neutral tone, professional public official presence",
     },
   },
 ];
@@ -1938,6 +2136,7 @@ export function getTemplateStats(): {
     medical_env: { total: 0, active: 0 },
     legal_env: { total: 0, active: 0 },
     academic_env: { total: 0, active: 0 },
+    education_env: { total: 0, active: 0 },
     lifestyle: { total: 0, active: 0 },
   };
   for (const t of MASTER_TEMPLATES) {

@@ -410,6 +410,150 @@ export const useCases: UseCaseData[] = [
     ],
     exampleImages: [2, 7, 12],
   },
+  {
+    slug: "education-headshots",
+    title: "AI Teacher Headshots — Professional Photos for Educators & School Faculty",
+    description:
+      "Professional AI headshots for teachers, school administrators, and education professionals. Upload 1 photo, get 30 classroom-ready portraits. Warm, approachable, and trustworthy. $19.",
+    keywords: [
+      "teacher headshots AI",
+      "educator professional photo",
+      "school faculty portraits AI",
+      "teacher LinkedIn photo",
+      "K-12 educator headshot",
+      "classroom teacher profile picture",
+    ],
+    badge: "For Educators & Teachers",
+    headline: "A headshot as warm and dedicated as your teaching.",
+    subtitle:
+      "Great teachers shape lives. Your headshot should reflect the warmth, dedication, and professionalism you bring to the classroom every day. OneTake delivers educator portraits that students, parents, and colleagues trust at a glance.",
+    benefitsHeading: "Why educators choose OneTake",
+    benefits: [
+      {
+        title: "Warm & approachable presence",
+        body: "Parents trust teachers who look both competent and caring. Our AI generates headshots that balance professional credibility with the warmth that makes students feel safe and welcomed.",
+      },
+      {
+        title: "School-appropriate backgrounds",
+        body: "From bright modern classrooms and colorful libraries to sunny school entrances — your headshot backgrounds match the education environment, not corporate boardrooms.",
+      },
+      {
+        title: "Consistent faculty page photos",
+        body: "Every teacher on your school's website gets the same professional quality. No more mismatched selfies and cropped family photos on the faculty directory page.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Are AI headshots appropriate for teacher profile photos?",
+        a: "Yes. Modern AI headshots from FLUX.2 are indistinguishable from real photos. Many teachers use them on school websites, LinkedIn, and education conference profiles. The key is a warm, approachable result — which our education-specific templates prioritize.",
+      },
+      {
+        q: "What background works best for teacher headshots?",
+        a: "A bright classroom, school library, or outdoor campus setting works best — conveying the education environment without being distracting. OneTake's education templates generate exactly these settings, giving you a professional yet context-appropriate look.",
+      },
+      {
+        q: "Can our entire school faculty get matching headshots?",
+        a: "Yes. Contact us for school pricing with volume discounts. We'll set up a consistent style profile so every teacher and staff member gets professional headshots with matching quality — perfect for school websites and yearbooks.",
+      },
+    ],
+    exampleImages: [1, 5, 10],
+  },
+  {
+    slug: "engineering-headshots",
+    title: "AI Engineer Headshots — Professional Photos for Engineers & Technical Professionals",
+    description:
+      "Professional AI headshots for engineers, technicians, and STEM professionals. Upload 1 photo, get 30 portraits perfect for LinkedIn, company websites, and conference presentations. $19.",
+    keywords: [
+      "engineer headshots AI",
+      "engineering professional photo",
+      "technical professional portrait AI",
+      "STEM professional headshot",
+      "engineer LinkedIn photo",
+      "manufacturing engineer profile picture",
+    ],
+    badge: "For Engineers & Technical Pros",
+    headline: "A headshot as precise and capable as your work.",
+    subtitle:
+      "Engineers solve the world's hardest problems. Your headshot should reflect the competence, precision, and innovation you bring to every project — whether you're in software, civil, mechanical, electrical, or any engineering discipline.",
+    benefitsHeading: "Why engineers choose OneTake",
+    benefits: [
+      {
+        title: "Competent & capable presence",
+        body: "Your headshot should say 'I know what I'm doing' without looking like a stock photo. Our AI generates portraits that convey technical expertise and reliability — perfect for LinkedIn, conference bios, and project proposals.",
+      },
+      {
+        title: "Technical environment backgrounds",
+        body: "From modern labs and design studios to industrial facilities and field sites — your headshot backgrounds match the engineering world. No generic corporate backdrops that feel disconnected from your daily work.",
+      },
+      {
+        title: "Clean, no-fuss professional look",
+        body: "Engineers value function over fashion. Our AI delivers polished, professional headshots without the overly styled, beauty-filtered look that feels inauthentic to technical professionals.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What should an engineer wear for a professional headshot?",
+        a: "For most engineering roles, smart casual or business casual works best — a clean button-down or polo, optionally with a blazer. Full suits can feel too formal for many engineering environments. OneTake gives you multiple outfit variations to choose from.",
+      },
+      {
+        q: "Do AI headshots work for technical conferences and speaking engagements?",
+        a: "Yes. AI headshots from OneTake are high-resolution and professional enough for conference speaker pages, IEEE profiles, LinkedIn, and company leadership pages. They're indistinguishable from studio photography in professional contexts.",
+      },
+      {
+        q: "Can I get headshots with an engineering lab or workspace background?",
+        a: "Yes. Our engineering-specific templates include lab environments, design studios, and industrial settings — backgrounds that feel authentic to your profession rather than generic office backdrops.",
+      },
+    ],
+    exampleImages: [3, 4, 9],
+  },
+  {
+    slug: "government-headshots",
+    title: "AI Government & Public Service Headshots — Professional Official Photos",
+    description:
+      "Professional AI headshots for government employees, public servants, and civil service professionals. Upload 1 photo, get 30 official portraits. Trustworthy, professional, and appropriate for public sector roles. $19.",
+    keywords: [
+      "government employee headshot AI",
+      "public service professional photo",
+      "civil servant portrait AI",
+      "government official headshot",
+      "public sector LinkedIn photo",
+      "municipal employee profile picture",
+    ],
+    badge: "For Public Service Professionals",
+    headline: "A headshot that conveys trust, service, and professionalism.",
+    subtitle:
+      "Public servants work for the common good. Your headshot should project trustworthiness, dedication, and professional competence — whether you serve at the federal, state, or local level. OneTake delivers official portraits appropriate for government contexts.",
+    benefitsHeading: "Why public service professionals choose OneTake",
+    benefits: [
+      {
+        title: "Trustworthy & official presence",
+        body: "Government roles require projecting integrity and reliability. Our AI generates headshots that convey official professionalism without looking cold or unapproachable — the right tone for public-facing roles.",
+      },
+      {
+        title: "Appropriate for all government contexts",
+        body: "From agency websites and official directories to LinkedIn and conference materials — your headshot maintains a consistent, professional standard across every platform where constituents encounter you.",
+      },
+      {
+        title: "Cost-effective for public budgets",
+        body: "At $19 per person vs $200+ for traditional photography, AI headshots respect public sector budget constraints while delivering professional-quality results for entire departments and agencies.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Are AI headshots appropriate for government official use?",
+        a: "For agency websites, professional directories, LinkedIn, and conference materials — yes. Modern AI headshots from FLUX.2 are indistinguishable from studio photos. They should not be used for official identification documents (passport, driver's license, security badge).",
+      },
+      {
+        q: "What's the appropriate dress code for government headshots?",
+        a: "Business formal or business professional is standard for most government roles — dark suit, conservative tie, professional blouse or blazer. OneTake generates multiple outfit options so you can choose what fits your agency's culture.",
+      },
+      {
+        q: "Can our entire department get matching official headshots?",
+        a: "Yes. Contact us for government agency pricing with volume discounts. We'll create a consistent style profile so every team member — from front desk to director — gets professional headshots with matching quality and appropriate official tone.",
+      },
+    ],
+    exampleImages: [1, 6, 8],
+  },
 ];
 
 export function getUseCase(slug: string): UseCaseData | undefined {

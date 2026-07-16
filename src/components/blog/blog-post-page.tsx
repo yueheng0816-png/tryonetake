@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Clock, ArrowLeft } from "lucide-react";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { ArrowRight, Calendar, Clock } from "lucide-react";
 import type { BlogPost } from "@/lib/blog-data";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://tryonetake.com";
@@ -15,14 +16,14 @@ export function BlogPostPage({ post }: { post: BlogPost }) {
   const canonicalUrl = `${siteUrl}/blog/${post.slug}`;
   return (
     <article className="container mx-auto max-w-3xl px-4 py-12 md:py-20">
-      {/* Back link */}
-      <Link
-        href="/blog"
-        className="inline-flex items-center gap-1 text-base text-muted-foreground hover:text-foreground transition-colors mb-8"
-      >
-        <ArrowLeft className="h-4 w-4" />
-        All posts
-      </Link>
+      {/* Breadcrumb */}
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Blog", href: "/blog" },
+          { label: post.title },
+        ]}
+      />
 
       {/* Header */}
       <header className="mb-10">

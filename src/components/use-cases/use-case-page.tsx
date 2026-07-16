@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import {
   ArrowRight,
   Check,
@@ -22,6 +23,15 @@ function UseCaseHero({ data }: { data: UseCaseData }) {
   return (
     <section className="relative overflow-hidden">
       <div className="container mx-auto max-w-4xl px-4 py-12 md:py-20">
+        {/* Breadcrumb */}
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Use Cases", href: "/use-cases" },
+            { label: data.title },
+          ]}
+          className="mb-6"
+        />
         {/* Badge */}
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-base text-muted-foreground">
           {data.badge}

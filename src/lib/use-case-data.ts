@@ -219,6 +219,197 @@ export const useCases: UseCaseData[] = [
     ],
     exampleImages: [7, 9, 11],
   },
+  {
+    slug: "lawyer-headshots",
+    title: "AI Lawyer Headshots — Professional Portraits for Attorneys & Legal Professionals",
+    description:
+      "Professional AI headshots for lawyers, attorneys, and legal professionals. Upload 1 photo, get 30 courtroom-ready portraits. Trustworthy, authoritative, and natural. $19.",
+    keywords: [
+      "lawyer headshots AI",
+      "attorney AI headshot",
+      "legal professional portrait AI",
+      "law firm headshot generator",
+      "AI legal headshots",
+    ],
+    badge: "For Legal Professionals",
+    headline: "A headshot that conveys trust and authority.",
+    subtitle:
+      "In law, credibility is everything. Your headshot should project confidence, competence, and approachability — whether for your firm's website, LinkedIn, bar association directory, or courtroom bio. OneTake delivers attorney headshots that command respect.",
+    benefitsHeading: "Why legal professionals choose OneTake",
+    benefits: [
+      {
+        title: "Trustworthy & authoritative look",
+        body: "Our AI generates headshots with the right balance of warmth and gravitas — approachable enough for client relationships, authoritative enough for the courtroom and boardroom.",
+      },
+      {
+        title: "Firm-consistent branding",
+        body: "Every attorney at your firm gets the same professional quality — matching backgrounds, lighting, and aesthetic. No more inconsistent headshots from different photographers across offices.",
+      },
+      {
+        title: "Professional yet approachable",
+        body: "Clients choose a lawyer they trust. Our headshots avoid the overly stern 'mugshot' look — instead projecting competence with warmth, perfect for modern legal marketing.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Are AI headshots professional enough for law firm websites?",
+        a: "Absolutely. Our FLUX.2 model generates headshots indistinguishable from professional studio photography. Many attorneys use AI headshots on firm websites, LinkedIn, and bar association profiles without anyone knowing the difference.",
+      },
+      {
+        q: "What background works best for legal headshots?",
+        a: "For corporate law, a modern office or library background conveys sophistication. For solo practitioners and family law, a warmer, approachable background works well. Our Pro plan gives you 25 variations so you can choose the right look for your practice area.",
+      },
+      {
+        q: "Can I get matching headshots for my entire law firm?",
+        a: "Yes. Contact us for team pricing and we'll set up a custom style profile ensuring every attorney gets consistent, professional headshots — whether your firm has 5 lawyers or 500.",
+      },
+    ],
+    exampleImages: [1, 4, 8],
+  },
+  {
+    slug: "healthcare-headshots",
+    title: "AI Healthcare Professional Headshots — Doctors, Nurses & Medical Staff Photos",
+    description:
+      "Professional AI headshots for doctors, nurses, and healthcare professionals. Upload 1 photo, get 30 portraits perfect for hospital directories, Doximity, LinkedIn, and telehealth profiles. $19.",
+    keywords: [
+      "doctor headshots AI",
+      "nurse professional photo AI",
+      "healthcare headshot generator",
+      "medical professional portrait AI",
+      "Doximity profile photo AI",
+      "telehealth headshot",
+    ],
+    badge: "For Healthcare Professionals",
+    headline: "A headshot your patients can trust — before they walk through the door.",
+    subtitle:
+      "In healthcare, the patient relationship starts before the first appointment. Your headshot on the hospital website, Doximity, or telehealth platform is often the first impression patients have of you. Make it a good one — professional, warm, and reassuring.",
+    benefitsHeading: "Why healthcare professionals choose OneTake",
+    benefits: [
+      {
+        title: "Warm & reassuring presence",
+        body: "Patients want a provider who's both competent and caring. Our AI generates headshots that balance clinical professionalism with genuine warmth — exactly what patients look for when choosing a doctor.",
+      },
+      {
+        title: "Consistency across all platforms",
+        body: "Same professional look on your hospital directory, Doximity, LinkedIn, Healthgrades, and telehealth profiles. Upload once, get 30 variations optimized for every platform.",
+      },
+      {
+        title: "Multiple looks: coat on & off",
+        body: "Get variations with a white coat for clinical settings and smart professional attire for conferences, LinkedIn, and speaking engagements — all from one upload.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I wear a white coat in my medical headshot?",
+        a: "It depends on your specialty and context. Surgeons and hospitalists often prefer the white coat for clinical credibility. Primary care and pediatricians may choose smart professional attire for approachability. Our Pro plan gives you both options in one batch.",
+      },
+      {
+        q: "Are AI headshots acceptable for hospital credentialing?",
+        a: "For most hospital directories and professional profiles (Doximity, Healthgrades, LinkedIn) — yes. AI headshots from OneTake are high-resolution and indistinguishable from studio photos. They should not be used for official medical licensing or identification documents.",
+      },
+      {
+        q: "How quickly can I update my Doximity profile photo?",
+        a: "Most orders complete in under 5 minutes. Download your favorite, upload to Doximity, LinkedIn, and your hospital directory — done. Perfect for new residents, fellows, and attending physicians updating their professional presence.",
+      },
+    ],
+    exampleImages: [2, 5, 10],
+  },
+  {
+    slug: "remote-work-headshots",
+    title: "AI Remote Work Headshots — Professional Photos for Distributed Teams & Freelancers",
+    description:
+      "Professional AI headshots for remote workers, freelancers, and digital nomads. Upload 1 photo from home, get 30 studio-quality portraits. Perfect for Zoom, Slack, LinkedIn, and freelance platforms. $19.",
+    keywords: [
+      "remote worker headshot AI",
+      "freelancer professional photo",
+      "digital nomad headshot",
+      "work from home headshot",
+      "Zoom profile photo AI",
+      "Upwork profile picture AI",
+    ],
+    badge: "For Remote Professionals",
+    headline: "Studio-quality headshots — no commute to a photographer required.",
+    subtitle:
+      "You work from anywhere. Why should your headshot require a trip to a photo studio? OneTake gives remote workers, freelancers, and distributed teams professional headshots that match the quality of any in-office employee — without ever leaving your home office.",
+    benefitsHeading: "Why remote professionals choose OneTake",
+    benefits: [
+      {
+        title: "Anywhere, anytime — like your work",
+        body: "You don't commute to an office. Don't commute to a photographer. Upload a selfie from your home, co-working space, or anywhere with good light. Get professional results in 5 minutes.",
+      },
+      {
+        title: "Stand out on freelance platforms",
+        body: "A professional headshot on Upwork, Fiverr, or Toptal can increase your hire rate significantly. Clients judge credibility in seconds — a studio-quality photo signals you're a serious professional.",
+      },
+      {
+        title: "Consistent team look, no matter where people are",
+        body: "Your team is spread across 5 time zones? Each person uploads from their phone. Everyone gets professional headshots with matching quality — unified brand presence without the logistics nightmare.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Can I get a professional headshot from a selfie taken at home?",
+        a: "Yes — that's exactly what OneTake is built for. Upload a well-lit selfie (natural window light works great) and our AI generates 30 studio-quality headshots with professional backgrounds, lighting, and attire.",
+      },
+      {
+        q: "How important is a headshot for freelance platforms like Upwork?",
+        a: "Very. Studies show freelancers with professional photos get hired more often and can command higher rates. Your profile photo is often the first thing clients see — a professional headshot signals reliability and quality before they even read your proposal.",
+      },
+      {
+        q: "Can our entire distributed team get matching headshots?",
+        a: "Yes. Contact us for team pricing. We'll create a consistent style profile so every team member — from the CEO to the newest hire — gets matching professional headshots, regardless of where they're located.",
+      },
+    ],
+    exampleImages: [3, 6, 11],
+  },
+  {
+    slug: "consultant-headshots",
+    title: "AI Consultant Headshots — Professional Photos for Management & Strategy Consultants",
+    description:
+      "Professional AI headshots for management consultants, strategy advisors, and independent consultants. Upload 1 photo, get 30 boardroom-ready portraits. Perfect for firm websites, LinkedIn, and client proposals. $19.",
+    keywords: [
+      "consultant headshots AI",
+      "management consultant photo",
+      "strategy consultant portrait AI",
+      "business consultant headshot",
+      "McKinsey BCG Bain headshot style",
+      "professional consulting photo",
+    ],
+    badge: "For Consultants & Advisors",
+    headline: "The headshot that says 'I can solve your toughest problems.'",
+    subtitle:
+      "As a consultant, you sell expertise and trust. Your headshot needs to convey intelligence, confidence, and executive presence — whether you're at MBB, Big 4, or an independent advisory firm. OneTake delivers consultant-grade portraits that match the caliber of your work.",
+    benefitsHeading: "Why consultants choose OneTake",
+    benefits: [
+      {
+        title: "Executive presence & polish",
+        body: "Consultants are judged on perceived competence in seconds. Our AI generates headshots with the executive polish that clients expect from high-end advisory firms — confident, capable, and boardroom-ready.",
+      },
+      {
+        title: "Firm-appropriate variety",
+        body: "Get variations suitable for different contexts: formal for client proposals and firm website, approachable for LinkedIn thought leadership, and everything in between.",
+      },
+      {
+        title: "Always current for client meetings",
+        body: "Your consulting engagements change every few months. Keep your headshot fresh and current without booking a new photographer each time. $19, 5 minutes, done.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What style of headshot works best for management consulting?",
+        a: "Clean, confident, and polished — dark suit or blazer, neutral or modern office background. Avoid anything too casual or too stiff. Our AI gets this balance right, producing headshots that would fit right in on any MBB or Big 4 firm page.",
+      },
+      {
+        q: "Can I get different outfits for different client contexts?",
+        a: "Yes. Our Pro plan (25 variations) gives you multiple outfit options — from formal business attire for client proposals to smart casual for internal team pages and LinkedIn content.",
+      },
+      {
+        q: "I'm an independent consultant — is this worth the investment?",
+        a: "At $19 vs $300-500 for a traditional photographer, it's not just worth it — it's a no-brainer. As an independent consultant, your personal brand is everything. A professional headshot on your website, LinkedIn, and proposals signals you operate at a high level.",
+      },
+    ],
+    exampleImages: [2, 7, 12],
+  },
 ];
 
 export function getUseCase(slug: string): UseCaseData | undefined {

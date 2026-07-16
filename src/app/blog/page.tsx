@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { blogPosts } from "@/lib/blog-data";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { ArrowRight, Calendar, Clock } from "lucide-react";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -48,6 +49,12 @@ export const metadata: Metadata = {
 export default function BlogIndex() {
   return (
     <div className="container mx-auto max-w-3xl px-4 py-12 md:py-20">
+      <Breadcrumb
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Blog" },
+        ]}
+      />
       <h1 className="text-4xl font-bold tracking-tight">OneTake Blog</h1>
       <p className="mt-4 text-lg text-muted-foreground">
         AI headshot tips, professional photography guides, and industry insights.

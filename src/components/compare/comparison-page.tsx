@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Check, X, ShieldCheck } from "lucide-react";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
+import { ArrowRight, Check, ShieldCheck } from "lucide-react";
 import { useAuth } from "@clerk/nextjs";
 import type { ComparisonData } from "@/lib/comparison-data";
 
@@ -11,6 +12,13 @@ function Hero({ data }: { data: ComparisonData }) {
   return (
     <section className="relative overflow-hidden">
       <div className="container mx-auto max-w-4xl px-4 py-12 md:py-20">
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "VS", href: "/vs" },
+            { label: data.title },
+          ]}
+        />
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-base text-muted-foreground">
           Honest Comparison
         </div>

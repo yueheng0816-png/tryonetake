@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { comparisons } from "@/lib/comparison-data";
+import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { ArrowRight } from "lucide-react";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -92,6 +93,12 @@ export default function VsIndex() {
       />
 
       <div className="container mx-auto max-w-4xl px-4 py-12 md:py-20">
+        <Breadcrumb
+          items={[
+            { label: "Home", href: "/" },
+            { label: "VS" },
+          ]}
+        />
         <h1 className="text-4xl font-bold tracking-tight">
           OneTake vs Competitors
         </h1>

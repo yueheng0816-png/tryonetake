@@ -1669,9 +1669,15 @@ export function distributePromptsV3(
   profession: Profession,
   /** Expression detected in each photo, same length as photos.
    *  `null` means unknown — treated as "any". */
-  photoExpressions?: Array<Expression | null>
+  photoExpressions?: Array<Expression | null>,
+  /** Optional AI-generated custom prompts for a specific role.
+   *  When provided, these take ~5 slots and the weight matrix
+   *  fills the remaining slots. */
+  customPrompts?: PromptTemplate[]
 ): { photoIndex: number; promptId: string; prompt: string }[] {
   const TOTAL = 30;
+  const customCount = customPrompts?.length ?? 0;
+  const standardCount = TOTAL - customCount;
   const weights = PROFESSION_WEIGHTS[profession];
 
   // 1. Calculate raw slot allocation from percentages
@@ -1680,13 +1686,13 @@ export function distributePromptsV3(
 
   for (const [cat, pct] of Object.entries(weights) as [PromptCategory, number][]) {
     if (pct <= 0) continue;
-    const slots = Math.round((pct / 100) * TOTAL);
+    const slots = Math.round((pct / 100) * standardCount);
     allocation[cat] = slots;
     allocatedTotal += slots;
   }
 
-  // 2. Adjust rounding to hit exactly 30
-  const diff = TOTAL - allocatedTotal;
+  // 2. Adjust rounding to hit exactly standardCount
+  const diff = standardCount - allocatedTotal;
   if (diff !== 0) {
     allocation["studio_core"] = (allocation["studio_core"] ?? 0) + diff;
   }
@@ -1735,8 +1741,8 @@ export function distributePromptsV3(
     );
   }
 
-  if (selected.length < TOTAL) {
-    const shortfall = TOTAL - selected.length;
+  if (selected.length < standardCount) {
+    const shortfall = standardCount - selected.length;
     const studioPool = getActiveByCategory("studio_core");
     const shuffled = [...studioPool];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -1747,7 +1753,7 @@ export function distributePromptsV3(
       selected.push(shuffled[i % shuffled.length]);
     }
     console.warn(
-      `[OneTake] Padded ${shortfall} slots from studio_core to reach 30 total.`
+      `[OneTake] Padded ${shortfall} slots from studio_core to reach ${standardCount} standard + ${customCount} custom total.`
     );
   }
 
@@ -1760,6 +1766,13 @@ export function distributePromptsV3(
     }
     return { ...t, prompt };
   });
+
+  // 5.5 Append custom prompts (already gender-resolved by GPT, no outfit placeholders)
+  if (customPrompts && customPrompts.length > 0) {
+    for (const ct of customPrompts) {
+      resolved.push({ ...ct, prompt: ct.prompt }); // No outfit resolution needed
+    }
+  }
 
   // 6. Expression-aware photo assignment
   const hasExpressions =

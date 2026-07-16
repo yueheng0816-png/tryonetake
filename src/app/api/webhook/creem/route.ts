@@ -44,6 +44,7 @@ export const POST = Webhook({
         inputPhotos: true,
         gender: true,
         profession: true,
+        specificRole: true,
         predictionIds: true,
       },
     });
@@ -78,6 +79,7 @@ export const POST = Webhook({
         orderId: dbOrder.id,
         gender: (dbOrder.gender as "male" | "female") ?? "male",
         profession: dbOrder.profession ?? "general",
+        specificRole: dbOrder.specificRole,
       })
         .then(async (batch) => {
           const validIds = batch.predictionIds.filter(Boolean);

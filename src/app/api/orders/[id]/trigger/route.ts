@@ -28,6 +28,7 @@ export async function POST(
       predictionIds: true,
       gender: true,
       profession: true,
+      specificRole: true,
     },
   });
 
@@ -100,6 +101,7 @@ export async function POST(
       orderId: order.id,
       gender: (order.gender as "male" | "female") ?? "male",
       profession: order.profession ?? "general",
+      specificRole: order.specificRole,
     })
       .then(async (batch) => {
         const validIds = batch.predictionIds.filter(Boolean);

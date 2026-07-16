@@ -284,21 +284,45 @@ export async function startBatchGeneration(params: {
   orderId: string;
   gender?: "male" | "female";
   profession?: string;
+  /** Free-text role description for AI-customized prompts */
+  specificRole?: string | null;
   /** Expression detected in each photo (same order as photoUrls).
    *  When provided, templates will be matched to photos with compatible
    *  expressions to reduce identity drift. */
   photoExpressions?: Array<"smile" | "serious" | "neutral" | null>;
 }): Promise<BatchResult> {
-  const { photoUrls, plan, style, webhookBaseUrl, orderId, gender, profession, photoExpressions } = params;
+  const { photoUrls, plan, style, webhookBaseUrl, orderId, gender, profession, specificRole, photoExpressions } = params;
 
   const { distributePromptsV3, buildFinalPrompt } = await import("./prompts");
+
+  // ── Generate custom prompts if user provided a specific role ──
+  let customPrompts: import("./prompts").PromptTemplate[] | undefined;
+  if (specificRole) {
+    const { generateCustomPrompts } = await import("./custom-prompts");
+    customPrompts = await generateCustomPrompts({
+      specificRole,
+      profession: profession ?? "general",
+      gender: gender ?? "male",
+      count: 5,
+    });
+    if (customPrompts.length > 0) {
+      console.log(
+        `[OneTake] Order ${orderId}: ${customPrompts.length} custom prompts generated for "${specificRole}"`
+      );
+    } else {
+      console.log(
+        `[OneTake] Order ${orderId}: Custom prompt generation returned empty — falling back to 100% profession distribution`
+      );
+    }
+  }
 
   const assignments = distributePromptsV3(
     photoUrls.length,
     plan,
     gender ?? "male",
     (profession as import("./prompts").Profession) ?? "general",
-    photoExpressions
+    photoExpressions,
+    customPrompts
   );
   const predictionIds: string[] = [];
   const promptIds: string[] = [];

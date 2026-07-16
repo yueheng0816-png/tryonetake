@@ -62,6 +62,7 @@ function GeneratePageInner() {
   const [plan, setPlan] = useState<PlanOption>(initialPlan);
   const [gender, setGender] = useState<Gender | null>(null);
   const [profession, setProfession] = useState<Profession | null>(null);
+  const [specificRole, setSpecificRole] = useState("");
   const [uploading, setUploading] = useState(false);
 
   const handleCheckout = async () => {
@@ -108,6 +109,7 @@ function GeneratePageInner() {
           photoUrls,
           gender,
           profession,
+          specificRole: specificRole.trim() || null,
         }),
       });
 
@@ -216,6 +218,25 @@ function GeneratePageInner() {
                 </option>
               ))}
             </select>
+          </div>
+
+          {/* Specific Role (optional) */}
+          <div className="space-y-2">
+            <label className="flex items-center gap-2 text-base font-medium text-muted-foreground">
+              <Briefcase className="h-4 w-4" />
+              Specific role (optional)
+            </label>
+            <input
+              type="text"
+              value={specificRole}
+              onChange={(e) => setSpecificRole(e.target.value)}
+              placeholder='e.g. "3rd grade teacher", "airline pilot", "yoga instructor"'
+              className="flex h-11 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              maxLength={120}
+            />
+            <p className="text-xs text-muted-foreground">
+              Describe your role for better-matched backgrounds and scenes
+            </p>
           </div>
         </div>
 

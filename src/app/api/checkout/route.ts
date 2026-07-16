@@ -16,6 +16,7 @@ export async function POST(req: Request) {
       photoUrls,
       gender,
       profession,
+      specificRole,
     } = await req.json();
 
     if (!plan || !["starter", "pro"].includes(plan)) {
@@ -46,6 +47,9 @@ export async function POST(req: Request) {
         stylePreference: stylePreference ?? "balanced",
         gender,
         profession,
+        specificRole: specificRole && typeof specificRole === "string" && specificRole.trim()
+          ? specificRole.trim()
+          : null,
         amount: getPlanAmount(plan),
         status: "pending",
         inputPhotos: photoUrls ?? [],

@@ -22,6 +22,7 @@ model Order {
   stylePreference String   @default("balanced") // "natural" | "balanced" | "polished"
   gender          String   @default("male") // "male" | "female" — for outfit descriptions
   profession      String   @default("general") // Profession enum value — for prompt category weights
+  specificRole    String?  // Free-text role description for AI-customized prompts (e.g., "3rd grade teacher")
   amount          Int      // cents: 1900 or 3500
   status               String   @default("pending") // "pending" | "paid" | "generating" | "completed" | "failed"
   stripeSessionId      String?  @unique

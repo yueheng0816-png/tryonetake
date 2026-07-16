@@ -97,7 +97,7 @@ function GeneratePageInner() {
 
       const { urls: photoUrls } = await uploadRes.json();
 
-      // 2. Create order + Stripe checkout session
+      // 2. Create order + Creem checkout session
       const checkoutRes = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

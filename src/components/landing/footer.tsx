@@ -11,8 +11,11 @@ const footerLinks = {
     { label: "Blog", href: "/blog" },
     { label: "LinkedIn Headshots", href: "/use-cases/linkedin-headshots" },
     { label: "Corporate Headshots", href: "/use-cases/corporate-headshots" },
+    { label: "Actor Headshots", href: "/use-cases/actor-headshots" },
+    { label: "Realtor Headshots", href: "/use-cases/realtor-headshots" },
     { label: "OneTake vs HeadshotPro", href: "/vs/headshotpro" },
     { label: "OneTake vs Aragon AI", href: "/vs/aragon-ai" },
+    { label: "OneTake vs Traditional Photography", href: "/vs/traditional-photography" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy" },

@@ -1,10 +1,24 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
     "How OneTake collects, uses, and protects your personal data and photos. No data selling. Your photos are only used to generate your headshots.",
+  alternates: {
+    canonical: "/privacy",
+  },
+  openGraph: {
+    title: "Privacy Policy — OneTake",
+    description:
+      "How OneTake collects, uses, and protects your personal data and photos. No data selling.",
+    url: `${siteUrl}/privacy`,
+    siteName: "OneTake",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const Section = ({

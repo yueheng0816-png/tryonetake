@@ -4,6 +4,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -91,8 +92,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  // Verification for Google Search Console & Bing
-  // (add the content value from GSC after you verify)
+  verification: {
+    google: "N9l4zPahRdJ_BiBUHwLHyp4NV2v8pNIhyaFKgA7DrOo",
+  },
 };
 
 export default function RootLayout({
@@ -160,6 +162,7 @@ export default function RootLayout({
           <Footer />
           <Toaster position="top-center" richColors />
           <Analytics />
+          <SpeedInsights />
         </ClerkProvider>
       </body>
     </html>

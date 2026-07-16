@@ -1,10 +1,24 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
     "OneTake terms of service — account terms, acceptable use, AI-generated content, intellectual property, refunds, and liability limitations.",
+  alternates: {
+    canonical: "/terms",
+  },
+  openGraph: {
+    title: "Terms of Service — OneTake",
+    description:
+      "OneTake terms of service — account terms, acceptable use, AI-generated content, intellectual property, refunds, and liability limitations.",
+    url: `${siteUrl}/terms`,
+    siteName: "OneTake",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const Section = ({

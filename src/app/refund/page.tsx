@@ -1,10 +1,24 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
   title: "Refund Policy",
   description:
     "OneTake refund policy — automatic refunds for technical failures: full refund if all headshots fail, pro-rata refund for partial failures. Simple and fair.",
+  alternates: {
+    canonical: "/refund",
+  },
+  openGraph: {
+    title: "Refund Policy — OneTake",
+    description:
+      "OneTake refund policy — automatic refunds for technical failures: full refund if all headshots fail, pro-rata refund for partial failures.",
+    url: `${siteUrl}/refund`,
+    siteName: "OneTake",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const Section = ({

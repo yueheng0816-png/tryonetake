@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Download, Loader2 } from "lucide-react";
+import { Download, Loader2, Star, X } from "lucide-react";
 import { toast } from "sonner";
+import { TRUSTPILOT_REVIEW_URL } from "@/lib/constants";
 
 interface DownloadBarProps {
   orderId: string;
@@ -21,6 +22,8 @@ export function DownloadBar({
   onDeselectAll,
 }: DownloadBarProps) {
   const [downloading, setDownloading] = useState(false);
+  const [showReviewPrompt, setShowReviewPrompt] = useState(false);
+  const [reviewDismissed, setReviewDismissed] = useState(false);
   const selectedCount = selected.size;
 
   const handleDownload = async () => {
@@ -90,6 +93,11 @@ export function DownloadBar({
       }).catch(() => {
         // Silent — don't block the user on tracking failure
       });
+
+      // ── Review prompt: user just downloaded = happiest moment ──
+      if (!reviewDismissed) {
+        setShowReviewPrompt(true);
+      }
     } catch {
       toast.error("Download failed. Please try again.");
     } finally {
@@ -99,6 +107,43 @@ export function DownloadBar({
 
   return (
     <div className="sticky bottom-0 z-10 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
+      {/* Review prompt — shown after a successful download */}
+      {showReviewPrompt && !reviewDismissed && (
+        <div className="border-b bg-primary/5">
+          <div className="container mx-auto flex items-center justify-between gap-3 px-4 py-2.5">
+            <div className="flex items-center gap-2 text-sm">
+              <span className="flex text-amber-400">
+                <Star className="h-4 w-4 fill-current" />
+                <Star className="h-4 w-4 fill-current" />
+                <Star className="h-4 w-4 fill-current" />
+                <Star className="h-4 w-4 fill-current" />
+                <Star className="h-4 w-4 fill-current" />
+              </span>
+              <span className="font-medium">Happy with your headshots?</span>
+              <span className="hidden sm:inline text-muted-foreground">
+                A quick review helps others find us.
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href={TRUSTPILOT_REVIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-8 items-center rounded-md bg-primary px-3 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                Leave a review
+              </a>
+              <button
+                onClick={() => setReviewDismissed(true)}
+                className="text-muted-foreground hover:text-foreground p-1"
+                aria-label="Dismiss review prompt"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="container mx-auto flex items-center justify-between px-4 py-3">
         <div className="flex items-center gap-4">
           <span className="text-sm text-muted-foreground">

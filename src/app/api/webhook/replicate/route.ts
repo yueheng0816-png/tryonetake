@@ -152,6 +152,7 @@ export async function POST(req: Request) {
             errorMessages: true,
             predictionIds: true,
             refundStatus: true,
+            completedPredictions: true,
           },
         });
 
@@ -170,6 +171,23 @@ export async function POST(req: Request) {
             failedPredictions: finalOrder.failedPredictions,
             errorMessages: finalOrder.errorMessages,
           }).catch((e: unknown) => console.error("[OneTake] handleOrderCompletion failed:", e));
+        }
+
+        // ── Completion email (fully successful orders only) ──
+        // Partial-failure orders get the refund email instead
+        // (sent by handleOrderCompletion above) — avoid double-emailing.
+        if (finalOrder && finalOrder.failedPredictions === 0) {
+          const user = await db.user.findUnique({ where: { id: finalOrder.userId } });
+          if (user?.email && !user.email.endsWith("@onetake.local")) {
+            const { sendCompletionEmail } = await import("@/lib/email");
+            sendCompletionEmail({
+              to: user.email,
+              orderId: finalOrder.id,
+              photoCount: finalOrder.completedPredictions,
+            }).catch((e: unknown) =>
+              console.error("[OneTake] sendCompletionEmail failed:", e)
+            );
+          }
         }
       }
 

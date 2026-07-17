@@ -604,6 +604,241 @@ export const blogPosts: BlogPost[] = [
 <p>AI headshots are perfect for LinkedIn (everywhere) and CVs (outside the US/Canada). For US job applications, keep the photo off the resume — but make sure your LinkedIn profile photo is excellent, because recruiters <strong>will</strong> look you up there before calling you in.</p>
 <p>Need a professional headshot for LinkedIn or your CV? <a href="/generate">Generate 30 AI headshots in under 5 minutes — $19</a>. Also see: <a href="/blog/linkedin-profile-photo-ai-vs-photographer">LinkedIn AI photo vs photographer</a> and <a href="/blog/professional-headshots-cost-2026">headshot cost comparison</a>.</p>`,
   },
+  {
+    slug: "how-many-photos-do-you-need-for-ai-headshots",
+    title: "How Many Photos Do You Need for AI Headshots? (1 vs 20 Explained)",
+    description:
+      "Some AI headshot tools demand 15-20 selfies, others need just one photo. We explain why the photo count varies, which approach gives better results, and what actually matters for quality.",
+    keywords: [
+      "how many photos for AI headshots",
+      "AI headshot photo requirements",
+      "AI headshots one photo",
+      "how many selfies for AI headshots",
+      "AI headshot generator single photo",
+      "minimum photos AI headshot",
+    ],
+    date: "2026-07-28",
+    author: "OneTake Team",
+    readTime: "5 min read",
+    body: `<h2>The quick answer</h2>
+<p>It depends entirely on the technology the tool uses. Older AI headshot generators need <strong>8–20 photos</strong> because they fine-tune a custom model on your face. Newer tools built on advanced image models need <strong>just 1 photo</strong> because they preserve your identity directly from a single reference image.</p>
+
+<h2>Why do some tools need 15–20 photos?</h2>
+<p>Most first-generation AI headshot services (built on Stable Diffusion + Dreambooth or LoRA fine-tuning) work like this:</p>
+<ol>
+<li>You upload 10–20 photos of yourself from different angles</li>
+<li>The service trains a small custom model on your face (takes 30 minutes to 2 hours)</li>
+<li>The trained model generates new images of "you"</li>
+</ol>
+<p>The photo count exists because fine-tuning needs variety — different angles, lighting, and expressions — to learn what you look like. Too few photos and the model produces someone who looks vaguely like your cousin.</p>
+
+<h2>Why newer tools need just 1 photo</h2>
+<p>Modern image models like <strong>FLUX.2</strong> use identity-preserving image-to-image generation instead of fine-tuning. The model doesn't need to "learn" your face over dozens of examples — it reads your facial structure from a single reference photo and preserves it while changing the background, outfit, and lighting.</p>
+<p>The practical differences:</p>
+<table>
+<thead>
+<tr><th>Factor</th><th>Fine-tuning (15–20 photos)</th><th>Identity preservation (1 photo)</th></tr>
+</thead>
+<tbody>
+<tr><td>Photos required</td><td>8–20 selfies</td><td>1 photo</td></tr>
+<tr><td>Wait time</td><td>30 min – 3 hours</td><td>2–5 minutes</td></tr>
+<tr><td>Resemblance consistency</td><td>Varies — depends on training quality</td><td>High — same reference every image</td></tr>
+<tr><td>Effort to prepare</td><td>Dig through camera roll for 20 usable photos</td><td>Take one good selfie</td></tr>
+<tr><td>Typical price</td><td>$29–79</td><td>$19–35</td></tr>
+</tbody>
+</table>
+
+<h2>Is more photos ever better?</h2>
+<p>In theory, fine-tuning on many photos can capture more of your "range" — how you look from very different angles. In practice, most users report the opposite problem: <strong>inconsistency</strong>. With 20 training photos of varying quality (old photos, different haircuts, bad lighting), the model averages them into someone who looks 80% like you. One clean, recent, well-lit photo often beats twenty mediocre ones.</p>
+<p>This is the same reason we wrote about <a href="/blog/do-ai-headshots-look-like-you">why some AI headshots don't look like you</a> — garbage in, garbage out applies to both approaches, but it compounds across 20 photos.</p>
+
+<h2>What matters more than photo count: photo quality</h2>
+<p>Whichever tool you use, the reference photo(s) quality determines 90% of the result. The checklist:</p>
+<ul>
+<li><strong>Recent</strong> — taken within the last year, current haircut</li>
+<li><strong>Sharp and well-lit</strong> — natural daylight facing you, no harsh shadows</li>
+<li><strong>Face clearly visible</strong> — no sunglasses, no heavy filters, no extreme angles</li>
+<li><strong>Neutral or natural expression</strong> — matches how you want to appear professionally</li>
+<li><strong>Decent resolution</strong> — at least 1000px on the short side; front-camera selfies are fine</li>
+</ul>
+<p>Full guide: <a href="/blog/how-to-take-perfect-selfie-for-ai-headshots">how to take the perfect selfie for AI headshots</a>.</p>
+
+<h2>The bottom line</h2>
+<p>Don't judge an AI headshot service by how many photos it demands — judge it by results. If you have one good recent photo, a single-photo tool gets you professional headshots in minutes instead of hours of photo-hunting and model training.</p>
+<p>OneTake needs exactly <strong>1 photo</strong> and delivers 30 professional headshots in under 5 minutes. <a href="/generate">Try it for $19</a> — or read more about <a href="/blog/what-to-wear-for-ai-headshots">what to wear</a> and <a href="/blog/professional-headshots-cost-2026">how AI pricing compares to studio photography</a>.</p>`,
+  },
+  {
+    slug: "why-do-my-ai-headshots-look-weird",
+    title: "Why Do My AI Headshots Look Weird? 9 Common Problems (And Fixes)",
+    description:
+      "AI headshot looks off? Plastic skin, wrong age, dead eyes, mangled hands — we diagnose the 9 most common AI headshot problems, explain what causes each one, and show you exactly how to fix them.",
+    keywords: [
+      "why do my AI headshots look weird",
+      "AI headshot problems",
+      "AI headshot doesn't look like me",
+      "AI headshot plastic skin",
+      "AI headshot fails",
+      "fix bad AI headshots",
+      "AI photo looks fake",
+    ],
+    date: "2026-07-30",
+    author: "OneTake Team",
+    readTime: "7 min read",
+    body: `<h2>Bad AI headshots are usually diagnosable</h2>
+<p>If your AI headshots came back looking uncanny, plasticky, or like a stranger wearing your face — the problem is almost always one of nine specific failure modes. Here's each one, what causes it, and how to fix it.</p>
+
+<h2>1. It doesn't look like you</h2>
+<p><strong>Cause:</strong> Either your source photos were inconsistent (old photos mixed with new, different haircuts), or the tool uses aggressive fine-tuning that "averages" your features toward generic attractiveness.</p>
+<p><strong>Fix:</strong> Use one recent, clear, well-lit photo with a tool that does identity preservation rather than heavy fine-tuning. We wrote a full deep-dive: <a href="/blog/do-ai-headshots-look-like-you">do AI headshots actually look like you?</a></p>
+
+<h2>2. Plastic, airbrushed skin</h2>
+<p><strong>Cause:</strong> The model over-smooths skin texture — common with older Stable Diffusion pipelines and tools that push a "beauty filter" aesthetic by default.</p>
+<p><strong>Fix:</strong> Look for tools running modern models (FLUX.2-class) that preserve natural skin texture — pores, fine lines, and all. Real skin has texture; if a sample gallery shows porcelain-doll faces, keep shopping.</p>
+
+<h2>3. You look 10 years older (or younger)</h2>
+<p><strong>Cause:</strong> This is a known quirk of several image models — prompts containing words like "professional", "executive", or "distinguished" subtly push apparent age upward. Poor lighting in the source photo amplifies it.</p>
+<p><strong>Fix:</strong> Well-designed prompt engineering. At OneTake we specifically strip age-related descriptors from every generation prompt after testing showed even indirect words ("seasoned", "experienced") aged the output. If a tool lets you write custom prompts, avoid any age-adjacent language.</p>
+
+<h2>4. Dead or misaligned eyes</h2>
+<p><strong>Cause:</strong> Eyes are the hardest facial feature for AI. Low-resolution source photos, or source photos where you're not looking at the camera, produce vacant or crossed-looking eyes.</p>
+<p><strong>Fix:</strong> Use a source photo looking directly into the lens, taken in good light. Check candidates at full zoom before uploading.</p>
+
+<h2>5. Forced, unnatural smile</h2>
+<p><strong>Cause:</strong> The tool's prompts force an expression your source photo doesn't have. Making a neutral face "smile broadly" requires the AI to invent teeth and reshape facial muscles — a top source of identity drift.</p>
+<p><strong>Fix:</strong> Match expression to source: if your photo is neutral, generate neutral/composed headshots. Tools that force one expression style across all outputs produce the weird ones. (This is why OneTake's templates avoid facial-muscle directives entirely — the expression you upload is the expression you get.)</p>
+
+<h2>6. Mangled hands, collars, or jewelry</h2>
+<p><strong>Cause:</strong> AI models still struggle with hands, glasses stems, shirt collars, and earrings — anything with fine geometric structure near the face.</p>
+<p><strong>Fix:</strong> Upload photos without hands near your face. Skip source photos with heavy jewelry or complex glasses if you notice artifacts. Most tools generate multiple variations — expect to discard the 10–20% with glitches and keep the winners.</p>
+
+<h2>7. Wrong clothing for your gender or profession</h2>
+<p><strong>Cause:</strong> Generic prompt libraries. Early tools were notorious for putting men in blouses or generating hospital scrubs for accountants.</p>
+<p><strong>Fix:</strong> Use tools that ask about your profession and gender presentation, then tailor outfits accordingly. OneTake's templates carry explicit gender-specific outfit variants and <a href="/use-cases">profession-matched wardrobes</a> for exactly this reason.</p>
+
+<h2>8. Dark, moody, or inconsistent lighting</h2>
+<p><strong>Cause:</strong> "Dramatic" or "cinematic" prompt styles produce shadowy results that look great as art but wrong as professional headshots — and dim scenes amplify every other artifact on this list.</p>
+<p><strong>Fix:</strong> Professional headshots need bright, even lighting. Check the tool's sample gallery: if outputs trend dark and contrasty, that's the house style you'll get too.</p>
+
+<h2>9. Weird backgrounds — floating furniture, impossible offices</h2>
+<p><strong>Cause:</strong> The model hallucinates background details, especially with complex scene prompts.</p>
+<p><strong>Fix:</strong> Softly blurred backgrounds (bokeh) hide a multitude of sins — it's also what real portrait photographers do with wide apertures. Crisp, in-focus backgrounds are where hallucinations become visible.</p>
+
+<h2>The pattern behind all nine problems</h2>
+<p>Notice the theme: <strong>half these problems come from your source photo, half from the tool's prompt engineering.</strong> You control the first half — <a href="/blog/how-to-take-perfect-selfie-for-ai-headshots">take one good selfie</a>. The second half you control by choosing a tool that's done the prompt-engineering homework.</p>
+<p>OneTake generates 30 headshots from 1 photo with templates specifically engineered against these failure modes — no forced smiles, no dark scenes, gender-correct outfits, no age drift. <a href="/generate">See for yourself — $19</a>.</p>`,
+  },
+  {
+    slug: "can-recruiters-tell-ai-headshots",
+    title: "Can Recruiters Tell If Your Headshot Is AI? We Looked at the Data",
+    description:
+      "Studies show ~60% of recruiters can't identify AI headshots. We break down the research, what actually makes recruiters suspicious, and the one rule that keeps AI headshots professional and safe.",
+    keywords: [
+      "can recruiters tell AI headshots",
+      "do recruiters care about AI headshots",
+      "AI headshot detection",
+      "is it obvious AI headshot",
+      "AI headshots professional opinion",
+      "recruiters AI profile photo",
+    ],
+    date: "2026-08-01",
+    author: "OneTake Team",
+    readTime: "6 min read",
+    body: `<h2>The data: most recruiters can't tell</h2>
+<p>Multiple studies through 2025–2026 put the number around <strong>60% of recruiters unable to reliably distinguish modern AI headshots from studio photography</strong> — and that figure climbs higher when photos are viewed at LinkedIn thumbnail size, which is how recruiters actually see them.</p>
+<p>Think about the viewing context: a recruiter scanning LinkedIn sees your photo at roughly 100–200 pixels wide for about two seconds. At that size, even mediocre AI headshots pass. Good ones pass at full size.</p>
+
+<h2>What recruiters actually notice (it's not what you think)</h2>
+<p>When researchers ask recruiters what makes them suspicious of a profile photo, the answers are rarely "it looks AI-generated." The actual red flags:</p>
+<ul>
+<li><strong>The photo doesn't match the person on the video call.</strong> This is the #1 issue by a wide margin — and it applies equally to 10-year-old photos, heavy filters, and badly-done AI.</li>
+<li><strong>Over-perfection.</strong> Poreless skin, impossibly white teeth, magazine lighting on a junior analyst's profile. Reads as vain or fake — whether it's AI or Photoshop.</li>
+<li><strong>Inconsistency across platforms.</strong> LinkedIn photo shows a polished executive; the same person's company bio photo shows someone quite different. Which one is real?</li>
+</ul>
+<p>Notice: all three red flags are about <em>authenticity</em>, not <em>technology</em>. Recruiters don't run AI detectors. They pattern-match on "does this person seem real and consistent?"</p>
+
+<h2>The one rule: your headshot must look like you</h2>
+<p>Here's the professional consensus, straight from hiring managers: <strong>how the photo was made doesn't matter; whether it honestly represents you does.</strong></p>
+<p>An AI headshot that preserves your actual face — your features, your skin, your natural expression — in better lighting and a cleaner background is functionally identical to hiring a photographer. An AI headshot that gives you a jaw you don't have and removes 15 years is a misrepresentation, and it will backfire the moment you join a video interview.</p>
+<p>We've written more on this line: <a href="/blog/are-ai-headshots-ethical">are AI headshots ethical?</a> and <a href="/blog/do-ai-headshots-look-like-you">do AI headshots look like you?</a></p>
+
+<h2>What gives away a bad AI headshot</h2>
+<p>The 40% of recruiters who sometimes spot AI photos are spotting <em>bad</em> AI photos. The tells:</p>
+<table>
+<thead>
+<tr><th>Tell</th><th>Why it happens</th></tr>
+</thead>
+<tbody>
+<tr><td>Plastic, poreless skin</td><td>Older models over-smooth texture</td></tr>
+<tr><td>Warped glasses, earrings, collars</td><td>AI struggles with fine geometry</td></tr>
+<tr><td>Vacant or asymmetric eyes</td><td>Low-quality source photo</td></tr>
+<tr><td>Hair melting into the background</td><td>Edge-detection failures</td></tr>
+<tr><td>Cinematic movie-poster lighting</td><td>Wrong prompt style for professional context</td></tr>
+</tbody>
+</table>
+<p>Every one of these is avoidable — see our full diagnostic guide: <a href="/blog/why-do-my-ai-headshots-look-weird">why do my AI headshots look weird?</a></p>
+
+<h2>Should you disclose that your headshot is AI?</h2>
+<p>There's no norm requiring it, and recruiters we've seen surveyed overwhelmingly say they don't expect disclosure — the same way nobody discloses professional retouching, which has been standard in corporate photography for decades. The ethical line isn't the tool; it's accuracy. If your photo looks like you, no one needs a footnote about the camera.</p>
+
+<h2>The bottom line</h2>
+<p>Recruiters can't reliably detect good AI headshots, and more importantly, they don't care about the technology — they care that you look like your photo. Use a tool that preserves your real face, pick outputs that honestly resemble you, and you're on the right side of both the data and the ethics.</p>
+<p>OneTake is built for exactly this: identity preservation first, so your headshots look like <em>you on your best day</em> — not a stranger. <a href="/generate">Generate 30 headshots from 1 photo — $19</a>. Related: <a href="/blog/can-you-use-ai-headshots-on-resume">can you use AI headshots on your resume?</a></p>`,
+  },
+  {
+    slug: "are-ai-headshots-safe-privacy",
+    title: "Are AI Headshots Safe? Privacy, Photo Rights & Data Explained (2026)",
+    description:
+      "What happens to your photos after you upload them to an AI headshot generator? The 6 privacy questions to ask any tool, red flags to avoid, and how GDPR/CCPA protect your face data.",
+    keywords: [
+      "are AI headshots safe",
+      "AI headshot privacy",
+      "AI headshot data security",
+      "what happens to photos AI generator",
+      "AI photo privacy concerns",
+      "is it safe to upload photos to AI",
+      "AI headshot photo rights",
+    ],
+    date: "2026-08-03",
+    author: "OneTake Team",
+    readTime: "6 min read",
+    body: `<h2>The concern is legitimate</h2>
+<p>You're uploading clear, high-quality photos of your face to a company you found twenty minutes ago. It's entirely reasonable to ask: where do these photos go, who can access them, and could they end up training some model or — worse — in a dataset breach?</p>
+<p>The AI headshot industry has real variation here. Some services are transparent and conservative with your data; others bury broad usage rights in their terms. Here's how to tell the difference.</p>
+
+<h2>The 6 questions to ask any AI headshot service</h2>
+<ol>
+<li><strong>Are my photos used to train AI models?</strong> The most important question. Reputable services use your photos only to generate <em>your</em> headshots. Red flag: terms granting "perpetual, irrevocable license to use uploaded content for service improvement" — that's training-data language.</li>
+<li><strong>How long are my photos stored?</strong> Look for a concrete retention answer — whether that's automatic deletion after N days or storage until you delete them. Red flag: no retention policy mentioned anywhere.</li>
+<li><strong>Can I delete my data?</strong> Under GDPR (EU) and CCPA (California), you have a legal right to deletion. Any service should honor a deletion request for both uploaded and generated photos.</li>
+<li><strong>Who owns the generated headshots?</strong> You should. Most reputable services grant you full commercial rights to your generated images. Red flag: the service retains rights to display your face in their marketing without explicit opt-in consent.</li>
+<li><strong>Are photos shared with third parties?</strong> Most AI services run generation on cloud GPU providers — that's normal and disclosed. What matters is whether those processors are bound to process-only terms (they don't keep or train on your data).</li>
+<li><strong>Is payment handled securely?</strong> Look for established payment processors (Stripe, Paddle, Creem, PayPal). A service hand-rolling its own card forms is a red flag well beyond privacy.</li>
+</ol>
+
+<h2>How OneTake handles your photos</h2>
+<ul>
+<li><strong>Generation only.</strong> Your uploaded photos are used to generate your headshots — not to train models.</li>
+<li><strong>You own your headshots.</strong> Full rights to use them anywhere: LinkedIn, your company site, print.</li>
+<li><strong>Deletion on request.</strong> Email support@tryonetake.com and we remove your uploaded and generated photos.</li>
+<li><strong>Established processors.</strong> Payments run through Creem (a merchant of record); we never see your card number.</li>
+</ul>
+<p>Full details in our <a href="/privacy">privacy policy</a> — it's short and in plain English.</p>
+
+<h2>Practical safety habits for any AI photo service</h2>
+<ul>
+<li><strong>Read the privacy policy's "how we use your data" section</strong> — 2 minutes, and the training-data language is easy to spot once you know to look.</li>
+<li><strong>Upload only what's needed.</strong> A headshot service needs photos of your face — not your passport, not photos with your kids, not images with visible home addresses.</li>
+<li><strong>Prefer one-time-purchase services.</strong> Subscription photo services have a business incentive to keep your data; one-time services don't.</li>
+<li><strong>Use the deletion right.</strong> Happy with your headshots? Download them, then request source-photo deletion if you don't plan to regenerate.</li>
+</ul>
+
+<h2>What about deepfake risk?</h2>
+<p>A fair question: could someone else upload <em>your</em> photos and generate images of you? Technically, any photo of you that exists publicly (your current LinkedIn photo, say) already carries this risk with any image tool on the internet — it's not specific to headshot generators. Reputable headshot services mitigate abuse with content moderation on prompts and outputs. The practical takeaway: this risk exists independently of whether <em>you</em> use AI headshots, so it shouldn't factor into your decision.</p>
+
+<h2>The bottom line</h2>
+<p>AI headshots are safe when the service is transparent: photos used for generation only, clear deletion rights, established payment rails, and you own the output. Spend two minutes on the privacy policy before uploading — and avoid any service whose terms read like a data-harvesting operation with a headshot feature attached.</p>
+<p>Questions about how we handle data? Read the <a href="/privacy">OneTake privacy policy</a> or email us. Ready to go? <a href="/generate">30 professional headshots from 1 photo — $19</a>. Related reading: <a href="/blog/are-ai-headshots-ethical">are AI headshots ethical?</a></p>`,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

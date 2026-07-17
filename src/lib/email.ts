@@ -1,4 +1,5 @@
 import { Resend } from "resend";
+import { TRUSTPILOT_REVIEW_URL } from "./constants";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
@@ -8,6 +9,49 @@ const FROM_EMAIL = "OneTake <noreply@tryonetake.com>";
 export function isEmailConfigured(): boolean {
   const key = process.env.RESEND_API_KEY;
   return !!key && key.length > 0;
+}
+
+/** Notify the user their headshots are ready (with review CTA) */
+export async function sendCompletionEmail(params: {
+  to: string;
+  orderId: string;
+  photoCount: number;
+}) {
+  if (!isEmailConfigured()) {
+    console.warn("[OneTake] RESEND_API_KEY not configured — skipping completion email");
+    return;
+  }
+
+  const { to, orderId, photoCount } = params;
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "https://tryonetake.com";
+  const resultsUrl = `${baseUrl}/results/${orderId}`;
+
+  try {
+    await resend.emails.send({
+      from: FROM_EMAIL,
+      to,
+      subject: `Your ${photoCount} AI headshots are ready! 📸`,
+      html: `
+        <div style="max-width:480px;margin:0 auto;font-family:system-ui,sans-serif">
+          <h2 style="color:#333">Your headshots are ready!</h2>
+          <p>All ${photoCount} professional headshots have been generated and are waiting for you.</p>
+          <a href="${resultsUrl}" style="display:inline-block;background:#18181b;color:#fff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:600;margin:16px 0">
+            View &amp; Download Your Headshots
+          </a>
+          <p style="color:#666;font-size:14px;margin-top:24px">
+            Happy with the results? We'd love a quick review — it takes 60 seconds and helps other professionals find us:
+          </p>
+          <a href="${TRUSTPILOT_REVIEW_URL}" style="color:#00b67a;font-weight:600;font-size:14px">
+            ⭐ Leave a review on Trustpilot
+          </a>
+          <p style="color:#999;font-size:12px;margin-top:24px">Questions? Reply to this email or contact support@tryonetake.com</p>
+        </div>
+      `,
+    });
+    console.log(`[OneTake] Completion email sent to ${to} for order ${orderId}`);
+  } catch (error) {
+    console.error("[OneTake] Failed to send completion email:", error);
+  }
 }
 
 /** Notify the user about a refund */

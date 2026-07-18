@@ -14,6 +14,7 @@ interface OrderData {
   status: string;
   plan: string;
   outputPhotos: string[];
+  predictionIds: string[];
   completedPredictions: number;
   refundedAmount: number;
   refundStatus: string | null;
@@ -88,9 +89,17 @@ export default function ResultsPage() {
     return () => clearInterval(interval);
   }, [polling, fetchOrder, orderId]);
 
-  // Auto-trigger generation if order is still pending (no webhook in local dev)
+  // Auto-trigger generation if order has no predictions yet
+  // Handles two cases:
+  //   1. "pending" — webhook never fired (local dev, or Creem webhook delayed)
+  //   2. "paid" — webhook fired, claimed the order, but startBatchGeneration
+  //      silently failed (e.g., Replicate API token missing, prompt error)
   useEffect(() => {
-    if (!order || order.status !== "pending" || triggering) return;
+    if (!order || triggering) return;
+    const needsTrigger =
+      order.status === "pending" ||
+      (order.status === "paid" && !order.predictionIds?.some(Boolean));
+    if (!needsTrigger) return;
 
     setTriggering(true);
     fetch(`/api/orders/${orderId}/trigger`, { method: "POST" })

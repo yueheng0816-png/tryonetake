@@ -41,16 +41,7 @@ export async function POST(
     return new NextResponse("Not found", { status: 404 });
   }
 
-  // Already past pending — nothing to do
-  if (order.status !== "pending") {
-    return NextResponse.json({
-      status: order.status,
-      triggered: false,
-      alreadyTriggered: true,
-    });
-  }
-
-  // Already has prediction IDs (duplicate trigger or webhook won) — skip
+  // Already has prediction IDs — generation already in progress or done
   if (order.predictionIds?.some(Boolean)) {
     return NextResponse.json({
       status: order.status,
@@ -68,25 +59,38 @@ export async function POST(
     });
   }
 
-  // ── Atomic claim: only one path (webhook or trigger) can win ──
-  // Uses updateMany with status filter — if the webhook already
-  // claimed this order, count will be 0 and we bail.
-  const claim = await db.order.updateMany({
-    where: { id, status: "pending" },
-    data: { status: "paid" },
-  });
-
-  if (claim.count === 0) {
-    // Webhook already claimed it or order is no longer pending
-    const current = await db.order.findUnique({
-      where: { id },
-      select: { status: true },
-    });
+  // Only trigger on "pending" or "paid" orders that have no predictions.
+  // "paid" with no predictions = webhook claimed the order but
+  // startBatchGeneration silently failed. "pending" = webhook never fired.
+  if (order.status !== "pending" && order.status !== "paid") {
     return NextResponse.json({
-      status: current?.status ?? "unknown",
+      status: order.status,
       triggered: false,
       alreadyTriggered: true,
     });
+  }
+
+  // ── Atomic claim: ensure we own this trigger ──
+  // Only claim "pending" orders — "paid" orders were already claimed by
+  // the webhook (which changed the status), we're here to retry generation.
+  const wasPending = order.status === "pending";
+  if (wasPending) {
+    const claim = await db.order.updateMany({
+      where: { id, status: "pending" },
+      data: { status: "paid" },
+    });
+    if (claim.count === 0) {
+      // Another trigger or webhook beat us
+      const current = await db.order.findUnique({
+        where: { id },
+        select: { status: true, predictionIds: true },
+      });
+      return NextResponse.json({
+        status: current?.status ?? "unknown",
+        triggered: false,
+        alreadyTriggered: (current?.predictionIds?.some(Boolean)) ?? false,
+      });
+    }
   }
 
   try {

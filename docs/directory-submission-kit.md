@@ -44,7 +44,7 @@ Every order includes 30 unique variations across studio, office, and lifestyle s
 ### 分类/标签（按目录的分类体系选最接近的）
 ```
 主分类: Image Generation / Photo Editing / Avatar Generator
-标签: ai headshshot, professional headshots, linkedin photo, profile picture, portrait generator, photo enhancement
+标签: ai headshot, professional headshots, linkedin photo, profile picture, portrait generator, photo enhancement
 ```
 
 ### 定价信息
@@ -75,23 +75,25 @@ support@tryonetake.com
 > ⚠️ 部分站需要注册账号，统一用 support@tryonetake.com 注册方便管理。
 
 ### 第一梯队（权重高，先提交）
-- [ ] **There's An AI For That** — https://theresanaiforthat.com/submit/ （用户按任务搜"headshot"，流量真实）
-- [ ] **Futurepedia** — https://www.futurepedia.io/submit-tool （DR 69，免费基础版即可，别买 $250 featured）
-- [ ] **Toolify** — https://www.toolify.ai/submit （顺便看竞品流量估算）
-- [ ] **Product Hunt**（先建 product 页占位，正式 launch 另择日） — https://www.producthunt.com/products/new
 - [ ] **SaaSHub** — https://www.saashub.com/submit
 - [ ] **AlternativeTo** — https://alternativeto.net/manage-item/ （提交时把 HeadshotPro/Aragon 列为 alternatives，蹭它们的页面流量）
+- [ ] **Toolify** — https://www.toolify.ai/submit （顺便看竞品流量估算）
+- [ ] **Futurepedia** — https://www.futurepedia.io/submit-tool （DR 69，免费基础版即可，别买 $250 featured）
+- [ ] **Product Hunt**（先建 product 页占位，正式 launch 另择日） — https://www.producthunt.com/products/new
+
+### 付费待定（先跑完免费的，看数据再决定）
+- [ ] **There's An AI For That** — https://theresanaiforthat.com/getfeatured/ ⚠️ 已改为付费提交。目录里流量最大、按任务搜索意图最准，如果只买一个付费位选它。等免费目录两周数据出来再决定。
 
 ### 第二梯队（免费收录类）
 - [ ] **Uneed** — https://www.uneed.best/submit-a-tool
-- [ ] **OpenAlternative** — https://openalternative.co/submit
 - [ ] **eliteai.tools** — https://eliteai.tools/submit
 - [ ] **AI Agents Directory** — https://aiagentsdirectory.com/submit-agent
 - [ ] **Startup Stash** — https://startupstash.com/add-listing/
 - [ ] **BetaList** — https://betalist.com/submit （偏早期产品，也收 launched）
-- [ ] **DevHunt** — https://devhunt.org （GitHub 账号登录提交）
 - [ ] **MicroLaunch** — https://microlaunch.net/submit
 - [ ] **Peerlist Launchpad** — https://peerlist.io/launchpad
+
+> ⚠️ 注意：遇到 "Is it open source?" 字段一律选 **No** —— OneTake 是商业闭源产品。只收开源项目的目录（如 OpenAlternative）不要提交，会被拒。
 
 ### 第三梯队（2026 新目录，dofollow 外链）
 - [ ] **ToolListed** — https://toollisted.com/submit
@@ -121,7 +123,7 @@ support@tryonetake.com
 
 注册信息统一用：
 ```
-Name: [你的英文名或 Yueheng]
+Name: Elvis
 Title: Founder, OneTake
 Company: OneTake (tryonetake.com)
 Expertise: AI image generation, professional branding, remote work culture, small business tools
@@ -140,7 +142,8 @@ generator. [One sentence on why you're qualified for THIS question.]
 
 Happy to expand on any of this. Headshot and bio available on request.
 
-[Name]
+Elvis
+Founder, OneTake (tryonetake.com)
 ```
 
 ### 监控哪些话题

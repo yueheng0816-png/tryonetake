@@ -70,17 +70,17 @@ export async function POST(
     });
   }
 
-  // ── Atomic claim: ensure we own this trigger ──
-  // Only claim "pending" orders — "paid" orders were already claimed by
-  // the webhook (which changed the status), we're here to retry generation.
-  const wasPending = order.status === "pending";
-  if (wasPending) {
+  // ── Atomic claim: ensure only ONE trigger starts generation ──
+  // "pending" → "paid": webhook never fired, we claim the order.
+  // "paid" → "generating": webhook fired but generation failed silently.
+  // Both transitions are atomic — if another process claims first,
+  // count will be 0 and we bail.
+  if (order.status === "pending") {
     const claim = await db.order.updateMany({
       where: { id, status: "pending" },
       data: { status: "paid" },
     });
     if (claim.count === 0) {
-      // Another trigger or webhook beat us
       const current = await db.order.findUnique({
         where: { id },
         select: { status: true, predictionIds: true },
@@ -89,6 +89,21 @@ export async function POST(
         status: current?.status ?? "unknown",
         triggered: false,
         alreadyTriggered: (current?.predictionIds?.some(Boolean)) ?? false,
+      });
+    }
+  } else {
+    // order.status === "paid" — atomically transition to "generating"
+    const claim = await db.order.updateMany({
+      where: { id, status: "paid" },
+      data: { status: "generating" },
+    });
+    if (claim.count === 0) {
+      // Another trigger, webhook retry, or the results page auto-trigger
+      // already started generation — don't duplicate.
+      return NextResponse.json({
+        status: "generating",
+        triggered: false,
+        alreadyTriggered: true,
       });
     }
   }

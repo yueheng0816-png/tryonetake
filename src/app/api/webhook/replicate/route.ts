@@ -103,12 +103,12 @@ export async function POST(req: Request) {
         outputPhotos.push(outputUrl);
       }
 
-      // totalExpected: prefer exact count from predictionIds;
-      // fall back to PHOTOS_PER_ORDER for the race window before
-      // startBatchGeneration writes predictionIds to DB
-      const totalExpected = order.predictionIds.length > 0
-        ? order.predictionIds.filter(Boolean).length
-        : PHOTOS_PER_ORDER;
+      // totalExpected: always expect PHOTOS_PER_ORDER photos.
+      // Using filter(Boolean) on predictionIds undercounts when a batch
+      // was aborted early (empty strings for failed slots), causing the
+      // order to be marked "completed" after only a few webhooks arrive
+      // and silently dropping the rest.
+      const totalExpected = PHOTOS_PER_ORDER;
       const completedCount = order.completedPredictions + 1;
       const allDone = completedCount >= totalExpected;
 

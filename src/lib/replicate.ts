@@ -337,6 +337,10 @@ export async function startBatchGeneration(params: {
   );
 
   let consecutiveFailures = 0;
+  /** Max retries per prediction slot on transient errors */
+  const MAX_SLOT_RETRIES = 3;
+  /** Base delay between slot retries (ms) — exponential backoff */
+  const SLOT_RETRY_BASE_DELAY = 3000;
 
   for (let i = 0; i < assignments.length; i++) {
     const a = assignments[i];
@@ -344,34 +348,85 @@ export async function startBatchGeneration(params: {
     const finalPrompt = buildFinalPrompt(a.prompt, style);
 
     const isHttps = webhookUrl.startsWith("https://");
-    const result = await createPrediction({
-      photoUrl,
-      prompt: finalPrompt,
-      plan,
-      webhookUrl: isHttps ? `${webhookUrl}&index=${i}` : undefined,
-    });
 
-    if ("prediction" in result) {
-      consecutiveFailures = 0;
-      predictionIds.push(result.prediction.id);
-      promptIds.push(a.promptId);
-      console.log(
-        `[OneTake] Prediction ${i + 1}/${total}: ${result.prediction.id} ← ${a.promptId}`
+    // ── Per-slot retry loop ──
+    // Transient failures (moderation timeout, Replicate 429) retry
+    // with backoff. Only permanent errors count toward abort.
+    let slotSucceeded = false;
+    let slotError = "";
+    let slotAttempts = 0;
+
+    for (let attempt = 0; attempt <= MAX_SLOT_RETRIES; attempt++) {
+      if (attempt > 0) {
+        const delay = SLOT_RETRY_BASE_DELAY * Math.pow(2, attempt - 1);
+        console.warn(
+          `[OneTake] Slot ${i + 1}/${total} retry ${attempt}/${MAX_SLOT_RETRIES} (${delay / 1000}s wait)...`
+        );
+        await new Promise((r) => setTimeout(r, delay));
+      }
+      slotAttempts++;
+
+      const result = await createPrediction({
+        photoUrl,
+        prompt: finalPrompt,
+        plan,
+        webhookUrl: isHttps ? `${webhookUrl}&index=${i}` : undefined,
+      });
+
+      if ("prediction" in result) {
+        slotSucceeded = true;
+        predictionIds.push(result.prediction.id);
+        promptIds.push(a.promptId);
+        console.log(
+          `[OneTake] Prediction ${i + 1}/${total}: ${result.prediction.id} ← ${a.promptId}` +
+            (attempt > 0 ? ` (recovered after ${attempt} retry)` : "")
+        );
+        break;
+      }
+
+      // Classify: transient error → retry; permanent → skip slot
+      const err = result.error;
+      slotError = err;
+      const isTransient =
+        err.includes("429") ||
+        err.includes("rate limit") ||
+        err.includes("too many requests") ||
+        err.includes("ETIMEDOUT") ||
+        err.includes("ECONNRESET") ||
+        err.includes("fetch failed") ||
+        err.includes("network") ||
+        err.includes("moderation_unavailable") ||
+        err.includes("timeout");
+
+      if (!isTransient) {
+        console.error(
+          `[OneTake] Slot ${i + 1}/${total} permanent error: ${err}`
+        );
+        break;
+      }
+
+      console.warn(
+        `[OneTake] Slot ${i + 1}/${total} transient (attempt ${attempt + 1}): ${err}`
       );
+    }
+
+    if (slotSucceeded) {
+      consecutiveFailures = 0;
     } else {
       consecutiveFailures++;
       console.error(
         `[OneTake] Failed prediction ${i + 1}/${total} ` +
-          `(${consecutiveFailures} consecutive): ${result.error}`
+          `(${consecutiveFailures} consecutive, ${slotAttempts} attempts exhausted): ${slotError}`
       );
-      errors.push(`#${i + 1}: ${result.error}`);
+      errors.push(`#${i + 1}: ${slotError}`);
       predictionIds.push("");
       promptIds.push(a.promptId);
 
-      // Abort if 10 consecutive predictions fail (was 5, relaxed for rate limits)
-      if (consecutiveFailures >= 10) {
+      // Abort if 15 consecutive slots fail AFTER exhausting retries.
+      // Per-slot retry means transient rate-limit waves won't kill the batch.
+      if (consecutiveFailures >= 15) {
         console.error(
-          `[OneTake] Aborting batch — ${consecutiveFailures} consecutive failures`
+          `[OneTake] Aborting batch — ${consecutiveFailures} consecutive slots failed after retries`
         );
         break;
       }

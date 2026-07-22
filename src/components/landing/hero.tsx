@@ -118,21 +118,16 @@ export function Hero() {
           </p>
 
           {/* CTA */}
-          <div className="mt-6 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          <div className="mt-6 flex flex-col items-center gap-4">
             <Link href={isSignedIn ? "/generate?free=true" : "/sign-up?redirect=free"}>
-              <Button variant="outline" size="lg" className="h-12 px-8 text-base">
-                Try free
-              </Button>
-            </Link>
-            <Link href={isSignedIn ? "/generate" : "/sign-up"}>
               <Button size="lg" className="h-12 px-8 text-base">
-                Get your headshots — $19
+                Try free
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
             <div className="flex items-center gap-2 text-base text-muted-foreground">
               <ShieldCheck className="h-4 w-4 text-green-500" />
-              Automatic refund if generation fails
+              No credit card required · 1 photo · 5 minutes
             </div>
           </div>
 

@@ -15,10 +15,9 @@ const plans = [
     upload: "1 photo",
     features: [
       "FLUX.2 pro model (same as Starter)",
-      "1 watermarked headshot",
+      "1 professional headshot",
       "Natural style",
-      "Try before you buy",
-      "Upgrade anytime",
+      "Upgrade to Starter or Pro anytime",
     ],
     cta: "Try free",
     href: "/sign-up?redirect=free",

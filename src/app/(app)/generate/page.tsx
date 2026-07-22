@@ -270,8 +270,7 @@ function GeneratePageInner() {
             </select>
           </div>
 
-          {/* Specific Role (optional — paid only, needs AI custom prompts) */}
-          {!isFree && (
+          {/* Specific Role (optional) */}
           <div className="space-y-2">
             <label className="flex items-center gap-2 text-base font-medium text-muted-foreground">
               <Briefcase className="h-4 w-4" />
@@ -286,10 +285,11 @@ function GeneratePageInner() {
               maxLength={120}
             />
             <p className="text-xs text-muted-foreground">
-              Describe your role for better-matched backgrounds and scenes
+              {isFree
+                ? "Describe your role for better-matched scenes (available with Starter & Pro)"
+                : "Describe your role for better-matched backgrounds and scenes"}
             </p>
           </div>
-          )}
         </div>
 
         {/* ── Style ───────────────────────────────────────── */}

@@ -331,6 +331,7 @@ export default function ResultsPage() {
         selected={selected}
         onSelectAll={handleSelectAll}
         onDeselectAll={handleDeselectAll}
+        watermark={isFree ? WATERMARK_TEXT : undefined}
       />
     </div>
   );

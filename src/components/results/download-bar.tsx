@@ -12,6 +12,55 @@ interface DownloadBarProps {
   selected: Set<number>;
   onSelectAll: () => void;
   onDeselectAll: () => void;
+  /** Watermark text to apply on download (free preview mode) */
+  watermark?: string;
+}
+
+/**
+ * Apply a single bottom-right watermark to an image blob via Canvas.
+ * Returns a new watermarked blob, or the original blob on failure.
+ */
+async function applyWatermark(blob: Blob, text: string): Promise<Blob> {
+  try {
+    const img = new Image();
+    const objectUrl = URL.createObjectURL(blob);
+    img.src = objectUrl;
+    await new Promise<void>((resolve) => { img.onload = () => resolve(); });
+
+    const canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const ctx = canvas.getContext("2d")!;
+    ctx.drawImage(img, 0, 0);
+    URL.revokeObjectURL(objectUrl);
+
+    const fontSize = Math.max(14, Math.floor(img.width / 40));
+    ctx.font = `${fontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
+    const metrics = ctx.measureText(text);
+    const padding = fontSize * 1.2;
+    const textW = metrics.width + padding;
+    const textH = fontSize + padding * 0.6;
+
+    const x = canvas.width - textW - padding;
+    const y = canvas.height - textH - padding;
+    ctx.fillStyle = "rgba(0, 0, 0, 0.45)";
+    ctx.beginPath();
+    if (typeof ctx.roundRect === "function") {
+      ctx.roundRect(x, y, textW, textH, fontSize * 0.4);
+    } else {
+      ctx.fillRect(x, y, textW, textH);
+    }
+    ctx.fill();
+    ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+    ctx.textBaseline = "middle";
+    ctx.fillText(text, x + padding / 2, y + textH / 2);
+
+    return new Promise((resolve) => {
+      canvas.toBlob((wm) => resolve(wm ?? blob), "image/jpeg", 0.92);
+    });
+  } catch {
+    return blob; // fallback: original unwatermarked
+  }
 }
 
 export function DownloadBar({
@@ -20,6 +69,7 @@ export function DownloadBar({
   selected,
   onSelectAll,
   onDeselectAll,
+  watermark,
 }: DownloadBarProps) {
   const [downloading, setDownloading] = useState(false);
   const [showReviewPrompt, setShowReviewPrompt] = useState(false);
@@ -47,11 +97,14 @@ export function DownloadBar({
           return;
         }
         const res = await fetch(url);
-        const blob = await res.blob();
+        let blob = await res.blob();
+        if (watermark) {
+          blob = await applyWatermark(blob, watermark);
+        }
         const blobUrl = URL.createObjectURL(blob);
         const a = document.createElement("a");
         a.href = blobUrl;
-        a.download = `headshot-${idx + 1}.jpg`;
+        a.download = `headshot-${idx + 1}${watermark ? "-tryonetake" : ""}.jpg`;
         a.click();
         URL.revokeObjectURL(blobUrl);
         toast.success("Downloaded!");
@@ -65,7 +118,10 @@ export function DownloadBar({
             .filter((i) => !!photos[i])
             .map(async (i) => {
               const res = await fetch(photos[i]);
-              const blob = await res.blob();
+              let blob = await res.blob();
+              if (watermark) {
+                blob = await applyWatermark(blob, watermark);
+              }
               return { blob, index: i };
             })
         );

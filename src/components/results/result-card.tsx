@@ -30,18 +30,19 @@ export function ResultCard({
       const blob = await res.blob();
 
       if (watermark) {
-        // Client-side watermark via Canvas — single text at bottom-right
+        // Bypass CORS tainting: load image via fetch → Blob → object URL
+        // avoids cross-origin canvas taint from Vercel Blob domain
         const img = new Image();
         const objectUrl = URL.createObjectURL(blob);
         img.src = objectUrl;
         await new Promise<void>((resolve) => { img.onload = () => resolve(); });
-        URL.revokeObjectURL(objectUrl);
 
         const canvas = document.createElement("canvas");
         canvas.width = img.width;
         canvas.height = img.height;
         const ctx = canvas.getContext("2d")!;
         ctx.drawImage(img, 0, 0);
+        URL.revokeObjectURL(objectUrl); // clean up now that image is drawn
 
         // Single watermark at bottom-right
         const fontSize = Math.max(14, Math.floor(img.width / 40));
@@ -57,7 +58,11 @@ export function ResultCard({
         const y = canvas.height - textH - padding;
         ctx.fillStyle = "rgba(0, 0, 0, 0.45)";
         ctx.beginPath();
-        ctx.roundRect(x, y, textW, textH, fontSize * 0.4);
+        if (typeof ctx.roundRect === "function") {
+          ctx.roundRect(x, y, textW, textH, fontSize * 0.4);
+        } else {
+          ctx.fillRect(x, y, textW, textH);
+        }
         ctx.fill();
 
         // Text
@@ -66,7 +71,16 @@ export function ResultCard({
         ctx.fillText(text, x + padding / 2, y + textH / 2);
 
         canvas.toBlob((watermarked) => {
-          if (!watermarked) return;
+          if (!watermarked) {
+            // Fallback: download without watermark if toBlob fails
+            const fallbackUrl = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = fallbackUrl;
+            a.download = `headshot-${index + 1}.jpg`;
+            a.click();
+            URL.revokeObjectURL(fallbackUrl);
+            return;
+          }
           const blobUrl = URL.createObjectURL(watermarked);
           const a = document.createElement("a");
           a.href = blobUrl;

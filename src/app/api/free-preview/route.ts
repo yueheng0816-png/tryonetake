@@ -1,8 +1,13 @@
 import { NextResponse } from "next/server";
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { db, ensureUser } from "@/lib/db";
 import { startFreePreview } from "@/lib/replicate";
 import { FREE_PREVIEW_MAX_PER_USER } from "@/lib/constants";
+
+/** Emails with unlimited free previews (testing / internal) */
+const FREE_WHITELIST = new Set([
+  "yueheng0816@gmail.com",
+]);
 
 export async function POST(req: Request) {
   const { userId } = await auth();
@@ -25,25 +30,32 @@ export async function POST(req: Request) {
       return new NextResponse("Missing profession", { status: 400 });
     }
 
-    // ── Rate limit: 1 free preview per user ──
+    // ── Whitelist check ──
+    const clerkUser = await currentUser();
+    const email = clerkUser?.emailAddresses?.[0]?.emailAddress ?? "";
+    const isWhitelisted = FREE_WHITELIST.has(email);
+
+    // ── Rate limit: 1 free preview per user (skipped for whitelist) ──
     const user = await ensureUser(userId);
 
-    const existingFree = await db.order.count({
-      where: {
-        userId: user.id,
-        plan: "free",
-      },
-    });
-
-    if (existingFree >= FREE_PREVIEW_MAX_PER_USER) {
-      return NextResponse.json(
-        {
-          error: "free_limit_reached",
-          message:
-            "You've already used your free preview. Upgrade to Starter or Pro for 30 full headshots.",
+    if (!isWhitelisted) {
+      const existingFree = await db.order.count({
+        where: {
+          userId: user.id,
+          plan: "free",
         },
-        { status: 429 }
-      );
+      });
+
+      if (existingFree >= FREE_PREVIEW_MAX_PER_USER) {
+        return NextResponse.json(
+          {
+            error: "free_limit_reached",
+            message:
+              "You've already used your free preview. Upgrade to Starter or Pro for 30 full headshots.",
+          },
+          { status: 429 }
+        );
+      }
     }
 
     // ── Create order ──

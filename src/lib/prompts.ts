@@ -160,7 +160,26 @@ const MASTER_TEMPLATES: PromptTemplate[] = [
   // white or light gray background.
   // ──────────────────────────────────────────────────────────
 
-  // ── Existing Studio Classic (12) ──────────────────────────
+  // ── Free Preview — Universal Template ──────────────────────
+	  // NOT part of normal distribution. Used only for free tier.
+	  // Purpose: one photo that works for ANY profession, minimal
+	  // distortion risk, maximum quality. This IS the product demo.
+	  {
+	    id: "free-tier-universal",
+	    prompt:
+	      "{outfit}, clean soft grey seamless studio background, professional headshot photography, natural confident expression with subtle warmth, flattering butterfly lighting with gentle fill, shoulders-up tight crop, approachable and polished, suitable for any industry, LinkedIn-ready business portrait",
+	    status: "active",
+	    performance: "untested",
+	    tags: ["free_tier", "studio", "universal", "safe"],
+	    category: "studio_core",
+	    expression: "neutral",
+	    outfitVariants: {
+	      male: "crisp navy crew-neck sweater layered over a white collared shirt, smart casual professional attire, clean tailored fit",
+	      female: "soft ivory silk blouse with a subtle gold pendant necklace, business casual professional attire, elegant clean lines",
+	    },
+	  },
+
+	  // ── Existing Studio Classic (12) ──────────────────────────
   {
     id: "studio-warm-smile",
     prompt:
@@ -2089,6 +2108,29 @@ export function buildFinalPrompt(
     "natural skin texture, no plastic skin, no AI look, authentic human appearance",
     "masterpiece, 8K detail, professional studio lighting, tack-sharp focus",
   ].join(", ");
+}
+
+// ============================================================
+// Free Preview — 1 universal photo for any profession
+// ============================================================
+
+/** Get the free-tier prompt template (gender-resolved, style=natural). */
+export function buildFreePreviewPrompt(gender: Gender): string {
+  const template = getActiveByCategory("studio_core").find(
+    (t) => t.id === "free-tier-universal"
+  );
+  if (!template) {
+    // Fallback: use studio-headshot-classic if free-tier-universal is missing
+    const fallback = getActiveByCategory("studio_core").find(
+      (t) => t.id === "studio-headshot-classic"
+    );
+    if (fallback) return buildFinalPrompt(fallback.prompt, "natural");
+    throw new Error("No free-tier template available");
+  }
+
+  const outfit = template.outfitVariants?.[gender] ?? "";
+  const basePrompt = template.prompt.replace("{outfit}", outfit);
+  return buildFinalPrompt(basePrompt, "natural");
 }
 
 // ============================================================

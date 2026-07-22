@@ -441,6 +441,47 @@ export async function startBatchGeneration(params: {
   return { predictionIds, promptIds, errors };
 }
 
+// ── Free preview — 1 photo for new users ─────────────────────
+
+export interface FreePreviewResult {
+  predictionId: string;
+  promptId: string;
+  error?: string;
+}
+
+export async function startFreePreview(params: {
+  photoUrl: string;
+  webhookBaseUrl: string;
+  orderId: string;
+  gender?: "male" | "female";
+}): Promise<FreePreviewResult> {
+  const { photoUrl, webhookBaseUrl, orderId, gender } = params;
+
+  const { buildFreePreviewPrompt } = await import("./prompts");
+  const prompt = buildFreePreviewPrompt(gender ?? "male");
+  const promptId = "free-tier-universal";
+
+  console.log(
+    `[OneTake] Free preview for order ${orderId} (gender: ${gender ?? "male"})`
+  );
+
+  const webhookUrl = `${webhookBaseUrl}/api/webhook/replicate?orderId=${orderId}&index=0`;
+  const isHttps = webhookUrl.startsWith("https://");
+
+  const result = await createPrediction({
+    photoUrl,
+    prompt,
+    plan: "starter", // FLUX.2 pro — good balance of quality & cost
+    webhookUrl: isHttps ? webhookUrl : undefined,
+  });
+
+  if ("prediction" in result) {
+    return { predictionId: result.prediction.id, promptId };
+  }
+
+  return { predictionId: "", promptId, error: result.error };
+}
+
 /** Expose queue stats for monitoring (admin/debug use) */
 export function getQueueStats(): { active: number; pending: number } {
   return { active: globalLimiter.active, pending: globalLimiter.pending };

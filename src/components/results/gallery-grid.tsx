@@ -11,6 +11,8 @@ interface GalleryGridProps {
   onToggle: (index: number) => void;
   /** Total slots to show during generation (e.g. 30) */
   totalSlots?: number;
+  /** Watermark text for free preview mode */
+  watermark?: string;
 }
 
 export function GalleryGrid({
@@ -18,6 +20,7 @@ export function GalleryGrid({
   selected,
   onToggle,
   totalSlots,
+  watermark,
 }: GalleryGridProps) {
   const slots = totalSlots ?? photos.length;
 
@@ -76,6 +79,7 @@ export function GalleryGrid({
               selected={selected.has(i)}
               onToggle={() => onToggle(i)}
               onPreview={() => openLightbox(i)}
+              watermark={watermark}
             />
           );
         })}

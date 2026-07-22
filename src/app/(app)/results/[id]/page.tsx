@@ -21,6 +21,8 @@ interface OrderData {
   failedPredictions: number;
 }
 
+const WATERMARK_TEXT = "TRYONETAKE.COM  •  FREE PREVIEW";
+
 export default function ResultsPage() {
   const params = useParams();
   const router = useRouter();
@@ -162,6 +164,7 @@ export default function ResultsPage() {
 
   const isGenerating =
     order.status === "paid" || order.status === "generating";
+  const isFree = order.plan === "free";
 
   return (
     <div className="flex min-h-[calc(100vh-4rem)] flex-col">
@@ -178,17 +181,23 @@ export default function ResultsPage() {
               Back
             </Button>
             <div>
-              <h1 className="text-lg font-semibold">Your Headshots</h1>
+              <h1 className="text-lg font-semibold">
+                {isFree ? "Your Free Preview" : "Your Headshots"}
+              </h1>
               <p className="text-sm text-muted-foreground">
-                {order.plan.charAt(0).toUpperCase() + order.plan.slice(1)} plan
-                {isGenerating
+                {isFree
+                  ? "Free · 1 watermarked photo"
+                  : `${order.plan.charAt(0).toUpperCase() + order.plan.slice(1)} plan`}
+                {isGenerating && !isFree
                   ? ` · Generating ${order.completedPredictions}/${PHOTOS_PER_ORDER}`
-                  : ` · ${order.outputPhotos.length} photos`}
+                  : !isFree
+                    ? ` · ${order.outputPhotos.length} photos`
+                    : ""}
               </p>
             </div>
           </div>
 
-          {isGenerating && (
+          {isGenerating && !isFree && (
             <div className="flex items-center gap-2 text-sm">
               <RefreshCw className="h-4 w-4 animate-spin text-primary" />
               <span className="font-medium text-primary tabular-nums">
@@ -198,6 +207,16 @@ export default function ResultsPage() {
                 {order.completedPredictions > 0
                   ? `${PHOTOS_PER_ORDER - order.completedPredictions} remaining…`
                   : "Starting AI generation…"}
+              </span>
+            </div>
+          )}
+
+          {/* Free preview: generating indicator */}
+          {isGenerating && isFree && (
+            <div className="flex items-center gap-2 text-sm">
+              <RefreshCw className="h-4 w-4 animate-spin text-primary" />
+              <span className="font-medium text-primary">
+                Generating your free preview…
               </span>
             </div>
           )}
@@ -214,8 +233,32 @@ export default function ResultsPage() {
         </div>
       </div>
 
+      {/* Free preview: upgrade CTA banner */}
+      {isFree && !isGenerating && (
+        <div className="border-b border-primary/30 bg-primary/5">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+              <div>
+                <p className="text-base font-semibold text-foreground">
+                  Like what you see? Get all 30 headshots — no watermark.
+                </p>
+                <p className="text-sm text-muted-foreground mt-1">
+                  Starter ($19) or Pro ($35) — one-time payment, automatic refund if generation fails.
+                </p>
+              </div>
+              <a
+                href={`/generate?plan=starter`}
+                className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-2.5 text-base font-semibold text-primary-foreground hover:bg-primary/90 transition-colors shrink-0"
+              >
+                Upgrade now
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Generating progress bar */}
-      {isGenerating && (
+      {isGenerating && !isFree && (
         <div className="bg-muted/30 border-b">
           <div className="container mx-auto px-4 py-3">
             <div className="flex items-center gap-3">
@@ -276,7 +319,8 @@ export default function ResultsPage() {
           photos={order.outputPhotos}
           selected={selected}
           onToggle={handleToggle}
-          totalSlots={isGenerating ? PHOTOS_PER_ORDER : undefined}
+          totalSlots={isFree ? PHOTOS_PER_ORDER : isGenerating ? PHOTOS_PER_ORDER : undefined}
+          watermark={isFree ? WATERMARK_TEXT : undefined}
         />
       </div>
 

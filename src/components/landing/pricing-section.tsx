@@ -7,6 +7,25 @@ import { useAuth } from "@clerk/nextjs";
 
 const plans = [
   {
+    name: "Free",
+    price: "$0",
+    model: "FLUX.2 pro",
+    photos: "1 headshot",
+    styles: "Natural style only",
+    upload: "1 photo",
+    features: [
+      "FLUX.2 pro model (same as Starter)",
+      "1 watermarked headshot",
+      "Natural style",
+      "Try before you buy",
+      "Upgrade anytime",
+    ],
+    cta: "Try free",
+    href: "/sign-up?redirect=free",
+    hrefLoggedIn: "/generate?free=true",
+    featured: false,
+  },
+  {
     name: "Starter",
     price: "$19",
     model: "FLUX.2 pro",
@@ -18,6 +37,7 @@ const plans = [
       "30 professional headshots",
       "10 style variations",
       "Balanced / Natural / Polished",
+      "No watermark",
       "Instant download (ZIP)",
       "Automatic refund if generation fails",
     ],
@@ -38,6 +58,7 @@ const plans = [
       "30 professional headshots",
       "25 style variations",
       "Balanced / Natural / Polished",
+      "No watermark",
       "Instant download (ZIP)",
       "Automatic refund if generation fails",
     ],
@@ -45,25 +66,6 @@ const plans = [
     href: "/sign-up?plan=pro",
     hrefLoggedIn: "/generate?plan=pro",
     featured: true,
-  },
-  {
-    name: "Team",
-    price: "Custom",
-    model: "FLUX.2 max",
-    photos: "Bulk pricing",
-    styles: "All styles",
-    upload: "Per person",
-    features: [
-      "FLUX.2 max model",
-      "Bulk pricing per person",
-      "All style variations",
-      "Consistent team look",
-      "Priority support",
-      "Flexible billing",
-    ],
-    cta: "Contact us",
-    href: "mailto:support@tryonetake.com",
-    featured: false,
   },
 ];
 

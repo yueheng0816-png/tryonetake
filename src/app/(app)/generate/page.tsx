@@ -55,6 +55,7 @@ function GeneratePageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const urlPlan = searchParams.get("plan");
+  const isFree = searchParams.get("free") === "true";
   const initialPlan: PlanOption = urlPlan === "pro" ? "pro" : "starter";
 
   const [photos, setPhotos] = useState<File[]>([]);
@@ -98,7 +99,31 @@ function GeneratePageInner() {
 
       const { urls: photoUrls } = await uploadRes.json();
 
-      // 2. Create order + Creem checkout session
+      // ── Free preview path ──────────────────────────────
+      if (isFree) {
+        const freeRes = await fetch("/api/free-preview", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            photoUrls,
+            gender,
+            profession,
+          }),
+        });
+
+        const freeData = await freeRes.json();
+
+        if (!freeRes.ok) {
+          toast.error(freeData.message ?? freeData.error ?? "Free preview failed. Please try again.");
+          setUploading(false);
+          return;
+        }
+
+        router.push(`/results/${freeData.orderId}`);
+        return;
+      }
+
+      // ── Paid path ──────────────────────────────────────
       const checkoutRes = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -138,26 +163,51 @@ function GeneratePageInner() {
 
   return (
     <div className="container mx-auto max-w-2xl px-4 py-12">
-      {/* Progress indicator — 2 steps */}
-      <div className="mb-10 flex items-center justify-center gap-3">
-        <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-base font-medium text-primary-foreground">
-            1
+      {/* Progress indicator — free mode: 1 step, paid: 2 steps */}
+      {isFree ? (
+        <div className="mb-10 flex items-center justify-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-base font-medium text-primary-foreground">
+              1
+            </div>
+            <span className="text-base font-medium text-foreground hidden sm:inline">
+              Free Preview
+            </span>
           </div>
-          <span className="text-base font-medium text-foreground hidden sm:inline">
-            Configure
-          </span>
         </div>
-        <div className="hidden sm:block h-px w-16 bg-border" />
-        <div className="flex items-center gap-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-base font-medium text-muted-foreground">
-            2
+      ) : (
+        <div className="mb-10 flex items-center justify-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-base font-medium text-primary-foreground">
+              1
+            </div>
+            <span className="text-base font-medium text-foreground hidden sm:inline">
+              Configure
+            </span>
           </div>
-          <span className="text-base text-muted-foreground hidden sm:inline">
-            Payment
-          </span>
+          <div className="hidden sm:block h-px w-16 bg-border" />
+          <div className="flex items-center gap-3">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-base font-medium text-muted-foreground">
+              2
+            </div>
+            <span className="text-base text-muted-foreground hidden sm:inline">
+              Payment
+            </span>
+          </div>
         </div>
-      </div>
+      )}
+
+      {/* Free preview banner */}
+      {isFree && (
+        <div className="rounded-xl border border-primary/30 bg-primary/5 p-5 text-center">
+          <h2 className="text-xl font-bold">Free Preview</h2>
+          <p className="mt-1 text-base text-muted-foreground">
+            Upload 1 photo, get a <strong>free watermarked headshot</strong> so you can
+            see what our AI can do. Love it? Upgrade to Starter or Pro for all 30
+            headshots — without the watermark.
+          </p>
+        </div>
+      )}
 
       <div className="space-y-8">
         {/* ── Upload ──────────────────────────────────────── */}
@@ -220,7 +270,8 @@ function GeneratePageInner() {
             </select>
           </div>
 
-          {/* Specific Role (optional) */}
+          {/* Specific Role (optional — paid only, needs AI custom prompts) */}
+          {!isFree && (
           <div className="space-y-2">
             <label className="flex items-center gap-2 text-base font-medium text-muted-foreground">
               <Briefcase className="h-4 w-4" />
@@ -238,12 +289,14 @@ function GeneratePageInner() {
               Describe your role for better-matched backgrounds and scenes
             </p>
           </div>
+          )}
         </div>
 
         {/* ── Style ───────────────────────────────────────── */}
-        <StylePreference value={style} onChange={setStyle} />
+        {!isFree && <StylePreference value={style} onChange={setStyle} />}
 
-        {/* ── Plan Selection ──────────────────────────────── */}
+        {/* ── Plan Selection (paid only) ──────────────────── */}
+        {!isFree && (
         <div className="space-y-4">
           <div>
             <h3 className="text-xl font-semibold">Choose your plan</h3>
@@ -283,8 +336,33 @@ function GeneratePageInner() {
             ))}
           </div>
         </div>
+        )}
 
-        {/* ── Checkout button ─────────────────────────────── */}
+        {/* ── Free mode: upgrade teaser cards ────────────── */}
+        {isFree && (
+          <div className="rounded-xl border border-border bg-muted/30 p-6">
+            <h3 className="text-lg font-semibold">Want all 30 headshots?</h3>
+            <p className="mt-1 text-base text-muted-foreground">
+              Your free preview uses the same FLUX.2 pro model. Starter and Pro give
+              you 30 headshots with outfit variety, balanced &amp; polished styles, and
+              no watermark.
+            </p>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="rounded-lg border border-border bg-card p-4">
+                <h4 className="font-semibold">Starter</h4>
+                <p className="text-2xl font-bold">$19</p>
+                <p className="text-sm text-muted-foreground">30 headshots · 10 styles · No watermark</p>
+              </div>
+              <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
+                <h4 className="font-semibold">Pro</h4>
+                <p className="text-2xl font-bold">$35</p>
+                <p className="text-sm text-muted-foreground">30 headshots · 25 styles · FLUX.2 max · No watermark</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── Checkout / Generate button ──────────────────── */}
         <div className="flex justify-end border-t pt-6">
           <Button
             size="lg"
@@ -296,6 +374,11 @@ function GeneratePageInner() {
               <>
                 <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                 Uploading...
+              </>
+            ) : isFree ? (
+              <>
+                Generate my free preview
+                <ArrowRight className="ml-2 h-5 w-5" />
               </>
             ) : (
               <>

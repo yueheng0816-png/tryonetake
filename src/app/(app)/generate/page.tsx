@@ -11,15 +11,26 @@ import type { Gender, Profession } from "@/lib/prompts";
 import { PROFESSION_OPTIONS, GENDER_OPTIONS } from "@/lib/prompts";
 
 type StyleOption = "natural" | "balanced" | "polished";
-type PlanOption = "starter" | "pro";
+type PlanOption = "free" | "starter" | "pro";
 
 const PLAN_CARDS = [
+  {
+    key: "free" as PlanOption,
+    label: "Free",
+    price: "$0",
+    model: "FLUX.2 pro",
+    photos: "1 headshot",
+    styles: "Natural style",
+    description: "Try before you buy — same AI quality, watermarked preview",
+    badge: null,
+  },
   {
     key: "starter" as PlanOption,
     label: "Starter",
     price: "$19",
     model: "FLUX.2 pro",
-    variations: "10 style variations",
+    photos: "30 headshots",
+    styles: "10 style variations",
     description: "Excellent quality for professional headshots",
     badge: null,
   },
@@ -28,7 +39,8 @@ const PLAN_CARDS = [
     label: "Pro",
     price: "$35",
     model: "FLUX.2 max",
-    variations: "25 style variations",
+    photos: "30 headshots",
+    styles: "25 style variations",
     description: "Maximum sharpness, detail, and variety",
     badge: "Best Quality",
   },
@@ -55,8 +67,8 @@ function GeneratePageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const urlPlan = searchParams.get("plan");
-  const isFree = searchParams.get("free") === "true";
-  const initialPlan: PlanOption = urlPlan === "pro" ? "pro" : "starter";
+  const initialPlan: PlanOption =
+    urlPlan === "pro" ? "pro" : urlPlan === "starter" ? "starter" : "free";
 
   const [photos, setPhotos] = useState<File[]>([]);
   const [style, setStyle] = useState<StyleOption>("balanced");
@@ -66,7 +78,9 @@ function GeneratePageInner() {
   const [specificRole, setSpecificRole] = useState("");
   const [uploading, setUploading] = useState(false);
 
-  const handleCheckout = async () => {
+  const isFree = plan === "free";
+
+  const handleSubmit = async () => {
     if (photos.length === 0) {
       toast.error("Please upload at least 1 photo");
       return;
@@ -104,17 +118,17 @@ function GeneratePageInner() {
         const freeRes = await fetch("/api/free-preview", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            photoUrls,
-            gender,
-            profession,
-          }),
+          body: JSON.stringify({ photoUrls, gender, profession }),
         });
 
         const freeData = await freeRes.json();
 
         if (!freeRes.ok) {
-          toast.error(freeData.message ?? freeData.error ?? "Free preview failed. Please try again.");
+          toast.error(
+            freeData.message ??
+              freeData.error ??
+              "Free preview failed. Please try again."
+          );
           setUploading(false);
           return;
         }
@@ -151,63 +165,38 @@ function GeneratePageInner() {
         toast.error("No checkout URL returned. Please try again.");
       }
     } catch (err) {
-      console.error("Checkout error:", err);
+      console.error("Submit error:", err);
       const message = err instanceof Error ? err.message : "Unknown error";
-      toast.error(`Checkout failed: ${message}`);
+      toast.error(`Failed: ${message}`);
     } finally {
       setUploading(false);
     }
   };
 
-  const canCheckout = photos.length > 0 && !!gender && !!profession;
+  const canSubmit = photos.length > 0 && !!gender && !!profession;
 
   return (
     <div className="container mx-auto max-w-2xl px-4 py-12">
-      {/* Progress indicator — free mode: 1 step, paid: 2 steps */}
-      {isFree ? (
-        <div className="mb-10 flex items-center justify-center gap-3">
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-base font-medium text-primary-foreground">
-              1
-            </div>
-            <span className="text-base font-medium text-foreground hidden sm:inline">
-              Free Preview
-            </span>
+      {/* Progress indicator */}
+      <div className="mb-10 flex items-center justify-center gap-3">
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-base font-medium text-primary-foreground">
+            1
           </div>
+          <span className="text-base font-medium text-foreground hidden sm:inline">
+            Configure
+          </span>
         </div>
-      ) : (
-        <div className="mb-10 flex items-center justify-center gap-3">
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-base font-medium text-primary-foreground">
-              1
-            </div>
-            <span className="text-base font-medium text-foreground hidden sm:inline">
-              Configure
-            </span>
+        <div className="hidden sm:block h-px w-16 bg-border" />
+        <div className="flex items-center gap-3">
+          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-base font-medium text-muted-foreground">
+            2
           </div>
-          <div className="hidden sm:block h-px w-16 bg-border" />
-          <div className="flex items-center gap-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-muted text-base font-medium text-muted-foreground">
-              2
-            </div>
-            <span className="text-base text-muted-foreground hidden sm:inline">
-              Payment
-            </span>
-          </div>
+          <span className="text-base text-muted-foreground hidden sm:inline">
+            {isFree ? "Generate" : "Payment"}
+          </span>
         </div>
-      )}
-
-      {/* Free preview banner */}
-      {isFree && (
-        <div className="rounded-xl border border-primary/30 bg-primary/5 p-5 text-center">
-          <h2 className="text-xl font-bold">Free Preview</h2>
-          <p className="mt-1 text-base text-muted-foreground">
-            Upload 1 photo, get a <strong>free watermarked headshot</strong> so you can
-            see what our AI can do. Love it? Upgrade to Starter or Pro for all 30
-            headshots — without the watermark.
-          </p>
-        </div>
-      )}
+      </div>
 
       <div className="space-y-8">
         {/* ── Upload ──────────────────────────────────────── */}
@@ -285,89 +274,64 @@ function GeneratePageInner() {
               maxLength={120}
             />
             <p className="text-xs text-muted-foreground">
-              {isFree
-                ? "Describe your role for better-matched scenes (available with Starter & Pro)"
-                : "Describe your role for better-matched backgrounds and scenes"}
+              Describe your role for better-matched backgrounds and scenes
             </p>
           </div>
         </div>
 
-        {/* ── Style ───────────────────────────────────────── */}
+        {/* ── Style (paid only) ─────────────────────────── */}
         {!isFree && <StylePreference value={style} onChange={setStyle} />}
 
-        {/* ── Plan Selection (paid only) ──────────────────── */}
-        {!isFree && (
+        {/* ── Plan Selection ─────────────────────────────── */}
         <div className="space-y-4">
           <div>
             <h3 className="text-xl font-semibold">Choose your plan</h3>
             <p className="mt-1 text-base text-muted-foreground">
-              Same 30 headshots — the difference is AI model quality and style variety.
+              Same AI model on Free and Starter. Upgrade for more photos and styles.
             </p>
           </div>
 
-          <div className="grid gap-4 sm:grid-cols-2">
+          <div className="grid gap-4 sm:grid-cols-3">
             {PLAN_CARDS.map((card) => (
               <button
                 key={card.key}
+                type="button"
                 onClick={() => setPlan(card.key)}
-                className={`relative rounded-xl border-2 p-6 text-left transition-all ${
+                className={`relative rounded-xl border-2 p-5 text-left transition-all ${
                   plan === card.key
                     ? "border-primary bg-primary/5 shadow-sm"
                     : "border-border hover:border-border/80"
                 }`}
               >
                 {card.badge && (
-                  <div className="absolute -top-3 right-4 rounded-full bg-primary px-3 py-0.5 text-xs font-semibold text-primary-foreground">
+                  <div className="absolute -top-3 right-2 rounded-full bg-primary px-2.5 py-0.5 text-xs font-semibold text-primary-foreground">
                     {card.badge}
                   </div>
                 )}
-                <h4 className="font-semibold text-lg">{card.label}</h4>
-                <p className="mt-1 text-3xl font-bold">{card.price}</p>
-                <p className="mt-1 text-sm text-muted-foreground">one-time</p>
-                <ul className="mt-4 space-y-2 text-base text-muted-foreground">
-                  <li>· {card.model} model</li>
-                  <li>· 30 headshots</li>
-                  <li>· {card.variations}</li>
+                <h4 className="font-semibold text-base">{card.label}</h4>
+                <p className="mt-1 text-2xl font-bold">{card.price}</p>
+                {card.price !== "$0" && (
+                  <p className="mt-1 text-xs text-muted-foreground">one-time</p>
+                )}
+                <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground">
+                  <li>· {card.model}</li>
+                  <li>· {card.photos}</li>
+                  <li>· {card.styles}</li>
                 </ul>
-                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                <p className="mt-2 text-xs text-muted-foreground leading-relaxed">
                   {card.description}
                 </p>
               </button>
             ))}
           </div>
         </div>
-        )}
 
-        {/* ── Free mode: upgrade teaser cards ────────────── */}
-        {isFree && (
-          <div className="rounded-xl border border-border bg-muted/30 p-6">
-            <h3 className="text-lg font-semibold">Want all 30 headshots?</h3>
-            <p className="mt-1 text-base text-muted-foreground">
-              Your free preview uses the same FLUX.2 pro model. Starter and Pro give
-              you 30 headshots with outfit variety, balanced &amp; polished styles, and
-              no watermark.
-            </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2">
-              <div className="rounded-lg border border-border bg-card p-4">
-                <h4 className="font-semibold">Starter</h4>
-                <p className="text-2xl font-bold">$19</p>
-                <p className="text-sm text-muted-foreground">30 headshots · 10 styles · No watermark</p>
-              </div>
-              <div className="rounded-lg border border-primary/30 bg-primary/5 p-4">
-                <h4 className="font-semibold">Pro</h4>
-                <p className="text-2xl font-bold">$35</p>
-                <p className="text-sm text-muted-foreground">30 headshots · 25 styles · FLUX.2 max · No watermark</p>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* ── Checkout / Generate button ──────────────────── */}
+        {/* ── Submit button ──────────────────────────────── */}
         <div className="flex justify-end border-t pt-6">
           <Button
             size="lg"
-            onClick={handleCheckout}
-            disabled={!canCheckout || uploading}
+            onClick={handleSubmit}
+            disabled={!canSubmit || uploading}
             className="h-12 px-8 text-base"
           >
             {uploading ? (
@@ -377,7 +341,7 @@ function GeneratePageInner() {
               </>
             ) : isFree ? (
               <>
-                Generate my free preview
+                Generate free preview
                 <ArrowRight className="ml-2 h-5 w-5" />
               </>
             ) : (

@@ -127,7 +127,7 @@ export function Hero() {
             </Link>
             <div className="flex items-center gap-2 text-base text-muted-foreground">
               <ShieldCheck className="h-4 w-4 text-green-500" />
-              No credit card required · 1 photo · 5 minutes
+              No credit card required · Instant preview
             </div>
           </div>
 

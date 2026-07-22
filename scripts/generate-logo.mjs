@@ -1,4 +1,4 @@
-// One-off: generate 400x300 logo PNG for Trustpilot / directory submissions
+﻿// One-off: generate 400x300 logo PNG for Trustpilot / directory submissions
 // Usage: node scripts/generate-logo.mjs
 import sharp from "sharp";
 
@@ -28,7 +28,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" vi
   <text x="200" y="208" text-anchor="middle"
         font-family="Segoe UI, Arial, Helvetica, sans-serif"
         font-size="46" font-weight="700" fill="#2A2319"
-        letter-spacing="-1">OneTake</text>
+        letter-spacing="-1">TryOneTake</text>
 
   <!-- Tagline -->
   <text x="200" y="242" text-anchor="middle"

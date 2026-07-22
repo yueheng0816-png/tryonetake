@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { useCases, getUseCase } from "@/lib/use-case-data";
 import { UseCasePage } from "@/components/use-cases/use-case-page";
@@ -30,7 +30,7 @@ export async function generateMetadata({
       title: data.title,
       description: data.description,
       url: `${siteUrl}/use-cases/${slug}`,
-      siteName: "OneTake",
+      siteName: "TryOneTake",
       locale: "en_US",
       type: "website",
       images: [

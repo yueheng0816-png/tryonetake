@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { SignUp } from "@clerk/nextjs";
 import { ShieldCheck, Zap, Star } from "lucide-react";
@@ -70,7 +70,7 @@ export default function SignUpPage() {
         <div className="hidden flex-col justify-center lg:flex">
           <a href="/" className="inline-flex items-center gap-2 text-2xl font-bold tracking-tight">
             <span aria-hidden>📸</span>
-            <span className="text-primary">OneTake</span>
+            <span className="text-primary">TryOneTake</span>
           </a>
           <h2 className="mt-6 text-balance text-3xl font-bold tracking-tight lg:text-4xl">
             Your perfect headshot
@@ -107,7 +107,7 @@ export default function SignUpPage() {
           <div className="mb-6 text-center lg:hidden">
             <a href="/" className="inline-flex items-center gap-2 text-xl font-bold tracking-tight">
               <span aria-hidden>📸</span>
-              <span className="text-primary">OneTake</span>
+              <span className="text-primary">TryOneTake</span>
             </a>
             <p className="mt-2 text-sm text-muted-foreground">
               1 photo &middot; 30 headshots &middot; &lt;5 minutes

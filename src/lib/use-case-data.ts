@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Use-case landing page content.
  * Each entry powers a /use-cases/[slug] page.
  *
@@ -46,8 +46,8 @@ export const useCases: UseCaseData[] = [
     badge: "For LinkedIn Professionals",
     headline: "A LinkedIn photo that gets you noticed.",
     subtitle:
-      "Recruiters form an impression in 0.05 seconds. OneTake gives you a studio-quality LinkedIn headshot that conveys competence and approachability — without spending $200+ on a photographer.",
-    benefitsHeading: "Why professionals choose OneTake for LinkedIn",
+      "Recruiters form an impression in 0.05 seconds. TryOneTake gives you a studio-quality LinkedIn headshot that conveys competence and approachability — without spending $200+ on a photographer.",
+    benefitsHeading: "Why professionals choose TryOneTake for LinkedIn",
     benefits: [
       {
         title: "Optimized for the 400×400 crop",
@@ -94,11 +94,11 @@ export const useCases: UseCaseData[] = [
     headline: "Boardroom-ready headshots for your entire team.",
     subtitle:
       "Consistent, professional corporate headshots at a fraction of the cost of traditional photography. Perfect for company websites, annual reports, conference materials, and press releases.",
-    benefitsHeading: "Why companies choose OneTake for corporate headshots",
+    benefitsHeading: "Why companies choose TryOneTake for corporate headshots",
     benefits: [
       {
         title: "Consistent look across your entire team",
-        body: "Traditional photography produces inconsistent results depending on lighting, photographer, and location. OneTake gives every team member the same studio-quality look — regardless of where they are.",
+        body: "Traditional photography produces inconsistent results depending on lighting, photographer, and location. TryOneTake gives every team member the same studio-quality look — regardless of where they are.",
       },
       {
         title: "No scheduling, no travel, no hassle",
@@ -140,8 +140,8 @@ export const useCases: UseCaseData[] = [
     badge: "For Actors & Performers",
     headline: "Show casting directors your range — instantly.",
     subtitle:
-      "A great headshot gets you in the room. OneTake generates actor headshots across different characters, moods, and looks — so you can submit the right one for every role.",
-    benefitsHeading: "Why actors choose OneTake for headshots",
+      "A great headshot gets you in the room. TryOneTake generates actor headshots across different characters, moods, and looks — so you can submit the right one for every role.",
+    benefitsHeading: "Why actors choose TryOneTake for headshots",
     benefits: [
       {
         title: "Multiple character looks from one photo",
@@ -149,7 +149,7 @@ export const useCases: UseCaseData[] = [
       },
       {
         title: "Always current, always fresh",
-        body: "Industry standard says update headshots every 2 years. With OneTake, you can refresh your portfolio anytime for $19 — no $500+ photographer sessions.",
+        body: "Industry standard says update headshots every 2 years. With TryOneTake, you can refresh your portfolio anytime for $19 — no $500+ photographer sessions.",
       },
       {
         title: "Natural range, not AI distortion",
@@ -159,15 +159,15 @@ export const useCases: UseCaseData[] = [
     faqs: [
       {
         q: "Do casting directors accept AI headshots?",
-        a: "Yes — as long as they actually look like you. The industry standard is that headshots must accurately represent your current appearance. OneTake prioritizes identity preservation so your headshots are genuine enough for any casting call.",
+        a: "Yes — as long as they actually look like you. The industry standard is that headshots must accurately represent your current appearance. TryOneTake prioritizes identity preservation so your headshots are genuine enough for any casting call.",
       },
       {
         q: "How many different looks can I get?",
         a: "Our Pro plan delivers 25 style variations spanning different outfits, backgrounds, lighting setups, and moods — from warm commercial smiles to dramatic theatrical intensity.",
       },
       {
-        q: "Can I use OneTake headshots on Actors Access / Backstage?",
-        a: "Yes. OneTake headshots meet the technical requirements for all major casting platforms. You get high-resolution JPEGs suitable for upload to Actors Access, Backstage, Casting Networks, and Spotlight.",
+        q: "Can I use TryOneTake headshots on Actors Access / Backstage?",
+        a: "Yes. TryOneTake headshots meet the technical requirements for all major casting platforms. You get high-resolution JPEGs suitable for upload to Actors Access, Backstage, Casting Networks, and Spotlight.",
       },
     ],
     exampleImages: [4, 6, 12],
@@ -187,8 +187,8 @@ export const useCases: UseCaseData[] = [
     badge: "For Real Estate Professionals",
     headline: "The headshot that sells you before you say a word.",
     subtitle:
-      "In real estate, you are the product. A professional, approachable headshot builds trust before the first showing. OneTake delivers realtor headshots that say 'I know this market' — without a $300 photoshoot.",
-    benefitsHeading: "Why agents choose OneTake for real estate headshots",
+      "In real estate, you are the product. A professional, approachable headshot builds trust before the first showing. TryOneTake delivers realtor headshots that say 'I know this market' — without a $300 photoshoot.",
+    benefitsHeading: "Why agents choose TryOneTake for real estate headshots",
     benefits: [
       {
         title: "Approachable yet authoritative",
@@ -234,8 +234,8 @@ export const useCases: UseCaseData[] = [
     badge: "For Legal Professionals",
     headline: "A headshot that conveys trust and authority.",
     subtitle:
-      "In law, credibility is everything. Your headshot should project confidence, competence, and approachability — whether for your firm's website, LinkedIn, bar association directory, or courtroom bio. OneTake delivers attorney headshots that command respect.",
-    benefitsHeading: "Why legal professionals choose OneTake",
+      "In law, credibility is everything. Your headshot should project confidence, competence, and approachability — whether for your firm's website, LinkedIn, bar association directory, or courtroom bio. TryOneTake delivers attorney headshots that command respect.",
+    benefitsHeading: "Why legal professionals choose TryOneTake",
     benefits: [
       {
         title: "Trustworthy & authoritative look",
@@ -283,7 +283,7 @@ export const useCases: UseCaseData[] = [
     headline: "A headshot your patients can trust — before they walk through the door.",
     subtitle:
       "In healthcare, the patient relationship starts before the first appointment. Your headshot on the hospital website, Doximity, or telehealth platform is often the first impression patients have of you. Make it a good one — professional, warm, and reassuring.",
-    benefitsHeading: "Why healthcare professionals choose OneTake",
+    benefitsHeading: "Why healthcare professionals choose TryOneTake",
     benefits: [
       {
         title: "Warm & reassuring presence",
@@ -305,7 +305,7 @@ export const useCases: UseCaseData[] = [
       },
       {
         q: "Are AI headshots acceptable for hospital credentialing?",
-        a: "For most hospital directories and professional profiles (Doximity, Healthgrades, LinkedIn) — yes. AI headshots from OneTake are high-resolution and indistinguishable from studio photos. They should not be used for official medical licensing or identification documents.",
+        a: "For most hospital directories and professional profiles (Doximity, Healthgrades, LinkedIn) — yes. AI headshots from TryOneTake are high-resolution and indistinguishable from studio photos. They should not be used for official medical licensing or identification documents.",
       },
       {
         q: "How quickly can I update my Doximity profile photo?",
@@ -330,8 +330,8 @@ export const useCases: UseCaseData[] = [
     badge: "For Remote Professionals",
     headline: "Studio-quality headshots — no commute to a photographer required.",
     subtitle:
-      "You work from anywhere. Why should your headshot require a trip to a photo studio? OneTake gives remote workers, freelancers, and distributed teams professional headshots that match the quality of any in-office employee — without ever leaving your home office.",
-    benefitsHeading: "Why remote professionals choose OneTake",
+      "You work from anywhere. Why should your headshot require a trip to a photo studio? TryOneTake gives remote workers, freelancers, and distributed teams professional headshots that match the quality of any in-office employee — without ever leaving your home office.",
+    benefitsHeading: "Why remote professionals choose TryOneTake",
     benefits: [
       {
         title: "Anywhere, anytime — like your work",
@@ -349,7 +349,7 @@ export const useCases: UseCaseData[] = [
     faqs: [
       {
         q: "Can I get a professional headshot from a selfie taken at home?",
-        a: "Yes — that's exactly what OneTake is built for. Upload a well-lit selfie (natural window light works great) and our AI generates 30 studio-quality headshots with professional backgrounds, lighting, and attire.",
+        a: "Yes — that's exactly what TryOneTake is built for. Upload a well-lit selfie (natural window light works great) and our AI generates 30 studio-quality headshots with professional backgrounds, lighting, and attire.",
       },
       {
         q: "How important is a headshot for freelance platforms like Upwork?",
@@ -378,8 +378,8 @@ export const useCases: UseCaseData[] = [
     badge: "For Consultants & Advisors",
     headline: "The headshot that says 'I can solve your toughest problems.'",
     subtitle:
-      "As a consultant, you sell expertise and trust. Your headshot needs to convey intelligence, confidence, and executive presence — whether you're at MBB, Big 4, or an independent advisory firm. OneTake delivers consultant-grade portraits that match the caliber of your work.",
-    benefitsHeading: "Why consultants choose OneTake",
+      "As a consultant, you sell expertise and trust. Your headshot needs to convey intelligence, confidence, and executive presence — whether you're at MBB, Big 4, or an independent advisory firm. TryOneTake delivers consultant-grade portraits that match the caliber of your work.",
+    benefitsHeading: "Why consultants choose TryOneTake",
     benefits: [
       {
         title: "Executive presence & polish",
@@ -426,8 +426,8 @@ export const useCases: UseCaseData[] = [
     badge: "For Educators & Teachers",
     headline: "A headshot as warm and dedicated as your teaching.",
     subtitle:
-      "Great teachers shape lives. Your headshot should reflect the warmth, dedication, and professionalism you bring to the classroom every day. OneTake delivers educator portraits that students, parents, and colleagues trust at a glance.",
-    benefitsHeading: "Why educators choose OneTake",
+      "Great teachers shape lives. Your headshot should reflect the warmth, dedication, and professionalism you bring to the classroom every day. TryOneTake delivers educator portraits that students, parents, and colleagues trust at a glance.",
+    benefitsHeading: "Why educators choose TryOneTake",
     benefits: [
       {
         title: "Warm & approachable presence",
@@ -449,7 +449,7 @@ export const useCases: UseCaseData[] = [
       },
       {
         q: "What background works best for teacher headshots?",
-        a: "A bright classroom, school library, or outdoor campus setting works best — conveying the education environment without being distracting. OneTake's education templates generate exactly these settings, giving you a professional yet context-appropriate look.",
+        a: "A bright classroom, school library, or outdoor campus setting works best — conveying the education environment without being distracting. TryOneTake's education templates generate exactly these settings, giving you a professional yet context-appropriate look.",
       },
       {
         q: "Can our entire school faculty get matching headshots?",
@@ -475,7 +475,7 @@ export const useCases: UseCaseData[] = [
     headline: "A headshot as precise and capable as your work.",
     subtitle:
       "Engineers solve the world's hardest problems. Your headshot should reflect the competence, precision, and innovation you bring to every project — whether you're in software, civil, mechanical, electrical, or any engineering discipline.",
-    benefitsHeading: "Why engineers choose OneTake",
+    benefitsHeading: "Why engineers choose TryOneTake",
     benefits: [
       {
         title: "Competent & capable presence",
@@ -493,11 +493,11 @@ export const useCases: UseCaseData[] = [
     faqs: [
       {
         q: "What should an engineer wear for a professional headshot?",
-        a: "For most engineering roles, smart casual or business casual works best — a clean button-down or polo, optionally with a blazer. Full suits can feel too formal for many engineering environments. OneTake gives you multiple outfit variations to choose from.",
+        a: "For most engineering roles, smart casual or business casual works best — a clean button-down or polo, optionally with a blazer. Full suits can feel too formal for many engineering environments. TryOneTake gives you multiple outfit variations to choose from.",
       },
       {
         q: "Do AI headshots work for technical conferences and speaking engagements?",
-        a: "Yes. AI headshots from OneTake are high-resolution and professional enough for conference speaker pages, IEEE profiles, LinkedIn, and company leadership pages. They're indistinguishable from studio photography in professional contexts.",
+        a: "Yes. AI headshots from TryOneTake are high-resolution and professional enough for conference speaker pages, IEEE profiles, LinkedIn, and company leadership pages. They're indistinguishable from studio photography in professional contexts.",
       },
       {
         q: "Can I get headshots with an engineering lab or workspace background?",
@@ -522,8 +522,8 @@ export const useCases: UseCaseData[] = [
     badge: "For Public Service Professionals",
     headline: "A headshot that conveys trust, service, and professionalism.",
     subtitle:
-      "Public servants work for the common good. Your headshot should project trustworthiness, dedication, and professional competence — whether you serve at the federal, state, or local level. OneTake delivers official portraits appropriate for government contexts.",
-    benefitsHeading: "Why public service professionals choose OneTake",
+      "Public servants work for the common good. Your headshot should project trustworthiness, dedication, and professional competence — whether you serve at the federal, state, or local level. TryOneTake delivers official portraits appropriate for government contexts.",
+    benefitsHeading: "Why public service professionals choose TryOneTake",
     benefits: [
       {
         title: "Trustworthy & official presence",
@@ -545,7 +545,7 @@ export const useCases: UseCaseData[] = [
       },
       {
         q: "What's the appropriate dress code for government headshots?",
-        a: "Business formal or business professional is standard for most government roles — dark suit, conservative tie, professional blouse or blazer. OneTake generates multiple outfit options so you can choose what fits your agency's culture.",
+        a: "Business formal or business professional is standard for most government roles — dark suit, conservative tie, professional blouse or blazer. TryOneTake generates multiple outfit options so you can choose what fits your agency's culture.",
       },
       {
         q: "Can our entire department get matching official headshots?",

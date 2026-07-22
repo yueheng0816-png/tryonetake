@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { blogPosts, getBlogPost } from "@/lib/blog-data";
 import { BlogPostPage } from "@/components/blog/blog-post-page";
@@ -30,7 +30,7 @@ export async function generateMetadata({
       title: post.title,
       description: post.description,
       url: `${siteUrl}/blog/${slug}`,
-      siteName: "OneTake",
+      siteName: "TryOneTake",
       locale: "en_US",
       type: "article",
       publishedTime: post.date,

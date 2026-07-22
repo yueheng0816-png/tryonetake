@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { comparisons, getComparison } from "@/lib/comparison-data";
 import { ComparisonPage } from "@/components/compare/comparison-page";
@@ -30,7 +30,7 @@ export async function generateMetadata({
       title: data.title,
       description: data.description,
       url: `${siteUrl}/vs/${slug}`,
-      siteName: "OneTake",
+      siteName: "TryOneTake",
       locale: "en_US",
       type: "website",
       images: [

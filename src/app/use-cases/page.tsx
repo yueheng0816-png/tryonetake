@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { useCases } from "@/lib/use-case-data";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "AI Headshot Use Cases — For Every Profession",
   description:
-    "Explore how OneTake AI headshots serve different professions. LinkedIn headshots, corporate team photos, actor portfolios, real estate agent photos — $19, under 5 minutes.",
+    "Explore how TryOneTake AI headshots serve different professions. LinkedIn headshots, corporate team photos, actor portfolios, real estate agent photos — $19, under 5 minutes.",
   keywords: [
     "AI headshot use cases",
     "professional AI headshots",
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     canonical: "/use-cases",
   },
   openGraph: {
-    title: "AI Headshot Use Cases — For Every Profession | OneTake",
+    title: "AI Headshot Use Cases — For Every Profession | TryOneTake",
     description:
-      "Explore how OneTake AI headshots serve different professions. LinkedIn, corporate, actors, real estate agents — $19, under 5 minutes.",
+      "Explore how TryOneTake AI headshots serve different professions. LinkedIn, corporate, actors, real estate agents — $19, under 5 minutes.",
     url: `${siteUrl}/use-cases`,
-    siteName: "OneTake",
+    siteName: "TryOneTake",
     locale: "en_US",
     type: "website",
     images: [
@@ -35,15 +35,15 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "OneTake AI Headshot Use Cases",
+        alt: "TryOneTake AI Headshot Use Cases",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Headshot Use Cases — For Every Profession | OneTake",
+    title: "AI Headshot Use Cases — For Every Profession | TryOneTake",
     description:
-      "Explore how OneTake AI headshots serve different professions. $19, under 5 minutes.",
+      "Explore how TryOneTake AI headshots serve different professions. $19, under 5 minutes.",
     images: ["/og-image.jpg"],
   },
 };
@@ -79,7 +79,7 @@ export default function UseCasesIndex() {
               "@type": "CollectionPage",
               name: "AI Headshot Use Cases",
               description:
-                "Explore how OneTake AI headshots serve different professions.",
+                "Explore how TryOneTake AI headshots serve different professions.",
               url: `${siteUrl}/use-cases`,
               hasPart: useCases.map((uc) => ({
                 "@type": "WebPage",
@@ -104,7 +104,7 @@ export default function UseCasesIndex() {
         </h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
           No matter what you do, a professional headshot opens doors. Explore how
-          OneTake serves different professions — all from 1 photo, under 5
+          TryOneTake serves different professions — all from 1 photo, under 5
           minutes, $19.
         </p>
 

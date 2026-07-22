@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -6,16 +6,16 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "OneTake terms of service — account terms, acceptable use, AI-generated content, intellectual property, refunds, and liability limitations.",
+    "TryOneTake terms of service — account terms, acceptable use, AI-generated content, intellectual property, refunds, and liability limitations.",
   alternates: {
     canonical: "/terms",
   },
   openGraph: {
-    title: "Terms of Service — OneTake",
+    title: "Terms of Service — TryOneTake",
     description:
-      "OneTake terms of service — account terms, acceptable use, AI-generated content, intellectual property, refunds, and liability limitations.",
+      "TryOneTake terms of service — account terms, acceptable use, AI-generated content, intellectual property, refunds, and liability limitations.",
     url: `${siteUrl}/terms`,
-    siteName: "OneTake",
+    siteName: "TryOneTake",
     locale: "en_US",
     type: "website",
   },
@@ -52,7 +52,7 @@ export default function TermsPage() {
 
       <div className="mt-8 space-y-10 text-base leading-relaxed">
         <p className="text-muted-foreground">
-          Welcome to OneTake. By accessing or using our website and AI headshot
+          Welcome to TryOneTake. By accessing or using our website and AI headshot
           generation service (collectively, the &ldquo;Service&rdquo;), you
           agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;). If
           you do not agree to these Terms, you may not use the Service.
@@ -96,7 +96,7 @@ export default function TermsPage() {
 
         <Section id="service-description" title="2. Service Description">
           <p>
-            OneTake provides AI-generated professional headshots. You upload
+            TryOneTake provides AI-generated professional headshots. You upload
             photos of yourself, and our AI pipeline (powered by the FLUX.2 model
             family running on Replicate) generates a set of headshot variations.
           </p>
@@ -151,7 +151,7 @@ export default function TermsPage() {
             </li>
             <li>
               Use the Service to create AI models, datasets, or training data
-              that competes with OneTake.
+              that competes with TryOneTake.
             </li>
             <li>
               Attempt to reverse engineer, decompile, or extract the underlying
@@ -199,7 +199,7 @@ export default function TermsPage() {
               AI-generated headshots produced from your uploaded photos.
             </li>
             <li>
-              You grant OneTake a limited, non-exclusive license to store and
+              You grant TryOneTake a limited, non-exclusive license to store and
               deliver the generated headshots to you, and to retain them for the
               period specified in our{" "}
               <Link href="/privacy" className="text-primary underline">
@@ -208,7 +208,7 @@ export default function TermsPage() {
               .
             </li>
             <li>
-              OneTake does not claim ownership of your uploaded photos or
+              TryOneTake does not claim ownership of your uploaded photos or
               generated headshots. We do not use your outputs to train our
               own models or for any purpose other than providing the Service to
               you.
@@ -273,7 +273,7 @@ export default function TermsPage() {
         <Section id="ip" title="7. Intellectual Property">
           <ul className="list-disc space-y-1 pl-5">
             <li>
-              The OneTake brand, logo, website design, and original content are
+              The TryOneTake brand, logo, website design, and original content are
               our exclusive property and are protected by copyright, trademark,
               and other intellectual property laws.
             </li>
@@ -330,7 +330,7 @@ export default function TermsPage() {
           </p>
           <ul className="list-disc space-y-1 pl-5">
             <li>
-              OneTake, its owners, employees, and affiliates shall not be liable
+              TryOneTake, its owners, employees, and affiliates shall not be liable
               for any indirect, incidental, special, consequential, or punitive
               damages arising out of or relating to your use of, or inability to
               use, the Service.
@@ -351,7 +351,7 @@ export default function TermsPage() {
 
         <Section id="indemnification" title="11. Indemnification">
           <p>
-            You agree to indemnify, defend, and hold harmless OneTake and its
+            You agree to indemnify, defend, and hold harmless TryOneTake and its
             owners, employees, and affiliates from and against any and all
             claims, liabilities, damages, losses, and expenses (including
             reasonable attorneys&rsquo; fees) arising out of or relating to:

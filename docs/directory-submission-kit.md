@@ -1,4 +1,4 @@
-# OneTake 目录站提交素材包（复制粘贴即用）
+﻿# TryOneTake 目录站提交素材包（复制粘贴即用）
 
 > 配合 [seo-growth-plan.md](./seo-growth-plan.md) 第 1–2 周任务使用。
 > 实际结果：17 个目录站仅 3 个成功注册（Product Hunt、SaaSHub、Uneed），其余全部因付费/反链/死站等原因不可用。目录站策略天花板已到，不再继续。
@@ -9,7 +9,7 @@
 
 ### 产品名称
 ```
-OneTake
+TryOneTake
 ```
 
 ### 网址
@@ -29,14 +29,14 @@ AI headshots that actually look like you
 
 ### 短描述（~250 字符，多数目录用这个）
 ```
-OneTake turns a single selfie into 30 studio-quality professional headshots in under 5 minutes. Powered by FLUX.2 with identity preservation — your headshots actually look like you. Profession-matched outfits and backgrounds. One-time payment from $19, no subscription.
+TryOneTake turns a single selfie into 30 studio-quality professional headshots in under 5 minutes. Powered by FLUX.2 with identity preservation — your headshots actually look like you. Profession-matched outfits and backgrounds. One-time payment from $19, no subscription.
 ```
 
 ### 长描述（~950 字符，Futurepedia 等详情页用）
 ```
-OneTake is an AI headshot generator that turns a single selfie into 30 studio-quality professional headshots in under 5 minutes. Powered by the FLUX.2 AI model, OneTake preserves your exact facial identity — so your headshots actually look like you, not an AI-generated stranger.
+TryOneTake is an AI headshot generator that turns a single selfie into 30 studio-quality professional headshots in under 5 minutes. Powered by the FLUX.2 AI model, TryOneTake preserves your exact facial identity — so your headshots actually look like you, not an AI-generated stranger.
 
-Traditional studio photography costs $150–500 and takes days of scheduling. OneTake delivers the same polished results for a fraction of the price: upload one photo, tell us your profession, and our AI matches you with backgrounds, outfits, and lighting tailored to your industry — from law and healthcare to tech, real estate, education, and more.
+Traditional studio photography costs $150–500 and takes days of scheduling. TryOneTake delivers the same polished results for a fraction of the price: upload one photo, tell us your profession, and our AI matches you with backgrounds, outfits, and lighting tailored to your industry — from law and healthcare to tech, real estate, education, and more.
 
 Every order includes 30 unique variations across studio, office, and lifestyle settings, ready for LinkedIn, company websites, resumes, and professional profiles. No subscriptions, no hidden fees — one simple payment, photos delivered in minutes, backed by an automatic refund policy if any photos fail to generate.
 ```
@@ -125,8 +125,8 @@ support@tryonetake.com
 注册信息统一用：
 ```
 Name: Elvis
-Title: Founder, OneTake
-Company: OneTake (tryonetake.com)
+Title: Founder, TryOneTake
+Company: TryOneTake (tryonetake.com)
 Expertise: AI image generation, professional branding, remote work culture, small business tools
 ```
 
@@ -138,13 +138,13 @@ Hi [Journalist name],
 
 [One supporting data point or concrete example.]
 
-Background: I'm the founder of OneTake (tryonetake.com), an AI headshot
+Background: I'm the founder of TryOneTake (tryonetake.com), an AI headshot
 generator. [One sentence on why you're qualified for THIS question.]
 
 Happy to expand on any of this. Headshot and bio available on request.
 
 Elvis
-Founder, OneTake (tryonetake.com)
+Founder, TryOneTake (tryonetake.com)
 ```
 
 ### 监控哪些话题
@@ -162,7 +162,7 @@ Founder, OneTake (tryonetake.com)
 
 ### 起号设置
 - [ ] 注册（可用 Google 账号）
-- [ ] Bio 写：`Founder of OneTake — AI headshot generator. I write about AI photography, LinkedIn optimization, and personal branding.`
+- [ ] Bio 写：`Founder of TryOneTake — AI headshot generator. I write about AI photography, LinkedIn optimization, and personal branding.`
 - [ ] 关注话题：Artificial Intelligence、LinkedIn、Professional Photography、Career Advice、Personal Branding
 
 ### 先回答这些问题（搜索这些关键词找现成问题）

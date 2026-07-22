@@ -1,4 +1,4 @@
-import { createRefund } from "@/lib/creem";
+﻿import { createRefund } from "@/lib/creem";
 import { db } from "@/lib/db";
 
 // ── Failure Diagnosis ──────────────────────────────────────
@@ -18,7 +18,7 @@ export function diagnoseFailures(errorMessages: string[]): Diagnosis {
   if (isRL) {
     return {
       category: "rate_limit",
-      userMessage: "OneTake is experiencing unusually high demand right now. Your payment has been fully refunded — please try again in a few minutes.",
+      userMessage: "TryOneTake is experiencing unusually high demand right now. Your payment has been fully refunded — please try again in a few minutes.",
       adminMessage: "Rate limit. " + errorMessages.length + " predictions failed.",
     };
   }
@@ -60,9 +60,9 @@ export async function executeRefund(params: {
   const result = await createRefund({ checkoutId, amount, reason });
 
   if (result.success) {
-    console.log("[OneTake] Refund: " + result.refundId + " $" + (amount / 100).toFixed(2) + " order " + orderId);
+    console.log("[TryOneTake] Refund: " + result.refundId + " $" + (amount / 100).toFixed(2) + " order " + orderId);
   } else {
-    console.error("[OneTake] Refund failed order " + orderId + ":", result.error);
+    console.error("[TryOneTake] Refund failed order " + orderId + ":", result.error);
   }
 
   return result;
@@ -111,7 +111,7 @@ export async function handleOrderCompletion(params: {
   if (checkoutId) {
     await executeRefund({ orderId, checkoutId, amount: refundAmount, reason: diagnosis.userMessage });
   } else {
-    console.error("[OneTake] Order " + orderId + ": Cannot refund - no checkoutId");
+    console.error("[TryOneTake] Order " + orderId + ": Cannot refund - no checkoutId");
   }
 
   const refundStatus: "full" | "partial" = isAllFailed ? "full" : "partial";
@@ -124,13 +124,13 @@ export async function handleOrderCompletion(params: {
 
   const { sendUserRefundEmail, sendAdminAlert } = await import("./email");
   sendUserRefundEmail({ to: userEmail, refundAmount, successCount, totalCount: totalPredictions, reason: diagnosis.userMessage })
-    .catch((e) => console.error("[OneTake] User email:", e));
+    .catch((e) => console.error("[TryOneTake] User email:", e));
   sendAdminAlert({
     orderId, userEmail, plan, diagnosis: diagnosis.adminMessage,
     errorSummary: errorMessages.filter(Boolean).slice(0, 10).join("\n") || "N/A",
     refundAmount, successCount, totalCount: totalPredictions,
-  }).catch((e) => console.error("[OneTake] Admin alert:", e));
+  }).catch((e) => console.error("[TryOneTake] Admin alert:", e));
 
-  console.log("[OneTake] Order " + orderId + ": " + successCount + "/" + totalPredictions + " ok, $" + (refundAmount / 100).toFixed(2) + " refunded (" + refundStatus + ")");
+  console.log("[TryOneTake] Order " + orderId + ": " + successCount + "/" + totalPredictions + " ok, $" + (refundAmount / 100).toFixed(2) + " refunded (" + refundStatus + ")");
   return { successCount, failedCount: failedPredictions, totalCount: totalPredictions, refundAmount, refundStatus, diagnosis };
 }

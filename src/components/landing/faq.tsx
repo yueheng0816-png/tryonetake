@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
@@ -7,11 +7,11 @@ import { cn } from "@/lib/utils";
 const faqs = [
   {
     q: "Is it really just 1 photo?",
-    a: "Yes. OneTake works with a single selfie. For best results with more expression variety, we recommend uploading 3–5 photos with different angles and expressions — but 1 is enough to get started.",
+    a: "Yes. TryOneTake works with a single selfie. For best results with more expression variety, we recommend uploading 3–5 photos with different angles and expressions — but 1 is enough to get started.",
   },
   {
     q: "Will the headshots actually look like me?",
-    a: "That's our #1 priority. Unlike other AI tools that apply heavy beauty filters and make everyone look the same, OneTake is built on FLUX.2 — the most realistic AI model available. We prioritize identity preservation over artificial beautification.",
+    a: "That's our #1 priority. Unlike other AI tools that apply heavy beauty filters and make everyone look the same, TryOneTake is built on FLUX.2 — the most realistic AI model available. We prioritize identity preservation over artificial beautification.",
   },
   {
     q: "What's the difference between Starter and Pro?",
@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "Can I use these on LinkedIn or my company website?",
-    a: "Absolutely. OneTake headshots are designed for professional use — LinkedIn, resumes, company team pages, email signatures, conference badges, and more. You get full commercial usage rights.",
+    a: "Absolutely. TryOneTake headshots are designed for professional use — LinkedIn, resumes, company team pages, email signatures, conference badges, and more. You get full commercial usage rights.",
   },
   {
     q: "How long does it take?",
@@ -54,7 +54,7 @@ export function Faq() {
             Frequently asked questions
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Everything you need to know about OneTake headshots.
+            Everything you need to know about TryOneTake headshots.
           </p>
         </div>
 

@@ -1,4 +1,4 @@
-# OneTake 深度 SEO 与流量增长方案
+﻿# TryOneTake 深度 SEO 与流量增长方案
 
 > 创建日期：2026-07-17
 > 用途：作为长期执行手册，按优先级逐步推进。每完成一项在对应条目打勾。
@@ -218,7 +218,7 @@
 
 ### 6.1 AppSumo / LTD 平台 🟡 有条件推进（需先有评价和 traction）
 - AppSumo：~10% 过审率（明确拒绝薄壳 AI 产品），分成约三七开（平台七），60 天退款期；平均单campaign $40–80K
-- 适配点：OneTake 本来就是一次性买断制，"LTD 毁掉订阅收入"的坑对我们更小；定价须高于单次生成的推理成本
+- 适配点：TryOneTake 本来就是一次性买断制，"LTD 毁掉订阅收入"的坑对我们更小；定价须高于单次生成的推理成本
 - 小平台：DealMirror（AI 产品多）、Dealify、RocketHub、SaaS Mantra
 - [ ] 有 50+ 真实评价后申请 AppSumo
 

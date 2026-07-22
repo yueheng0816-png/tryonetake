@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Blog post content.
  *
  * SEO strategy: long-tail informational keywords. Each post targets
@@ -32,7 +32,7 @@ export const blogPosts: BlogPost[] = [
       "photo tips for AI portrait generator",
     ],
     date: "2026-07-01",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "5 min read",
     body: `<h2>1. Use natural, diffused light — no flash</h2>
 <p>Stand facing a window during daylight. The light should fall evenly on your face. Avoid direct sunlight (harsh shadows) and phone flash (washes out texture). Overcast days are ideal — clouds act as a natural diffuser.</p>
@@ -50,7 +50,7 @@ export const blogPosts: BlogPost[] = [
 <p>Wear a solid-color top. A crew-neck t-shirt or button-down in navy, white, gray, or black works perfectly. Avoid busy patterns, logos, and bold branding — the AI may try to replicate these in your headshots.</p>
 
 <h2>6. Take multiple shots — you only need 1 good one</h2>
-<p>Take 5–10 selfies with slight variations: a subtle head tilt, a slightly different smile, maybe one with glasses on and one without. Upload the best one. OneTake only needs 1 good photo to generate 30 professional headshots.</p>
+<p>Take 5–10 selfies with slight variations: a subtle head tilt, a slightly different smile, maybe one with glasses on and one without. Upload the best one. TryOneTake only needs 1 good photo to generate 30 professional headshots.</p>
 
 <h2>7. What to avoid</h2>
 <ul>
@@ -75,12 +75,12 @@ export const blogPosts: BlogPost[] = [
       "professional LinkedIn picture AI",
     ],
     date: "2026-07-05",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "7 min read",
     body: `<h2>The LinkedIn photo that works — what the data says</h2>
 <p>LinkedIn reports that profiles with a professional photo get 21x more views and 36x more messages. A good headshot isn't optional — it's the single highest-ROI investment you can make in your professional presence. But in 2026, you have two very different ways to get one.</p>
 
-<h2>Option 1: AI headshots (OneTake — $19)</h2>
+<h2>Option 1: AI headshots (TryOneTake — $19)</h2>
 <p><strong>How it works:</strong> Upload 1 selfie. Our FLUX.2 AI generates 30 professional headshots with different outfits, backgrounds, and lighting setups. Pick your favorite. Done in under 5 minutes.</p>
 <p><strong>Pros:</strong></p>
 <ul>
@@ -112,7 +112,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h2>The verdict: AI wins for 95% of LinkedIn users</h2>
-<p>Unless you're a CEO doing a magazine cover or a celebrity who needs optical authenticity, AI headshots deliver 95% of the quality at 5% of the cost and 0.1% of the time. For the vast majority of professionals — job seekers, consultants, recruiters, engineers, salespeople — an AI headshot from OneTake is the smarter choice.</p>
+<p>Unless you're a CEO doing a magazine cover or a celebrity who needs optical authenticity, AI headshots deliver 95% of the quality at 5% of the cost and 0.1% of the time. For the vast majority of professionals — job seekers, consultants, recruiters, engineers, salespeople — an AI headshot from TryOneTake is the smarter choice.</p>
 <p>Use the $180-$480 you save on something that actually moves your career forward: a resume rewrite, a career coach session, or networking event tickets.</p>
 <p>Ready to make the switch? Try <a href="/use-cases/linkedin-headshots">AI LinkedIn headshots</a> starting at $19. If you need headshots for your entire team, check out our <a href="/use-cases/corporate-headshots">corporate AI headshots</a> — consistent quality across every employee at a fraction of traditional photography costs.</p>`,
   },
@@ -129,7 +129,7 @@ export const blogPosts: BlogPost[] = [
       "corporate headshot pricing",
     ],
     date: "2026-07-09",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "6 min read",
     body: `<h2>Traditional photography: $200–$1,500+</h2>
 <table>
@@ -144,8 +144,8 @@ export const blogPosts: BlogPost[] = [
 <h2>AI headshot generators: $19–$35</h2>
 <table>
 <tr><th>Tool</th><th>Price</th><th>Images</th><th>Wait time</th></tr>
-<tr><td>OneTake Starter</td><td>$19</td><td>30</td><td>&lt;5 min</td></tr>
-<tr><td>OneTake Pro</td><td>$35</td><td>30</td><td>&lt;5 min</td></tr>
+<tr><td>TryOneTake Starter</td><td>$19</td><td>30</td><td>&lt;5 min</td></tr>
+<tr><td>TryOneTake Pro</td><td>$35</td><td>30</td><td>&lt;5 min</td></tr>
 <tr><td>HeadshotPro</td><td>$24+</td><td>40</td><td>10-30 min</td></tr>
 <tr><td>Aragon AI</td><td>$29+</td><td>40</td><td>60-90 min</td></tr>
 </table>
@@ -160,7 +160,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h2>The bottom line</h2>
-<p>For the vast majority of professional needs — LinkedIn, company websites, business cards, email signatures — AI headshots from OneTake deliver equal quality for $19 vs $200-$500+. The math is simple: try AI first. If you genuinely need something AI can't provide, then go the traditional route. But you probably won't need to.</p>
+<p>For the vast majority of professional needs — LinkedIn, company websites, business cards, email signatures — AI headshots from TryOneTake deliver equal quality for $19 vs $200-$500+. The math is simple: try AI first. If you genuinely need something AI can't provide, then go the traditional route. But you probably won't need to.</p>
 <p>See our <a href="/use-cases/linkedin-headshots">LinkedIn headshots</a> and <a href="/use-cases/corporate-headshots">corporate headshots</a> pages for profession-specific examples and pricing. Also compare us head-to-head against <a href="/vs/headshotpro">HeadshotPro</a> and <a href="/vs/aragon-ai">Aragon AI</a>.</p>`,
   },
   {
@@ -176,12 +176,12 @@ export const blogPosts: BlogPost[] = [
       "professional AI photo ethics",
     ],
     date: "2026-07-14",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "6 min read",
     body: `<h2>The core question: is it deceptive?</h2>
 <p>The most common ethical concern is whether using an AI-generated headshot is misleading. The answer depends on one thing: <strong>does it actually look like you?</strong></p>
 <p>If your AI headshot accurately represents your current appearance, it's no different from a professionally retouched photograph — which has been standard practice for decades. The issue arises only when AI headshots significantly alter or misrepresent your features.</p>
-<p>At OneTake, we built our AI to <strong>prioritize identity preservation</strong>. Our goal is to generate headshots that look like a professional photo of you — not a different person.</p>
+<p>At TryOneTake, we built our AI to <strong>prioritize identity preservation</strong>. Our goal is to generate headshots that look like a professional photo of you — not a different person.</p>
 
 <h2>Data privacy — what happens to your photos?</h2>
 <ul>
@@ -200,7 +200,7 @@ export const blogPosts: BlogPost[] = [
 <p>For contexts where optical authenticity matters (passports, legal ID, journalism), AI headshots should never be used. These require unaltered photographs.</p>
 
 <h2>Our position</h2>
-<p>AI headshots are a tool — neither inherently ethical nor unethical. At OneTake, we believe:</p>
+<p>AI headshots are a tool — neither inherently ethical nor unethical. At TryOneTake, we believe:</p>
 <ol>
 <li><strong>Identity preservation is non-negotiable.</strong> Your headshot must look like you.</li>
 <li><strong>Transparency about the technology.</strong> We're clear that AI generates these images.</li>
@@ -208,7 +208,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Accessibility matters.</strong> Professional headshots should be available to everyone, not just those who can spend $500 on a photographer.</li>
 </ol>
 <p>If you have questions or concerns, reach out: support@tryonetake.com</p>
-<p>Want to see how OneTake compares to other options? Read our detailed comparisons: <a href="/vs/headshotpro">OneTake vs HeadshotPro</a>, <a href="/vs/aragon-ai">OneTake vs Aragon AI</a>, and <a href="/vs/traditional-photography">OneTake vs Traditional Photography</a>. Or explore use cases for <a href="/use-cases/actor-headshots">actor headshots</a> and <a href="/use-cases/realtor-headshots">realtor headshots</a>.</p>`,
+<p>Want to see how TryOneTake compares to other options? Read our detailed comparisons: <a href="/vs/headshotpro">TryOneTake vs HeadshotPro</a>, <a href="/vs/aragon-ai">TryOneTake vs Aragon AI</a>, and <a href="/vs/traditional-photography">TryOneTake vs Traditional Photography</a>. Or explore use cases for <a href="/use-cases/actor-headshots">actor headshots</a> and <a href="/use-cases/realtor-headshots">realtor headshots</a>.</p>`,
   },
   {
     slug: "best-ai-headshot-generator-2026",
@@ -224,7 +224,7 @@ export const blogPosts: BlogPost[] = [
       "cheapest AI headshots",
     ],
     date: "2026-07-16",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "8 min read",
     body: `<h2>How we evaluated these tools</h2>
 <p>We tested each AI headshot generator on four criteria:</p>
@@ -235,7 +235,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Ease of use:</strong> How many photos required? Any technical knowledge needed?</li>
 </ul>
 
-<h2>1. OneTake — Best overall (Editor's Pick)</h2>
+<h2>1. TryOneTake — Best overall (Editor's Pick)</h2>
 <table>
 <tr><th>Criteria</th><th>Score</th></tr>
 <tr><td>Realism</td><td>⭐⭐⭐⭐⭐ — FLUX.2 model, identity preservation focus</td></tr>
@@ -243,8 +243,8 @@ export const blogPosts: BlogPost[] = [
 <tr><td>Speed</td><td>Under 5 minutes</td></tr>
 <tr><td>Photos required</td><td>Just 1</td></tr>
 </table>
-<p><strong>Why it wins:</strong> OneTake hits the sweet spot — the most advanced AI model (FLUX.2), the fastest turnaround, the fewest input photos required, and the lowest price per headshot. Plus automatic refunds if any generation fails. For 95% of people who need a professional headshot, this is the best option in 2026.</p>
-<p><a href="/generate">Try OneTake →</a></p>
+<p><strong>Why it wins:</strong> TryOneTake hits the sweet spot — the most advanced AI model (FLUX.2), the fastest turnaround, the fewest input photos required, and the lowest price per headshot. Plus automatic refunds if any generation fails. For 95% of people who need a professional headshot, this is the best option in 2026.</p>
+<p><a href="/generate">Try TryOneTake →</a></p>
 
 <h2>2. HeadshotPro — Solid, but pricier and slower</h2>
 <table>
@@ -254,7 +254,7 @@ export const blogPosts: BlogPost[] = [
 <tr><td>Speed</td><td>10–30 minutes</td></tr>
 <tr><td>Photos required</td><td>6–12</td></tr>
 </table>
-<p>HeadshotPro is the most well-known brand in the space, but it's running on an older AI model (FLUX.1) and requires significantly more input photos. The output quality is good — just not as sharp or identity-accurate as FLUX.2 generators. See our full breakdown: <a href="/vs/headshotpro">OneTake vs HeadshotPro</a>.</p>
+<p>HeadshotPro is the most well-known brand in the space, but it's running on an older AI model (FLUX.1) and requires significantly more input photos. The output quality is good — just not as sharp or identity-accurate as FLUX.2 generators. See our full breakdown: <a href="/vs/headshotpro">TryOneTake vs HeadshotPro</a>.</p>
 
 <h2>3. Aragon AI — Expensive and slow, but decent results</h2>
 <table>
@@ -264,16 +264,16 @@ export const blogPosts: BlogPost[] = [
 <tr><td>Speed</td><td>60–90 minutes</td></tr>
 <tr><td>Photos required</td><td>8–12</td></tr>
 </table>
-<p>Aragon AI charges premium prices for results that are inconsistent. Some outputs look great; others have that unmistakable "AI-generated" look. The 60–90 minute wait and 8+ photo requirement make it one of the less convenient options. See: <a href="/vs/aragon-ai">OneTake vs Aragon AI</a>.</p>
+<p>Aragon AI charges premium prices for results that are inconsistent. Some outputs look great; others have that unmistakable "AI-generated" look. The 60–90 minute wait and 8+ photo requirement make it one of the less convenient options. See: <a href="/vs/aragon-ai">TryOneTake vs Aragon AI</a>.</p>
 
 <h2>4. Remini — Best for photo enhancement, not headshots</h2>
-<p>Remini is excellent at sharpening blurry photos and restoring old images. But it enhances your existing selfie — it doesn't generate new professional headshots with different outfits and backgrounds. Use Remini to restore grandma's photo, use an actual AI headshot generator for your LinkedIn profile. See: <a href="/vs/remini">OneTake vs Remini</a>.</p>
+<p>Remini is excellent at sharpening blurry photos and restoring old images. But it enhances your existing selfie — it doesn't generate new professional headshots with different outfits and backgrounds. Use Remini to restore grandma's photo, use an actual AI headshot generator for your LinkedIn profile. See: <a href="/vs/remini">TryOneTake vs Remini</a>.</p>
 
 <h2>5. Secta AI — Early pioneer, now outdated</h2>
-<p>Secta AI was one of the first AI headshot tools, but their models and speed haven't kept pace. 30 minutes to 2 hours of generation time with an older model makes it hard to recommend in 2026. Read: <a href="/vs/secta-ai">OneTake vs Secta AI</a>.</p>
+<p>Secta AI was one of the first AI headshot tools, but their models and speed haven't kept pace. 30 minutes to 2 hours of generation time with an older model makes it hard to recommend in 2026. Read: <a href="/vs/secta-ai">TryOneTake vs Secta AI</a>.</p>
 
 <h2>6. TryItOn AI — Decent, but too many photos required</h2>
-<p>TryItOn AI produces okay results but asks for 10–20 photos and charges $25+. The output can look over-processed. For the price and effort, there are better options. See: <a href="/vs/tryiton-ai">OneTake vs TryItOn AI</a>.</p>
+<p>TryItOn AI produces okay results but asks for 10–20 photos and charges $25+. The output can look over-processed. For the price and effort, there are better options. See: <a href="/vs/tryiton-ai">TryOneTake vs TryItOn AI</a>.</p>
 
 <h2>7. Professional photographer — Best for magazine covers</h2>
 <p>For 95% of professional needs, AI is better, faster, and 10-20x cheaper. But if you're doing a magazine cover, a billboard campaign, or need optical authenticity for legal/press purposes, hire a photographer. For everyone else: <a href="/vs/traditional-photography">AI vs Traditional Photography</a>.</p>
@@ -281,14 +281,14 @@ export const blogPosts: BlogPost[] = [
 <h2>The verdict: which AI headshot generator should you choose?</h2>
 <table>
 <tr><th>If you want…</th><th>Best choice</th></tr>
-<tr><td>Best overall value & quality</td><td>OneTake ($19, FLUX.2, 5 min)</td></tr>
+<tr><td>Best overall value & quality</td><td>TryOneTake ($19, FLUX.2, 5 min)</td></tr>
 <tr><td>Most well-known brand</td><td>HeadshotPro ($24+, FLUX.1)</td></tr>
 <tr><td>Cheapest per image</td><td>HeadshotPro ($0.60/image) — but more photos required</td></tr>
-<tr><td>Fewest photos to upload</td><td>OneTake (just 1 photo)</td></tr>
-<tr><td>Fastest delivery</td><td>OneTake (under 5 minutes)</td></tr>
-<tr><td>Best identity preservation</td><td>OneTake (FLUX.2, optimized)</td></tr>
+<tr><td>Fewest photos to upload</td><td>TryOneTake (just 1 photo)</td></tr>
+<tr><td>Fastest delivery</td><td>TryOneTake (under 5 minutes)</td></tr>
+<tr><td>Best identity preservation</td><td>TryOneTake (FLUX.2, optimized)</td></tr>
 </table>
-<p>Ready to get your AI headshots? <a href="/generate">Start with OneTake — $19, 30 headshots, under 5 minutes</a>. See our full comparisons: <a href="/vs/headshotpro">vs HeadshotPro</a>, <a href="/vs/aragon-ai">vs Aragon AI</a>, <a href="/vs/remini">vs Remini</a>, <a href="/vs/secta-ai">vs Secta AI</a>, <a href="/vs/tryiton-ai">vs TryItOn AI</a>.</p>`,
+<p>Ready to get your AI headshots? <a href="/generate">Start with TryOneTake — $19, 30 headshots, under 5 minutes</a>. See our full comparisons: <a href="/vs/headshotpro">vs HeadshotPro</a>, <a href="/vs/aragon-ai">vs Aragon AI</a>, <a href="/vs/remini">vs Remini</a>, <a href="/vs/secta-ai">vs Secta AI</a>, <a href="/vs/tryiton-ai">vs TryItOn AI</a>.</p>`,
   },
   {
     slug: "ai-headshots-dating-apps-tinder-bumble",
@@ -305,7 +305,7 @@ export const blogPosts: BlogPost[] = [
       "do AI photos work on Tinder",
     ],
     date: "2026-07-18",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "7 min read",
     body: `<h2>The dating app photo problem</h2>
 <p>Your photos are 90% of your dating app success. Tinder's own data shows profiles with high-quality photos get 5x more matches. But most people don't have a library of professional photos of themselves — and hiring a photographer for dating app pics feels... weird. Enter AI headshots.</p>
@@ -321,7 +321,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h2>How AI headshots perform on dating apps</h2>
-<p>We tested OneTake AI headshots on Tinder, Bumble, and Hinge profiles against traditional selfies. Here's what happened:</p>
+<p>We tested TryOneTake AI headshots on Tinder, Bumble, and Hinge profiles against traditional selfies. Here's what happened:</p>
 
 <h3>Tinder — 40% more matches with AI-generated photos</h3>
 <p>Tinder's fast-swipe environment rewards visual impact. A professional-looking photo in a nice outfit with good lighting gets swiped right way more often than a bathroom selfie. The key: choose AI headshots with a <strong>smart casual</strong> look, not a corporate boardroom shot. A blazer at a coffee shop beats a suit in a conference room every time on Tinder.</p>
@@ -333,19 +333,19 @@ export const blogPosts: BlogPost[] = [
 <p>Hinge's "designed to be deleted" positioning means users look for relationship potential. Overly staged corporate headshots performed poorly — but AI photos with a relaxed, approachable vibe (outdoor setting, smart casual outfit, genuine smile) outperformed selfies by a wide margin.</p>
 
 <h2>The golden rule: don't use the same AI photo everywhere</h2>
-<p>The biggest mistake people make is using the same AI headshot on LinkedIn and Tinder. Dating apps are looking for <strong>lifestyle context</strong> — you at a restaurant, you outdoors, you doing something interesting. OneTake's Pro plan gives you 25 style variations, so pick the casual, approachable ones for dating apps and save the formal ones for LinkedIn. See <a href="/use-cases/linkedin-headshots">LinkedIn headshot tips</a> for the professional side.</p>
+<p>The biggest mistake people make is using the same AI headshot on LinkedIn and Tinder. Dating apps are looking for <strong>lifestyle context</strong> — you at a restaurant, you outdoors, you doing something interesting. TryOneTake's Pro plan gives you 25 style variations, so pick the casual, approachable ones for dating apps and save the formal ones for LinkedIn. See <a href="/use-cases/linkedin-headshots">LinkedIn headshot tips</a> for the professional side.</p>
 
 <h2>What to avoid when using AI photos on dating apps</h2>
 <ul>
 <li><strong>Don't use all AI photos:</strong> Mix 1-2 AI headshots with 3-4 real candid photos. All-AI profiles feel fake.</li>
 <li><strong>Don't use overly formal shots:</strong> A three-piece suit photo on Tinder screams "I uploaded my LinkedIn pic." Go smart casual.</li>
-<li><strong>Don't misrepresent yourself:</strong> The AI photo should look like you on a good day — not like a different person. OneTake's identity preservation ensures this.</li>
+<li><strong>Don't misrepresent yourself:</strong> The AI photo should look like you on a good day — not like a different person. TryOneTake's identity preservation ensures this.</li>
 <li><strong>Don't skip the bio:</strong> Great photos get matches. Great bios get conversations. Both matter.</li>
 </ul>
 
 <h2>The bottom line</h2>
 <p>AI headshots absolutely work on dating apps — when used correctly. Use them as your polished main photo, supplement with real candid shots, and pick the casual looks over the corporate ones. For $19, it's the cheapest dating app upgrade you'll ever make.</p>
-<p>Want headshots for both dating and professional use? <a href="/generate">OneTake's Pro plan gives you 25 styles</a> covering everything from boardroom formal to coffee-shop casual. See also: <a href="/use-cases/linkedin-headshots">LinkedIn headshots</a> for the professional side of your online presence.</p>`,
+<p>Want headshots for both dating and professional use? <a href="/generate">TryOneTake's Pro plan gives you 25 styles</a> covering everything from boardroom formal to coffee-shop casual. See also: <a href="/use-cases/linkedin-headshots">LinkedIn headshots</a> for the professional side of your online presence.</p>`,
   },
   {
     slug: "do-ai-headshots-look-like-you",
@@ -362,7 +362,7 @@ export const blogPosts: BlogPost[] = [
       "most realistic AI headshot",
     ],
     date: "2026-07-20",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "6 min read",
     body: `<h2>The honest answer: it depends on the tool</h2>
 <p>Not all AI headshot generators are created equal. Some produce results that look exactly like you on your best day. Others turn you into a generic, smoothed-over mannequin that your own mother wouldn't recognize. The difference comes down to three things: the AI model, the training approach, and the identity preservation tech.</p>
@@ -374,7 +374,7 @@ export const blogPosts: BlogPost[] = [
 <p>Older models (pre-2025) struggled with facial consistency. They'd generate a "generic attractive person" that shared some of your features — same hair color, similar skin tone — but the face itself looked like a different person. Newer models like FLUX.2 have dramatically better identity preservation because they were trained with more sophisticated face-recognition loss functions.</p>
 
 <h3>2. Over-aggressive "beautification"</h3>
-<p>Some AI headshot tools apply heavy beauty filters by default — smoothing skin texture, enlarging eyes, slimming jawlines. The result looks "perfect" but unrecognizable. The best tools (like OneTake) use <strong>minimal beautification</strong> — they enhance lighting and wardrobe, not facial structure.</p>
+<p>Some AI headshot tools apply heavy beauty filters by default — smoothing skin texture, enlarging eyes, slimming jawlines. The result looks "perfect" but unrecognizable. The best tools (like TryOneTake) use <strong>minimal beautification</strong> — they enhance lighting and wardrobe, not facial structure.</p>
 
 <h3>3. Training data bias</h3>
 <p>AI models trained predominantly on one demographic produce less accurate results for people outside that demographic. Diverse training data matters. FLUX.2 was trained on a much broader dataset than earlier models, which is why it handles different face shapes, skin tones, and features more accurately.</p>
@@ -382,13 +382,13 @@ export const blogPosts: BlogPost[] = [
 <h2>How to get AI headshots that actually look like you</h2>
 <ol>
 <li><strong>Start with a good photo.</strong> Well-lit, front-facing, neutral expression, no filters. The AI needs clear data to work with. Read our <a href="/blog/how-to-take-perfect-selfie-for-ai-headshots">guide to taking the perfect selfie for AI headshots</a>.</li>
-<li><strong>Choose a tool with modern AI.</strong> FLUX.2-based generators (like OneTake) outperform FLUX.1 and older models on identity preservation by a significant margin.</li>
-<li><strong>Upload multiple angles if possible.</strong> While OneTake only needs 1 photo, providing 2-3 different angles can improve accuracy slightly. But 1 good photo is better than 10 bad ones.</li>
+<li><strong>Choose a tool with modern AI.</strong> FLUX.2-based generators (like TryOneTake) outperform FLUX.1 and older models on identity preservation by a significant margin.</li>
+<li><strong>Upload multiple angles if possible.</strong> While TryOneTake only needs 1 photo, providing 2-3 different angles can improve accuracy slightly. But 1 good photo is better than 10 bad ones.</li>
 <li><strong>Review and pick the best.</strong> You get 30 variations. Some will look more like you than others. Pick the most accurate ones — don't just choose the one where you look most attractive if it doesn't look like you.</li>
 </ol>
 
 <h2>The "mom test" for AI headshots</h2>
-<p>Here's a simple test: show your AI headshot to someone who knows you well. Don't tell them it's AI. Just ask "What do you think of this photo of me?" If they say "Nice photo!" without hesitation — it passes. If they squint and say "Hmm... that doesn't really look like you..." — it fails. OneTake's FLUX.2 model consistently passes the mom test. See how we compare: <a href="/vs/headshotpro">OneTake vs HeadshotPro</a>.</p>
+<p>Here's a simple test: show your AI headshot to someone who knows you well. Don't tell them it's AI. Just ask "What do you think of this photo of me?" If they say "Nice photo!" without hesitation — it passes. If they squint and say "Hmm... that doesn't really look like you..." — it fails. TryOneTake's FLUX.2 model consistently passes the mom test. See how we compare: <a href="/vs/headshotpro">TryOneTake vs HeadshotPro</a>.</p>
 
 <h2>Why FLUX.2 is a game-changer for realism</h2>
 <p>Released in late 2025, FLUX.2 represents a significant leap in AI image generation. Key improvements for headshots:</p>
@@ -400,7 +400,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The bottom line</h2>
 <p>Yes, AI headshots can look exactly like you — if you use a modern tool (FLUX.2), start with a good photo, and choose the realistic outputs over the over-beautified ones. For most professionals in 2026, the AI headshot quality bar has been crossed: the results are indistinguishable from real photos in day-to-day use.</p>
-<p>Ready to see what AI headshots of you look like? <a href="/generate">Try OneTake — $19, 30 headshots, automatic refund if any fail</a>. Also read: <a href="/blog/are-ai-headshots-ethical">Are AI Headshots Ethical?</a> and <a href="/blog/linkedin-profile-photo-ai-vs-photographer">LinkedIn Photo: AI vs Photographer</a>.</p>`,
+<p>Ready to see what AI headshots of you look like? <a href="/generate">Try TryOneTake — $19, 30 headshots, automatic refund if any fail</a>. Also read: <a href="/blog/are-ai-headshots-ethical">Are AI Headshots Ethical?</a> and <a href="/blog/linkedin-profile-photo-ai-vs-photographer">LinkedIn Photo: AI vs Photographer</a>.</p>`,
   },
   {
     slug: "what-to-wear-for-ai-headshots",
@@ -417,7 +417,7 @@ export const blogPosts: BlogPost[] = [
       "headshot style guide 2026",
     ],
     date: "2026-07-22",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "7 min read",
     body: `<h2>Your outfit changes everything — even with AI</h2>
 <p>One of the biggest advantages of AI headshots over traditional photography: the AI can put you in different outfits without you actually changing clothes. But you still need to choose <strong>which</strong> styles to generate. This guide covers exactly what works for different professions and contexts.</p>
@@ -456,7 +456,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>What the AI handles for you (so you don't need to worry)</h2>
 <ul>
-<li><strong>Outfit variety:</strong> OneTake's Pro plan generates 25 different styles — you don't need to actually own all these clothes. The AI creates them.</li>
+<li><strong>Outfit variety:</strong> TryOneTake's Pro plan generates 25 different styles — you don't need to actually own all these clothes. The AI creates them.</li>
 <li><strong>Background matching:</strong> The AI chooses backgrounds that complement your outfit — modern office for formal looks, outdoor settings for smart casual.</li>
 <li><strong>Lighting:</strong> Studio-quality lighting is applied automatically. You just need a well-lit selfie to start.</li>
 </ul>
@@ -483,7 +483,7 @@ export const blogPosts: BlogPost[] = [
       "enterprise AI headshots",
     ],
     date: "2026-07-24",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "7 min read",
     body: `<h2>The team headshot problem every company faces</h2>
 <p>Getting consistent, professional headshots for an entire team is one of those tasks that sounds simple and turns into a logistics nightmare:</p>
@@ -506,7 +506,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>Why AI beats traditional photography for team photos</h2>
 <table>
-<tr><th>Factor</th><th>Traditional Photographer</th><th>AI Headshots (OneTake)</th></tr>
+<tr><th>Factor</th><th>Traditional Photographer</th><th>AI Headshots (TryOneTake)</th></tr>
 <tr><td>Cost per person</td><td>$100-$300</td><td>$19 (or volume discount)</td></tr>
 <tr><td>Scheduling</td><td>Weeks of coordination</td><td>Each person does it on their own time</td></tr>
 <tr><td>Consistency</td><td>Varies by session, lighting, photographer</td><td>Identical quality and style across everyone</td></tr>
@@ -536,7 +536,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>How to get started with team AI headshots</h2>
 <p>Contact us for team pricing with volume discounts. We'll set up a custom style profile that ensures every employee — whether they're in San Francisco, London, or working from a coffee shop in Bali — gets the same professional headshot quality. From 5 to 5,000 employees.</p>
-<p><a href="/generate">Try OneTake for yourself first — $19, 30 headshots</a>. See the quality, then bring your team on board. Also read: <a href="/blog/professional-headshots-cost-2026">How Much Do Professional Headshots Cost?</a> for a full cost comparison.</p>`,
+<p><a href="/generate">Try TryOneTake for yourself first — $19, 30 headshots</a>. See the quality, then bring your team on board. Also read: <a href="/blog/professional-headshots-cost-2026">How Much Do Professional Headshots Cost?</a> for a full cost comparison.</p>`,
   },
   {
     slug: "can-you-use-ai-headshots-on-resume",
@@ -553,7 +553,7 @@ export const blogPosts: BlogPost[] = [
       "recruiter opinion AI headshots",
     ],
     date: "2026-07-26",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "6 min read",
     body: `<h2>The short answer: it depends on where you're applying</h2>
 <p>In the US, UK, and Canada: <strong>generally no</strong> — most recruiters recommend against including a photo on your resume due to anti-discrimination concerns. In continental Europe, Asia, and Latin America: <strong>often yes</strong> — photos on CVs are standard practice. And for LinkedIn: <strong>absolutely yes</strong> — a professional photo is non-negotiable.</p>
@@ -618,7 +618,7 @@ export const blogPosts: BlogPost[] = [
       "minimum photos AI headshot",
     ],
     date: "2026-07-28",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "5 min read",
     body: `<h2>The quick answer</h2>
 <p>It depends entirely on the technology the tool uses. Older AI headshot generators need <strong>8–20 photos</strong> because they fine-tune a custom model on your face. Newer tools built on advanced image models need <strong>just 1 photo</strong> because they preserve your identity directly from a single reference image.</p>
@@ -665,7 +665,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The bottom line</h2>
 <p>Don't judge an AI headshot service by how many photos it demands — judge it by results. If you have one good recent photo, a single-photo tool gets you professional headshots in minutes instead of hours of photo-hunting and model training.</p>
-<p>OneTake needs exactly <strong>1 photo</strong> and delivers 30 professional headshots in under 5 minutes. <a href="/generate">Try it for $19</a> — or read more about <a href="/blog/what-to-wear-for-ai-headshots">what to wear</a> and <a href="/blog/professional-headshots-cost-2026">how AI pricing compares to studio photography</a>.</p>`,
+<p>TryOneTake needs exactly <strong>1 photo</strong> and delivers 30 professional headshots in under 5 minutes. <a href="/generate">Try it for $19</a> — or read more about <a href="/blog/what-to-wear-for-ai-headshots">what to wear</a> and <a href="/blog/professional-headshots-cost-2026">how AI pricing compares to studio photography</a>.</p>`,
   },
   {
     slug: "why-do-my-ai-headshots-look-weird",
@@ -682,7 +682,7 @@ export const blogPosts: BlogPost[] = [
       "AI photo looks fake",
     ],
     date: "2026-07-30",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "7 min read",
     body: `<h2>Bad AI headshots are usually diagnosable</h2>
 <p>If your AI headshots came back looking uncanny, plasticky, or like a stranger wearing your face — the problem is almost always one of nine specific failure modes. Here's each one, what causes it, and how to fix it.</p>
@@ -697,7 +697,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>3. You look 10 years older (or younger)</h2>
 <p><strong>Cause:</strong> This is a known quirk of several image models — prompts containing words like "professional", "executive", or "distinguished" subtly push apparent age upward. Poor lighting in the source photo amplifies it.</p>
-<p><strong>Fix:</strong> Well-designed prompt engineering. At OneTake we specifically strip age-related descriptors from every generation prompt after testing showed even indirect words ("seasoned", "experienced") aged the output. If a tool lets you write custom prompts, avoid any age-adjacent language.</p>
+<p><strong>Fix:</strong> Well-designed prompt engineering. At TryOneTake we specifically strip age-related descriptors from every generation prompt after testing showed even indirect words ("seasoned", "experienced") aged the output. If a tool lets you write custom prompts, avoid any age-adjacent language.</p>
 
 <h2>4. Dead or misaligned eyes</h2>
 <p><strong>Cause:</strong> Eyes are the hardest facial feature for AI. Low-resolution source photos, or source photos where you're not looking at the camera, produce vacant or crossed-looking eyes.</p>
@@ -705,7 +705,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>5. Forced, unnatural smile</h2>
 <p><strong>Cause:</strong> The tool's prompts force an expression your source photo doesn't have. Making a neutral face "smile broadly" requires the AI to invent teeth and reshape facial muscles — a top source of identity drift.</p>
-<p><strong>Fix:</strong> Match expression to source: if your photo is neutral, generate neutral/composed headshots. Tools that force one expression style across all outputs produce the weird ones. (This is why OneTake's templates avoid facial-muscle directives entirely — the expression you upload is the expression you get.)</p>
+<p><strong>Fix:</strong> Match expression to source: if your photo is neutral, generate neutral/composed headshots. Tools that force one expression style across all outputs produce the weird ones. (This is why TryOneTake's templates avoid facial-muscle directives entirely — the expression you upload is the expression you get.)</p>
 
 <h2>6. Mangled hands, collars, or jewelry</h2>
 <p><strong>Cause:</strong> AI models still struggle with hands, glasses stems, shirt collars, and earrings — anything with fine geometric structure near the face.</p>
@@ -713,7 +713,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>7. Wrong clothing for your gender or profession</h2>
 <p><strong>Cause:</strong> Generic prompt libraries. Early tools were notorious for putting men in blouses or generating hospital scrubs for accountants.</p>
-<p><strong>Fix:</strong> Use tools that ask about your profession and gender presentation, then tailor outfits accordingly. OneTake's templates carry explicit gender-specific outfit variants and <a href="/use-cases">profession-matched wardrobes</a> for exactly this reason.</p>
+<p><strong>Fix:</strong> Use tools that ask about your profession and gender presentation, then tailor outfits accordingly. TryOneTake's templates carry explicit gender-specific outfit variants and <a href="/use-cases">profession-matched wardrobes</a> for exactly this reason.</p>
 
 <h2>8. Dark, moody, or inconsistent lighting</h2>
 <p><strong>Cause:</strong> "Dramatic" or "cinematic" prompt styles produce shadowy results that look great as art but wrong as professional headshots — and dim scenes amplify every other artifact on this list.</p>
@@ -725,7 +725,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The pattern behind all nine problems</h2>
 <p>Notice the theme: <strong>half these problems come from your source photo, half from the tool's prompt engineering.</strong> You control the first half — <a href="/blog/how-to-take-perfect-selfie-for-ai-headshots">take one good selfie</a>. The second half you control by choosing a tool that's done the prompt-engineering homework.</p>
-<p>OneTake generates 30 headshots from 1 photo with templates specifically engineered against these failure modes — no forced smiles, no dark scenes, gender-correct outfits, no age drift. <a href="/generate">See for yourself — $19</a>.</p>`,
+<p>TryOneTake generates 30 headshots from 1 photo with templates specifically engineered against these failure modes — no forced smiles, no dark scenes, gender-correct outfits, no age drift. <a href="/generate">See for yourself — $19</a>.</p>`,
   },
   {
     slug: "can-recruiters-tell-ai-headshots",
@@ -741,7 +741,7 @@ export const blogPosts: BlogPost[] = [
       "recruiters AI profile photo",
     ],
     date: "2026-08-01",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "6 min read",
     body: `<h2>The data: most recruiters can't tell</h2>
 <p>Multiple studies through 2025–2026 put the number around <strong>60% of recruiters unable to reliably distinguish modern AI headshots from studio photography</strong> — and that figure climbs higher when photos are viewed at LinkedIn thumbnail size, which is how recruiters actually see them.</p>
@@ -782,7 +782,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The bottom line</h2>
 <p>Recruiters can't reliably detect good AI headshots, and more importantly, they don't care about the technology — they care that you look like your photo. Use a tool that preserves your real face, pick outputs that honestly resemble you, and you're on the right side of both the data and the ethics.</p>
-<p>OneTake is built for exactly this: identity preservation first, so your headshots look like <em>you on your best day</em> — not a stranger. <a href="/generate">Generate 30 headshots from 1 photo — $19</a>. Related: <a href="/blog/can-you-use-ai-headshots-on-resume">can you use AI headshots on your resume?</a></p>`,
+<p>TryOneTake is built for exactly this: identity preservation first, so your headshots look like <em>you on your best day</em> — not a stranger. <a href="/generate">Generate 30 headshots from 1 photo — $19</a>. Related: <a href="/blog/can-you-use-ai-headshots-on-resume">can you use AI headshots on your resume?</a></p>`,
   },
   {
     slug: "are-ai-headshots-safe-privacy",
@@ -799,7 +799,7 @@ export const blogPosts: BlogPost[] = [
       "AI headshot photo rights",
     ],
     date: "2026-08-03",
-    author: "OneTake Team",
+    author: "TryOneTake Team",
     readTime: "6 min read",
     body: `<h2>The concern is legitimate</h2>
 <p>You're uploading clear, high-quality photos of your face to a company you found twenty minutes ago. It's entirely reasonable to ask: where do these photos go, who can access them, and could they end up training some model or — worse — in a dataset breach?</p>
@@ -815,7 +815,7 @@ export const blogPosts: BlogPost[] = [
 <li><strong>Is payment handled securely?</strong> Look for established payment processors (Stripe, Paddle, Creem, PayPal). A service hand-rolling its own card forms is a red flag well beyond privacy.</li>
 </ol>
 
-<h2>How OneTake handles your photos</h2>
+<h2>How TryOneTake handles your photos</h2>
 <ul>
 <li><strong>Generation only.</strong> Your uploaded photos are used to generate your headshots — not to train models.</li>
 <li><strong>You own your headshots.</strong> Full rights to use them anywhere: LinkedIn, your company site, print.</li>
@@ -837,7 +837,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The bottom line</h2>
 <p>AI headshots are safe when the service is transparent: photos used for generation only, clear deletion rights, established payment rails, and you own the output. Spend two minutes on the privacy policy before uploading — and avoid any service whose terms read like a data-harvesting operation with a headshot feature attached.</p>
-<p>Questions about how we handle data? Read the <a href="/privacy">OneTake privacy policy</a> or email us. Ready to go? <a href="/generate">30 professional headshots from 1 photo — $19</a>. Related reading: <a href="/blog/are-ai-headshots-ethical">are AI headshots ethical?</a></p>`,
+<p>Questions about how we handle data? Read the <a href="/privacy">TryOneTake privacy policy</a> or email us. Ready to go? <a href="/generate">30 professional headshots from 1 photo — $19</a>. Related reading: <a href="/blog/are-ai-headshots-ethical">are AI headshots ethical?</a></p>`,
   },
 ];
 

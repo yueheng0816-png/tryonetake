@@ -1,10 +1,10 @@
-import { Resend } from "resend";
+﻿import { Resend } from "resend";
 import { TRUSTPILOT_REVIEW_URL } from "./constants";
 
 const resend = new Resend(process.env.RESEND_API_KEY!);
 
 const ADMIN_EMAIL = "support@tryonetake.com";
-const FROM_EMAIL = "OneTake <noreply@tryonetake.com>";
+const FROM_EMAIL = "TryOneTake <noreply@tryonetake.com>";
 
 export function isEmailConfigured(): boolean {
   const key = process.env.RESEND_API_KEY;
@@ -18,7 +18,7 @@ export async function sendCompletionEmail(params: {
   photoCount: number;
 }) {
   if (!isEmailConfigured()) {
-    console.warn("[OneTake] RESEND_API_KEY not configured — skipping completion email");
+    console.warn("[TryOneTake] RESEND_API_KEY not configured — skipping completion email");
     return;
   }
 
@@ -48,9 +48,9 @@ export async function sendCompletionEmail(params: {
         </div>
       `,
     });
-    console.log(`[OneTake] Completion email sent to ${to} for order ${orderId}`);
+    console.log(`[TryOneTake] Completion email sent to ${to} for order ${orderId}`);
   } catch (error) {
-    console.error("[OneTake] Failed to send completion email:", error);
+    console.error("[TryOneTake] Failed to send completion email:", error);
   }
 }
 
@@ -63,7 +63,7 @@ export async function sendUserRefundEmail(params: {
   reason: string;
 }) {
   if (!isEmailConfigured()) {
-    console.warn("[OneTake] RESEND_API_KEY not configured — skipping user email");
+    console.warn("[TryOneTake] RESEND_API_KEY not configured — skipping user email");
     return;
   }
 
@@ -76,8 +76,8 @@ export async function sendUserRefundEmail(params: {
       from: FROM_EMAIL,
       to,
       subject: isFullRefund
-        ? "Your OneTake order has been refunded"
-        : `OneTake: Partial refund for your order (${successCount}/${totalCount} photos ready)`,
+        ? "Your TryOneTake order has been refunded"
+        : `TryOneTake: Partial refund for your order (${successCount}/${totalCount} photos ready)`,
       html: `
         <div style="max-width:480px;margin:0 auto;font-family:system-ui,sans-serif">
           <h2 style="color:#333">${isFullRefund ? "Order refunded" : "Partial refund issued"}</h2>
@@ -92,9 +92,9 @@ export async function sendUserRefundEmail(params: {
         </div>
       `,
     });
-    console.log(`[OneTake] Refund email sent to ${to} — $${amountDollars}`);
+    console.log(`[TryOneTake] Refund email sent to ${to} — $${amountDollars}`);
   } catch (error) {
-    console.error("[OneTake] Failed to send user refund email:", error);
+    console.error("[TryOneTake] Failed to send user refund email:", error);
   }
 }
 
@@ -110,7 +110,7 @@ export async function sendAdminAlert(params: {
   totalCount: number;
 }) {
   if (!isEmailConfigured()) {
-    console.warn("[OneTake] RESEND_API_KEY not configured — skipping admin alert");
+    console.warn("[TryOneTake] RESEND_API_KEY not configured — skipping admin alert");
     return;
   }
 
@@ -120,7 +120,7 @@ export async function sendAdminAlert(params: {
     await resend.emails.send({
       from: FROM_EMAIL,
       to: ADMIN_EMAIL,
-      subject: `[ALERT] OneTake order ${orderId.slice(0, 8)}… — ${successCount}/${totalCount} photos, $${(refundAmount / 100).toFixed(2)} refunded`,
+      subject: `[ALERT] TryOneTake order ${orderId.slice(0, 8)}… — ${successCount}/${totalCount} photos, $${(refundAmount / 100).toFixed(2)} refunded`,
       html: `
         <div style="max-width:480px;margin:0 auto;font-family:system-ui,sans-serif">
           <h2 style="color:#d32f2f">🚨 Order Needs Attention</h2>
@@ -138,8 +138,8 @@ export async function sendAdminAlert(params: {
         </div>
       `,
     });
-    console.log(`[OneTake] Admin alert sent for order ${orderId}`);
+    console.log(`[TryOneTake] Admin alert sent for order ${orderId}`);
   } catch (error) {
-    console.error("[OneTake] Failed to send admin alert:", error);
+    console.error("[TryOneTake] Failed to send admin alert:", error);
   }
 }

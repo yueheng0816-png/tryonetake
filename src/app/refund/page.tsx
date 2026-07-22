@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -6,16 +6,16 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   title: "Refund Policy",
   description:
-    "OneTake refund policy — automatic refunds for technical failures: full refund if all headshots fail, pro-rata refund for partial failures. Simple and fair.",
+    "TryOneTake refund policy — automatic refunds for technical failures: full refund if all headshots fail, pro-rata refund for partial failures. Simple and fair.",
   alternates: {
     canonical: "/refund",
   },
   openGraph: {
-    title: "Refund Policy — OneTake",
+    title: "Refund Policy — TryOneTake",
     description:
-      "OneTake refund policy — automatic refunds for technical failures: full refund if all headshots fail, pro-rata refund for partial failures.",
+      "TryOneTake refund policy — automatic refunds for technical failures: full refund if all headshots fail, pro-rata refund for partial failures.",
     url: `${siteUrl}/refund`,
-    siteName: "OneTake",
+    siteName: "TryOneTake",
     locale: "en_US",
     type: "website",
   },
@@ -52,7 +52,7 @@ export default function RefundPage() {
 
       <div className="mt-8 space-y-10 text-base leading-relaxed">
         <p className="text-muted-foreground">
-          At OneTake, we stand behind our AI headshot service. This Refund
+          At TryOneTake, we stand behind our AI headshot service. This Refund
           Policy explains when and how refunds are issued. Our policy is
           designed to be simple, fair, and where possible, automatic — so you
           don&rsquo;t need to jump through hoops to get your money back when

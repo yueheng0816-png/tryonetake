@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { comparisons } from "@/lib/comparison-data";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -8,12 +8,12 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "OneTake vs Competitors — Honest AI Headshot Comparisons",
+  title: "TryOneTake vs Competitors — Honest AI Headshot Comparisons",
   description:
-    "Honest, side-by-side comparisons of OneTake vs other AI headshot generators. Compare pricing, speed, quality, and features. Find the best AI headshot tool for your needs.",
+    "Honest, side-by-side comparisons of TryOneTake vs other AI headshot generators. Compare pricing, speed, quality, and features. Find the best AI headshot tool for your needs.",
   keywords: [
     "AI headshot comparison",
-    "OneTake vs competitors",
+    "TryOneTake vs competitors",
     "best AI headshot generator",
     "AI headshot tool comparison",
     "HeadshotPro alternative",
@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     canonical: "/vs",
   },
   openGraph: {
-    title: "OneTake vs Competitors — Honest AI Headshot Comparisons",
+    title: "TryOneTake vs Competitors — Honest AI Headshot Comparisons",
     description:
-      "Honest, side-by-side comparisons of OneTake vs other AI headshot generators. Compare pricing, speed, quality, and features.",
+      "Honest, side-by-side comparisons of TryOneTake vs other AI headshot generators. Compare pricing, speed, quality, and features.",
     url: `${siteUrl}/vs`,
-    siteName: "OneTake",
+    siteName: "TryOneTake",
     locale: "en_US",
     type: "website",
     images: [
@@ -35,15 +35,15 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "OneTake vs Competitors — AI Headshot Comparison",
+        alt: "TryOneTake vs Competitors — AI Headshot Comparison",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OneTake vs Competitors — Honest AI Headshot Comparisons",
+    title: "TryOneTake vs Competitors — Honest AI Headshot Comparisons",
     description:
-      "Honest, side-by-side comparisons of OneTake vs other AI headshot generators.",
+      "Honest, side-by-side comparisons of TryOneTake vs other AI headshot generators.",
     images: ["/og-image.jpg"],
   },
 };
@@ -77,9 +77,9 @@ export default function VsIndex() {
             {
               "@context": "https://schema.org",
               "@type": "CollectionPage",
-              name: "OneTake vs Competitors",
+              name: "TryOneTake vs Competitors",
               description:
-                "Honest, side-by-side comparisons of OneTake vs other AI headshot generators.",
+                "Honest, side-by-side comparisons of TryOneTake vs other AI headshot generators.",
               url: `${siteUrl}/vs`,
               hasPart: comparisons.map((c) => ({
                 "@type": "WebPage",
@@ -100,7 +100,7 @@ export default function VsIndex() {
           ]}
         />
         <h1 className="text-4xl font-bold tracking-tight">
-          OneTake vs Competitors
+          TryOneTake vs Competitors
         </h1>
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
           Honest, side-by-side comparisons. No marketing fluff — just the facts

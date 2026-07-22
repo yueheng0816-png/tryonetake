@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import type { Metadata } from "next";
 
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -6,16 +6,16 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How OneTake collects, uses, and protects your personal data and photos. No data selling. Your photos are only used to generate your headshots.",
+    "How TryOneTake collects, uses, and protects your personal data and photos. No data selling. Your photos are only used to generate your headshots.",
   alternates: {
     canonical: "/privacy",
   },
   openGraph: {
-    title: "Privacy Policy — OneTake",
+    title: "Privacy Policy — TryOneTake",
     description:
-      "How OneTake collects, uses, and protects your personal data and photos. No data selling.",
+      "How TryOneTake collects, uses, and protects your personal data and photos. No data selling.",
     url: `${siteUrl}/privacy`,
-    siteName: "OneTake",
+    siteName: "TryOneTake",
     locale: "en_US",
     type: "website",
   },
@@ -52,7 +52,7 @@ export default function PrivacyPage() {
 
       <div className="mt-8 space-y-10 text-base leading-relaxed">
         <p className="text-muted-foreground">
-          OneTake (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;)
+          TryOneTake (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;)
           is committed to protecting your privacy. This Privacy Policy explains
           how we collect, use, disclose, and safeguard your information when you
           use our website and AI headshot generation service (collectively, the

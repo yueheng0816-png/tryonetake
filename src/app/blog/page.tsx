@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 import { blogPosts } from "@/lib/blog-data";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
@@ -8,9 +8,9 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "OneTake Blog — AI Headshot Tips, Guides & Industry Insights",
+  title: "TryOneTake Blog — AI Headshot Tips, Guides & Industry Insights",
   description:
-    "Expert guides on AI headshots, professional photography tips, LinkedIn profile optimization, and AI ethics. Stay informed with the OneTake blog.",
+    "Expert guides on AI headshots, professional photography tips, LinkedIn profile optimization, and AI ethics. Stay informed with the TryOneTake blog.",
   keywords: [
     "AI headshot blog",
     "professional headshot tips",
@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     canonical: "/blog",
   },
   openGraph: {
-    title: "OneTake Blog — AI Headshot Tips & Guides",
+    title: "TryOneTake Blog — AI Headshot Tips & Guides",
     description:
       "Expert guides on AI headshots, professional photography tips, and LinkedIn optimization.",
     url: `${siteUrl}/blog`,
-    siteName: "OneTake",
+    siteName: "TryOneTake",
     locale: "en_US",
     type: "website",
     images: [
@@ -33,13 +33,13 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "OneTake Blog — AI Headshot Tips & Guides",
+        alt: "TryOneTake Blog — AI Headshot Tips & Guides",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OneTake Blog — AI Headshot Tips & Guides",
+    title: "TryOneTake Blog — AI Headshot Tips & Guides",
     description:
       "Expert guides on AI headshots, professional photography tips, and LinkedIn optimization.",
     images: ["/og-image.jpg"],
@@ -55,7 +55,7 @@ export default function BlogIndex() {
           { label: "Blog" },
         ]}
       />
-      <h1 className="text-4xl font-bold tracking-tight">OneTake Blog</h1>
+      <h1 className="text-4xl font-bold tracking-tight">TryOneTake Blog</h1>
       <p className="mt-4 text-lg text-muted-foreground">
         AI headshot tips, professional photography guides, and industry insights.
       </p>

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { Hero } from "@/components/landing/hero";
 import { HowItWorks } from "@/components/landing/how-it-works";
 import { ComparisonTable } from "@/components/landing/comparison-table";
@@ -11,7 +11,7 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "OneTake — Professional AI Headshots That Actually Look Like You",
+  title: "TryOneTake — Professional AI Headshots That Actually Look Like You",
   description:
     "Upload 1 photo, get 30 studio-quality AI headshots in under 5 minutes. No photographer needed. FLUX.2 AI model — one payment of $19, automatic refund if generation fails. Trusted by professionals across 10+ industries.",
   keywords: [
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "AI-generated portrait",
     "professional profile picture",
     "headshot generator",
-    "OneTake AI",
+    "TryOneTake AI",
   ],
   alternates: {
     canonical: "/",
@@ -33,8 +33,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "OneTake",
-    title: "OneTake — Professional AI Headshots That Actually Look Like You",
+    siteName: "TryOneTake",
+    title: "TryOneTake — Professional AI Headshots That Actually Look Like You",
     description:
       "Upload 1 photo, get 30 studio-quality AI headshots. No photographer needed, no outfit menus, no background catalogs. $19 flat.",
     images: [
@@ -42,13 +42,13 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "OneTake — AI Headshots That Actually Look Like You",
+        alt: "TryOneTake — AI Headshots That Actually Look Like You",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "OneTake — AI Headshots That Actually Look Like You",
+    title: "TryOneTake — AI Headshots That Actually Look Like You",
     description:
       "Upload 1 photo, get 30 studio-quality headshots in under 5 minutes. $19 flat.",
     images: ["/og-image.jpg"],
@@ -65,7 +65,7 @@ export default function Home() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            name: "OneTake",
+            name: "TryOneTake",
             url: "https://tryonetake.com",
             description:
               "Upload 1 photo, get 30 studio-quality AI headshots in under 5 minutes. FLUX.2 AI model.",

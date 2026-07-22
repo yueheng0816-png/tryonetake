@@ -1,4 +1,4 @@
-import { SignIn } from "@clerk/nextjs";
+﻿import { SignIn } from "@clerk/nextjs";
 import { ShieldCheck, Zap, Star } from "lucide-react";
 
 const APPEARANCE = {
@@ -66,13 +66,13 @@ export default function SignInPage() {
         <div className="hidden flex-col justify-center lg:flex">
           <a href="/" className="inline-flex items-center gap-2 text-2xl font-bold tracking-tight">
             <span aria-hidden>📸</span>
-            <span className="text-primary">OneTake</span>
+            <span className="text-primary">TryOneTake</span>
           </a>
           <h2 className="mt-6 text-balance text-3xl font-bold tracking-tight lg:text-4xl">
             Welcome back
           </h2>
           <p className="mt-3 text-lg text-muted-foreground leading-relaxed">
-            Sign in to your OneTake account and continue your journey to the perfect professional headshot.
+            Sign in to your TryOneTake account and continue your journey to the perfect professional headshot.
           </p>
 
           {/* Trust badges */}
@@ -92,7 +92,7 @@ export default function SignInPage() {
           <div className="mb-6 text-center lg:hidden">
             <a href="/" className="inline-flex items-center gap-2 text-xl font-bold tracking-tight">
               <span aria-hidden>📸</span>
-              <span className="text-primary">OneTake</span>
+              <span className="text-primary">TryOneTake</span>
             </a>
           </div>
 

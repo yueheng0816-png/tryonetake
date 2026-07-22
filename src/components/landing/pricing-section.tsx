@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -141,7 +141,7 @@ export function PricingSection() {
               {
                 "@context": "https://schema.org",
                 "@type": "Product",
-                name: "OneTake Starter",
+                name: "TryOneTake Starter",
                 description:
                   "30 AI-generated professional headshots with FLUX.2 pro model and 10 style variations.",
                 offers: {
@@ -154,7 +154,7 @@ export function PricingSection() {
               {
                 "@context": "https://schema.org",
                 "@type": "Product",
-                name: "OneTake Pro",
+                name: "TryOneTake Pro",
                 description:
                   "30 AI-generated professional headshots with FLUX.2 max model and 25 style variations.",
                 offers: {

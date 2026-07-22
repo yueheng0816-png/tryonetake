@@ -2081,7 +2081,7 @@ export function getStyleInjection(
 ): string {
   const injections: Record<string, string> = {
     natural:
-      "natural skin texture, visible pores, minimal retouching, photorealistic, no beauty filter, keep original facial features",
+      "natural skin texture, minimal retouching, photorealistic, no beauty filter, keep original facial features",
     balanced:
       "subtle skin refinement, flattering studio lighting, natural-looking enhancement, professional retouch",
     polished:

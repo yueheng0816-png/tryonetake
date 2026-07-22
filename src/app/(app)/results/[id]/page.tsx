@@ -21,7 +21,7 @@ interface OrderData {
   failedPredictions: number;
 }
 
-const WATERMARK_TEXT = "TRYONETAKE.COM  •  FREE PREVIEW";
+const WATERMARK_TEXT = "tryonetake.com";
 
 export default function ResultsPage() {
   const params = useParams();
@@ -186,7 +186,7 @@ export default function ResultsPage() {
               </h1>
               <p className="text-sm text-muted-foreground">
                 {isFree
-                  ? "Free · 1 watermarked photo"
+                  ? "Free · 1 professional photo"
                   : `${order.plan.charAt(0).toUpperCase() + order.plan.slice(1)} plan`}
                 {isGenerating && !isFree
                   ? ` · Generating ${order.completedPredictions}/${PHOTOS_PER_ORDER}`

@@ -30,31 +30,40 @@ export function ResultCard({
       const blob = await res.blob();
 
       if (watermark) {
-        // Client-side watermark via Canvas
+        // Client-side watermark via Canvas — single text at bottom-right
         const img = new Image();
-        img.src = URL.createObjectURL(blob);
+        const objectUrl = URL.createObjectURL(blob);
+        img.src = objectUrl;
         await new Promise<void>((resolve) => { img.onload = () => resolve(); });
+        URL.revokeObjectURL(objectUrl);
+
         const canvas = document.createElement("canvas");
         canvas.width = img.width;
         canvas.height = img.height;
         const ctx = canvas.getContext("2d")!;
         ctx.drawImage(img, 0, 0);
 
-        // Semi-transparent repeating watermark
-        const fontSize = Math.max(18, Math.floor(img.width / 20));
-        ctx.font = `bold ${fontSize}px -apple-system, sans-serif`;
-        ctx.fillStyle = "rgba(255, 255, 255, 0.35)";
-        ctx.strokeStyle = "rgba(0, 0, 0, 0.15)";
-        ctx.lineWidth = 1;
-        ctx.textAlign = "center";
-        ctx.rotate((-25 * Math.PI) / 180);
+        // Single watermark at bottom-right
+        const fontSize = Math.max(14, Math.floor(img.width / 40));
+        ctx.font = `${fontSize}px -apple-system, BlinkMacSystemFont, sans-serif`;
+        const text = "tryonetake.com";
+        const metrics = ctx.measureText(text);
+        const padding = fontSize * 1.2;
+        const textW = metrics.width + padding;
+        const textH = fontSize + padding * 0.6;
 
-        for (let y = -img.height; y < img.height * 2; y += fontSize * 3.5) {
-          for (let x = -img.width; x < img.width * 2; x += ctx.measureText(watermark).width * 2) {
-            ctx.strokeText(watermark, x, y);
-            ctx.fillText(watermark, x, y);
-          }
-        }
+        // Background pill
+        const x = canvas.width - textW - padding;
+        const y = canvas.height - textH - padding;
+        ctx.fillStyle = "rgba(0, 0, 0, 0.45)";
+        ctx.beginPath();
+        ctx.roundRect(x, y, textW, textH, fontSize * 0.4);
+        ctx.fill();
+
+        // Text
+        ctx.fillStyle = "rgba(255, 255, 255, 0.8)";
+        ctx.textBaseline = "middle";
+        ctx.fillText(text, x + padding / 2, y + textH / 2);
 
         canvas.toBlob((watermarked) => {
           if (!watermarked) return;
@@ -139,32 +148,15 @@ export function ResultCard({
         <Download className="h-4 w-4" />
       </button>
 
-      {/* Watermark overlay */}
+      {/* Watermark overlay — single text at bottom-right */}
       {watermark && (
-        <div
-          className="pointer-events-none absolute inset-0 z-5"
-          style={{
-            backgroundImage: `repeating-linear-gradient(
-              -25deg,
-              transparent,
-              transparent 60px,
-              rgba(255,255,255,0.12) 60px,
-              rgba(255,255,255,0.12) 120px
-            )`,
-          }}
-        >
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span
-              className="select-none text-white/30 font-bold tracking-widest whitespace-nowrap"
-              style={{
-                fontSize: "clamp(10px, 2.5vw, 18px)",
-                transform: "rotate(-25deg)",
-                textShadow: "0 1px 3px rgba(0,0,0,0.3)",
-              }}
-            >
-              {watermark}
-            </span>
-          </div>
+        <div className="pointer-events-none absolute bottom-2 right-2 z-5">
+          <span
+            className="select-none rounded-md bg-black/45 px-2 py-0.5 text-xs text-white/80"
+            style={{ fontSize: "clamp(8px, 1.5vw, 12px)" }}
+          >
+            tryonetake.com
+          </span>
         </div>
       )}
 

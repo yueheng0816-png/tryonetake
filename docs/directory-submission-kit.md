@@ -74,37 +74,38 @@ support@tryonetake.com
 > 💡 建议节奏：每天提交 3-5 个，两周内完成。多数站 5-10 分钟一个。
 > ⚠️ 部分站需要注册账号，统一用 support@tryonetake.com 注册方便管理。
 
-### 第一梯队（权重高，先提交）
-- [ ] **SaaSHub** — https://www.saashub.com/submit
-- [ ] **AlternativeTo** — https://alternativeto.net/manage-item/ （提交时把 HeadshotPro/Aragon 列为 alternatives，蹭它们的页面流量）
-- [ ] **Toolify** — https://www.toolify.ai/submit （顺便看竞品流量估算）
-- [ ] **Futurepedia** — https://www.futurepedia.io/submit-tool （DR 69，免费基础版即可，别买 $250 featured）
-- [ ] **Product Hunt**（先建 product 页占位，正式 launch 另择日） — https://www.producthunt.com/products/new
+## 二、目录站提交清单
 
-### 付费待定（先跑完免费的，看数据再决定）
-- [ ] **There's An AI For That** — https://theresanaiforthat.com/getfeatured/ ⚠️ 已改为付费提交。目录里流量最大、按任务搜索意图最准，如果只买一个付费位选它。等免费目录两周数据出来再决定。
+> ✅ = 注册成功　❌ = 失败/不可用
 
-### 第二梯队（免费收录类）
-- [ ] **Uneed** — https://www.uneed.best/submit-a-tool
-- [ ] **eliteai.tools** — https://eliteai.tools/submit
-- [ ] **AI Agents Directory** — https://aiagentsdirectory.com/submit-agent
-- [ ] **Startup Stash** — https://startupstash.com/add-listing/
-- [ ] **BetaList** — https://betalist.com/submit （偏早期产品，也收 launched）
-- [ ] **MicroLaunch** — https://microlaunch.net/submit
-- [ ] **Peerlist Launchpad** — https://peerlist.io/launchpad
+### ✅ 成功注册（3 个）
+- [x] **Product Hunt** — https://www.producthunt.com
+- [x] **SaaSHub** — https://www.saashub.com
+- [x] **Uneed** — https://www.uneed.best
 
-> ⚠️ 注意：遇到 "Is it open source?" 字段一律选 **No** —— OneTake 是商业闭源产品。只收开源项目的目录（如 OpenAlternative）不要提交，会被拒。
+### ❌ 不可用 —— 跳过
+- [x] ~~AlternativeTo~~ — 需付费或审核极严
+- [x] ~~Toolify~~ — 改为付费
+- [x] ~~Futurepedia~~ — 免费入口已关闭，实际只有 $250+ 付费位
+- [x] ~~There's An AI For That~~ — 纯付费
+- [x] ~~eliteai.tools~~ — 打不开
+- [x] ~~AI Agents Directory~~ — 只收 agent，不收 SaaS
+- [x] ~~Startup Stash~~ — 打不开
+- [x] ~~BetaList~~ — 需付费
+- [x] ~~MicroLaunch~~ — 打不开
+- [x] ~~Peerlist Launchpad~~ — 需付费
+- [x] ~~ToolListed~~ — 要求首页挂 badge
+- [x] ~~List Bulb~~ — 要求反向链接验证
+- [x] ~~NewTool~~ — 打不开
+- [x] ~~Share Fast~~ — 打不开
+- [x] ~~Insidr AI Tools~~ — 需付费
+- [x] ~~TopAI.tools~~ — 需付费
+- [x] ~~AI Tool Guru~~ — 打不开
+- [x] ~~OpenAlternative~~ — 只收开源项目
 
-### 第三梯队（2026 新目录，dofollow 外链）
-- [ ] **ToolListed** — https://toollisted.com/submit
-- [ ] **List Bulb** — https://listbulb.com/submit
-- [ ] **NewTool** — https://newtool.io/submit
-- [ ] **Share Fast** — https://sharefast.io/submit
-- [ ] **Insidr AI Tools** — https://www.insidr.ai/submit-tools/
-- [ ] **TopAI.tools** — https://topai.tools/submit
-- [ ] **AI Tool Guru** — https://aitoolguru.com/submit
+### 结论
 
-> 💡 更多目录：用 Nick Launches Directory Finder（https://aiagentsdirectory.com/agent/nick-launches-directory-finder）查 156 个人工核验目录数据库，按 DR 排序继续提交。
+目录提交策略的实际天花板就是 3-5 个站。不要继续在这上面花时间了。
 
 ### 提交时的小技巧
 1. **描述别完全一样** — 主力站（第一梯队）可以微调开头几句，避免完全重复文本

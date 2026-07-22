@@ -95,6 +95,9 @@ export const metadata: Metadata = {
   verification: {
     google: "N9l4zPahRdJ_BiBUHwLHyp4NV2v8pNIhyaFKgA7DrOo",
   },
+  other: {
+    "p:domain_verify": "012f30abe6306b50d85e90fd68154fd7",
+  },
 };
 
 export default function RootLayout({

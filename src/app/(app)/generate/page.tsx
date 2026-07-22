@@ -18,18 +18,18 @@ const PLAN_CARDS = [
     key: "free" as PlanOption,
     label: "Free",
     price: "$0",
-    model: "FLUX.2 pro",
-    photos: "1 headshot",
+    model: "FLUX.2 pro model",
+    photos: "1 professional headshot",
     styles: "Natural style",
-    description: "Try before you buy — same AI quality, watermarked preview",
+    description: "Try before you buy — same AI quality as Starter",
     badge: null,
   },
   {
     key: "starter" as PlanOption,
     label: "Starter",
     price: "$19",
-    model: "FLUX.2 pro",
-    photos: "30 headshots",
+    model: "FLUX.2 pro model",
+    photos: "30 professional headshots",
     styles: "10 style variations",
     description: "Excellent quality for professional headshots",
     badge: null,
@@ -38,8 +38,8 @@ const PLAN_CARDS = [
     key: "pro" as PlanOption,
     label: "Pro",
     price: "$35",
-    model: "FLUX.2 max",
-    photos: "30 headshots",
+    model: "FLUX.2 max model",
+    photos: "30 professional headshots",
     styles: "25 style variations",
     description: "Maximum sharpness, detail, and variety",
     badge: "Best Quality",
@@ -287,7 +287,9 @@ function GeneratePageInner() {
           <div>
             <h3 className="text-xl font-semibold">Choose your plan</h3>
             <p className="mt-1 text-base text-muted-foreground">
-              Same AI model on Free and Starter. Upgrade for more photos and styles.
+              {isFree
+                ? "Try free. Upgrade to Starter or Pro when you're ready."
+                : "30 professional headshots — the difference is AI model quality and style variety."}
             </p>
           </div>
 

@@ -33,8 +33,8 @@ export function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-2 text-lg font-bold">
               <span>📸</span>
-              OneTake
-            </Link>
+              TryOneTake
+  </Link>
             <p className="mt-3 text-base text-muted-foreground leading-relaxed">
               Professional AI headshots from just 1 photo.
               <br />
@@ -60,7 +60,7 @@ export function Footer() {
           ))}
         </div>
         <div className="mt-8 border-t border-border pt-6 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} OneTake. All rights reserved.
+          © {new Date().getFullYear()} TryOneTake. All rights reserved.
         </div>
       </div>
     </footer>

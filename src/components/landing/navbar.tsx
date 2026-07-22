@@ -23,7 +23,7 @@ export function Navbar() {
       <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold tracking-tight shrink-0">
           <span>📸</span>
-          <span className="text-primary">OneTake</span>
+          <span className="text-primary">TryOneTake</span>
         </Link>
 
         {/* Desktop nav */}

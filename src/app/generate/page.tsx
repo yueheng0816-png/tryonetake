@@ -2,6 +2,7 @@
 
 import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useAuth } from "@clerk/nextjs";
 import { PhotoUploader } from "@/components/upload/photo-uploader";
 import { StylePreference } from "@/components/upload/style-preference";
 import { Button } from "@/components/ui/button";
@@ -66,6 +67,7 @@ export default function GeneratePage() {
 function GeneratePageInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { isSignedIn } = useAuth();
   const urlPlan = searchParams.get("plan");
   const initialPlan: PlanOption =
     urlPlan === "pro" ? "pro" : urlPlan === "starter" ? "starter" : "free";
@@ -79,6 +81,12 @@ function GeneratePageInner() {
   const [uploading, setUploading] = useState(false);
 
   const isFree = plan === "free";
+
+  /** Redirect to Clerk sign-in preserving the current plan selection. */
+  const redirectToSignIn = () => {
+    const planParam = plan === "free" ? "free=true" : `plan=${plan}`;
+    router.push(`/sign-in?redirect_url=${encodeURIComponent(`/generate?${planParam}`)}`);
+  };
 
   const handleSubmit = async () => {
     if (photos.length === 0) {
@@ -94,6 +102,12 @@ function GeneratePageInner() {
       return;
     }
 
+    // Require sign-in before any submission
+    if (!isSignedIn) {
+      redirectToSignIn();
+      return;
+    }
+
     setUploading(true);
     try {
       // 1. Upload photos to server
@@ -106,6 +120,7 @@ function GeneratePageInner() {
       });
 
       if (!uploadRes.ok) {
+        if (uploadRes.status === 401) { redirectToSignIn(); return; }
         toast.error("Failed to upload photos. Please try again.");
         setUploading(false);
         return;
@@ -121,9 +136,9 @@ function GeneratePageInner() {
           body: JSON.stringify({ photoUrls, gender, profession }),
         });
 
-        const freeData = await freeRes.json();
-
         if (!freeRes.ok) {
+          if (freeRes.status === 401) { redirectToSignIn(); return; }
+          const freeData = await freeRes.json().catch(() => ({}));
           toast.error(
             freeData.message ??
               freeData.error ??
@@ -133,6 +148,7 @@ function GeneratePageInner() {
           return;
         }
 
+        const freeData = await freeRes.json();
         router.push(`/results/${freeData.orderId}`);
         return;
       }
@@ -152,12 +168,14 @@ function GeneratePageInner() {
         }),
       });
 
-      const data = await checkoutRes.json();
-
       if (!checkoutRes.ok) {
+        if (checkoutRes.status === 401) { redirectToSignIn(); return; }
+        const data = await checkoutRes.json().catch(() => ({}));
         toast.error(data.error ?? "Checkout failed. Please try again.");
         return;
       }
+
+      const data = await checkoutRes.json();
 
       if (data.url) {
         window.location.href = data.url;
@@ -343,12 +361,12 @@ function GeneratePageInner() {
               </>
             ) : isFree ? (
               <>
-                Generate free preview
+                {isSignedIn ? "Generate free preview" : "Sign up & generate free preview"}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </>
             ) : (
               <>
-                Continue to Payment
+                {isSignedIn ? "Continue to Payment" : "Sign up & continue to Payment"}
                 <ArrowRight className="ml-2 h-5 w-5" />
               </>
             )}

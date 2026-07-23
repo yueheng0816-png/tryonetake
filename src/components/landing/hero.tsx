@@ -5,7 +5,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck } from "lucide-react";
-import { useAuth } from "@clerk/nextjs";
 import { ImageLightbox } from "@/components/landing/image-lightbox";
 
 /** Paths to landing page images. Place your files in public/images/landing/ */
@@ -85,7 +84,6 @@ function BeforeAfterImage({
 }
 
 export function Hero() {
-  const { isSignedIn } = useAuth();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   return (
     <section className="relative overflow-hidden">
@@ -119,7 +117,7 @@ export function Hero() {
 
           {/* CTA */}
           <div className="mt-6 flex flex-col items-center gap-4">
-            <Link href={isSignedIn ? "/generate?free=true" : "/sign-up?redirect=free"}>
+            <Link href="/generate?free=true">
               <Button size="lg" className="h-12 px-8 text-base">
                 Try free
                 <ArrowRight className="ml-2 h-4 w-4" />

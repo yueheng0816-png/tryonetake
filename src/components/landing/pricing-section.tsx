@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
-import { useAuth } from "@clerk/nextjs";
 
 const plans = [
   {
@@ -20,8 +19,7 @@ const plans = [
       "Upgrade to Starter or Pro anytime",
     ],
     cta: "Try free",
-    href: "/sign-up?redirect=free",
-    hrefLoggedIn: "/generate?free=true",
+    href: "/generate?free=true",
     featured: false,
   },
   {
@@ -41,8 +39,7 @@ const plans = [
       "Automatic refund if generation fails",
     ],
     cta: "Get Starter",
-    href: "/sign-up?plan=starter",
-    hrefLoggedIn: "/generate?plan=starter",
+    href: "/generate?plan=starter",
     featured: false,
   },
   {
@@ -62,15 +59,12 @@ const plans = [
       "Automatic refund if generation fails",
     ],
     cta: "Get Pro",
-    href: "/sign-up?plan=pro",
-    hrefLoggedIn: "/generate?plan=pro",
+    href: "/generate?plan=pro",
     featured: true,
   },
 ];
 
 export function PricingSection() {
-  const { isSignedIn } = useAuth();
-
   return (
     <section id="pricing" className="border-t border-border bg-muted/30">
       <div className="container mx-auto max-w-6xl px-4 py-12 md:py-20">
@@ -121,7 +115,7 @@ export function PricingSection() {
                 ))}
               </ul>
 
-              <Link href={isSignedIn ? (plan.hrefLoggedIn ?? plan.href) : plan.href} className="block">
+              <Link href={plan.href} className="block">
                 <Button
                   variant={plan.featured ? "default" : "outline"}
                   className="w-full"

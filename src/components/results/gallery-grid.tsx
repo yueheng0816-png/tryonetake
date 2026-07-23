@@ -93,6 +93,7 @@ export function GalleryGrid({
           onClose={closeLightbox}
           onPrev={goPrev}
           onNext={goNext}
+          watermark={watermark}
         />
       )}
     </>

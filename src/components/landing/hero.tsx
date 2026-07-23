@@ -8,8 +8,8 @@ import { ArrowRight, ShieldCheck } from "lucide-react";
 import { ImageLightbox } from "@/components/landing/image-lightbox";
 
 /** Paths to landing page images. Place your files in public/images/landing/ */
-const BEFORE_IMG = "/images/landing/before-selfie.jpg";
-const AFTER_IMG = "/images/landing/after-headshot.jpg";
+const BEFORE_IMG = "/images/landing/before-selfie-v2.jpg";
+const AFTER_IMG = "/images/landing/after-headshot-v2.jpg";
 
 const HERO_IMAGES = [
   { src: BEFORE_IMG, alt: "Original selfie before AI transformation" },

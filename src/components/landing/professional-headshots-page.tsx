@@ -8,6 +8,7 @@ import { ArrowRight, Check, ChevronDown, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCases } from "@/lib/use-case-data";
 import { comparisons } from "@/lib/comparison-data";
+import { cities } from "@/lib/city-data";
 
 /* -------------------------------------------------------------------------- */
 /*  Hero                                                                      */
@@ -311,6 +312,45 @@ function TraditionalVsAI() {
           features). But for 95% of professional needs — LinkedIn, company
           websites, email signatures, conference materials — AI headshots
           deliver equal or better quality at a fraction of the time and cost.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Professional Headshots by City                                             */
+/* -------------------------------------------------------------------------- */
+function ByCity() {
+  return (
+    <section className="border-t border-border bg-muted/30">
+      <div className="container mx-auto max-w-6xl px-4 py-12 md:py-20">
+        <h2 className="text-3xl font-bold tracking-tight text-center">
+          Professional headshots near you
+        </h2>
+        <p className="mt-4 text-center text-lg text-muted-foreground max-w-2xl mx-auto">
+          Looking for headshots in your city? We have dedicated guides for 20
+          major US cities — with local photographer cost comparisons and tips
+          specific to your market.
+        </p>
+        <div className="mt-8 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+          {cities.map((c) => (
+            <Link
+              key={c.slug}
+              href={`/professional-headshots/${c.slug}`}
+              className="rounded-lg px-3 py-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+            >
+              {c.city}, {c.state}
+            </Link>
+          ))}
+        </div>
+        <p className="mt-4 text-center">
+          <Link
+            href="/professional-headshots"
+            className="text-sm text-primary underline underline-offset-2"
+          >
+            Back to Professional Headshots Guide →
+          </Link>
         </p>
       </div>
     </section>
@@ -791,6 +831,7 @@ export function ProfessionalHeadshotsPage() {
       <ByProfession />
       <TraditionalVsAI />
       <HowToGet />
+      <ByCity />
       <WhatToLookFor />
       <Pricing />
       <CompareTools />

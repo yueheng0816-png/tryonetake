@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { useCases } from "@/lib/use-case-data";
 import { comparisons } from "@/lib/comparison-data";
 import { blogPosts } from "@/lib/blog-data";
+import { cities } from "@/lib/city-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
@@ -20,6 +21,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    // Pillar page
+    {
+      url: `${siteUrl}/professional-headshots`,
+      lastModified: CONTENT_UPDATE,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    // City pages
+    ...cities.map(
+      (c): MetadataRoute.Sitemap[number] => ({
+        url: `${siteUrl}/professional-headshots/${c.slug}`,
+        lastModified: CONTENT_UPDATE,
+        changeFrequency: "monthly",
+        priority: 0.7,
+      })
+    ),
     // Legal
     {
       url: `${siteUrl}/privacy`,

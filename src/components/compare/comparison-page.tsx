@@ -4,11 +4,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { ArrowRight, Check, ShieldCheck } from "lucide-react";
-import { useAuth } from "@clerk/nextjs";
 import type { ComparisonData } from "@/lib/comparison-data";
 
 function Hero({ data }: { data: ComparisonData }) {
-  const { isSignedIn } = useAuth();
   return (
     <section className="relative overflow-hidden">
       <div className="container mx-auto max-w-4xl px-4 py-12 md:py-20">
@@ -23,23 +21,19 @@ function Hero({ data }: { data: ComparisonData }) {
           Honest Comparison
         </div>
         <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-          OneTake vs {data.competitor}
+          TryOneTake vs {data.competitor}
         </h1>
         <p className="mt-6 text-balance text-lg text-muted-foreground md:text-xl max-w-2xl">
           An honest, side-by-side comparison. No marketing fluff — just facts to
           help you choose the right AI headshot tool.
         </p>
-        <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row">
-          <Link href={isSignedIn ? "/generate" : "/sign-up"}>
+        <div className="mt-8">
+          <Link href="/">
             <Button size="lg" className="h-12 px-8 text-base">
-              Try OneTake
+              Get your headshots
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
-          <div className="flex items-center gap-2 text-base text-muted-foreground">
-            <ShieldCheck className="h-4 w-4 text-green-500" />
-            $19 · Automatic refund if generation fails
-          </div>
         </div>
       </div>
       <div className="pointer-events-none absolute inset-0 -z-10">
@@ -54,7 +48,7 @@ function ComparisonTable({ data }: { data: ComparisonData }) {
     <section className="border-t border-border">
       <div className="container mx-auto max-w-4xl px-4 py-12 md:py-20">
         <h2 className="text-3xl font-bold tracking-tight text-center">
-          OneTake vs {data.competitor} — feature by feature
+          TryOneTake vs {data.competitor} — feature by feature
         </h2>
         <div className="mt-8 overflow-x-auto">
           <table className="w-full border-collapse text-left">
@@ -64,7 +58,7 @@ function ComparisonTable({ data }: { data: ComparisonData }) {
                   Feature
                 </th>
                 <th className="py-3 px-4 text-base font-semibold text-primary">
-                  OneTake
+                  TryOneTake
                 </th>
                 <th className="py-3 pl-4 text-base font-medium text-muted-foreground">
                   {data.competitor}
@@ -99,7 +93,6 @@ function ComparisonTable({ data }: { data: ComparisonData }) {
 }
 
 function Verdict({ data }: { data: ComparisonData }) {
-  const { isSignedIn } = useAuth();
   return (
     <section className="border-t border-border bg-muted/30">
       <div className="container mx-auto max-w-3xl px-4 py-12 md:py-20 text-center">
@@ -110,11 +103,11 @@ function Verdict({ data }: { data: ComparisonData }) {
           {data.summary}
         </p>
         <Link
-          href={isSignedIn ? "/generate" : "/sign-up"}
+          href="/"
           className="mt-8 inline-block"
         >
           <Button size="lg" className="h-12 px-8 text-base">
-            Get your headshots with OneTake
+            Get your headshots
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>

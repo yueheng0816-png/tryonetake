@@ -10,7 +10,6 @@ import {
   ChevronDown,
   ShieldCheck,
 } from "lucide-react";
-import { useAuth } from "@clerk/nextjs";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { UseCaseData } from "@/lib/use-case-data";
@@ -18,8 +17,6 @@ import type { UseCaseData } from "@/lib/use-case-data";
 const BASE = "/images/landing";
 
 function UseCaseHero({ data }: { data: UseCaseData }) {
-  const { isSignedIn } = useAuth();
-
   return (
     <section className="relative overflow-hidden">
       <div className="container mx-auto max-w-4xl px-4 py-12 md:py-20">
@@ -44,16 +41,16 @@ function UseCaseHero({ data }: { data: UseCaseData }) {
           {data.subtitle}
         </p>
 
-        <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row">
-          <Link href={isSignedIn ? "/generate" : "/sign-up"}>
+        <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+          <Link href="/generate">
             <Button size="lg" className="h-12 px-8 text-base">
-              Get your headshots
+              Try free
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
           <div className="flex items-center gap-2 text-base text-muted-foreground">
             <ShieldCheck className="h-4 w-4 text-green-500" />
-            $19 · Automatic refund if generation fails
+            No credit card required · Instant preview
           </div>
         </div>
       </div>
@@ -191,41 +188,77 @@ function UseCaseFaq({ faqs }: { faqs: { q: string; a: string }[] }) {
 }
 
 function CompactPricing() {
-  const { isSignedIn } = useAuth();
   const plans = [
+    {
+      name: "Free",
+      price: "$0",
+      model: "FLUX.2 pro",
+      photos: "1 headshot",
+      styles: "Natural style only",
+      features: [
+        "FLUX.2 pro model (same as Starter)",
+        "1 professional headshot",
+        "Natural style",
+        "Upgrade to Starter or Pro anytime",
+      ],
+      cta: "Try free",
+      href: "/generate?free=true",
+      featured: false,
+    },
     {
       name: "Starter",
       price: "$19",
-      desc: "10 style variations · FLUX.2 pro",
+      model: "FLUX.2 pro",
+      photos: "30 headshots",
+      styles: "10 style variations",
+      features: [
+        "FLUX.2 pro model",
+        "30 professional headshots",
+        "10 style variations",
+        "Balanced / Natural / Polished",
+        "No watermark",
+        "Instant download (ZIP)",
+        "Automatic refund if generation fails",
+      ],
       cta: "Get Starter",
-      href: "/sign-up?plan=starter",
-      hrefLoggedIn: "/generate?plan=starter",
+      href: "/generate?plan=starter",
+      featured: false,
     },
     {
       name: "Pro",
       price: "$35",
-      desc: "25 style variations · FLUX.2 max",
+      model: "FLUX.2 max",
+      photos: "30 headshots",
+      styles: "25 style variations",
+      features: [
+        "FLUX.2 max model (highest realism)",
+        "30 professional headshots",
+        "25 style variations",
+        "Balanced / Natural / Polished",
+        "No watermark",
+        "Instant download (ZIP)",
+        "Automatic refund if generation fails",
+      ],
       cta: "Get Pro",
-      href: "/sign-up?plan=pro",
-      hrefLoggedIn: "/generate?plan=pro",
+      href: "/generate?plan=pro",
       featured: true,
     },
   ];
 
   return (
     <section className="border-t border-border bg-muted/30">
-      <div className="container mx-auto max-w-4xl px-4 py-12 md:py-20">
+      <div className="container mx-auto max-w-6xl px-4 py-12 md:py-20">
         <h2 className="text-3xl font-bold tracking-tight text-center">
           Simple, transparent pricing
         </h2>
         <p className="mt-4 text-center text-lg text-muted-foreground">
           One-time payment. No subscription. Automatic refund if generation fails.
         </p>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 max-w-xl mx-auto">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative flex flex-col rounded-2xl border p-6 ${
+              className={`relative flex flex-col rounded-2xl border p-6 transition-shadow hover:shadow-lg ${
                 plan.featured
                   ? "border-primary/50 bg-card shadow-md ring-1 ring-primary/20"
                   : "border-border bg-card"
@@ -236,20 +269,30 @@ function CompactPricing() {
                   Most Popular
                 </div>
               )}
-              <h3 className="text-xl font-semibold">{plan.name}</h3>
-              <div className="mt-2 flex items-baseline gap-1">
-                <span className="text-4xl font-bold">{plan.price}</span>
-                <span className="text-muted-foreground text-sm">one-time</span>
+
+              <div className="mb-6">
+                <h3 className="text-xl font-semibold">{plan.name}</h3>
+                <div className="mt-2 flex items-baseline gap-1">
+                  <span className="text-4xl font-bold">{plan.price}</span>
+                  {plan.price !== "$0" && <span className="text-muted-foreground text-sm">one-time</span>}
+                </div>
+                <div className="mt-3 flex flex-wrap gap-2 text-sm text-muted-foreground">
+                  <span className="rounded-md bg-muted px-2 py-0.5">{plan.model}</span>
+                  <span className="rounded-md bg-muted px-2 py-0.5">{plan.photos}</span>
+                  <span className="rounded-md bg-muted px-2 py-0.5">{plan.styles}</span>
+                </div>
               </div>
-              <p className="mt-3 text-base text-muted-foreground">
-                {plan.desc}
-              </p>
-              <Link
-                href={
-                  isSignedIn ? (plan.hrefLoggedIn ?? plan.href) : plan.href
-                }
-                className="mt-6 block"
-              >
+
+              <ul className="mb-8 flex-1 space-y-3 text-base">
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-2">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-500" />
+                    <span className="text-muted-foreground">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <Link href={plan.href} className="block">
                 <Button
                   variant={plan.featured ? "default" : "outline"}
                   className="w-full"
@@ -267,7 +310,6 @@ function CompactPricing() {
 }
 
 function BottomCta() {
-  const { isSignedIn } = useAuth();
   return (
     <section className="border-t border-border">
       <div className="container mx-auto max-w-3xl px-4 py-12 md:py-20 text-center">
@@ -277,9 +319,9 @@ function BottomCta() {
         <p className="mt-4 text-lg text-muted-foreground">
           Upload 1 photo. Get 30 studio-quality headshots in under 5 minutes.
         </p>
-        <Link href={isSignedIn ? "/generate" : "/sign-up"} className="mt-6 inline-block">
+        <Link href="/generate" className="mt-6 inline-block">
           <Button size="lg" className="h-12 px-8 text-base">
-            Get your headshots now
+            Try free
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </Link>

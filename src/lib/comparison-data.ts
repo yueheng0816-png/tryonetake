@@ -28,7 +28,7 @@ export const comparisons: ComparisonData[] = [
     competitor: "HeadshotPro",
     title: "TryOneTake vs HeadshotPro — A Better AI Headshot Generator",
     description:
-      "TryOneTake vs HeadshotPro comparison: better identity preservation, faster generation, and lower price. Get 30 headshots for $19 instead of $24. See the difference side by side.",
+      "TryOneTake vs HeadshotPro comparison: better identity preservation, faster generation, and lower price. Get headshots starting free instead of $24. See the difference side by side.",
     keywords: [
       "HeadshotPro alternative",
       "TryOneTake vs HeadshotPro",
@@ -39,7 +39,7 @@ export const comparisons: ComparisonData[] = [
     advantages: [
       {
         feature: "Price per 30 headshots",
-        oneTake: "$19",
+        oneTake: "Free to try",
         competitor: "$24+",
       },
       {
@@ -70,14 +70,14 @@ export const comparisons: ComparisonData[] = [
     ],
     summaryHeading: "TryOneTake delivers better results for less",
     summary:
-      "HeadshotPro is a solid product, but TryOneTake gives you a more advanced AI model (FLUX.2 vs FLUX.1), faster generation, and works with just 1 photo instead of 6+. At $19 vs $24+, the value is clear. Plus our identity preservation tech means your headshots actually look like you — not a smoothed-over version.",
+      "HeadshotPro is a solid product, but TryOneTake gives you a more advanced AI model (FLUX.2 vs FLUX.1), faster generation, and works with just 1 photo instead of 6+. Start free — then upgrade for 30 headshots. Plus our identity preservation tech means your headshots actually look like you — not a smoothed-over version.",
   },
   {
     slug: "aragon-ai",
     competitor: "Aragon AI",
     title: "TryOneTake vs Aragon AI — More Realistic, Less Expensive Headshots",
     description:
-      "Compare TryOneTake vs Aragon AI for AI headshots. TryOneTake uses FLUX.2 for more realistic results, starts at $19 (vs $29), and delivers in under 5 minutes. See the comparison.",
+      "Compare TryOneTake vs Aragon AI for AI headshots. TryOneTake uses FLUX.2 for more realistic results, starts free (vs $29), and delivers in under 5 minutes. See the comparison.",
     keywords: [
       "Aragon AI alternative",
       "TryOneTake vs Aragon AI",
@@ -88,7 +88,7 @@ export const comparisons: ComparisonData[] = [
     advantages: [
       {
         feature: "Starting price",
-        oneTake: "$19 (30 headshots)",
+        oneTake: "Free to try",
         competitor: "$29+ (40 headshots)",
       },
       {
@@ -119,14 +119,14 @@ export const comparisons: ComparisonData[] = [
     ],
     summaryHeading: "Faster, cheaper, more realistic — TryOneTake wins",
     summary:
-      "Aragon AI charges more ($29+) for slower results (60–90 min wait) that require 8+ photos. TryOneTake delivers 30 headshots for $19 using the latest FLUX.2 model — and you only need 1 photo. Plus our explicit identity preservation focus means your results won't have that generic AI look.",
+      "Aragon AI charges more ($29+) for slower results (60–90 min wait) that require 8+ photos. TryOneTake lets you try free using the latest FLUX.2 model — and you only need 1 photo. Plus our explicit identity preservation focus means your results won't have that generic AI look.",
   },
   {
     slug: "traditional-photography",
     competitor: "Traditional Photography",
     title: "AI Headshots vs Traditional Photography — 2026 Comparison",
     description:
-      "AI headshots vs traditional photography: cost comparison ($19 vs $200-$500+), speed (5 min vs 1-2 weeks), and quality. See why professionals are switching to AI for headshots.",
+      "AI headshots vs traditional photography: cost comparison (free to try vs $200-$500+), speed (5 min vs 1-2 weeks), and quality. See why professionals are switching to AI for headshots.",
     keywords: [
       "AI headshots vs photographer",
       "AI vs traditional headshots",
@@ -137,7 +137,7 @@ export const comparisons: ComparisonData[] = [
     advantages: [
       {
         feature: "Cost",
-        oneTake: "$19 one-time",
+        oneTake: "Free to try",
         competitor: "$200–$500+ per session",
       },
       {
@@ -168,14 +168,14 @@ export const comparisons: ComparisonData[] = [
     ],
     summaryHeading: "The math is clear — AI wins for headshots in 2026",
     summary:
-      "Traditional headshot photography still has its place — but for 95% of professional needs (LinkedIn, company websites, business cards, email signatures), AI headshots from TryOneTake deliver equal or better quality at 1/20th the cost and 1/1000th the time. The FLUX.2 model produces results that even professional photographers can't distinguish from studio shots.",
+      "Traditional headshot photography still has its place — but for 95% of professional needs (LinkedIn, company websites, business cards, email signatures), AI headshots from TryOneTake deliver equal or better quality at a fraction of the cost and in seconds instead of weeks. The FLUX.2 model produces results that even professional photographers can't distinguish from studio shots.",
   },
   {
     slug: "remini",
     competitor: "Remini",
     title: "TryOneTake vs Remini — Professional Headshots, Not Just Photo Enhancement",
     description:
-      "TryOneTake vs Remini comparison: purpose-built AI headshot generator vs photo enhancer. Get 30 professional headshots for $19 instead of generic AI-enhanced selfies. See the real difference.",
+      "TryOneTake vs Remini comparison: purpose-built AI headshot generator vs photo enhancer. Get 30 professional headshots starting free instead of generic AI-enhanced selfies. See the real difference.",
     keywords: [
       "Remini alternative",
       "TryOneTake vs Remini",
@@ -201,7 +201,7 @@ export const comparisons: ComparisonData[] = [
       },
       {
         feature: "Price",
-        oneTake: "$19 (30 headshots)",
+        oneTake: "Free to try",
         competitor: "Freemium + subscription for pro features",
       },
       {
@@ -217,14 +217,14 @@ export const comparisons: ComparisonData[] = [
     ],
     summaryHeading: "For professional headshots, TryOneTake is the clear choice",
     summary:
-      "Remini is a great photo enhancement app — but it's not built for professional headshots. It enhances your existing selfie; it doesn't generate studio-quality portraits with different outfits, backgrounds, and lighting setups. TryOneTake does exactly that, powered by FLUX.2, for just $19. If you need a LinkedIn-ready headshot, not just a sharper selfie, TryOneTake is the right tool.",
+      "Remini is a great photo enhancement app — but it's not built for professional headshots. It enhances your existing selfie; it doesn't generate studio-quality portraits with different outfits, backgrounds, and lighting setups. TryOneTake does exactly that, powered by FLUX.2 — try free. If you need a LinkedIn-ready headshot, not just a sharper selfie, TryOneTake is the right tool.",
   },
   {
     slug: "tryiton-ai",
     competitor: "TryItOn AI",
     title: "TryOneTake vs TryItOn AI — More Natural Results, Better Value",
     description:
-      "TryOneTake vs TryItOn AI comparison: FLUX.2 delivers more natural identity preservation at a lower price. Get 30 professional headshots for $19. See which AI headshot generator works better for you.",
+      "TryOneTake vs TryItOn AI comparison: FLUX.2 delivers more natural identity preservation at a lower price. Get 30 professional headshots starting free. See which AI headshot generator works better for you.",
     keywords: [
       "TryItOn AI alternative",
       "TryOneTake vs TryItOn AI",
@@ -235,7 +235,7 @@ export const comparisons: ComparisonData[] = [
     advantages: [
       {
         feature: "Price",
-        oneTake: "$19 (30 headshots)",
+        oneTake: "Free to try",
         competitor: "$25+ for similar output",
       },
       {
@@ -266,14 +266,14 @@ export const comparisons: ComparisonData[] = [
     ],
     summaryHeading: "TryOneTake delivers higher quality for less money",
     summary:
-      "TryItOn AI requires more input photos (10-20) and takes longer to deliver results that can look generic or over-processed. TryOneTake needs just 1 photo, uses the latest FLUX.2 model, and prioritizes identity preservation so your headshots actually look like you — not a generic AI version of you. At $19 vs $25+, the math is straightforward.",
+      "TryItOn AI requires more input photos (10-20) and takes longer to deliver results that can look generic or over-processed. TryOneTake needs just 1 photo, uses the latest FLUX.2 model, and prioritizes identity preservation so your headshots actually look like you — not a generic AI version of you. Try free vs their $25+ — the math is straightforward.",
   },
   {
     slug: "secta-ai",
     competitor: "Secta AI",
     title: "TryOneTake vs Secta AI — Faster Generation, Lower Price, Better Results",
     description:
-      "Compare TryOneTake vs Secta AI for AI headshots. TryOneTake is faster (under 5 min vs 30+ min), cheaper ($19 vs $29+), and uses the latest FLUX.2 model. See the full comparison.",
+      "Compare TryOneTake vs Secta AI for AI headshots. TryOneTake is faster (under 5 min vs 30+ min), cheaper (try free vs $29+), and uses the latest FLUX.2 model. See the full comparison.",
     keywords: [
       "Secta AI alternative",
       "TryOneTake vs Secta AI",
@@ -284,7 +284,7 @@ export const comparisons: ComparisonData[] = [
     advantages: [
       {
         feature: "Price",
-        oneTake: "$19 (30 headshots)",
+        oneTake: "Free to try",
         competitor: "$29+ for similar output",
       },
       {
@@ -315,7 +315,7 @@ export const comparisons: ComparisonData[] = [
     ],
     summaryHeading: "TryOneTake wins on speed, price, and convenience",
     summary:
-      "Secta AI was an early player in the AI headshot space, but their generation times are slow (30 min to 2 hours) and they require many more input photos. TryOneTake delivers better results with a newer AI model (FLUX.2), needs just 1 photo, and costs less at $19. Plus our auto-refund policy means you're never stuck paying for failed generations.",
+      "Secta AI was an early player in the AI headshot space, but their generation times are slow (30 min to 2 hours) and they require many more input photos. TryOneTake delivers better results with a newer AI model (FLUX.2), needs just 1 photo, and lets you try free. Plus our auto-refund policy means you're never stuck paying for failed generations.",
   },
   {
     slug: "prophotos-ai",
@@ -333,7 +333,7 @@ export const comparisons: ComparisonData[] = [
     advantages: [
       {
         feature: "Price",
-        oneTake: "$19 (30 headshots)",
+        oneTake: "Free to try",
         competitor: "$25–$39+ depending on plan",
       },
       {
@@ -364,7 +364,154 @@ export const comparisons: ComparisonData[] = [
     ],
     summaryHeading: "TryOneTake offers better AI, lower price, and faster delivery",
     summary:
-      "ProPhotos AI charges more, takes longer, and requires more input photos than TryOneTake — while using an older AI model. TryOneTake's FLUX.2 delivers more realistic headshots with better identity preservation, needs just 1 photo, and completes in under 5 minutes. At $19 with automatic refund protection, it's the smarter choice for professional headshots.",
+      "ProPhotos AI charges more, takes longer, and requires more input photos than TryOneTake — while using an older AI model. TryOneTake's FLUX.2 delivers more realistic headshots with better identity preservation, needs just 1 photo, and completes in under 5 minutes. Try free with automatic refund protection — it's the smarter choice for professional headshots.",
+  },
+  {
+    slug: "betterpic",
+    competitor: "BetterPic",
+    title: "TryOneTake vs BetterPic — Better AI Model, Lower Price, Faster Results",
+    description:
+      "TryOneTake vs BetterPic comparison: FLUX.2 delivers better identity preservation at a lower price (try free vs $35+). Only need 1 photo vs multiple. See the honest feature-by-feature comparison.",
+    keywords: [
+      "BetterPic alternative",
+      "TryOneTake vs BetterPic",
+      "BetterPic competitor",
+      "best BetterPic alternative",
+      "AI headshot generator BetterPic comparison",
+    ],
+    advantages: [
+      {
+        feature: "Starting price",
+        oneTake: "Free to try",
+        competitor: "$35+ (20 headshots)",
+      },
+      {
+        feature: "AI model",
+        oneTake: "FLUX.2 pro / max",
+        competitor: "Undisclosed / proprietary",
+      },
+      {
+        feature: "Generation speed",
+        oneTake: "Under 5 minutes",
+        competitor: "1–2 hours",
+      },
+      {
+        feature: "Photo requirement",
+        oneTake: "1 photo minimum",
+        competitor: "Multiple photos required",
+      },
+      {
+        feature: "Identity preservation",
+        oneTake: "Optimized — actually looks like you",
+        competitor: "Good, but occasional over-smoothing",
+      },
+      {
+        feature: "Refund policy",
+        oneTake: "Auto refund if generation fails",
+        competitor: "Case-by-case review",
+      },
+    ],
+    summaryHeading: "TryOneTake wins on speed, price, and model quality",
+    summary:
+      "BetterPic offers solid image quality with 4K resolution, but charges $35+ for slower results (1–2 hours) and requires multiple input photos. TryOneTake uses the latest FLUX.2 model, needs just 1 photo, and delivers in under 5 minutes — try free. For professionals who want studio-quality headshots without the wait and higher price tag, TryOneTake is the better value.",
+  },
+  {
+    slug: "instaheadshots",
+    competitor: "InstaHeadshots",
+    title: "TryOneTake vs InstaHeadshots — More Realistic, Fewer Photos, Better Value",
+    description:
+      "TryOneTake vs InstaHeadshots comparison: 1 photo vs 10-15 required, FLUX.2 model for better realism, try free vs $39+. See which AI headshot generator delivers more natural results.",
+    keywords: [
+      "InstaHeadshots alternative",
+      "TryOneTake vs InstaHeadshots",
+      "InstaHeadshots competitor",
+      "best InstaHeadshots alternative",
+      "AI headshot generator InstaHeadshots comparison",
+    ],
+    advantages: [
+      {
+        feature: "Starting price",
+        oneTake: "Free to try",
+        competitor: "$39+ (20–40 headshots)",
+      },
+      {
+        feature: "AI model",
+        oneTake: "FLUX.2 pro / max",
+        competitor: "Undisclosed / proprietary",
+      },
+      {
+        feature: "Photo requirement",
+        oneTake: "1 photo minimum",
+        competitor: "10–15 photos required",
+      },
+      {
+        feature: "Customization",
+        oneTake: "Independent outfit + background control",
+        competitor: "Preset 'Looks' only — no granular control",
+      },
+      {
+        feature: "Eye accuracy",
+        oneTake: "High fidelity — natural eye detail",
+        competitor: "Known issue: eye distortions, misalignment",
+      },
+      {
+        feature: "Refund policy",
+        oneTake: "Auto refund if generation fails",
+        competitor: "3-day window, strict eligibility",
+      },
+    ],
+    summaryHeading: "Better realism with fewer photos — TryOneTake wins",
+    summary:
+      "InstaHeadshots is fast and delivers high volume, but requires 10–15 photos and has known issues with eye accuracy and over-smoothing. Customization is limited to preset looks with no independent control. TryOneTake uses the newer FLUX.2 model with better identity preservation, needs just 1 photo, and lets you try free with automatic refund protection. For headshots that actually look like you — not a smoothed-over version — TryOneTake is the better choice.",
+  },
+  {
+    slug: "photoai",
+    competitor: "Photo AI",
+    title: "TryOneTake vs Photo AI — Purpose-Built Headshots vs General Photo Generation",
+    description:
+      "TryOneTake vs Photo AI (photoai.com) comparison: a dedicated AI headshot generator vs a general-purpose AI photo tool. Better headshot quality, faster turnaround, and try free. See the difference.",
+    keywords: [
+      "PhotoAI alternative",
+      "TryOneTake vs PhotoAI",
+      "Photo AI competitor",
+      "best PhotoAI alternative",
+      "AI headshot generator vs PhotoAI",
+    ],
+    advantages: [
+      {
+        feature: "Purpose",
+        oneTake: "Purpose-built for professional headshots",
+        competitor: "General AI photo/video generation tool",
+      },
+      {
+        feature: "Pricing model",
+        oneTake: "One-time payment, try free",
+        competitor: "Subscription starting at $9/month",
+      },
+      {
+        feature: "AI model",
+        oneTake: "FLUX.2 pro / max — latest generation",
+        competitor: "Personal AI model trained on your selfies",
+      },
+      {
+        feature: "Generation speed",
+        oneTake: "Under 5 minutes",
+        competitor: "Varies — model training required first",
+      },
+      {
+        feature: "Headshot quality",
+        oneTake: "Studio-quality, LinkedIn-ready portraits",
+        competitor: "Creative/artistic — not optimized for professional use",
+      },
+      {
+        feature: "Refund policy",
+        oneTake: "Auto refund if generation fails",
+        competitor: "Subscription cancellation — no refunds on trained models",
+      },
+    ],
+    summaryHeading: "For professional headshots, purpose-built beats general-purpose",
+    summary:
+      "Photo AI (photoai.com) is a versatile AI photo tool with video generation, 3D models, and creative packs — but it's not built specifically for professional headshots. It requires model training time and a monthly subscription. TryOneTake is purpose-built for one thing: studio-quality professional headshots that look like you. FLUX.2 model, 1 photo, under 5 minutes, one-time payment. Try free — if you need a LinkedIn-ready headshot, not a creative AI playground, TryOneTake is the right tool.",
   },
 ];
 

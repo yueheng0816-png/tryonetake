@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "AI Headshot Use Cases — For Every Profession",
   description:
-    "Explore how TryOneTake AI headshots serve different professions. LinkedIn headshots, corporate team photos, actor portfolios, real estate agent photos — $19, under 5 minutes.",
+    "Explore how TryOneTake AI headshots serve different professions. LinkedIn headshots, corporate team photos, actor portfolios, real estate agent photos — try free, under 5 minutes.",
   keywords: [
     "AI headshot use cases",
     "professional AI headshots",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AI Headshot Use Cases — For Every Profession | TryOneTake",
     description:
-      "Explore how TryOneTake AI headshots serve different professions. LinkedIn, corporate, actors, real estate agents — $19, under 5 minutes.",
+      "Explore how TryOneTake AI headshots serve different professions. LinkedIn, corporate, actors, real estate agents — try free, under 5 minutes.",
     url: `${siteUrl}/use-cases`,
     siteName: "TryOneTake",
     locale: "en_US",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "AI Headshot Use Cases — For Every Profession | TryOneTake",
     description:
-      "Explore how TryOneTake AI headshots serve different professions. $19, under 5 minutes.",
+      "Explore how TryOneTake AI headshots serve different professions. try free, under 5 minutes.",
     images: ["/og-image.jpg"],
   },
 };
@@ -105,7 +105,7 @@ export default function UseCasesIndex() {
         <p className="mt-4 text-lg text-muted-foreground max-w-2xl">
           No matter what you do, a professional headshot opens doors. Explore how
           TryOneTake serves different professions — all from 1 photo, under 5
-          minutes, $19.
+          minutes, try free.
         </p>
 
         <div className="mt-10 grid gap-6 sm:grid-cols-2">

@@ -80,11 +80,11 @@ export const blogPosts: BlogPost[] = [
     body: `<h2>The LinkedIn photo that works — what the data says</h2>
 <p>LinkedIn reports that profiles with a professional photo get 21x more views and 36x more messages. A good headshot isn't optional — it's the single highest-ROI investment you can make in your professional presence. But in 2026, you have two very different ways to get one.</p>
 
-<h2>Option 1: AI headshots (TryOneTake — $19)</h2>
-<p><strong>How it works:</strong> Upload 1 selfie. Our FLUX.2 AI generates 30 professional headshots with different outfits, backgrounds, and lighting setups. Pick your favorite. Done in under 5 minutes.</p>
+<h2>Option 1: AI headshots (TryOneTake — try free)</h2>
+<p><strong>How it works:</strong> Upload 1 selfie. Our FLUX.2 AI generates 30 professional headshots with different outfits, backgrounds, and lighting setups. Pick your favorite. Done in under 5 minutes. Start with a free preview — no credit card required.</p>
 <p><strong>Pros:</strong></p>
 <ul>
-<li>$19 one-time — 1/10th the cost of a photographer</li>
+<li>Free to try — 1/10th the cost of a photographer for full access</li>
 <li>Under 5 minutes — not 1-2 weeks</li>
 <li>30 variations — choose the one that fits your industry</li>
 <li>Can redo anytime — new look, new headshot, same low price</li>
@@ -114,13 +114,13 @@ export const blogPosts: BlogPost[] = [
 <h2>The verdict: AI wins for 95% of LinkedIn users</h2>
 <p>Unless you're a CEO doing a magazine cover or a celebrity who needs optical authenticity, AI headshots deliver 95% of the quality at 5% of the cost and 0.1% of the time. For the vast majority of professionals — job seekers, consultants, recruiters, engineers, salespeople — an AI headshot from TryOneTake is the smarter choice.</p>
 <p>Use the $180-$480 you save on something that actually moves your career forward: a resume rewrite, a career coach session, or networking event tickets.</p>
-<p>Ready to make the switch? Try <a href="/use-cases/linkedin-headshots">AI LinkedIn headshots</a> starting at $19. If you need headshots for your entire team, check out our <a href="/use-cases/corporate-headshots">corporate AI headshots</a> — consistent quality across every employee at a fraction of traditional photography costs.</p>`,
+<p>Ready to make the switch? Try <a href="/use-cases/linkedin-headshots">AI LinkedIn headshots</a> starting free. If you need headshots for your entire team, check out our <a href="/use-cases/corporate-headshots">corporate AI headshots</a> — consistent quality across every employee at a fraction of traditional photography costs.</p>`,
   },
   {
     slug: "professional-headshots-cost-2026",
     title: "How Much Do Professional Headshots Cost in 2026? Complete Price Guide",
     description:
-      "Complete guide to professional headshot costs in 2026. Compare traditional photographer pricing ($200-$1500) vs AI headshot generators ($19-$35) and find the best option for your budget.",
+      "Complete guide to professional headshot costs in 2026. Compare traditional photographer pricing ($200-$1500) vs AI headshot generators (free to try) and find the best option for your budget.",
     keywords: [
       "professional headshots cost 2026",
       "how much do headshots cost",
@@ -141,9 +141,10 @@ export const blogPosts: BlogPost[] = [
 </table>
 <p>These prices typically include 1-3 retouched final images, 1-2 hours of studio time, and 1-2 weeks turnaround from booking to delivery. Hair and makeup may or may not be included.</p>
 
-<h2>AI headshot generators: $19–$35</h2>
+<h2>AI headshot generators: free to try</h2>
 <table>
 <tr><th>Tool</th><th>Price</th><th>Images</th><th>Wait time</th></tr>
+<tr><td>TryOneTake Free</td><td>Free</td><td>1</td><td>&lt;5 min</td></tr>
 <tr><td>TryOneTake Starter</td><td>$19</td><td>30</td><td>&lt;5 min</td></tr>
 <tr><td>TryOneTake Pro</td><td>$35</td><td>30</td><td>&lt;5 min</td></tr>
 <tr><td>HeadshotPro</td><td>$24+</td><td>40</td><td>10-30 min</td></tr>
@@ -160,7 +161,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h2>The bottom line</h2>
-<p>For the vast majority of professional needs — LinkedIn, company websites, business cards, email signatures — AI headshots from TryOneTake deliver equal quality for $19 vs $200-$500+. The math is simple: try AI first. If you genuinely need something AI can't provide, then go the traditional route. But you probably won't need to.</p>
+<p>For the vast majority of professional needs — LinkedIn, company websites, business cards, email signatures — AI headshots from TryOneTake deliver equal quality starting free vs $200-$500+. The math is simple: try AI first. If you genuinely need something AI can't provide, then go the traditional route. But you probably won't need to.</p>
 <p>See our <a href="/use-cases/linkedin-headshots">LinkedIn headshots</a> and <a href="/use-cases/corporate-headshots">corporate headshots</a> pages for profession-specific examples and pricing. Also compare us head-to-head against <a href="/vs/headshotpro">HeadshotPro</a> and <a href="/vs/aragon-ai">Aragon AI</a>.</p>`,
   },
   {
@@ -239,7 +240,7 @@ export const blogPosts: BlogPost[] = [
 <table>
 <tr><th>Criteria</th><th>Score</th></tr>
 <tr><td>Realism</td><td>⭐⭐⭐⭐⭐ — FLUX.2 model, identity preservation focus</td></tr>
-<tr><td>Price</td><td>$19 for 30 headshots ($0.63/image)</td></tr>
+<tr><td>Price</td><td>Free to try</td></tr>
 <tr><td>Speed</td><td>Under 5 minutes</td></tr>
 <tr><td>Photos required</td><td>Just 1</td></tr>
 </table>
@@ -281,14 +282,14 @@ export const blogPosts: BlogPost[] = [
 <h2>The verdict: which AI headshot generator should you choose?</h2>
 <table>
 <tr><th>If you want…</th><th>Best choice</th></tr>
-<tr><td>Best overall value & quality</td><td>TryOneTake ($19, FLUX.2, 5 min)</td></tr>
+<tr><td>Best overall value & quality</td><td>TryOneTake (Free to try, FLUX.2, 5 min)</td></tr>
 <tr><td>Most well-known brand</td><td>HeadshotPro ($24+, FLUX.1)</td></tr>
 <tr><td>Cheapest per image</td><td>HeadshotPro ($0.60/image) — but more photos required</td></tr>
 <tr><td>Fewest photos to upload</td><td>TryOneTake (just 1 photo)</td></tr>
 <tr><td>Fastest delivery</td><td>TryOneTake (under 5 minutes)</td></tr>
 <tr><td>Best identity preservation</td><td>TryOneTake (FLUX.2, optimized)</td></tr>
 </table>
-<p>Ready to get your AI headshots? <a href="/generate">Start with TryOneTake — $19, 30 headshots, under 5 minutes</a>. See our full comparisons: <a href="/vs/headshotpro">vs HeadshotPro</a>, <a href="/vs/aragon-ai">vs Aragon AI</a>, <a href="/vs/remini">vs Remini</a>, <a href="/vs/secta-ai">vs Secta AI</a>, <a href="/vs/tryiton-ai">vs TryItOn AI</a>.</p>`,
+<p>Ready to get your AI headshots? <a href="/generate">Start with TryOneTake — try free, 30 headshots, under 5 minutes</a>. See our full comparisons: <a href="/vs/headshotpro">vs HeadshotPro</a>, <a href="/vs/aragon-ai">vs Aragon AI</a>, <a href="/vs/remini">vs Remini</a>, <a href="/vs/secta-ai">vs Secta AI</a>, <a href="/vs/tryiton-ai">vs TryItOn AI</a>.</p>`,
   },
   {
     slug: "ai-headshots-dating-apps-tinder-bumble",
@@ -344,7 +345,7 @@ export const blogPosts: BlogPost[] = [
 </ul>
 
 <h2>The bottom line</h2>
-<p>AI headshots absolutely work on dating apps — when used correctly. Use them as your polished main photo, supplement with real candid shots, and pick the casual looks over the corporate ones. For $19, it's the cheapest dating app upgrade you'll ever make.</p>
+<p>AI headshots absolutely work on dating apps — when used correctly. Use them as your polished main photo, supplement with real candid shots, and pick the casual looks over the corporate ones. For free, it's the cheapest dating app upgrade you'll ever make.</p>
 <p>Want headshots for both dating and professional use? <a href="/generate">TryOneTake's Pro plan gives you 25 styles</a> covering everything from boardroom formal to coffee-shop casual. See also: <a href="/use-cases/linkedin-headshots">LinkedIn headshots</a> for the professional side of your online presence.</p>`,
   },
   {
@@ -400,7 +401,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The bottom line</h2>
 <p>Yes, AI headshots can look exactly like you — if you use a modern tool (FLUX.2), start with a good photo, and choose the realistic outputs over the over-beautified ones. For most professionals in 2026, the AI headshot quality bar has been crossed: the results are indistinguishable from real photos in day-to-day use.</p>
-<p>Ready to see what AI headshots of you look like? <a href="/generate">Try TryOneTake — $19, 30 headshots, automatic refund if any fail</a>. Also read: <a href="/blog/are-ai-headshots-ethical">Are AI Headshots Ethical?</a> and <a href="/blog/linkedin-profile-photo-ai-vs-photographer">LinkedIn Photo: AI vs Photographer</a>.</p>`,
+<p>Ready to see what AI headshots of you look like? <a href="/generate">Try TryOneTake free — 30 headshots, automatic refund if any fail</a>. Also read: <a href="/blog/are-ai-headshots-ethical">Are AI Headshots Ethical?</a> and <a href="/blog/linkedin-profile-photo-ai-vs-photographer">LinkedIn Photo: AI vs Photographer</a>.</p>`,
   },
   {
     slug: "what-to-wear-for-ai-headshots",
@@ -466,7 +467,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The bottom line</h2>
 <p>For professional headshots: navy blazer, white or light blue shirt, no tie or subtle tie. This combination works for 80% of professions and industries. The AI handles the rest — different backgrounds, lighting moods, and outfit variations so you can pick what fits your specific context.</p>
-<p>Ready to see yourself in 25 different professional styles? <a href="/generate">Generate your AI headshots now — $19, under 5 minutes</a>. Explore profession-specific examples: <a href="/use-cases/linkedin-headshots">LinkedIn headshots</a>, <a href="/use-cases/corporate-headshots">corporate headshots</a>, <a href="/use-cases/lawyer-headshots">lawyer headshots</a>, <a href="/use-cases/consultant-headshots">consultant headshots</a>.</p>`,
+<p>Ready to see yourself in 25 different professional styles? <a href="/generate">Generate your AI headshots now — try free, under 5 minutes</a>. Explore profession-specific examples: <a href="/use-cases/linkedin-headshots">LinkedIn headshots</a>, <a href="/use-cases/corporate-headshots">corporate headshots</a>, <a href="/use-cases/lawyer-headshots">lawyer headshots</a>, <a href="/use-cases/consultant-headshots">consultant headshots</a>.</p>`,
   },
   {
     slug: "ai-headshots-for-teams-company",
@@ -507,12 +508,12 @@ export const blogPosts: BlogPost[] = [
 <h2>Why AI beats traditional photography for team photos</h2>
 <table>
 <tr><th>Factor</th><th>Traditional Photographer</th><th>AI Headshots (TryOneTake)</th></tr>
-<tr><td>Cost per person</td><td>$100-$300</td><td>$19 (or volume discount)</td></tr>
+<tr><td>Cost per person</td><td>$100-$300</td><td>Free to try (volume discounts available)</td></tr>
 <tr><td>Scheduling</td><td>Weeks of coordination</td><td>Each person does it on their own time</td></tr>
 <tr><td>Consistency</td><td>Varies by session, lighting, photographer</td><td>Identical quality and style across everyone</td></tr>
 <tr><td>Remote employees</td><td>Must find their own photographer (inconsistent)</td><td>Same quality from anywhere</td></tr>
 <tr><td>New hires</td><td>Wait for next photo day or pay separately</td><td>Onboard with a professional headshot on day 1</td></tr>
-<tr><td>Reshoots</td><td>Re-book, re-pay</td><td>Just upload a new photo — $19</td></tr>
+<tr><td>Reshoots</td><td>Re-book, re-pay</td><td>Just upload a new photo — free to try</td></tr>
 <tr><td>Turnaround</td><td>1-2 weeks</td><td>Under 5 minutes</td></tr>
 </table>
 
@@ -536,7 +537,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>How to get started with team AI headshots</h2>
 <p>Contact us for team pricing with volume discounts. We'll set up a custom style profile that ensures every employee — whether they're in San Francisco, London, or working from a coffee shop in Bali — gets the same professional headshot quality. From 5 to 5,000 employees.</p>
-<p><a href="/generate">Try TryOneTake for yourself first — $19, 30 headshots</a>. See the quality, then bring your team on board. Also read: <a href="/blog/professional-headshots-cost-2026">How Much Do Professional Headshots Cost?</a> for a full cost comparison.</p>`,
+<p><a href="/generate">Try TryOneTake for yourself — free preview, 30 headshots</a>. See the quality, then bring your team on board. Also read: <a href="/blog/professional-headshots-cost-2026">How Much Do Professional Headshots Cost?</a> for a full cost comparison.</p>`,
   },
   {
     slug: "can-you-use-ai-headshots-on-resume",
@@ -595,14 +596,14 @@ export const blogPosts: BlogPost[] = [
 <h2>The smart strategy for 2026</h2>
 <ol>
 <li><strong>Have two versions of your resume:</strong> One with a photo (for markets where it's expected) and one without (for US/Canada/UK applications).</li>
-<li><strong>Invest in a great LinkedIn photo:</strong> This is non-negotiable everywhere. <a href="/generate">Get AI headshots for LinkedIn — $19</a>.</li>
+<li><strong>Invest in a great LinkedIn photo:</strong> This is non-negotiable everywhere. <a href="/generate">Get AI headshots for LinkedIn — try free</a>.</li>
 <li><strong>Know the local norms:</strong> Research the specific country and industry before including a photo. When in doubt, leave it out for US/Canada — let your experience speak first.</li>
 <li><strong>If you include a photo, make it excellent:</strong> A bad photo is worse than no photo. Use a modern AI tool or professional photographer — never a cropped party photo or bathroom selfie.</li>
 </ol>
 
 <h2>The bottom line</h2>
 <p>AI headshots are perfect for LinkedIn (everywhere) and CVs (outside the US/Canada). For US job applications, keep the photo off the resume — but make sure your LinkedIn profile photo is excellent, because recruiters <strong>will</strong> look you up there before calling you in.</p>
-<p>Need a professional headshot for LinkedIn or your CV? <a href="/generate">Generate 30 AI headshots in under 5 minutes — $19</a>. Also see: <a href="/blog/linkedin-profile-photo-ai-vs-photographer">LinkedIn AI photo vs photographer</a> and <a href="/blog/professional-headshots-cost-2026">headshot cost comparison</a>.</p>`,
+<p>Need a professional headshot for LinkedIn or your CV? <a href="/generate">Generate 30 AI headshots in under 5 minutes — try free</a>. Also see: <a href="/blog/linkedin-profile-photo-ai-vs-photographer">LinkedIn AI photo vs photographer</a> and <a href="/blog/professional-headshots-cost-2026">headshot cost comparison</a>.</p>`,
   },
   {
     slug: "how-many-photos-do-you-need-for-ai-headshots",
@@ -644,7 +645,7 @@ export const blogPosts: BlogPost[] = [
 <tr><td>Wait time</td><td>30 min – 3 hours</td><td>2–5 minutes</td></tr>
 <tr><td>Resemblance consistency</td><td>Varies — depends on training quality</td><td>High — same reference every image</td></tr>
 <tr><td>Effort to prepare</td><td>Dig through camera roll for 20 usable photos</td><td>Take one good selfie</td></tr>
-<tr><td>Typical price</td><td>$29–79</td><td>$19–35</td></tr>
+<tr><td>Typical price</td><td>$29–79</td><td>Free to try — $35 Pro</td></tr>
 </tbody>
 </table>
 
@@ -665,7 +666,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The bottom line</h2>
 <p>Don't judge an AI headshot service by how many photos it demands — judge it by results. If you have one good recent photo, a single-photo tool gets you professional headshots in minutes instead of hours of photo-hunting and model training.</p>
-<p>TryOneTake needs exactly <strong>1 photo</strong> and delivers 30 professional headshots in under 5 minutes. <a href="/generate">Try it for $19</a> — or read more about <a href="/blog/what-to-wear-for-ai-headshots">what to wear</a> and <a href="/blog/professional-headshots-cost-2026">how AI pricing compares to studio photography</a>.</p>`,
+<p>TryOneTake needs exactly <strong>1 photo</strong> and delivers 30 professional headshots in under 5 minutes. <a href="/generate">Try it for free</a> — or read more about <a href="/blog/what-to-wear-for-ai-headshots">what to wear</a> and <a href="/blog/professional-headshots-cost-2026">how AI pricing compares to studio photography</a>.</p>`,
   },
   {
     slug: "why-do-my-ai-headshots-look-weird",
@@ -725,7 +726,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The pattern behind all nine problems</h2>
 <p>Notice the theme: <strong>half these problems come from your source photo, half from the tool's prompt engineering.</strong> You control the first half — <a href="/blog/how-to-take-perfect-selfie-for-ai-headshots">take one good selfie</a>. The second half you control by choosing a tool that's done the prompt-engineering homework.</p>
-<p>TryOneTake generates 30 headshots from 1 photo with templates specifically engineered against these failure modes — no forced smiles, no dark scenes, gender-correct outfits, no age drift. <a href="/generate">See for yourself — $19</a>.</p>`,
+<p>TryOneTake generates 30 headshots from 1 photo with templates specifically engineered against these failure modes — no forced smiles, no dark scenes, gender-correct outfits, no age drift. <a href="/generate">See for yourself — try free</a>.</p>`,
   },
   {
     slug: "can-recruiters-tell-ai-headshots",
@@ -782,7 +783,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The bottom line</h2>
 <p>Recruiters can't reliably detect good AI headshots, and more importantly, they don't care about the technology — they care that you look like your photo. Use a tool that preserves your real face, pick outputs that honestly resemble you, and you're on the right side of both the data and the ethics.</p>
-<p>TryOneTake is built for exactly this: identity preservation first, so your headshots look like <em>you on your best day</em> — not a stranger. <a href="/generate">Generate 30 headshots from 1 photo — $19</a>. Related: <a href="/blog/can-you-use-ai-headshots-on-resume">can you use AI headshots on your resume?</a></p>`,
+<p>TryOneTake is built for exactly this: identity preservation first, so your headshots look like <em>you on your best day</em> — not a stranger. <a href="/generate">Generate 30 headshots from 1 photo — try free</a>. Related: <a href="/blog/can-you-use-ai-headshots-on-resume">can you use AI headshots on your resume?</a></p>`,
   },
   {
     slug: "are-ai-headshots-safe-privacy",
@@ -837,7 +838,7 @@ export const blogPosts: BlogPost[] = [
 
 <h2>The bottom line</h2>
 <p>AI headshots are safe when the service is transparent: photos used for generation only, clear deletion rights, established payment rails, and you own the output. Spend two minutes on the privacy policy before uploading — and avoid any service whose terms read like a data-harvesting operation with a headshot feature attached.</p>
-<p>Questions about how we handle data? Read the <a href="/privacy">TryOneTake privacy policy</a> or email us. Ready to go? <a href="/generate">30 professional headshots from 1 photo — $19</a>. Related reading: <a href="/blog/are-ai-headshots-ethical">are AI headshots ethical?</a></p>`,
+<p>Questions about how we handle data? Read the <a href="/privacy">TryOneTake privacy policy</a> or email us. Ready to go? <a href="/generate">30 professional headshots from 1 photo — try free</a>. Related reading: <a href="/blog/are-ai-headshots-ethical">are AI headshots ethical?</a></p>`,
   },
 ];
 

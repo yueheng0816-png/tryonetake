@@ -8,7 +8,7 @@ const Icon = {
 
 const rows = [
   { label: "Photos needed", TryOneTake: "1 photo", traditional: "In-person shoot", otherAI: "12–20 photos" },
-  { label: "Price", TryOneTake: "$19", traditional: "$200–$500", otherAI: "$29–$75" },
+  { label: "Price", TryOneTake: "Free to try", traditional: "$200–$500", otherAI: "$29–$75" },
   { label: "Turnaround", TryOneTake: "< 5 minutes", traditional: "Days to weeks", otherAI: "30 min – 4 hours" },
   { label: "Looks like you?", TryOneTake: Icon.Check, traditional: Icon.Check, otherAI: Icon.X },
   { label: "Background variety", TryOneTake: "25+ styles", traditional: "Limited by studio", otherAI: "10–15 styles" },

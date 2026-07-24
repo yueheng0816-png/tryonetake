@@ -50,8 +50,23 @@ export function BlogPostPage({ post }: { post: BlogPost }) {
       </header>
 
       {/* Body */}
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
+            .blog-body a, .blog-body a:link, .blog-body a:visited {
+              color: var(--primary);
+              text-decoration: underline;
+              text-underline-offset: 3px;
+              font-weight: 500;
+            }
+            .blog-body a:hover {
+              text-decoration-color: var(--primary);
+            }
+          `,
+        }}
+      />
       <div
-        className="prose prose-lg prose-neutral max-w-none
+        className="blog-body
           prose-headings:font-bold prose-headings:tracking-tight
           prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
           prose-p:text-base prose-p:leading-relaxed prose-p:text-muted-foreground
@@ -72,9 +87,9 @@ export function BlogPostPage({ post }: { post: BlogPost }) {
         </h2>
         <p className="mt-2 text-lg text-muted-foreground">
           Upload 1 photo. Get 30 studio-quality headshots in under 5 minutes.
-          $19, automatic refund if generation fails.
+          Try free — no credit card required.
         </p>
-        <Link href="/sign-up" className="mt-6 inline-block">
+        <Link href="/" className="mt-6 inline-block">
           <Button size="lg" className="h-12 px-8 text-base">
             Get your headshots
             <ArrowRight className="ml-2 h-4 w-4" />
@@ -139,7 +154,7 @@ export function BlogPostPage({ post }: { post: BlogPost }) {
             publisher: {
               "@type": "Organization",
               "@id": `${siteUrl}/#organization`,
-              name: "OneTake",
+              name: "TryOneTake",
               url: siteUrl,
               logo: {
                 "@type": "ImageObject",

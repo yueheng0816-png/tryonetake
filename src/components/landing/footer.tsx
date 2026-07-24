@@ -9,6 +9,7 @@ const footerLinks = {
   ],
   Resources: [
     { label: "Blog", href: "/blog" },
+    { label: "Headshot Guide", href: "/professional-headshots" },
     { label: "Use Cases", href: "/use-cases" },
     { label: "Comparisons", href: "/vs" },
     { label: "LinkedIn Headshots", href: "/use-cases/linkedin-headshots" },
@@ -29,7 +30,7 @@ export function Footer() {
   return (
     <footer className="border-t border-border bg-muted/30">
       <div className="container mx-auto max-w-6xl px-4 py-8 md:py-12">
-        <div className="grid gap-x-6 gap-y-8 sm:grid-cols-2 md:grid-cols-5">
+        <div className="grid gap-x-5 gap-y-8 sm:grid-cols-2 md:grid-cols-5">
           <div>
             <Link href="/" className="flex items-center gap-2 text-lg font-bold">
               <span>📸</span>

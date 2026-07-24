@@ -35,7 +35,7 @@ export const useCases: UseCaseData[] = [
     slug: "linkedin-headshots",
     title: "AI LinkedIn Headshots — Professional Profile Photos in Minutes",
     description:
-      "Get AI-generated LinkedIn headshots that actually look like you. Upload 1 photo, get 30 professional profile pictures perfect for LinkedIn, resumes, and networking. $19.",
+      "Get AI-generated LinkedIn headshots that actually look like you. Upload 1 photo, get 30 professional profile pictures perfect for LinkedIn, resumes, and networking. Try free.",
     keywords: [
       "AI LinkedIn headshots",
       "LinkedIn profile photo AI",
@@ -82,7 +82,7 @@ export const useCases: UseCaseData[] = [
     slug: "corporate-headshots",
     title: "Corporate AI Headshots — Consistent Team Photos Without the Photoshoot",
     description:
-      "Professional corporate AI headshots for teams and individuals. Upload 1 photo, get 30 boardroom-ready business headshots. Consistent quality across your entire organization. From $19/person.",
+      "Professional corporate AI headshots for teams and individuals. Upload 1 photo, get 30 boardroom-ready business headshots. Consistent quality across your entire organization. Try free.",
     keywords: [
       "corporate headshots AI",
       "business headshot generator",
@@ -129,7 +129,7 @@ export const useCases: UseCaseData[] = [
     slug: "actor-headshots",
     title: "AI Actor Headshots — Casting-Ready Photos in Minutes",
     description:
-      "AI-generated actor headshots that showcase your range. Upload 1 photo, get 30 casting-ready looks with different characters, moods, and styles. $19. Perfect for auditions and portfolios.",
+      "AI-generated actor headshots that showcase your range. Upload 1 photo, get 30 casting-ready looks with different characters, moods, and styles. Try free. Perfect for auditions and portfolios.",
     keywords: [
       "AI actor headshots",
       "headshot generator for actors",
@@ -149,7 +149,7 @@ export const useCases: UseCaseData[] = [
       },
       {
         title: "Always current, always fresh",
-        body: "Industry standard says update headshots every 2 years. With TryOneTake, you can refresh your portfolio anytime for $19 — no $500+ photographer sessions.",
+        body: "Industry standard says update headshots every 2 years. With TryOneTake, you can refresh your portfolio anytime — try free first — no $500+ photographer sessions.",
       },
       {
         title: "Natural range, not AI distortion",
@@ -176,7 +176,7 @@ export const useCases: UseCaseData[] = [
     slug: "realtor-headshots",
     title: "AI Realtor Headshots — Trust-Building Photos for Real Estate Agents",
     description:
-      "Real estate agent AI headshots that build client trust. Upload 1 photo, get 30 professional realtor photos perfect for yard signs, business cards, Zillow, and MLS listings. $19.",
+      "Real estate agent AI headshots that build client trust. Upload 1 photo, get 30 professional realtor photos perfect for yard signs, business cards, Zillow, and MLS listings. Try free.",
     keywords: [
       "realtor headshots AI",
       "real estate agent photo AI",
@@ -223,7 +223,7 @@ export const useCases: UseCaseData[] = [
     slug: "lawyer-headshots",
     title: "AI Lawyer Headshots — Professional Portraits for Attorneys & Legal Professionals",
     description:
-      "Professional AI headshots for lawyers, attorneys, and legal professionals. Upload 1 photo, get 30 courtroom-ready portraits. Trustworthy, authoritative, and natural. $19.",
+      "Professional AI headshots for lawyers, attorneys, and legal professionals. Upload 1 photo, get 30 courtroom-ready portraits. Trustworthy, authoritative, and natural. Try free.",
     keywords: [
       "lawyer headshots AI",
       "attorney AI headshot",
@@ -270,7 +270,7 @@ export const useCases: UseCaseData[] = [
     slug: "healthcare-headshots",
     title: "AI Healthcare Professional Headshots — Doctors, Nurses & Medical Staff Photos",
     description:
-      "Professional AI headshots for doctors, nurses, and healthcare professionals. Upload 1 photo, get 30 portraits perfect for hospital directories, Doximity, LinkedIn, and telehealth profiles. $19.",
+      "Professional AI headshots for doctors, nurses, and healthcare professionals. Upload 1 photo, get 30 portraits perfect for hospital directories, Doximity, LinkedIn, and telehealth profiles. Try free.",
     keywords: [
       "doctor headshots AI",
       "nurse professional photo AI",
@@ -318,7 +318,7 @@ export const useCases: UseCaseData[] = [
     slug: "remote-work-headshots",
     title: "AI Remote Work Headshots — Professional Photos for Distributed Teams & Freelancers",
     description:
-      "Professional AI headshots for remote workers, freelancers, and digital nomads. Upload 1 photo from home, get 30 studio-quality portraits. Perfect for Zoom, Slack, LinkedIn, and freelance platforms. $19.",
+      "Professional AI headshots for remote workers, freelancers, and digital nomads. Upload 1 photo from home, get 30 studio-quality portraits. Perfect for Zoom, Slack, LinkedIn, and freelance platforms. Try free.",
     keywords: [
       "remote worker headshot AI",
       "freelancer professional photo",
@@ -366,7 +366,7 @@ export const useCases: UseCaseData[] = [
     slug: "consultant-headshots",
     title: "AI Consultant Headshots — Professional Photos for Management & Strategy Consultants",
     description:
-      "Professional AI headshots for management consultants, strategy advisors, and independent consultants. Upload 1 photo, get 30 boardroom-ready portraits. Perfect for firm websites, LinkedIn, and client proposals. $19.",
+      "Professional AI headshots for management consultants, strategy advisors, and independent consultants. Upload 1 photo, get 30 boardroom-ready portraits. Perfect for firm websites, LinkedIn, and client proposals. Try free.",
     keywords: [
       "consultant headshots AI",
       "management consultant photo",
@@ -391,7 +391,7 @@ export const useCases: UseCaseData[] = [
       },
       {
         title: "Always current for client meetings",
-        body: "Your consulting engagements change every few months. Keep your headshot fresh and current without booking a new photographer each time. $19, 5 minutes, done.",
+        body: "Your consulting engagements change every few months. Keep your headshot fresh and current without booking a new photographer each time. try free, 5 minutes, done.",
       },
     ],
     faqs: [
@@ -405,7 +405,7 @@ export const useCases: UseCaseData[] = [
       },
       {
         q: "I'm an independent consultant — is this worth the investment?",
-        a: "At $19 vs $300-500 for a traditional photographer, it's not just worth it — it's a no-brainer. As an independent consultant, your personal brand is everything. A professional headshot on your website, LinkedIn, and proposals signals you operate at a high level.",
+        a: "Try free vs $300-500 for a traditional photographer, it's not just worth it — it's a no-brainer. As an independent consultant, your personal brand is everything. A professional headshot on your website, LinkedIn, and proposals signals you operate at a high level.",
       },
     ],
     exampleImages: [2, 7, 12],
@@ -414,7 +414,7 @@ export const useCases: UseCaseData[] = [
     slug: "education-headshots",
     title: "AI Teacher Headshots — Professional Photos for Educators & School Faculty",
     description:
-      "Professional AI headshots for teachers, school administrators, and education professionals. Upload 1 photo, get 30 classroom-ready portraits. Warm, approachable, and trustworthy. $19.",
+      "Professional AI headshots for teachers, school administrators, and education professionals. Upload 1 photo, get 30 classroom-ready portraits. Warm, approachable, and trustworthy. Try free.",
     keywords: [
       "teacher headshots AI",
       "educator professional photo",
@@ -462,7 +462,7 @@ export const useCases: UseCaseData[] = [
     slug: "engineering-headshots",
     title: "AI Engineer Headshots — Professional Photos for Engineers & Technical Professionals",
     description:
-      "Professional AI headshots for engineers, technicians, and STEM professionals. Upload 1 photo, get 30 portraits perfect for LinkedIn, company websites, and conference presentations. $19.",
+      "Professional AI headshots for engineers, technicians, and STEM professionals. Upload 1 photo, get 30 portraits perfect for LinkedIn, company websites, and conference presentations. Try free.",
     keywords: [
       "engineer headshots AI",
       "engineering professional photo",
@@ -510,7 +510,7 @@ export const useCases: UseCaseData[] = [
     slug: "government-headshots",
     title: "AI Government & Public Service Headshots — Professional Official Photos",
     description:
-      "Professional AI headshots for government employees, public servants, and civil service professionals. Upload 1 photo, get 30 official portraits. Trustworthy, professional, and appropriate for public sector roles. $19.",
+      "Professional AI headshots for government employees, public servants, and civil service professionals. Upload 1 photo, get 30 official portraits. Trustworthy, professional, and appropriate for public sector roles. Try free.",
     keywords: [
       "government employee headshot AI",
       "public service professional photo",
@@ -535,7 +535,7 @@ export const useCases: UseCaseData[] = [
       },
       {
         title: "Cost-effective for public budgets",
-        body: "At $19 per person vs $200+ for traditional photography, AI headshots respect public sector budget constraints while delivering professional-quality results for entire departments and agencies.",
+        body: "Free to try vs $200+ for traditional photography, AI headshots respect public sector budget constraints while delivering professional-quality results for entire departments and agencies.",
       },
     ],
     faqs: [
@@ -553,6 +553,294 @@ export const useCases: UseCaseData[] = [
       },
     ],
     exampleImages: [1, 6, 8],
+  },
+  {
+    slug: "nurse-headshots",
+    title: "AI Nurse Headshots — Professional Photos for Nursing Professionals",
+    description:
+      "Professional AI headshots for nurses, nursing students, and healthcare staff. Upload 1 photo, get 30 portraits perfect for hospital badges, LinkedIn, and nursing portfolios. Try free.",
+    keywords: [
+      "nurse headshots AI",
+      "nursing professional photo",
+      "RN headshot generator",
+      "nurse LinkedIn photo",
+      "healthcare staff portrait AI",
+      "nursing student headshot",
+    ],
+    badge: "For Nursing Professionals",
+    headline: "A headshot as compassionate and capable as the care you provide.",
+    subtitle:
+      "Nurses are the backbone of healthcare — and your professional headshot should reflect the dedication, empathy, and competence you bring to every shift. TryOneTake delivers nurse portraits that patients and employers trust at a glance.",
+    benefitsHeading: "Why nurses choose TryOneTake",
+    benefits: [
+      {
+        title: "Warm, compassionate presence",
+        body: "Nursing is built on trust and human connection. Our AI generates headshots that convey genuine warmth and clinical competence — perfect for hospital directories, LinkedIn, and nursing portfolios.",
+      },
+      {
+        title: "Scrubs or professional attire — your choice",
+        body: "Get variations in both clinical scrubs and business professional attire. Use the right look for your hospital badge, LinkedIn profile, conference presentation, or graduate school application.",
+      },
+      {
+        title: "Fast & affordable for busy schedules",
+        body: "Between 12-hour shifts, the last thing you need is a photographer appointment. Upload a selfie between shifts, get 30 professional headshots in 5 minutes. Try free — no credit card required.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I wear scrubs or business attire for my nursing headshot?",
+        a: "It depends on the context. For hospital directories and badges, scrubs (solid color, no busy patterns) convey clinical authenticity. For LinkedIn and professional portfolios, business casual or a blazer projects career-advancement readiness. TryOneTake's Pro plan gives you both options.",
+      },
+      {
+        q: "Are AI headshots acceptable for nursing school applications?",
+        a: "Yes. A professional headshot strengthens your nursing school or graduate program application. AI headshots from TryOneTake are high-resolution and indistinguishable from studio photography — perfect for applications, portfolios, and clinical placement profiles.",
+      },
+      {
+        q: "Can I update my headshot across all hospital platforms at once?",
+        a: "Yes. Download your TryOneTake headshots and upload to your hospital directory, LinkedIn, Doximity, nursing association profile, and conference badges. You get 30 variations — pick the perfect one for each platform.",
+      },
+    ],
+    exampleImages: [3, 7, 11],
+  },
+  {
+    slug: "financial-advisor-headshots",
+    title: "AI Financial Advisor Headshots — Trust-Building Portraits for Finance Professionals",
+    description:
+      "Professional AI headshots for financial advisors, wealth managers, and finance professionals. Upload 1 photo, get 30 portraits that convey trust, competence, and executive presence. Try free.",
+    keywords: [
+      "financial advisor headshots AI",
+      "wealth manager professional photo",
+      "finance professional portrait AI",
+      "CFP headshot generator",
+      "financial planner LinkedIn photo",
+      "investment advisor profile picture",
+    ],
+    badge: "For Financial Professionals",
+    headline: "The headshot that says 'your wealth is in good hands.'",
+    subtitle:
+      "In finance, trust is your most valuable asset. Clients decide whether to trust you with their life savings in seconds — and your headshot plays a pivotal role. TryOneTake delivers advisor portraits that convey integrity, competence, and executive presence.",
+    benefitsHeading: "Why financial professionals choose TryOneTake",
+    benefits: [
+      {
+        title: "Trust & credibility at a glance",
+        body: "Research shows professional headshots significantly increase perceived trustworthiness. Our AI generates portraits that project the conservative confidence clients expect from someone managing their financial future.",
+      },
+      {
+        title: "Boardroom-ready polish",
+        body: "From client seminars and webinar bios to LinkedIn, company websites, and SEC-mandated disclosures — your headshot maintains consistent, executive-grade quality across every client touchpoint.",
+      },
+      {
+        title: "Always current for compliance & marketing",
+        body: "RIAs and advisors update Form ADV annually. Keep your headshot fresh for compliance materials, pitch books, and client newsletters without booking a photographer every year. Try free, 5 minutes, done.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What should a financial advisor wear for a professional headshot?",
+        a: "Business formal is standard: dark suit, conservative tie or professional blouse, minimal jewelry. Navy and charcoal project authority and trust. TryOneTake generates multiple outfit variations so you can choose the right level of formality for your client base.",
+      },
+      {
+        q: "Are AI headshots appropriate for SEC-registered advisors?",
+        a: "Yes — for marketing materials, websites, LinkedIn, webinar bios, and client communications. They should accurately represent your current appearance. For official regulatory filings that specify photo requirements, verify with your compliance team. TryOneTake headshots are indistinguishable from studio photography.",
+      },
+      {
+        q: "Can my entire advisory team get matching professional headshots?",
+        a: "Yes. Contact us for team pricing with volume discounts. We'll create a consistent style profile so every advisor — from managing partners to associate planners — gets matching professional headshots with the same background and aesthetic.",
+      },
+    ],
+    exampleImages: [2, 5, 8],
+  },
+  {
+    slug: "recruiter-headshots",
+    title: "AI Recruiter Headshots — Professional Photos for HR & Talent Acquisition",
+    description:
+      "Professional AI headshots for recruiters, HR professionals, and talent acquisition specialists. Upload 1 photo, get 30 portraits perfect for LinkedIn, company career pages, and recruiting events. Try free.",
+    keywords: [
+      "recruiter headshots AI",
+      "HR professional photo",
+      "talent acquisition portrait AI",
+      "recruiter LinkedIn photo",
+      "headhunter profile picture",
+      "HR headshot generator",
+    ],
+    badge: "For Recruiters & HR Pros",
+    headline: "You connect talent with opportunity. Your headshot should open doors too.",
+    subtitle:
+      "Recruiters and HR professionals are the face of their company to every candidate. A warm, professional headshot builds immediate rapport — whether you're reaching out on LinkedIn, speaking at a career fair, or featured on your company's careers page.",
+    benefitsHeading: "Why recruiters choose TryOneTake",
+    benefits: [
+      {
+        title: "Approachable & trustworthy",
+        body: "Candidates need to feel comfortable with you from the first message. Our AI generates headshots that balance professional credibility with genuine warmth — the exact combination that gets more candidates to respond to your outreach.",
+      },
+      {
+        title: "Consistent brand across platforms",
+        body: "Same professional look on LinkedIn, your company careers page, Indeed company profile, Glassdoor, recruiting events, and conference speaker bios. 30 variations ensure the right image for every channel.",
+      },
+      {
+        title: "Always ready for the next opportunity",
+        body: "Recruiting is fast-paced. A new role opens, a career fair pops up, a speaking slot becomes available — your headshot is always ready. Try free vs $300+ for a traditional photographer session.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What makes a good headshot for a recruiter on LinkedIn?",
+        a: "A recruiter's headshot should be warm and approachable — you want candidates to feel comfortable reaching out. Smart casual or business professional attire works well. Avoid overly formal or stiff looks; a genuine smile significantly increases response rates to InMail outreach.",
+      },
+      {
+        q: "Can I use different headshots for different recruiting contexts?",
+        a: "Yes. TryOneTake's Pro plan delivers 25 variations — use a more formal shot for executive recruiting, a warmer look for campus and early-career hiring, and a polished business shot for your LinkedIn profile and company page.",
+      },
+      {
+        q: "I'm an independent recruiter — is this worth it for my solo practice?",
+        a: "Absolutely. As an independent recruiter, your personal brand drives your entire business. A professional headshot across LinkedIn, your website, and email signature signals credibility to both candidates and client companies. Try free — it's a fraction of the cost of a single placement.",
+      },
+    ],
+    exampleImages: [1, 6, 10],
+  },
+  {
+    slug: "founder-headshots",
+    title: "AI Founder Headshots — Executive Portraits for Entrepreneurs & Startup Leaders",
+    description:
+      "Professional AI headshots for founders, entrepreneurs, and startup leaders. Upload 1 photo, get 30 executive portraits perfect for pitch decks, LinkedIn, press features, and investor updates. Try free.",
+    keywords: [
+      "founder headshots AI",
+      "entrepreneur professional photo",
+      "startup founder portrait AI",
+      "CEO headshot generator",
+      "executive LinkedIn photo",
+      "founder profile picture",
+    ],
+    badge: "For Founders & Entrepreneurs",
+    headline: "Build trust with investors, customers, and talent — starting with your photo.",
+    subtitle:
+      "As a founder, you're always pitching: to investors, customers, partners, and potential hires. Your headshot appears on your pitch deck, LinkedIn, company about page, press features, and conference materials. Make it count — TryOneTake delivers founder portraits that match your ambition.",
+    benefitsHeading: "Why founders choose TryOneTake",
+    benefits: [
+      {
+        title: "Executive presence that matches your vision",
+        body: "Whether you're raising a seed round or scaling to Series B, your headshot needs to project leadership and credibility. Our AI generates portraits with the polished executive presence that investors and stakeholders expect.",
+      },
+      {
+        title: "One headshot, every channel",
+        body: "Pitch decks, LinkedIn, TechCrunch features, conference speaker pages, your company's About page, investor updates, podcast guest bios — one batch of headshots covers every channel with consistent, professional quality.",
+      },
+      {
+        title: "Move fast — like everything else you do",
+        body: "You don't have time for a 2-hour photoshoot and a week of editing. Upload a selfie from your phone and get 30 executive headshots in 5 minutes. Try free — it's the fastest professional upgrade you'll make this quarter.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What kind of headshot should a startup founder use?",
+        a: "It depends on your stage and industry. Early-stage B2B SaaS founders often opt for smart casual (button-down, no tie) to convey approachability. Fintech and enterprise founders lean business formal. TryOneTake gives you multiple options so you can match the right look to each context — from investor meetings to team all-hands.",
+      },
+      {
+        q: "Can I use an AI headshot in my pitch deck?",
+        a: "Absolutely. Investors care about your business, not whether you sat in a photo studio. A professional, high-quality headshot in your deck builds credibility. Many founders at top accelerators use AI headshots — the key is that it actually looks like you, which TryOneTake's identity preservation ensures.",
+      },
+      {
+        q: "I'm launching on Product Hunt / TechCrunch — will this work for press?",
+        a: "Yes. Press and media outlets need high-resolution headshots for feature articles. TryOneTake delivers professional-grade images suitable for digital publication. For print magazines, our Pro plan's FLUX.2 max generates the highest-resolution, most realistic output available.",
+      },
+    ],
+    exampleImages: [2, 8, 12],
+  },
+  {
+    slug: "sales-headshots",
+    title: "AI Sales Professional Headshots — Trust-Building Photos That Close Deals",
+    description:
+      "Professional AI headshots for sales professionals, account executives, and business development reps. Upload 1 photo, get 30 portraits that build rapport before the first call. Try free.",
+    keywords: [
+      "sales professional headshots AI",
+      "account executive photo",
+      "business development portrait AI",
+      "sales rep LinkedIn photo",
+      "sales headshot generator",
+      "B2B sales profile picture",
+    ],
+    badge: "For Sales Professionals",
+    headline: "You have 0.05 seconds to make a first impression. Make it count.",
+    subtitle:
+      "In sales, you know the numbers: response rates, conversion rates, close rates. Here's one more: a professional headshot increases LinkedIn connection acceptance and email response rates. TryOneTake gives sales pros headshots that build trust before the first conversation.",
+    benefitsHeading: "Why sales professionals choose TryOneTake",
+    benefits: [
+      {
+        title: "Higher response rates, proven",
+        body: "A professional, approachable headshot on LinkedIn and in your email signature increases connection acceptance and reply rates. Prospects decide whether to engage in a split second — your photo is the first thing they see.",
+      },
+      {
+        title: "Tailored to your market",
+        body: "Selling to enterprise? Get formal boardroom shots. Selling to SMBs? Smart casual works better. Selling to creatives? A more relaxed, authentic look. 30 variations mean you always have the right headshot for your prospect.",
+      },
+      {
+        title: "Always ready for the next role or territory",
+        body: "Sales territories change, companies change, LinkedIn stays. Keep your headshot current without booking a new photographer for every update. Try free, 5 minutes — spend the time you saved on prospecting.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Does a professional headshot actually improve sales response rates?",
+        a: "Yes. Multiple studies confirm that LinkedIn profiles with professional photos receive significantly more connection requests and InMail responses. Your headshot is often the first thing a prospect sees — before your name, title, or message. It's one of the highest-ROI investments you can make in your sales career.",
+      },
+      {
+        q: "What's the right headshot style for B2B sales?",
+        a: "For enterprise and B2B sales, business professional with a confident, approachable expression works best. Avoid overly casual looks. For SMB and transactional sales, smart casual can build better rapport. TryOneTake's Pro plan gives you both styles so you can test what resonates.",
+      },
+      {
+        q: "Can our entire sales team get consistent, branded headshots?",
+        a: "Yes. Contact us for team pricing with volume discounts. We'll create a consistent style profile for your entire sales organization — from SDRs to VP of Sales — with matching backgrounds and quality. Perfect for your company's 'Meet the Team' page and email signature standardization.",
+      },
+    ],
+    exampleImages: [4, 7, 9],
+  },
+  {
+    slug: "team-headshots",
+    title: "AI Team Headshots — Consistent Professional Photos for Your Entire Organization",
+    description:
+      "Professional AI team headshots with consistent quality across your entire organization. Upload 1 photo per person, get matching studio-quality portraits. Perfect for company websites, About pages, and investor decks. Try free.",
+    keywords: [
+      "team headshots AI",
+      "company team photos AI",
+      "corporate team headshots",
+      "employee headshot generator",
+      "matching team portraits AI",
+      "organization headshots",
+    ],
+    badge: "For Teams & Organizations",
+    headline: "One team. One look. Zero photoshoot logistics.",
+    subtitle:
+      "Your team is your greatest asset — but getting everyone a consistent, professional headshot is a logistical nightmare. Different schedules, locations, and photographers create a patchwork look. TryOneTake solves this: every team member uploads 1 photo, and everyone gets matching studio-quality headshots — whether you're 5 people or 5,000.",
+    benefitsHeading: "Why organizations choose TryOneTake for team headshots",
+    benefits: [
+      {
+        title: "Consistent quality — every person, every role",
+        body: "Traditional team photos are a mixed bag: some shot in a studio, some cropped from weddings, some iPhone selfies. TryOneTake gives everyone the exact same professional look — matching backgrounds, lighting, and composition. Perfect for 'Our Team' pages and investor decks.",
+      },
+      {
+        title: "Zero logistics, 100% coverage",
+        body: "Remote team across 5 time zones? New hires joining monthly? No problem. Each person uploads from their phone, anywhere in the world. No scheduling, no travel, no studio booking, no follow-up emails chasing the 3 people who missed photo day.",
+      },
+      {
+        title: "Enterprise-grade consistency at startup speed",
+        body: "Set a style profile once — matching background, lighting, and aesthetic. Every current and future team member gets headshots that look like they were shot in the same studio by the same photographer. Volume discounts available; contact us for teams of 10+.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How do you ensure every team member's headshot looks consistent?",
+        a: "Contact us for team onboarding and we'll set up a custom style profile: matching backgrounds, lighting setup, and overall aesthetic. Every team member uploads a selfie and our AI applies the same professional look to everyone. The result: headshots that look like they were all shot on the same day by the same photographer — even if your team spans 5 continents.",
+      },
+      {
+        q: "How many people can be on a team plan?",
+        a: "Any size — from a 5-person startup to a 5,000-person enterprise. Pricing includes volume discounts that scale with your team. We handle onboarding, style consistency, and delivery for organizations of any size. Contact us for a custom quote.",
+      },
+      {
+        q: "How do you handle new hires after the initial team batch?",
+        a: "We save your team's style profile. When new hires join, they simply upload a photo and get headshots that match the rest of the team — same background, same lighting, same quality. No need to re-shoot the entire team or wait for the next 'photo day.' Your About page stays current effortlessly.",
+      },
+    ],
+    exampleImages: [2, 5, 10],
   },
 ];
 

@@ -21,6 +21,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1,
     },
+    // Free AI headshot generator landing page
+    {
+      url: `${siteUrl}/free-ai-headshot-generator`,
+      lastModified: CONTENT_UPDATE,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     // Pillar page
     {
       url: `${siteUrl}/professional-headshots`,

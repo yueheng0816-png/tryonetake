@@ -10,6 +10,7 @@ const footerLinks = {
   Resources: [
     { label: "Blog", href: "/blog" },
     { label: "Headshot Guide", href: "/professional-headshots" },
+    { label: "Free AI Headshots", href: "/free-ai-headshot-generator" },
     { label: "Use Cases", href: "/use-cases" },
     { label: "Comparisons", href: "/vs" },
     { label: "LinkedIn Headshots", href: "/use-cases/linkedin-headshots" },

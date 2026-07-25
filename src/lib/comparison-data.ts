@@ -513,6 +513,153 @@ export const comparisons: ComparisonData[] = [
     summary:
       "Photo AI (photoai.com) is a versatile AI photo tool with video generation, 3D models, and creative packs — but it's not built specifically for professional headshots. It requires model training time and a monthly subscription. TryOneTake is purpose-built for one thing: studio-quality professional headshots that look like you. FLUX.2 model, 1 photo, under 5 minutes, one-time payment. Try free — if you need a LinkedIn-ready headshot, not a creative AI playground, TryOneTake is the right tool.",
   },
+  {
+    slug: "dreamwave",
+    competitor: "Dreamwave",
+    title: "TryOneTake vs Dreamwave — Faster, Cheaper, More Natural AI Headshots",
+    description:
+      "TryOneTake vs Dreamwave comparison: FLUX.2 delivers better identity preservation at a lower price (try free vs $29+). 1 photo vs 8+. Under 5 minutes. Find the best AI headshot generator for your needs.",
+    keywords: [
+      "Dreamwave alternative",
+      "TryOneTake vs Dreamwave",
+      "Dreamwave AI headshots competitor",
+      "best Dreamwave alternative",
+      "Dreamwave vs TryOneTake headshots",
+    ],
+    advantages: [
+      {
+        feature: "Starting price",
+        oneTake: "Free to try",
+        competitor: "$29+ (40 headshots)",
+      },
+      {
+        feature: "AI model",
+        oneTake: "FLUX.2 pro / max",
+        competitor: "Older generation model",
+      },
+      {
+        feature: "Generation speed",
+        oneTake: "Under 5 minutes",
+        competitor: "30–60 minutes",
+      },
+      {
+        feature: "Photo requirement",
+        oneTake: "1 photo minimum",
+        competitor: "8–12 photos required",
+      },
+      {
+        feature: "Identity preservation",
+        oneTake: "Optimized — actually looks like you",
+        competitor: "Inconsistent — can look generic or over-smoothed",
+      },
+      {
+        feature: "Refund policy",
+        oneTake: "Auto refund if generation fails",
+        competitor: "Contact support for refunds",
+      },
+    ],
+    summaryHeading: "TryOneTake wins on speed, price, and realism",
+    summary:
+      "Dreamwave is a recognizable name in the AI headshot space, but it runs on older AI models, requires 8–12 photos, and takes 30–60 minutes to deliver results that can look inconsistent. TryOneTake uses the latest FLUX.2 model, needs just 1 photo, delivers in under 5 minutes, and lets you try free with automatic refund protection. For professionals who want headshots that actually look like them — not a generic, smoothed-over version — TryOneTake is the clear winner.",
+  },
+  {
+    slug: "pfpmaker",
+    competitor: "PFPMaker",
+    title: "TryOneTake vs PFPMaker — Professional Headshots vs AI Profile Pictures",
+    description:
+      "TryOneTake vs PFPMaker comparison: purpose-built professional headshots vs generic AI profile pictures. FLUX.2 quality, 1 photo, under 5 minutes, try free. See which tool fits your professional needs.",
+    keywords: [
+      "PFPMaker alternative",
+      "TryOneTake vs PFPMaker",
+      "PFPMaker competitor",
+      "best PFPMaker alternative for headshots",
+      "professional headshots vs PFPMaker",
+    ],
+    advantages: [
+      {
+        feature: "Purpose",
+        oneTake: "Purpose-built for professional headshots",
+        competitor: "General AI profile picture maker",
+      },
+      {
+        feature: "Output quality",
+        oneTake: "Studio-quality, LinkedIn-ready, print-ready",
+        competitor: "Social media profile pictures — not professional grade",
+      },
+      {
+        feature: "AI model",
+        oneTake: "FLUX.2 pro / max",
+        competitor: "Older / undisclosed model",
+      },
+      {
+        feature: "Style variety",
+        oneTake: "10–25 professional styles with outfit changes",
+        competitor: "Limited style options, basic backgrounds",
+      },
+      {
+        feature: "Pricing",
+        oneTake: "Free to try, one-time $19–$35",
+        competitor: "Freemium with in-app purchases",
+      },
+      {
+        feature: "Refund policy",
+        oneTake: "Auto refund if generation fails",
+        competitor: "App store refund process",
+      },
+    ],
+    summaryHeading: "For professional headshots, purpose-built beats generic",
+    summary:
+      "PFPMaker is a handy tool for quick AI-generated profile pictures — but it's designed for social media and casual use, not professional headshots. The output quality, background options, and style variety can't match a dedicated headshot generator. TryOneTake is purpose-built for professional headshots: FLUX.2 model, studio-quality lighting, multiple outfits and backgrounds, all from 1 photo in under 5 minutes. Try free — if you need a LinkedIn or corporate headshot, not just an AI avatar, TryOneTake is the right tool.",
+  },
+  {
+    slug: "headshots-com",
+    competitor: "Headshots.com",
+    title: "TryOneTake vs Headshots.com — Better AI Model, Lower Price, Faster Delivery",
+    description:
+      "TryOneTake vs Headshots.com comparison: FLUX.2 delivers more realistic headshots at a lower price (try free). 1 photo vs multiple required. Under 5 minutes turnaround. Honest feature-by-feature comparison.",
+    keywords: [
+      "Headshots.com alternative",
+      "TryOneTake vs Headshots.com",
+      "Headshots.com competitor",
+      "best Headshots.com alternative",
+      "Headshots.com vs TryOneTake",
+    ],
+    advantages: [
+      {
+        feature: "Starting price",
+        oneTake: "Free to try",
+        competitor: "$29–$49+ per batch",
+      },
+      {
+        feature: "AI model",
+        oneTake: "FLUX.2 pro / max",
+        competitor: "Undisclosed / proprietary",
+      },
+      {
+        feature: "Generation speed",
+        oneTake: "Under 5 minutes",
+        competitor: "30–90 minutes",
+      },
+      {
+        feature: "Photo requirement",
+        oneTake: "1 photo minimum",
+        competitor: "10–20 photos required",
+      },
+      {
+        feature: "Style variety",
+        oneTake: "10–25 distinct professional styles",
+        competitor: "Limited variety per batch",
+      },
+      {
+        feature: "Refund policy",
+        oneTake: "Auto refund if generation fails",
+        competitor: "Case-by-case, manual review",
+      },
+    ],
+    summaryHeading: "TryOneTake delivers better results for less time and money",
+    summary:
+      "Headshots.com has a premium domain name, but the underlying AI headshot technology runs on older models that require 10–20 photos and 30–90 minutes to generate results. TryOneTake uses the latest FLUX.2 model, needs just 1 photo, and delivers 30 professional headshots in under 5 minutes — try free. Plus our automatic refund protection means you're never stuck paying for failed generations. A great domain name doesn't make great headshots — better AI does.",
+  },
 ];
 
 export function getComparison(slug: string): ComparisonData | undefined {

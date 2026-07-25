@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Free AI Headshot Generator — Try Free, No Credit Card | TryOneTake",
   description:
-    "Get a professional AI headshot for free. Upload 1 selfie, get a studio-quality portrait in under 5 minutes — no credit card, no watermark. Try free, upgrade only if you want more.",
+    "Get a professional AI headshot for free. Upload 1 selfie, get a studio-quality portrait in under 5 minutes — no credit card. Try free, upgrade only if you want more.",
   keywords: [
     "free AI headshot generator",
     "free professional headshot",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "TryOneTake",
     title: "Free AI Headshot Generator — Try Free, No Credit Card | TryOneTake",
     description:
-      "Get a professional AI headshot for free. Upload 1 selfie, get a studio-quality portrait in under 5 minutes. No credit card, no watermark, no catch.",
+      "Get a professional AI headshot for free. Upload 1 selfie, get a studio-quality portrait in under 5 minutes. No credit card, no catch.",
     images: [
       {
         url: "/og-image.jpg",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Free AI Headshot Generator — Try Free, No Credit Card | TryOneTake",
     description:
-      "Get a professional AI headshot for free. Upload 1 selfie, under 5 minutes. No credit card, no watermark.",
+      "Get a professional AI headshot for free. Upload 1 selfie, under 5 minutes. No credit card, no catch.",
     images: ["/og-image.jpg"],
   },
 };

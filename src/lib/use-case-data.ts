@@ -842,6 +842,390 @@ export const useCases: UseCaseData[] = [
     ],
     exampleImages: [2, 5, 10],
   },
+  {
+    slug: "therapist-headshots",
+    title: "AI Therapist Headshots — Warm, Trust-Building Photos for Mental Health Professionals",
+    description:
+      "Professional AI headshots for therapists, counselors, psychologists, and mental health professionals. Upload 1 photo, get 30 portraits that convey warmth, empathy, and professionalism. Try free.",
+    keywords: [
+      "therapist headshots AI",
+      "counselor professional photo",
+      "psychologist portrait AI",
+      "mental health professional headshot",
+      "therapist LinkedIn photo",
+      "LCSW LPC LMFT headshot",
+    ],
+    badge: "For Therapists & Counselors",
+    headline: "A headshot as warm and trustworthy as your practice.",
+    subtitle:
+      "In therapy, the relationship is the treatment — and your headshot is often a potential client's first glimpse of who you are. It needs to convey warmth, empathy, and professional competence all at once. TryOneTake delivers therapist portraits that make people feel safe before the first session.",
+    benefitsHeading: "Why therapists choose TryOneTake",
+    benefits: [
+      {
+        title: "Warmth without losing professionalism",
+        body: "Therapists need headshots that feel human and approachable — not cold or clinical. Our AI generates portraits with genuine warmth that invite trust, while maintaining the professional credibility clients look for when choosing a provider.",
+      },
+      {
+        title: "Consistent across Psychology Today, directories & LinkedIn",
+        body: "Your headshot appears on Psychology Today, TherapyDen, GoodTherapy, your practice website, and LinkedIn. Get 30 variations so every platform shows the best version of you — consistent, professional, and approachable.",
+      },
+      {
+        title: "Private & convenient",
+        body: "No studio visit, no photographer in your space, no scheduling around client hours. Upload a selfie from home between sessions, get results in 5 minutes. Try free — no credit card required.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What kind of headshot works best for a therapist or counselor?",
+        a: "A warm, natural-looking portrait with soft lighting and a relaxed expression. Avoid overly formal or stiff poses — clients want to see someone they can open up to. Outdoor natural-light backgrounds or warm indoor settings work well. TryOneTake's therapist-specific templates generate exactly this look.",
+      },
+      {
+        q: "Can I use AI headshots on Psychology Today and therapy directories?",
+        a: "Yes. AI headshots from TryOneTake are high-resolution, professional, and indistinguishable from studio photography. They meet the image requirements for Psychology Today, TherapyDen, GoodTherapy, Zencare, and all major therapist directories. What matters is that the photo accurately represents you — which our identity preservation ensures.",
+      },
+      {
+        q: "Should I smile in my therapist headshot?",
+        a: "A gentle, natural smile works best — warm enough to feel approachable, professional enough to convey competence. Avoid forced or overly broad grins. TryOneTake generates multiple expression variations so you can choose the one that feels most authentic to you and your therapeutic approach.",
+      },
+    ],
+    exampleImages: [1, 5, 10],
+  },
+  {
+    slug: "student-headshots",
+    title: "AI Student Headshots — Professional Photos for Students, MBAs & New Grads",
+    description:
+      "Professional AI headshots for students, MBA candidates, and new graduates. Upload 1 photo, get 30 polished portraits perfect for LinkedIn, Handshake, career fairs, and job applications. Try free.",
+    keywords: [
+      "student headshots AI",
+      "MBA professional photo",
+      "new grad headshot",
+      "college student LinkedIn photo",
+      "internship profile picture AI",
+      "graduate headshot generator",
+    ],
+    badge: "For Students & New Grads",
+    headline: "Your first professional headshot — before your first job interview.",
+    subtitle:
+      "As a student or recent grad, you're building your professional identity from scratch. A polished headshot on LinkedIn and Handshake signals to recruiters that you're serious and career-ready — even before you have years of experience to list. TryOneTake makes it affordable enough to fit a student budget.",
+    benefitsHeading: "Why students choose TryOneTake",
+    benefits: [
+      {
+        title: "Student-budget friendly",
+        body: "Traditional headshot photographers charge $200–500 — a lot on a student budget. TryOneTake delivers 30 professional headshots starting at free (1 photo) or $19 for a full set. That's less than most textbooks.",
+      },
+      {
+        title: "Career-fair ready, fast",
+        body: "Got a career fair tomorrow? Upload a selfie tonight and have a polished headshot ready for your LinkedIn profile, Handshake, and printed resumes by morning. Under 5 minutes for most orders.",
+      },
+      {
+        title: "Grows with your career",
+        body: "Your first job, your MBA program, your post-grad network — your headshot needs evolve. With 30 variations (multiple outfits, backgrounds, styles), you'll have the right photo for every stage of your early career.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do I really need a professional headshot as a student?",
+        a: "Yes — and earlier than you think. Recruiters start screening candidates on LinkedIn as early as sophomore year. A professional headshot (vs a cropped party photo or no photo) significantly increases profile views and connection acceptance. It signals you're career-oriented — which matters when you don't have much work experience yet.",
+      },
+      {
+        q: "What should a student or new grad wear for a headshot?",
+        a: "Business casual is perfect — a button-down shirt, blouse, or blazer. No need for a full suit unless you're targeting investment banking or law. Solid, neutral colors photograph best. TryOneTake generates multiple outfit variations so you can see what works for your target industry.",
+      },
+      {
+        q: "Can I use the same headshot for LinkedIn, Handshake, and career fairs?",
+        a: "Yes — but having variations helps. Use a more formal shot for LinkedIn and career fair name tags, and a slightly more relaxed version for Handshake and personal portfolios. With 30 variations from TryOneTake, you'll have options for every platform and occasion.",
+      },
+    ],
+    exampleImages: [3, 6, 9],
+  },
+  {
+    slug: "fitness-trainer-headshots",
+    title: "AI Fitness Trainer Headshots — Professional Photos for Coaches & Personal Trainers",
+    description:
+      "Professional AI headshots for fitness trainers, personal coaches, and wellness professionals. Upload 1 photo, get 30 portraits that convey energy, approachability, and expertise. Try free.",
+    keywords: [
+      "fitness trainer headshots AI",
+      "personal trainer professional photo",
+      "fitness coach portrait AI",
+      "wellness professional headshot",
+      "gym instructor LinkedIn photo",
+      "health coach profile picture",
+    ],
+    badge: "For Fitness & Wellness Pros",
+    headline: "A headshot that shows the energy you bring to every session.",
+    subtitle:
+      "As a fitness professional, you don't just sell workouts — you sell transformation, motivation, and trust. Your headshot needs to convey energy, health, and the approachable confidence that makes clients want to train with you. TryOneTake delivers trainer portraits that match your passion.",
+    benefitsHeading: "Why fitness professionals choose TryOneTake",
+    benefits: [
+      {
+        title: "Energy & approachability",
+        body: "Clients choose a trainer they'd enjoy spending an hour with. Our AI generates portraits with the right balance of motivational energy and genuine warmth — the exact combination that attracts and retains clients.",
+      },
+      {
+        title: "Multiple looks for multiple platforms",
+        body: "Your Instagram needs a different vibe than your gym website bio or LinkedIn. Get 30 variations — from high-energy outdoor shots to polished studio portraits — so you always have the right image for the right channel.",
+      },
+      {
+        title: "Always current with your fitness journey",
+        body: "Your physique changes as you train. Keep your headshot current without booking a new photographer every few months. Try free vs $200+ for traditional sessions — spend that money on gym equipment instead.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What should a personal trainer wear for a headshot?",
+        a: "Smart athletic wear works well — a fitted training shirt or athletic polo that shows you're in the fitness industry without looking like you just finished a workout. Some trainers prefer a more polished casual look (well-fitted tee or button-down) for their website and LinkedIn. TryOneTake gives you multiple outfit options so you can choose.",
+      },
+      {
+        q: "Can I use AI headshots for my fitness Instagram and social media?",
+        a: "Yes. A professional headshot strengthens your brand across Instagram, TikTok, YouTube thumbnails, your training website, and client onboarding materials. AI headshots from TryOneTake are high-resolution and suitable for all digital platforms.",
+      },
+      {
+        q: "What background works best for a fitness trainer headshot?",
+        a: "Natural outdoor settings (park, urban backdrop) or modern gym environments convey the active, energetic brand fitness professionals need. Avoid overly formal office backgrounds. TryOneTake's templates include outdoor, studio, and lifestyle-appropriate settings.",
+      },
+    ],
+    exampleImages: [4, 7, 11],
+  },
+  {
+    slug: "photographer-headshots",
+    title: "AI Photographer Headshots — Professional Portraits for Photography Pros",
+    description:
+      "Professional AI headshots for photographers, videographers, and creative professionals. Upload 1 photo, get 30 studio-quality portraits. Perfect for your portfolio site, Instagram, LinkedIn, and client proposals. Try free.",
+    keywords: [
+      "photographer headshots AI",
+      "photography professional photo",
+      "videographer portrait AI",
+      "creative professional headshot",
+      "photographer LinkedIn photo",
+      "photographer portfolio picture",
+    ],
+    badge: "For Photographers & Creatives",
+    headline: "Even photographers need a great headshot — without the irony of hiring one.",
+    subtitle:
+      "You make everyone else look amazing behind your lens. But who takes the photographer's photo? TryOneTake solves the 'cobbler's children have no shoes' problem — giving photographers, videographers, and visual creatives a professional headshot without the awkwardness of hiring another photographer.",
+    benefitsHeading: "Why photographers choose TryOneTake",
+    benefits: [
+      {
+        title: "No awkward role reversal",
+        body: "Being in front of the camera instead of behind it feels different. TryOneTake lets you stay behind the lens — upload a selfie on your terms, get 30 professional headshots without ever stepping into someone else's studio.",
+      },
+      {
+        title: "Creative-control you'll appreciate",
+        body: "You understand lighting, composition, and retouching better than anyone. Our AI generates 30 variations across different lighting setups, backgrounds, and styles — you pick what matches your creative brand. No explaining your vision to another photographer.",
+      },
+      {
+        title: "Portfolio-consistent quality",
+        body: "Your headshot sits alongside your best work on your portfolio site. It needs to match the quality you deliver to clients. TryOneTake's FLUX.2 max model produces images that hold up next to professional photography — because they are professional photography.",
+      },
+    ],
+    faqs: [
+      {
+        q: "As a photographer, isn't it ironic to use AI headshots?",
+        a: "Not at all. Photographers use tools that get the job done — AI is just another tool in the kit. Many professional photographers already use AI in their workflow (editing, culling, retouching). Using AI for your own headshot is practical, not ironic — it's the most efficient way to get a professional photo of yourself when you're always the one taking them.",
+      },
+      {
+        q: "Will AI headshots match the quality of my photography portfolio?",
+        a: "Yes. TryOneTake uses FLUX.2 — a state-of-the-art generative model that produces images indistinguishable from high-end studio photography. Your AI headshot will hold up visually alongside the professional work in your portfolio.",
+      },
+      {
+        q: "Can I use these headshots on my photography business website?",
+        a: "Absolutely. Your About page, contact page, Instagram profile, LinkedIn, and client proposals all benefit from a professional headshot. TryOneTake gives you 30 variations — choose the one that best represents your creative brand and visual style.",
+      },
+    ],
+    exampleImages: [2, 5, 8],
+  },
+  {
+    slug: "speaker-headshots",
+    title: "AI Speaker Headshots — Professional Photos for Keynote Speakers & Presenters",
+    description:
+      "Professional AI headshots for keynote speakers, presenters, and public-speaking professionals. Upload 1 photo, get 30 stage-ready portraits. Perfect for speaker bureaus, conference programs, LinkedIn, and book covers. Try free.",
+    keywords: [
+      "speaker headshots AI",
+      "keynote speaker professional photo",
+      "presenter portrait AI",
+      "public speaker headshot",
+      "conference speaker photo",
+      "TEDx speaker profile picture",
+    ],
+    badge: "For Speakers & Presenters",
+    headline: "Before you take the stage, your headshot takes the audience.",
+    subtitle:
+      "As a speaker, your headshot appears everywhere: conference programs, speaker bureaus, event websites, book jackets, and LinkedIn. It needs to command attention and convey authority, charisma, and approachability — all in one frame. TryOneTake delivers speaker portraits that fill seats before you say a word.",
+    benefitsHeading: "Why speakers choose TryOneTake",
+    benefits: [
+      {
+        title: "Stage-ready presence",
+        body: "Your headshot needs to project the same energy you bring to the stage — confident, engaging, and memorable. Our AI generates portraits with the executive presence and charisma that event organizers and speaker bureaus look for.",
+      },
+      {
+        title: "One headshot, every channel",
+        body: "Conference program → speaker bureau profile → LinkedIn → book jacket → podcast guest bio → media kit. One batch of 30 headshots covers every channel with consistent, professional quality. No more cropping the same photo 5 different ways.",
+      },
+      {
+        title: "Always current for every gig",
+        body: "Speaking engagements change — your headshot should too. Keep a fresh photo ready for every conference season and speaker reel update. Try free vs $300+ for a photographer — invest the savings in your next keynote prep.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What makes a good headshot for a keynote speaker?",
+        a: "A keynote speaker's headshot should convey authority, energy, and approachability simultaneously. Direct eye contact, confident posture, and professional attire — with lighting that creates depth and presence. Avoid flat, passport-style photos. TryOneTake generates headshots that feel like they belong on a conference landing page.",
+      },
+      {
+        q: "Can I use AI headshots on speaker bureau profiles and event websites?",
+        a: "Yes. AI headshots from TryOneTake are high-resolution and indistinguishable from studio photography. They're fully suitable for speaker bureaus (NSB, GDA, AAE), conference websites, TEDx applications, and event marketing materials. Event organizers care about your expertise, not how your photo was taken.",
+      },
+      {
+        q: "Should my speaker headshot be formal or casual?",
+        a: "It depends on your niche. Corporate keynote speakers typically use business formal (suit/blazer). Motivational speakers and authors often go business casual — approachable and relatable. Tech speakers lean smart casual. TryOneTake gives you 25-30 variations so you can choose the right tone for your speaking brand.",
+      },
+    ],
+    exampleImages: [1, 6, 12],
+  },
+  {
+    slug: "author-headshots",
+    title: "AI Author Headshots — Professional Photos for Writers, Authors & Journalists",
+    description:
+      "Professional AI headshots for authors, writers, journalists, and content creators. Upload 1 photo, get 30 portraits perfect for book jackets, author pages, LinkedIn, media kits, and press features. Try free.",
+    keywords: [
+      "author headshots AI",
+      "writer professional photo",
+      "journalist portrait AI",
+      "author photo generator",
+      "book jacket headshot",
+      "content creator profile picture",
+    ],
+    badge: "For Authors & Writers",
+    headline: "The photo that lives on your book jacket — and your legacy.",
+    subtitle:
+      "An author photo isn't just another headshot. It sits on your book jacket forever, appears in Amazon author profiles, media kits, and literary festival programs. It needs to convey intelligence, credibility, and the unique voice readers connect with. TryOneTake delivers author portraits worthy of your words.",
+    benefitsHeading: "Why authors choose TryOneTake",
+    benefits: [
+      {
+        title: "Book-jacket quality, without the shoot",
+        body: "Traditional author photos cost $400–$1,000+ and require hours of shooting. TryOneTake delivers literary-quality portraits in under 5 minutes — with the depth, lighting, and composition that belong on a dust jacket.",
+      },
+      {
+        title: "Match the tone of your writing",
+        body: "A thriller author's photo should feel different from a memoirist's or a business writer's. Our AI generates 25-30 variations across different moods, settings, and styles — so your headshot matches the tone of your work.",
+      },
+      {
+        title: "Amazon, media kit, festival program — all covered",
+        body: "Your author photo needs to work at thumbnail size on Amazon, full-width on your website, and in print on festival programs. 30 variations ensure you have the right crop, background, and style for every publishing context.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What makes a good author headshot?",
+        a: "A great author photo conveys intelligence, approachability, and a hint of the writer's personality. It should feel authentic to your genre — literary fiction authors often go for thoughtful and contemplative; business authors lean confident and direct. TryOneTake generates variations across these tones so you can choose what fits your writing brand.",
+      },
+      {
+        q: "Can I use an AI headshot on my book jacket?",
+        a: "Yes. Modern AI headshots from FLUX.2 are high-resolution enough for print publication. Many self-published and even traditionally published authors now use AI-generated author photos. The key is that it looks like you and matches the quality expectations of your genre — which TryOneTake delivers.",
+      },
+      {
+        q: "What should I wear for an author photo?",
+        a: "It depends on your genre and personal brand. Literary and fiction authors often wear smart casual — a well-fitted jacket, thoughtful colors. Business and non-fiction authors lean business professional. Journalists and columnists keep it approachable and authentic. TryOneTake gives you multiple outfit options so your photo matches your readership.",
+      },
+    ],
+    exampleImages: [3, 8, 10],
+  },
+  {
+    slug: "accountant-headshots",
+    title: "AI Accountant Headshots — Professional Photos for CPAs & Accounting Professionals",
+    description:
+      "Professional AI headshots for accountants, CPAs, tax professionals, and bookkeepers. Upload 1 photo, get 30 portraits that convey trust, precision, and professionalism. Perfect for firm websites, LinkedIn, and client communications. Try free.",
+    keywords: [
+      "accountant headshots AI",
+      "CPA professional photo",
+      "tax professional portrait AI",
+      "accounting firm headshot",
+      "bookkeeper LinkedIn photo",
+      "finance professional profile picture",
+    ],
+    badge: "For Accounting Professionals",
+    headline: "The headshot that says 'your numbers are in good hands.'",
+    subtitle:
+      "Accounting is built on trust — clients hand over their most sensitive financial information to you. Your headshot needs to convey precision, integrity, and the calm competence that makes clients feel secure. TryOneTake delivers accountant portraits that inspire confidence before the first consultation.",
+    benefitsHeading: "Why accounting professionals choose TryOneTake",
+    benefits: [
+      {
+        title: "Trust & precision at a glance",
+        body: "Clients choose an accountant they trust with their financial future. Our AI generates portraits that project the conservative professionalism and attention to detail that clients expect from someone handling their taxes, books, and financial strategy.",
+      },
+      {
+        title: "Firm-wide consistency",
+        body: "Every CPA, EA, and staff accountant at your firm gets the same professional quality — matching backgrounds, lighting, and aesthetic. Perfect for your firm's 'Our Team' page, LinkedIn presence, and client newsletters.",
+      },
+      {
+        title: "Always current for busy season & beyond",
+        body: "Between tax season and year-end closes, you don't have time for a photographer. Upload a selfie between client calls, get professional headshots in 5 minutes. Try free vs $200+ for traditional photography.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What should a CPA or accountant wear for a professional headshot?",
+        a: "Business formal or business professional is standard — dark suit or blazer, conservative tie or professional blouse. Navy, charcoal, and neutral tones project the stability and trustworthiness clients look for in financial professionals. TryOneTake generates multiple outfit variations so you can choose the right level of formality.",
+      },
+      {
+        q: "Are AI headshots professional enough for an accounting firm website?",
+        a: "Absolutely. TryOneTake's FLUX.2 model generates headshots indistinguishable from studio photography. They're fully suitable for firm websites, LinkedIn, client proposals, email signatures, and professional directories. What matters is that the photo accurately represents you — which our identity preservation ensures.",
+      },
+      {
+        q: "Can our entire accounting firm get matching headshots?",
+        a: "Yes. Contact us for firm pricing with volume discounts. We'll create a consistent style profile so every team member — from managing partner to staff accountant — gets professional headshots with matching backgrounds and aesthetic. Perfect for your website's team page and consistent branding across all client touchpoints.",
+      },
+    ],
+    exampleImages: [2, 5, 9],
+  },
+  {
+    slug: "dentist-headshots",
+    title: "AI Dentist Headshots — Professional Photos for Dentists & Veterinary Professionals",
+    description:
+      "Professional AI headshots for dentists, veterinarians, orthodontists, and clinical professionals. Upload 1 photo, get 30 portraits that convey warmth, clinical expertise, and trust. Perfect for practice websites, LinkedIn, and patient communications. Try free.",
+    keywords: [
+      "dentist headshots AI",
+      "veterinarian professional photo",
+      "dental professional portrait AI",
+      "orthodontist headshot",
+      "vet practice profile picture",
+      "clinical professional photo AI",
+    ],
+    badge: "For Dentists & Veterinarians",
+    headline: "A headshot that makes patients feel at ease — before they sit in your chair.",
+    subtitle:
+      "Dental anxiety is real — and for veterinarians, pet parents need to trust you with a family member. Your headshot is often the first thing patients or clients see on your practice website. It needs to convey clinical expertise wrapped in genuine warmth. TryOneTake delivers portraits that calm nerves and build confidence.",
+    benefitsHeading: "Why dental & veterinary professionals choose TryOneTake",
+    benefits: [
+      {
+        title: "Warmth that eases anxiety",
+        body: "Many patients experience dental anxiety; pet owners feel nervous leaving their animal in someone else's care. Our AI generates headshots with the reassuring warmth and clinical confidence that puts people (and pet parents) at ease before they even walk through your door.",
+      },
+      {
+        title: "Practice-consistent branding",
+        body: "Every dentist, hygienist, and vet tech at your practice gets matching professional headshots — consistent backgrounds, lighting, and quality. Perfect for your practice website, Google Business Profile, social media, and patient referral materials.",
+      },
+      {
+        title: "Hygienic & convenient — no studio visit",
+        body: "Between patient appointments and surgeries, your schedule is packed. Upload a selfie between cases, get professional headshots in 5 minutes. No commute, no studio, no photographer in your space. Try free — no credit card required.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I wear a white coat or scrubs in my dental/vet headshot?",
+        a: "A white coat conveys clinical authority and is ideal for practice websites and professional directories. Scrubs feel more approachable and work well for social media and community outreach materials. TryOneTake's Pro plan gives you both options — white coat for your bio page, scrubs or business casual for LinkedIn and community events.",
+      },
+      {
+        q: "Are AI headshots acceptable for dental and veterinary practice websites?",
+        a: "Yes. Modern AI headshots are indistinguishable from studio photography and fully suitable for practice websites, Google Business Profiles, Healthgrades, LinkedIn, and patient communication materials. As long as the photo accurately represents you — which TryOneTake's identity preservation ensures — patients and clients won't know or care how it was taken.",
+      },
+      {
+        q: "Can our entire practice team get matching headshots?",
+        a: "Yes. Contact us for practice pricing with volume discounts. We'll create a consistent style profile so every provider — dentists, hygienists, vet techs, front desk — gets matching professional headshots. Perfect for your website's 'Meet the Team' page and consistent branding across all patient touchpoints.",
+      },
+    ],
+    exampleImages: [1, 4, 7],
+  },
 ];
 
 export function getUseCase(slug: string): UseCaseData | undefined {

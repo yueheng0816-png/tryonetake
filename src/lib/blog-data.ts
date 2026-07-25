@@ -840,6 +840,270 @@ export const blogPosts: BlogPost[] = [
 <p>AI headshots are safe when the service is transparent: photos used for generation only, clear deletion rights, established payment rails, and you own the output. Spend two minutes on the privacy policy before uploading — and avoid any service whose terms read like a data-harvesting operation with a headshot feature attached.</p>
 <p>Questions about how we handle data? Read the <a href="/privacy">TryOneTake privacy policy</a> or email us. Ready to go? <a href="/generate">30 professional headshots from 1 photo — try free</a>. Related reading: <a href="/blog/are-ai-headshots-ethical">are AI headshots ethical?</a></p>`,
   },
+  {
+    slug: "headshot-poses-guide",
+    title: "Headshot Poses Guide — How to Pose for Professional Headshots (2026)",
+    description:
+      "Master professional headshot poses with this complete guide. Learn the best angles, expressions, body positioning, and posture tips for headshots that look confident and natural — whether AI or studio.",
+    keywords: [
+      "headshot poses guide",
+      "best poses for professional headshots",
+      "how to pose for headshots",
+      "professional headshot posing tips",
+      "headshot posture guide",
+      "posing for LinkedIn photo",
+      "natural headshot poses",
+    ],
+    date: "2026-07-25",
+    author: "TryOneTake Team",
+    readTime: "7 min read",
+    body: `<h2>Great headshots aren't just about the face — posing matters</h2>
+<p>Your expression, angle, and posture communicate more than your outfit ever will. A confident pose signals competence; a relaxed one signals approachability. Get the pose wrong and even the best lighting and wardrobe can't save the photo. This guide covers the fundamentals of headshot posing — whether you're standing in front of a photographer's lens or snapping a selfie for an AI headshot generator.</p>
+
+<h2>The golden rules of headshot posing</h2>
+<p>Before we get into specific poses, five universal principles that apply to every headshot:</p>
+<ol>
+<li><strong>Chin forward and slightly down.</strong> This is the single most important tip. Pushing your chin slightly forward (like a turtle) and then tilting it down a few degrees defines your jawline and eliminates the double-chin effect that even lean faces get from a dead-straight angle.</li>
+<li><strong>Turn your body 45°, face the camera.</strong> A straight-on, shoulders-squared posture reads as a mugshot or passport photo. Turn your shoulders roughly 45 degrees away from the camera, then turn your head back to face the lens. This creates depth, slims the frame, and looks far more natural.</li>
+<li><strong>Relax your shoulders.</strong> Tension lives in the shoulders. If they're creeping toward your ears, you'll look nervous — even if your face is smiling. Roll your shoulders back and down before every shot. Breathe.</li>
+<li><strong>Eyes at the lens, not the screen.</strong> When taking a selfie for an AI headshot, look at the camera lens — not at yourself on the screen. The lens is the "person" in the photo; looking at the screen reads as slightly distracted or self-conscious.</li>
+<li><strong>Natural expression beats a forced smile.</strong> If you don't naturally smile with teeth showing, don't force it. A relaxed closed-mouth smile (the "Mona Lisa") photographs better than a strained, unnatural grin. The AI or photographer can work with neutral; they can't fix a grimace.</li>
+</ol>
+
+<h2>5 proven headshot poses (with when to use each)</h2>
+
+<h3>1. The Classic — slight smile, direct eye contact</h3>
+<p><strong>Best for:</strong> LinkedIn, company websites, professional directories. The most versatile professional pose. Slight smile (lips closed, corners up), eyes directly at the lens, shoulders at 45°. Projects confidence and approachability in equal measure. This is your default — if you only have one headshot, make it this one.</p>
+
+<h3>2. The Executive — neutral expression, squared frame</h3>
+<p><strong>Best for:</strong> Board bios, investor relations, executive leadership pages. A more serious, authoritative look. Expression is neutral but engaged — not frowning, just composed. Body is more squared to the camera than the Classic. This says "I make decisions." Use sparingly — too serious and it reads as unapproachable.</p>
+
+<h3>3. The Approachable — wider smile, relaxed posture</h3>
+<p><strong>Best for:</strong> Healthcare, education, HR, client-facing roles. Teeth-showing smile that reaches the eyes (a genuine, Duchenne smile). Shoulders slightly more relaxed. This pose says "you can trust me." Particularly effective for <a href="/use-cases/healthcare-headshots">healthcare professionals</a>, <a href="/use-cases/education-headshots">teachers</a>, and <a href="/use-cases/therapist-headshots">therapists</a>.</p>
+
+<h3>4. The Creative — angled gaze, personality-forward</h3>
+<p><strong>Best for:</strong> Creative industries, startups, personal brands. A slight head tilt, maybe looking just off-camera rather than straight into the lens. Conveys creativity, curiosity, and a less corporate vibe. Works well for <a href="/use-cases/founder-headshots">founders</a>, <a href="/use-cases/photographer-headshots">photographers</a>, and <a href="/use-cases/author-headshots">authors</a>.</p>
+
+<h3>5. The Crossed Arms — confident, approachable authority</h3>
+<p><strong>Best for:</strong> About pages, speaking profiles, book jackets. Crossed arms can read as defensive if done wrong — the fix is to keep the grip light (don't clench), lean slightly forward, and pair with a warm expression. When done right, it conveys confidence without aggression. Skip this one for LinkedIn thumbnails — it reads better in larger formats.</p>
+
+<h2>What about hands? The perpetual headshot question</h2>
+<p>Most professional headshots are cropped at the chest or shoulders — hands aren't visible. If you're shooting a wider portrait (3/4 or full body), here's the quick guide:</p>
+<ul>
+<li><strong>Hands in pockets (thumbs out):</strong> Relaxed, casual-professional. Good for tech and creative.</li>
+<li><strong>One hand on a table or chair back:</strong> Adds depth and context. Works for any industry.</li>
+<li><strong>Arms at sides (slightly bent):</strong> The most neutral — can't go wrong.</li>
+<li><strong>Avoid:</strong> Hands clasped in front (reads as nervous), hands behind back (military/formal), hands on hips (aggressive in a headshot context).</li>
+</ul>
+
+<h2>Posing for AI headshots vs traditional photography</h2>
+<p>With AI headshots from TryOneTake, your input photo only needs a clear, front-facing view of your face — the AI handles the final pose, expression, and framing across 30 variations. What you <em>don't</em> need to worry about: whether your hands look awkward, whether your body angle is exactly 45°, or holding a pose for 200 shots.</p>
+<p>What you <em>do</em> need: one well-lit selfie looking at the lens with a natural expression. The AI takes it from there. See <a href="/blog/how-to-take-perfect-selfie-for-ai-headshots">how to take the perfect selfie for AI headshots</a> for the full input photo guide.</p>
+
+<h2>Common posing mistakes (and quick fixes)</h2>
+<ul>
+<li><strong>Chin too high:</strong> Reads as arrogant, shows nostrils. Fix: chin slightly down.</li>
+<li><strong>Head tilted too far:</strong> A subtle tilt is good; an extreme tilt looks like a confused dog. Fix: tilt should be 5–10 degrees max.</li>
+<li><strong>Slouching:</strong> Collapses the neck and rounds the shoulders. Fix: imagine a string pulling the crown of your head toward the ceiling.</li>
+<li><strong>Squinting:</strong> Often caused by bright studio lights or shooting outdoors. Fix: relax the muscles around your eyes; if outdoors, face away from the sun.</li>
+<li><strong>Pressing lips together:</strong> Creates a thin, tense mouth. Fix: lightly touch your tongue to the roof of your mouth just behind your front teeth — it relaxes the jaw naturally.</li>
+</ul>
+
+<h2>The bottom line</h2>
+<p>The best headshot pose is the one where you look like a confident, approachable version of yourself. Not a model. Not a stock photo. You. For AI headshots, your job is to deliver one clean reference photo — the AI handles the posing across dozens of variations. For traditional photography, practice the Classic and the Approachable poses in a mirror before your session so they feel natural.</p>
+<p>Ready to see yourself in 30 professional poses? <a href="/generate">Generate AI headshots from 1 photo — try free, under 5 minutes</a>. Also read: <a href="/blog/what-to-wear-for-ai-headshots">what to wear for AI headshots</a> and <a href="/blog/how-to-take-perfect-selfie-for-ai-headshots">how to take the perfect selfie</a>.</p>`,
+  },
+  {
+    slug: "how-to-take-professional-headshot-at-home",
+    title: "How to Take a Professional Headshot at Home — DIY Guide (No Photographer Needed)",
+    description:
+      "Take a professional-quality headshot at home without expensive equipment. Covers lighting setups, phone camera settings, best rooms, backgrounds, and how AI can transform your DIY photo into a studio portrait.",
+    keywords: [
+      "how to take a professional headshot at home",
+      "DIY professional headshot",
+      "at home headshot tips",
+      "take your own professional headshot",
+      "home headshot setup",
+      "smartphone headshot tips",
+      "professional photo at home no equipment",
+    ],
+    date: "2026-07-25",
+    author: "TryOneTake Team",
+    readTime: "7 min read",
+    body: `<h2>You don't need a studio to get a studio-quality headshot</h2>
+<p>In 2026, there are two paths to a professional headshot without leaving your home: (1) a well-executed DIY photo you take yourself, or (2) uploading a decent selfie to an AI headshot generator that transforms it into a studio-quality portrait. This guide covers both — so you can skip the $300 photographer and the commute.</p>
+
+<h2>DIY method: How to take your own professional headshot at home</h2>
+<p>If you want an actual photo (not AI-generated), here's the complete setup using just your phone and things you already have at home.</p>
+
+<h3>Step 1: Find the best light in your home</h3>
+<p>Lighting is 80% of the result. The best light source in any home: <strong>a large window on an overcast day, or a window not in direct sunlight</strong>. Here's the checklist:</p>
+<ul>
+<li>Stand facing the window, about 3–5 feet back from it</li>
+<li>The light should hit your face evenly from the front — check for shadows under your eyes or nose</li>
+<li>Avoid windows with direct sunlight streaming in (harsh shadows on one side of your face)</li>
+<li>If it's sunny, hang a thin white bedsheet over the window — instant $0 diffuser</li>
+<li>No good window? A covered porch, garage with the door open, or any shaded outdoor spot works great</li>
+</ul>
+
+<h3>Step 2: Choose the right background</h3>
+<p>A plain wall is your best friend. White, cream, light gray, or a muted blue — solid color, no texture, no pattern. Stand 2–3 feet in front of it (too close and you'll cast a shadow).</p>
+<ul>
+<li><strong>Good:</strong> Plain painted wall, clean garage door, brick wall (solid, not busy)</li>
+<li><strong>Avoid:</strong> Kitchen (clutter), bedroom (too personal), anywhere with visible furniture, posters, or family photos in frame</li>
+</ul>
+
+<h3>Step 3: Set up your phone</h3>
+<ul>
+<li><strong>Use the rear camera, not the selfie camera.</strong> The rear camera has a much better sensor. Prop your phone at eye level using books, a tripod, or a phone stand — anything stable.</li>
+<li><strong>Set a 3-second timer.</strong> This eliminates camera shake and lets you pose without holding the phone.</li>
+<li><strong>Shoot in portrait mode if available</strong> — the background blur mimics a professional lens.</li>
+<li><strong>Do NOT use flash.</strong> Phone flash creates harsh, flat light with red-eye. Natural light only.</li>
+<li><strong>Clean your lens.</strong> A 2-second wipe with your shirt removes the smudge haze that ruins sharpness.</li>
+</ul>
+
+<h3>Step 4: Pose and shoot</h3>
+<ul>
+<li>Stand or sit tall — imagine a string pulling you up from the crown of your head</li>
+<li>Turn your body about 45° away from the camera, then turn your head back to face the lens</li>
+<li>Chin slightly forward and down (defines the jawline)</li>
+<li>Natural expression — slight smile, eyes at the lens</li>
+<li>Take 15–20 shots. You'll get 2–3 good ones. That's normal.</li>
+</ul>
+
+<h2>The AI shortcut: 1 selfie → 30 studio headshots in 5 minutes</h2>
+<p>Here's the reality: even the best DIY home setup produces a photo that looks like... a well-executed DIY photo. The lighting is good but not studio-quality. The background is clean but plain. You're in one outfit with one expression. For LinkedIn, it works. For anything more ambitious — a company website, a speaking profile, a book jacket — it shows its home-made roots.</p>
+<p>This is where AI headshots change the equation. Take that same DIY photo (or even a decent selfie), upload it to TryOneTake, and the AI generates <strong>30 studio-quality headshots</strong> with:</p>
+<ul>
+<li>Professional studio lighting (Rembrandt, butterfly, loop — the lighting setups real photographers charge for)</li>
+<li>Multiple backgrounds (modern office, outdoor, library, studio — you don't need to find these in your house)</li>
+<li>Different outfits (the AI dresses you in appropriate professional attire — you don't need to own a blazer)</li>
+<li>Multiple poses and expressions (Classic, Executive, Approachable — the AI generates them; you don't pose for each)</li>
+</ul>
+
+<h2>DIY photo vs AI headshot: which should you do?</h2>
+<table>
+<tr><th>Scenario</th><th>Best approach</th></tr>
+<tr><td>Need 1 decent LinkedIn photo, zero budget</td><td>DIY method above — good enough for a 200px thumbnail</td></tr>
+<tr><td>Need a professional headshot for your company website</td><td>Take a well-lit selfie → upload to TryOneTake → get 30 studio-quality options</td></tr>
+<tr><td>Need variety (different outfits, backgrounds, styles)</td><td>AI headshots — no DIY setup can give you 30 variations in 5 minutes</td></tr>
+<tr><td>Need a photo for print (business cards, conference program)</td><td>AI headshots — FLUX.2 resolution holds up in print</td></tr>
+<tr><td>Want the absolute highest optical authenticity</td><td>Professional photographer — but for 95% of use cases, AI is indistinguishable</td></tr>
+</table>
+
+<h2>If you go the AI route: the input photo still matters</h2>
+<p>AI amplifies whatever you feed it. A well-lit, clear selfie produces stunning headshots. A dark, blurry, backlit photo produces... well, the AI does its best, but garbage in, garbage out. Spend 2 minutes getting the lighting right before you upload. The AI handles the rest.</p>
+<p>Complete input photo guide: <a href="/blog/how-to-take-perfect-selfie-for-ai-headshots">how to take the perfect selfie for AI headshots</a>.</p>
+
+<h2>The cost comparison</h2>
+<ul>
+<li><strong>DIY at home:</strong> $0 (just your phone and a window)</li>
+<li><strong>AI headshots (TryOneTake):</strong> Free to try — $19–$35 one-time for 30 headshots</li>
+<li><strong>Professional photographer:</strong> $200–$500+ per session</li>
+</ul>
+<p>For full pricing breakdown: <a href="/blog/professional-headshots-cost-2026">how much do professional headshots cost in 2026?</a></p>
+
+<h2>The bottom line</h2>
+<p>In 2026, a professional headshot doesn't require leaving your home. The DIY method gets you a solid LinkedIn photo with zero cost. The AI method — uploading that DIY photo to TryOneTake — gets you studio-quality headshots with outfit variety, background options, and professional lighting you can't replicate at home. Both are faster, cheaper, and more convenient than booking a photographer.</p>
+<p>Ready to turn your at-home selfie into a studio portrait? <a href="/generate">Generate 30 AI headshots from 1 photo — try free, done in 5 minutes</a>. See also: <a href="/blog/headshot-poses-guide">headshot poses guide</a> and <a href="/blog/what-to-wear-for-ai-headshots">what to wear for AI headshots</a>.</p>`,
+  },
+  {
+    slug: "linkedin-photo-tips",
+    title: "LinkedIn Photo Tips 2026 — 17 Rules for the Perfect Profile Picture",
+    description:
+      "17 actionable LinkedIn profile photo tips to maximize views, connection requests, and recruiter attention. Covers sizing, cropping, expressions, backgrounds, outfits, and common mistakes to avoid.",
+    keywords: [
+      "LinkedIn photo tips",
+      "best LinkedIn profile picture tips",
+      "LinkedIn profile photo guide 2026",
+      "LinkedIn photo ideas",
+      "professional LinkedIn picture rules",
+      "LinkedIn headshot best practices",
+      "how to choose LinkedIn profile photo",
+    ],
+    date: "2026-07-25",
+    author: "TryOneTake Team",
+    readTime: "8 min read",
+    body: `<h2>Your LinkedIn photo is the most valuable 200×200 pixels you own</h2>
+<p>LinkedIn profiles with a professional photo get <strong>21× more profile views</strong> and <strong>9× more connection requests</strong> than those without. Recruiters spend an average of 2 seconds on your photo before deciding whether to read the rest of your profile. That 200×200 pixel circle is doing an enormous amount of work — here are 17 rules to make sure it's working for you, not against you.</p>
+
+<h2>1. Have a photo. Period.</h2>
+<p>The single biggest LinkedIn photo mistake isn't a bad photo — it's no photo at all. Profiles without photos are 14× less likely to be viewed. Your photo doesn't need to be perfect. It just needs to exist. Start here, then improve.</p>
+
+<h2>2. Your face should fill at least 60% of the frame</h2>
+<p>LinkedIn displays your photo as a 200×200 pixel circle on desktop. If you're a tiny figure in a landscape shot, you'll be an unrecognizable dot. Crop from the chest up. Your face should take up 60% or more of the frame — close enough to see your expression clearly at thumbnail size.</p>
+
+<h2>3. Look at the camera — not off into the distance</h2>
+<p>Direct eye contact builds trust. A candidate looking off-camera reads as evasive or overly posed. The lens is the person looking at your profile. Look at it.</p>
+
+<h2>4. Smile like you mean it</h2>
+<p>A genuine smile — the kind that crinkles the corners of your eyes — is universally rated as more competent, likable, and influential than a neutral expression. You don't need to grin like you just won the lottery. A warm, natural smile. Think of something that actually makes you happy before the photo — it shows.</p>
+
+<h2>5. Wear what you'd wear to an interview in your industry</h2>
+<p>LinkedIn is a professional platform. Your photo should match the dress code of the role you want, not necessarily the one you have:</p>
+<ul>
+<li><strong>Finance, law, consulting:</strong> Suit or blazer, tie optional but safe</li>
+<li><strong>Tech, startups:</strong> Smart casual — crisp button-down or well-fitted sweater</li>
+<li><strong>Creative industries:</strong> Show personality, but keep it polished</li>
+<li><strong>Healthcare, education:</strong> Business casual or professional attire — approachable authority</li>
+</ul>
+<p>Full outfit guide: <a href="/blog/what-to-wear-for-ai-headshots">what to wear for AI headshots</a>.</p>
+
+<h2>6. Solid colors beat patterns every time</h2>
+<p>Stripes, checks, and florals create visual noise at thumbnail size. Solid colors in navy, charcoal, white, cream, or rich jewel tones read as clean and professional. A solid navy blazer over a white shirt is the single most reliable LinkedIn photo outfit in existence.</p>
+
+<h2>7. Use a clean, non-distracting background</h2>
+<p>The background should disappear. A blurred office, a plain wall, an abstract architectural surface — anything that doesn't compete with your face for attention. Busy backgrounds (conference halls, tourist landmarks, bars) tell the viewer where you were; a clean background keeps the focus on who you are.</p>
+
+<h2>8. Lighting: soft and from the front</h2>
+<p>Harsh overhead light creates unflattering eye shadows. Light from below looks like a horror movie. The ideal: soft, diffused light coming from slightly above and in front of you. Natural window light on an overcast day is free and nearly perfect. If you see catchlights (small reflections) in your eyes, you've got it right.</p>
+
+<h2>9. Be the only person in the photo</h2>
+<p>Cropping a friend or partner out of your LinkedIn photo — or worse, not cropping them out — is one of the most common mistakes. You should be the only person in the frame. No group shots, no wedding photos, no "that's me on the left." If someone has to guess which person you are, the photo has failed.</p>
+
+<h2>10. Use a current photo (taken within the last 2 years)</h2>
+<p>Your LinkedIn photo should look like you walking into an interview today — not you from 2018, 15 pounds and one hairstyle ago. The most common complaint from recruiters isn't about AI headshots or photo quality; it's that the person who shows up to the interview looks significantly different from their profile. Update your photo when your appearance meaningfully changes.</p>
+
+<h2>11. Skip the filters and heavy editing</h2>
+<p>LinkedIn is not Instagram. High-contrast filters, skin smoothing, and "beauty mode" effects read as inauthentic. A clean, naturally lit photo will always outperform an over-edited one in a professional context.</p>
+
+<h2>12. Glasses: wear them if you always wear them</h2>
+<p>If glasses are part of your everyday look, wear them in your LinkedIn photo. Consistency matters — people should recognize you. A few tips: clean the lenses thoroughly (smudges are magnified in photos), adjust your angle to avoid glare (tilt your chin slightly down), and avoid transitional lenses that have darkened.</p>
+
+<h2>13. Consider the circle crop</h2>
+<p>LinkedIn crops your photo into a circle. Before uploading, check that your head is centered and nothing important is near the edges that will be cropped out. Leave some space above your head — about 10% of the frame height.</p>
+
+<h2>14. The background banner matters too</h2>
+<p>Your profile photo sits on top of your background banner. Together, they're the first visual impression. A simple, on-brand banner (solid color with a subtle pattern, or a relevant professional image) frames your photo and makes the whole profile look more polished.</p>
+
+<h2>15. Don't use your company logo as your photo</h2>
+<p>LinkedIn is a network of people, not brands. A logo where your face should be says "I don't want to be known as an individual professional." Use your company logo in the Experience section where it belongs. Your photo is for your face.</p>
+
+<h2>16. Test your photo at thumbnail size</h2>
+<p>Most people will see your LinkedIn photo at 50–100 pixels — smaller than your fingernail. Before uploading, zoom your photo down to about the size of a postage stamp on your screen. Can you still tell it's you? Is your expression readable? If not, crop tighter.</p>
+
+<h2>17. AI headshots are the fastest way to check every box</h2>
+<p>If reading these 17 rules makes getting a perfect LinkedIn photo sound like a lot of work — it is, when you're doing it yourself. AI headshots from TryOneTake automatically get the framing, lighting, outfit, background, and expression right across 30 variations. Upload 1 selfie, pick the one that feels most like you. The AI handles rules 2 through 11 for you — you just need to show up with a clear face.</p>
+
+<h2>The LinkedIn photo checklist (save this)</h2>
+<ul>
+<li>☐ Current (within 2 years, looks like you now)</li>
+<li>☐ Face fills 60%+ of frame</li>
+<li>☐ Eye contact with camera</li>
+<li>☐ Natural, genuine expression</li>
+<li>☐ Industry-appropriate attire, solid colors</li>
+<li>☐ Clean, non-distracting background</li>
+<li>☐ Soft, frontal lighting</li>
+<li>☐ You're the only person visible</li>
+<li>☐ No heavy filters or beauty effects</li>
+<li>☐ Head centered for circle crop</li>
+<li>☐ Looks good at thumbnail size</li>
+</ul>
+
+<h2>The bottom line</h2>
+<p>Your LinkedIn photo doesn't need to be perfect — it needs to be professional, current, and look like you. If you have a decent selfie and 5 minutes, AI headshots are the fastest way from "no photo" or "bad photo" to a polished LinkedIn presence. Try free — no credit card, no photographer, no hassle.</p>
+<p><a href="/generate">Get your LinkedIn headshot — 30 variations, under 5 minutes, try free</a>. Also read: <a href="/blog/linkedin-profile-photo-ai-vs-photographer">AI vs Photographer for LinkedIn photos</a> and explore <a href="/use-cases/linkedin-headshots">AI LinkedIn headshots by profession</a>.</p>`,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

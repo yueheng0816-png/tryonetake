@@ -1104,6 +1104,301 @@ export const blogPosts: BlogPost[] = [
 <p>Your LinkedIn photo doesn't need to be perfect — it needs to be professional, current, and look like you. If you have a decent selfie and 5 minutes, AI headshots are the fastest way from "no photo" or "bad photo" to a polished LinkedIn presence. Try free — no credit card, no photographer, no hassle.</p>
 <p><a href="/generate">Get your LinkedIn headshot — 30 variations, under 5 minutes, try free</a>. Also read: <a href="/blog/linkedin-profile-photo-ai-vs-photographer">AI vs Photographer for LinkedIn photos</a> and explore <a href="/use-cases/linkedin-headshots">AI LinkedIn headshots by profession</a>.</p>`,
   },
+  {
+    slug: "are-ai-headshots-worth-it",
+    title: "Are AI Headshots Worth It? Honest 2026 Review (Cost, Quality & When to Skip)",
+    description:
+      "Are AI headshots worth the money? We break down the real cost, quality comparison, and when AI headshots are a no-brainer vs when you should hire a photographer instead. Honest 2026 review.",
+    keywords: [
+      "are AI headshots worth it",
+      "is AI headshot generator worth it",
+      "AI headshots review 2026",
+      "should I use AI headshots",
+      "AI vs photographer headshot",
+      "are AI headshots good quality",
+    ],
+    date: "2026-07-25",
+    author: "TryOneTake Team",
+    readTime: "6 min read",
+    body: `<h2>The short answer: yes — for 95% of people</h2>
+<p>AI headshots cost $19–$35 vs $200–$500+ for a photographer, deliver in under 5 minutes vs 1–2 weeks, and give you 30 variations vs 1–3 final images. For LinkedIn, company websites, email signatures, and any digital professional use case — AI headshots are absolutely worth it. There are a few exceptions where traditional photography still wins; we'll cover those honestly.</p>
+
+<h2>When AI headshots are 100% worth it</h2>
+<ul>
+<li><strong>LinkedIn profile photo:</strong> Your photo shows at 200×200 pixels. At that size, modern AI headshots are indistinguishable from studio photos. 21× more profile views with a professional photo — and AI is the fastest, cheapest way to get one.</li>
+<li><strong>Company 'About Us' page:</strong> Consistent team headshots without coordinating a photographer across offices. Every employee gets the same quality regardless of location.</li>
+<li><strong>Email signature, Slack, Zoom, Teams:</strong> These tiny thumbnails don't need a $500 photo. AI headshots are more than sufficient.</li>
+<li><strong>Conference badges and speaker bios:</strong> Quick turnaround means you can get a fresh headshot for every event.</li>
+<li><strong>Business cards and digital profiles:</strong> High-resolution enough for print, polished enough for any professional context.</li>
+<li><strong>You need variety:</strong> Different outfits, backgrounds, and styles for different platforms. Photographers give you 1–3 images in one look. AI gives you 30.</li>
+</ul>
+
+<h2>When traditional photography might be worth the extra cost</h2>
+<ul>
+<li><strong>Magazine covers and print editorials:</strong> Publications may have strict requirements about photo provenance and retouching standards.</li>
+<li><strong>Executive board portraits for Fortune 500 annual reports:</strong> These are scrutinized at very high resolution and the optical capture matters for prestige reasons beyond pure visual quality.</li>
+<li><strong>Passport photos and legal ID:</strong> Must be unaltered photographs — AI headshots are not appropriate for official identification.</li>
+<li><strong>You need in-person posing guidance:</strong> If you're genuinely uncomfortable in front of any camera and need a photographer to coach you through every angle, the human interaction has value.</li>
+</ul>
+
+<h2>The quality question: do AI headshots look real?</h2>
+<p>Modern models like FLUX.2 produce headshots that ~60% of recruiters can't distinguish from real photos (read the data: <a href="/blog/can-recruiters-tell-ai-headshots">can recruiters tell AI headshots?</a>). The technology crossed the 'good enough' threshold in late 2025 and continues to improve. The key is using a tool that prioritizes identity preservation — your headshot should look like you on your best day, not like a different person entirely. <a href="/blog/do-ai-headshots-look-like-you">Full deep-dive on AI headshot realism →</a></p>
+
+<h2>The cost math: AI vs photographer in 2026</h2>
+<table>
+<tr><th>Cost factor</th><th>AI Headshots (TryOneTake)</th><th>Professional Photographer</th></tr>
+<tr><td>Session fee</td><td>Free to try</td><td>$200–$500+</td></tr>
+<tr><td>Images delivered</td><td>30</td><td>1–3</td></tr>
+<tr><td>Outfit variety</td><td>10–25 styles</td><td>1 (what you wear)</td></tr>
+<tr><td>Turnaround</td><td>Under 5 minutes</td><td>1–2 weeks</td></tr>
+<tr><td>Travel cost</td><td>$0</td><td>$10–50 (gas/parking/Uber)</td></tr>
+<tr><td>Reshoot cost</td><td>Free to try again</td><td>Full price again</td></tr>
+<tr><td>Total per usable photo</td><td>$0.63–$1.17</td><td>$67–$500+</td></tr>
+</table>
+
+<h2>What about free AI headshot generators?</h2>
+<p>Some tools offer genuinely free trials — TryOneTake includes a free tier (no credit card) so you can test the quality before paying. Most competitor "free" options either require a credit card upfront or auto-bill after a trial. Try free, see the quality, decide for yourself — that's the model that makes AI headshots a zero-risk decision. <a href="/free-ai-headshot-generator">Try free AI headshot generator →</a></p>
+
+<h2>The bottom line</h2>
+<p>For 95% of professional use cases — LinkedIn, company websites, email, conference materials, business cards — AI headshots are not just worth it; they're the smarter choice. You get more variety, faster delivery, and professional quality at roughly 5% of the cost of a photographer. For the 5% of cases that need optical capture (magazine covers, legal ID), go traditional. For everyone else: try AI first. You'll probably never look back.</p>
+<p><a href="/generate">Try TryOneTake — 30 headshots from 1 photo, under 5 minutes, free to try</a>. Also see: <a href="/blog/professional-headshots-cost-2026">complete cost comparison</a> and <a href="/blog/linkedin-profile-photo-ai-vs-photographer">LinkedIn AI vs photographer</a>.</p>`,
+  },
+  {
+    slug: "is-headshotpro-worth-it",
+    title: "Is HeadshotPro Worth It? Honest 2026 Review, Pricing & Comparison",
+    description:
+      "Is HeadshotPro worth the money in 2026? We review HeadshotPro's pricing, photo quality, turnaround, and how it compares to newer FLUX.2 alternatives. Honest review from real testing.",
+    keywords: [
+      "is HeadshotPro worth it",
+      "HeadshotPro review 2026",
+      "HeadshotPro pricing review",
+      "HeadshotPro vs alternatives",
+      "HeadshotPro honest review",
+      "best HeadshotPro alternative",
+    ],
+    date: "2026-07-25",
+    author: "TryOneTake Team",
+    readTime: "6 min read",
+    body: `<h2>HeadshotPro at a glance</h2>
+<p>HeadshotPro is the most recognized brand in the AI headshot space, launched by Danny Postma and widely covered in the indie hacker community. It's built on FLUX.1 and offers 40 headshots starting at $24. It's a solid product — but the AI headshot space has moved fast since HeadshotPro launched, and there are now stronger options available.</p>
+
+<h2>HeadshotPro pricing: what you actually pay</h2>
+<table>
+<tr><th>Plan</th><th>Price</th><th>Photos</th><th>Photos Required</th></tr>
+<tr><td>Starter</td><td>$24</td><td>40</td><td>6–12</td></tr>
+<tr><td>Premium</td><td>$39</td><td>100</td><td>6–12</td></tr>
+</table>
+<p>At $24 for 40 headshots ($0.60/image), HeadshotPro is reasonably priced — but requires 6–12 input photos, which is significantly more than the 1 photo needed by FLUX.2-based alternatives.</p>
+
+<h2>What HeadshotPro does well</h2>
+<ul>
+<li><strong>Brand recognition:</strong> HeadshotPro is the most well-known name in the space, which means consistent quality benchmarks and a large user base.</li>
+<li><strong>Decent realism:</strong> FLUX.1 produces good results — better than older Stable Diffusion-based tools. Most outputs are usable for LinkedIn and professional profiles.</li>
+<li><strong>Clean UX:</strong> The upload and delivery flow is polished and professional. No technical knowledge needed.</li>
+<li><strong>Volume:</strong> 40–100 images give you a lot to choose from.</li>
+</ul>
+
+<h2>Where HeadshotPro falls short</h2>
+<ul>
+<li><strong>Older AI model (FLUX.1):</strong> HeadshotPro runs on FLUX.1, which was state-of-the-art in early 2025 but has since been surpassed by FLUX.2. The newer model produces noticeably better identity preservation (your face actually looks like you) and more natural skin texture.</li>
+<li><strong>6–12 photos required:</strong> You need to dig through your camera roll for a dozen usable photos. Newer tools need just 1. See <a href="/blog/how-many-photos-do-you-need-for-ai-headshots">how many photos do you need for AI headshots</a> for why this matters.</li>
+<li><strong>10–30 minute wait:</strong> Not bad, but not the fastest in 2026. Newer tools deliver in under 5 minutes.</li>
+<li><strong>Can oversmooth skin:</strong> HeadshotPro outputs sometimes have that slightly 'plastic' look — skin texture gets smoothed out more aggressively than with FLUX.2 alternatives. See <a href="/blog/why-do-my-ai-headshots-look-weird">why AI headshots sometimes look weird</a> for a full diagnosis of these issues.</li>
+<li><strong>Less style variety per plan:</strong> Compared to tools offering 10–25 distinct style variations per batch, HeadshotPro's style diversity is more limited.</li>
+</ul>
+
+<h2>HeadshotPro vs TryOneTake: quick comparison</h2>
+<table>
+<tr><th>Factor</th><th>HeadshotPro</th><th>TryOneTake</th></tr>
+<tr><td>AI model</td><td>FLUX.1</td><td>FLUX.2 (pro / max)</td></tr>
+<tr><td>Price</td><td>$24+</td><td>Free to try — $35 Pro</td></tr>
+<tr><td>Photos required</td><td>6–12</td><td>1</td></tr>
+<tr><td>Wait time</td><td>10–30 min</td><td>Under 5 min</td></tr>
+<tr><td>Images delivered</td><td>40–100</td><td>30</td></tr>
+<tr><td>Style variations</td><td>Limited</td><td>10–25 styles</td></tr>
+<tr><td>Refund policy</td><td>Case-by-case</td><td>Automatic if generation fails</td></tr>
+</table>
+<p>Full breakdown: <a href="/vs/headshotpro">TryOneTake vs HeadshotPro detailed comparison →</a></p>
+
+<h2>Verdict: is HeadshotPro worth it?</h2>
+<p>If you already have 6–12 good photos and don't mind waiting 10–30 minutes, HeadshotPro produces solid results. It's not a bad product — it's just not the best option available in mid-2026. The combination of an older AI model, more input photos required, and longer turnaround make it hard to recommend over FLUX.2 alternatives that are faster, cheaper, and produce more realistic results from just 1 photo.</p>
+<p><strong>Our rating: 3.5/5 stars.</strong> Good, but the market has moved forward.</p>
+<p><a href="/generate">Try TryOneTake (FLUX.2, 1 photo, under 5 min, free to try) →</a> or read <a href="/blog/best-ai-headshot-generator-2026">best AI headshot generator 2026 rankings</a> for the full competitive landscape.</p>`,
+  },
+  {
+    slug: "is-aragon-ai-legit",
+    title: "Is Aragon AI Legit? Honest 2026 Review of Pricing, Quality & Results",
+    description:
+      "Is Aragon AI a legit AI headshot generator or a scam? We tested Aragon AI's pricing, photo quality, and turnaround against competitors. Unbiased 2026 review — what's real and what's hype.",
+    keywords: [
+      "is Aragon AI legit",
+      "Aragon AI review 2026",
+      "Aragon AI pricing review",
+      "Aragon AI honest review",
+      "Aragon AI worth it",
+      "Aragon AI vs competitors",
+      "Aragon AI scam or legit",
+    ],
+    date: "2026-07-25",
+    author: "TryOneTake Team",
+    readTime: "5 min read",
+    body: `<h2>The quick answer: yes, Aragon AI is legit — but with caveats</h2>
+<p>Aragon AI is a legitimate business that delivers real AI headshots. It's not a scam. However, its pricing-to-quality ratio, speed, and user experience have significant trade-offs compared to newer alternatives. This review breaks down exactly what you get — and what you should know before paying.</p>
+
+<h2>Aragon AI pricing: premium prices, inconsistent results</h2>
+<table>
+<tr><th>Plan</th><th>Price</th><th>Photos</th><th>Wait</th></tr>
+<tr><td>Starter</td><td>$29</td><td>40</td><td>60–90 min</td></tr>
+<tr><td>Premium</td><td>$49</td><td>100</td><td>60–90 min</td></tr>
+</table>
+<p>At $29 for 40 headshots, Aragon AI charges a premium — and the 60–90 minute wait is the slowest among major AI headshot tools. You'll also need 8–12 photos to get started, which is more than newer alternatives.</p>
+
+<h2>What Aragon AI gets right</h2>
+<ul>
+<li><strong>It's a real product:</strong> You upload photos, you get headshots back. No bait-and-switch, no hidden fees beyond the listed price.</li>
+<li><strong>Decent when it works:</strong> When the AI gets a good run, outputs are professional and usable — especially for LinkedIn thumbnails where minor imperfections aren't visible.</li>
+<li><strong>Good marketing:</strong> Aragon AI has invested heavily in ads and influencer partnerships, which is how most people discover them. The brand is recognizable.</li>
+</ul>
+
+<h2>Where Aragon AI disappoints</h2>
+<ul>
+<li><strong>Inconsistent identity preservation:</strong> This is the #1 complaint from Aragon AI users. Some outputs look like you. Others look like a generic 'attractive professional' who shares your hair color and nothing else. The hit-or-miss ratio is higher than with FLUX.2 tools. See <a href="/blog/do-ai-headshots-look-like-you">why some AI headshots don't look like you</a> for the technical reasons behind this.</li>
+<li><strong>Too slow:</strong> 60–90 minutes in 2026 is an eternity. Modern tools deliver in under 5 minutes.</li>
+<li><strong>Too many photos required:</strong> 8–12 photos means digging through years of your camera roll. One clean selfie should be enough — and with newer AI models, it is. See <a href="/blog/how-many-photos-do-you-need-for-ai-headshots">how many photos you actually need</a>.</li>
+<li><strong>Premium pricing, mid-tier results:</strong> $29–$49 is at the top of the market, but the underlying AI is older and the quality is inconsistent. You're paying for the marketing budget, not the technology.</li>
+<li><strong>No automatic refunds:</strong> Unlike some competitors that automatically refund failed generations, Aragon AI's refund process requires contacting support.</li>
+</ul>
+
+<h2>Aragon AI vs TryOneTake: quick comparison</h2>
+<table>
+<tr><th>Factor</th><th>Aragon AI</th><th>TryOneTake</th></tr>
+<tr><td>Price</td><td>$29–$49</td><td>Free to try — $35 Pro</td></tr>
+<tr><td>AI model</td><td>Older generation</td><td>FLUX.2 (pro / max)</td></tr>
+<tr><td>Photos required</td><td>8–12</td><td>1</td></tr>
+<tr><td>Wait time</td><td>60–90 min</td><td>Under 5 min</td></tr>
+<tr><td>Identity preservation</td><td>Inconsistent</td><td>High (FLUX.2 optimized)</td></tr>
+<tr><td>Refund policy</td><td>Contact support</td><td>Automatic if generation fails</td></tr>
+</table>
+<p>Full breakdown: <a href="/vs/aragon-ai">TryOneTake vs Aragon AI →</a></p>
+
+<h2>Verdict: is Aragon AI legit and worth it?</h2>
+<p><strong>Aragon AI is legit — but you can do better for less money.</strong> It's a real product that sometimes produces good results. The problem is the 'sometimes': inconsistent identity preservation, slow delivery, and premium pricing make it hard to recommend over faster, more consistent alternatives built on newer AI models.</p>
+<p><strong>Our rating: 3/5 stars.</strong> Legit, but outclassed by newer tools.</p>
+<p><a href="/generate">Try TryOneTake (FLUX.2, 1 photo, under 5 min, free to try) →</a> or read our full <a href="/blog/best-ai-headshot-generator-2026">best AI headshot generator 2026 rankings</a> to see how Aragon AI stacks up against 6 other tools.</p>`,
+  },
+  {
+    slug: "is-betterpic-worth-it",
+    title: "Is BetterPic Worth It? Honest 2026 Review of Pricing, Quality & Features",
+    description:
+      "Is BetterPic worth the money for AI headshots in 2026? We review BetterPic's FLUX.2 claims, pricing, multi-photo requirements, and how it actually compares to alternatives. Unbiased review.",
+    keywords: [
+      "is BetterPic worth it",
+      "BetterPic review 2026",
+      "BetterPic pricing review",
+      "BetterPic AI headshots review",
+      "BetterPic vs alternatives",
+      "BetterPic honest review",
+    ],
+    date: "2026-07-25",
+    author: "TryOneTake Team",
+    readTime: "5 min read",
+    body: `<h2>BetterPic at a glance</h2>
+<p>BetterPic is one of the newer entrants in the AI headshot space, marketing itself on FLUX.2 technology — the same model generation powering the best tools in 2026. It's a legitimate option worth considering, though it has its own set of trade-offs. Here's the honest breakdown.</p>
+
+<h2>BetterPic pricing: competitive but multi-photo dependent</h2>
+<p>BetterPic starts at $35 and asks for multiple photos — typically 5–10 — to generate a batch of headshots. At this price point, you're paying a premium vs alternatives that start at $19 or offer free tiers. The FLUX.2 advantage is real (better identity preservation, more natural skin texture), but the multi-photo requirement is a friction point that competitors have eliminated.</p>
+
+<h2>What BetterPic does well</h2>
+<ul>
+<li><strong>FLUX.2 model:</strong> This is BetterPic's strongest card. FLUX.2 produces noticeably better identity preservation and more natural results than older FLUX.1 and Stable Diffusion-based tools.</li>
+<li><strong>Professional output quality:</strong> When the generation goes well, the headshots are sharp, well-lit, and suitable for LinkedIn, corporate sites, and professional use.</li>
+<li><strong>1–2 hour turnaround:</strong> Not the fastest, but acceptable. Better than 60–90 minute competitors, though well behind sub-5-minute alternatives.</li>
+</ul>
+
+<h2>Where BetterPic falls short</h2>
+<ul>
+<li><strong>Multiple photos required:</strong> BetterPic asks for 5–10 photos. While this is fewer than some competitors (who ask for 12–20), it's still 5–10× more than modern single-photo tools. If you have a camera roll full of usable selfies, great. If not, it's an obstacle. See <a href="/blog/how-many-photos-do-you-need-for-ai-headshots">how many photos you need for AI headshots</a>.</li>
+<li><strong>Premium pricing:</strong> At $35+ with no free tier or lower-cost entry point, BetterPic is priced at the top of the market. You're paying for the FLUX.2 branding without necessarily getting more value than $19–$35 alternatives.</li>
+<li><strong>Longer wait than expected for FLUX.2:</strong> 1–2 hours on FLUX.2 hardware suggests either batch-processing infrastructure or queuing — both add unnecessary delay when single-photo FLUX.2 tools deliver in under 5 minutes.</li>
+<li><strong>Limited brand track record:</strong> BetterPic is newer to the market with fewer independent reviews, which makes it harder to evaluate consistency at scale.</li>
+</ul>
+
+<h2>BetterPic vs TryOneTake: quick comparison</h2>
+<table>
+<tr><th>Factor</th><th>BetterPic</th><th>TryOneTake</th></tr>
+<tr><td>AI model</td><td>FLUX.2</td><td>FLUX.2 (pro / max)</td></tr>
+<tr><td>Price</td><td>$35+</td><td>Free to try — $35 Pro</td></tr>
+<tr><td>Photos required</td><td>5–10</td><td>1</td></tr>
+<tr><td>Wait time</td><td>1–2 hours</td><td>Under 5 min</td></tr>
+<tr><td>Style variety</td><td>Limited</td><td>10–25 styles</td></tr>
+<tr><td>Free tier</td><td>No</td><td>Yes — try before buying</td></tr>
+</table>
+<p>Full breakdown: <a href="/vs/betterpic">TryOneTake vs BetterPic →</a></p>
+
+<h2>Verdict: is BetterPic worth it?</h2>
+<p><strong>BetterPic is a legitimate FLUX.2 option, but it's not the best value.</strong> The FLUX.2 model gives it a real quality advantage over older-generation tools, but the multi-photo requirement, 1–2 hour wait, and premium pricing with no free tier make it feel like you're paying extra for a brand that's still establishing itself. If you want FLUX.2 quality with 1 photo, 5-minute delivery, and a free try-before-you-buy option — there are stronger choices.</p>
+<p><strong>Our rating: 3.5/5 stars.</strong> Good tech, suboptimal user experience.</p>
+<p><a href="/generate">Try TryOneTake (same FLUX.2, 1 photo, free to try) →</a> or see <a href="/blog/best-ai-headshot-generator-2026">how BetterPic ranks among top AI headshot tools</a>.</p>`,
+  },
+  {
+    slug: "is-instaheadshots-worth-it",
+    title: "Is InstaHeadshots Worth It? Honest 2026 Review (Real Test Results)",
+    description:
+      "Is InstaHeadshots worth your money in 2026? We tested InstaHeadshots' AI headshot quality, preset 'Looks' system, pricing, and the eye distortion issues reported by users. Unbiased review.",
+    keywords: [
+      "is InstaHeadshots worth it",
+      "InstaHeadshots review 2026",
+      "InstaHeadshots pricing review",
+      "InstaHeadshots honest review",
+      "InstaHeadshots eye distortion",
+      "InstaHeadshots vs alternatives",
+    ],
+    date: "2026-07-25",
+    author: "TryOneTake Team",
+    readTime: "5 min read",
+    body: `<h2>InstaHeadshots at a glance</h2>
+<p>InstaHeadshots is an AI headshot service that distinguishes itself with preset 'Looks' — curated style templates — and $39+ pricing. It's a legitimate tool that's gained a following, particularly in creative industries, but user reports of eye distortion issues and a relatively constrained style system keep it from being a top recommendation. Here's the honest assessment.</p>
+
+<h2>InstaHeadshots pricing: above-market with constraints</h2>
+<table>
+<tr><th>Plan</th><th>Price</th><th>Photos</th><th>Style System</th></tr>
+<tr><td>Standard</td><td>$39</td><td>40</td><td>Preset "Looks"</td></tr>
+<tr><td>Premium</td><td>$59</td><td>100</td><td>Preset "Looks"</td></tr>
+</table>
+<p>At $39 for 40 headshots, InstaHeadshots is priced above most competitors. The 10–15 photo requirement is also above average, requiring users to curate a sizable batch of photos before getting started.</p>
+
+<h2>What InstaHeadshots does well</h2>
+<ul>
+<li><strong>Preset 'Looks' system:</strong> For users who don't want to think about styles, the curated templates simplify the process — choose a preset, get headshots in that style.</li>
+<li><strong>40–100 headshots:</strong> Good volume for the price — more than the 30 images some competitors deliver.</li>
+<li><strong>Creative industry appeal:</strong> The preset Looks include styles geared toward creative professionals, which differentiates InstaHeadshots from more corporate-focused tools.</li>
+</ul>
+
+<h2>Where InstaHeadshots falls short</h2>
+<ul>
+<li><strong>Known eye distortion issues:</strong> Multiple user reports across forums and review sites cite eye distortion as a persistent problem — misaligned pupils, asymmetrical gaze, and occasionally unnatural eye shapes. Eyes are the hardest facial feature for AI, and InstaHeadshots' pipeline appears to handle them less consistently than competitors. See <a href="/blog/why-do-my-ai-headshots-look-weird">our diagnostic guide to AI headshot problems</a> for an explanation of why eyes go wrong and what to look for.</li>
+<li><strong>Preset-only style system can feel restrictive:</strong> Unlike tools that offer 10–25 distinct style variations with granular control, InstaHeadshots' preset Looks system means you're picking from pre-designed templates. If none of the presets match your vision, you're out of luck.</li>
+<li><strong>10–15 photos required:</strong> That's a lot of photos to dig up. Modern 1-photo tools have proven you don't need a dozen selfies for great results.</li>
+<li><strong>Price premium:</strong> $39–$59 is at the upper end of the market. For that price, users should expect flawless output — and the eye distortion reports suggest that's not consistently the case.</li>
+</ul>
+
+<h2>InstaHeadshots vs TryOneTake: quick comparison</h2>
+<table>
+<tr><th>Factor</th><th>InstaHeadshots</th><th>TryOneTake</th></tr>
+<tr><td>Price</td><td>$39–$59</td><td>Free to try — $35 Pro</td></tr>
+<tr><td>Photos required</td><td>10–15</td><td>1</td></tr>
+<tr><td>Style system</td><td>Preset Looks</td><td>10–25 style variations</td></tr>
+<tr><td>Eye quality</td><td>Reported distortion issues</td><td>FLUX.2 — consistent eye rendering</td></tr>
+<tr><td>Wait time</td><td>15–30 min</td><td>Under 5 min</td></tr>
+<tr><td>Refund policy</td><td>Contact support</td><td>Automatic if generation fails</td></tr>
+</table>
+<p>Full breakdown: <a href="/vs/instaheadshots">TryOneTake vs InstaHeadshots →</a></p>
+
+<h2>Verdict: is InstaHeadshots worth it?</h2>
+<p><strong>InstaHeadshots is a legitimate tool with a real differentiator (preset Looks), but the eye distortion reports and above-market pricing make it hard to recommend without caveats.</strong> If you value the curated template approach and are willing to roll the dice on eye quality, it's an option. If you want consistently natural results — especially around eyes — there are stronger tools for less money.</p>
+<p><strong>Our rating: 3/5 stars.</strong> Good concept, inconsistent execution.</p>
+<p><a href="/generate">Try TryOneTake (FLUX.2, 1 photo, under 5 min, free to try) →</a> or read our full <a href="/blog/best-ai-headshot-generator-2026">top 7 AI headshot tools comparison</a> to see the full competitive landscape.</p>`,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

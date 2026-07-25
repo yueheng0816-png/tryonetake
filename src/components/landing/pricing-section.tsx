@@ -128,40 +128,6 @@ export function PricingSection() {
           ))}
         </div>
 
-        {/* JSON-LD: Product schemas */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify([
-              {
-                "@context": "https://schema.org",
-                "@type": "Product",
-                name: "TryOneTake Starter",
-                description:
-                  "30 AI-generated professional headshots with FLUX.2 pro model and 10 style variations.",
-                offers: {
-                  "@type": "Offer",
-                  price: "19.00",
-                  priceCurrency: "USD",
-                  availability: "https://schema.org/InStock",
-                },
-              },
-              {
-                "@context": "https://schema.org",
-                "@type": "Product",
-                name: "TryOneTake Pro",
-                description:
-                  "30 AI-generated professional headshots with FLUX.2 max model and 25 style variations.",
-                offers: {
-                  "@type": "Offer",
-                  price: "35.00",
-                  priceCurrency: "USD",
-                  availability: "https://schema.org/InStock",
-                },
-              },
-            ]),
-          }}
-        />
       </div>
     </section>
   );

@@ -515,7 +515,7 @@ const plans = [
     ],
     cta: "Get Starter",
     href: "/generate?plan=starter",
-    featured: false,
+    featured: true,
   },
   {
     name: "Pro",
@@ -534,7 +534,7 @@ const plans = [
     ],
     cta: "Get Pro",
     href: "/generate?plan=pro",
-    featured: true,
+    featured: false,
   },
 ];
 

@@ -222,7 +222,7 @@ function CompactPricing() {
       ],
       cta: "Get Starter",
       href: "/generate?plan=starter",
-      featured: false,
+      featured: true,
     },
     {
       name: "Pro",
@@ -241,7 +241,7 @@ function CompactPricing() {
       ],
       cta: "Get Pro",
       href: "/generate?plan=pro",
-      featured: true,
+      featured: false,
     },
   ];
 

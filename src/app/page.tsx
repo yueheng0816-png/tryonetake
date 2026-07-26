@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "TryOneTake — Professional AI Headshots That Actually Look Like You",
   description:
-    "Upload 1 photo, get 30 studio-quality AI headshots in under 5 minutes. No photographer needed. FLUX.2 AI model — one payment of $19, automatic refund if generation fails. Trusted by professionals across 10+ industries.",
+    "Upload 1 photo, get 30 studio-quality AI headshots in under 5 minutes. Try free — FLUX.2 AI model that actually looks like you. No photographer needed.",
   keywords: [
     "AI headshots",
     "professional headshots",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "TryOneTake",
     title: "TryOneTake — Professional AI Headshots That Actually Look Like You",
     description:
-      "Upload 1 photo, get 30 studio-quality AI headshots. No photographer needed, no outfit menus, no background catalogs. $19 flat.",
+      "Upload 1 photo, get 30 studio-quality AI headshots. No photographer needed. Try free — actually looks like you.",
     images: [
       {
         url: "/og-image.jpg",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "TryOneTake — AI Headshots That Actually Look Like You",
     description:
-      "Upload 1 photo, get 30 studio-quality headshots in under 5 minutes. $19 flat.",
+      "Upload 1 photo, get 30 studio-quality headshots in under 5 minutes. Try free.",
     images: ["/og-image.jpg"],
   },
 };

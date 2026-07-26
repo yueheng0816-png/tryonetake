@@ -99,10 +99,8 @@ export function Hero() {
           </div>
 
           {/* Headline */}
-          <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Professional headshots in one click.
-            <br />
-            No menus. No decisions.
+          <h1 className="text-balance text-3xl font-bold leading-tight tracking-tight md:text-4xl lg:text-5xl">
+            Professional headshots in one click. No menus. No decisions.
           </h1>
 
           {/* Subhead */}

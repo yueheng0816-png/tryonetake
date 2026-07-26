@@ -36,7 +36,7 @@ export async function POST(req: Request) {
     const isWhitelisted = FREE_WHITELIST.has(email);
 
     // ── Rate limit: 1 free preview per user (skipped for whitelist) ──
-    const user = await ensureUser(userId);
+    const user = await ensureUser(userId, email);
 
     if (!isWhitelisted) {
       const existingFree = await db.order.count({

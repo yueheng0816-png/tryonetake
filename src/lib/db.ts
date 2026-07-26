@@ -27,7 +27,8 @@ export async function ensureUser(clerkId: string, email?: string) {
     user = await db.user.create({
       data: { clerkId, email: email ?? "" },
     });
-  } else if (email && user.email !== email) {
+  } else if (email && (!user.email || user.email !== email)) {
+    // Backfill: update if email was empty or has changed
     user = await db.user.update({
       where: { clerkId },
       data: { email },

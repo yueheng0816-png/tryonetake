@@ -37,7 +37,7 @@ export async function POST(req: Request) {
       clerkUser?.emailAddresses?.[0]?.emailAddress ?? `${userId}@onetake.local`;
 
     // Ensure user exists in DB
-    const user = await ensureUser(userId);
+    const user = await ensureUser(userId, userEmail);
 
     // Create pending order in database
     const order = await db.order.create({

@@ -60,7 +60,7 @@
 
 ### 1. How to Take the Perfect Selfie for AI Headshots
 
-**Pin 1A — "7 Tips"**
+已做**Pin 1A — "7 Tips"**
 - **图上文字**：7 Tips for the Perfect AI Headshot Selfie
 - **Title**：How to Take the Perfect Selfie for AI Headshots — 7 Tips That Actually Work
 - **Description**：The quality of your AI headshot depends entirely on your input photo. Learn the 7 things that make the difference: lighting, angles, what to wear, and what to avoid. Get studio-quality results from a single selfie.

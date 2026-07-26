@@ -13,6 +13,7 @@ interface OrderItem {
   plan: string;
   profession: string;
   gender: string;
+  specificRole: string | null;
   status: string;
   promptIds: string[];
   outputPhotos: string[];
@@ -21,6 +22,7 @@ interface OrderItem {
   errorMessages: string[];
   completedPredictions: number;
   createdAt: string;
+  user?: { email: string };
 }
 
 interface OrdersResponse {
@@ -136,7 +138,9 @@ export default function OrdersDashboard() {
           <thead>
             <tr className="border-b border-border bg-muted/50 text-left text-sm font-medium">
               <th className="px-4 py-3">Order</th>
+              <th className="px-4 py-3">Email</th>
               <th className="px-4 py-3">Profession</th>
+              <th className="px-4 py-3">Role</th>
               <th className="px-4 py-3">Plan</th>
               <th className="px-4 py-3">Status</th>
               <th className="px-4 py-3">Photos</th>
@@ -148,13 +152,13 @@ export default function OrdersDashboard() {
           <tbody>
             {loading ? (
               <tr>
-                <td colSpan={8} className="px-4 py-12 text-center text-muted-foreground">
+                <td colSpan={10} className="px-4 py-12 text-center text-muted-foreground">
                   Loading...
                 </td>
               </tr>
             ) : orders.length === 0 ? (
               <tr>
-                <td colSpan={8} className="px-4 py-12 text-center text-muted-foreground">
+                <td colSpan={10} className="px-4 py-12 text-center text-muted-foreground">
                   No orders found.
                 </td>
               </tr>
@@ -200,7 +204,11 @@ function OrderRow({
     <>
       <tr className="border-b border-border hover:bg-muted/30 transition-colors">
         <td className="px-4 py-3 font-mono text-sm">{order.id.slice(0, 8)}...</td>
+        <td className="px-4 py-3 text-sm">{order.user?.email ?? "—"}</td>
         <td className="px-4 py-3">{order.profession}</td>
+        <td className="px-4 py-3 text-sm text-muted-foreground">
+          {order.specificRole || "—"}
+        </td>
         <td className="px-4 py-3 text-muted-foreground">{order.plan}</td>
         <td className={`px-4 py-3 font-medium ${statusColor}`}>{order.status}</td>
         <td className="px-4 py-3">
@@ -228,7 +236,7 @@ function OrderRow({
       {/* Expanded: image grid */}
       {expanded && (
         <tr>
-          <td colSpan={8} className="px-4 py-4 bg-muted/20">
+          <td colSpan={10} className="px-4 py-4 bg-muted/20">
             <div className="space-y-3">
               {/* Errors */}
               {order.errorMessages.length > 0 && (

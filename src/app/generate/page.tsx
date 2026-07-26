@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@clerk/nextjs";
 import { PhotoUploader } from "@/components/upload/photo-uploader";
@@ -81,6 +81,20 @@ function GeneratePageInner() {
   const [uploading, setUploading] = useState(false);
 
   const isFree = plan === "free";
+
+  // ── Restore user's last preferences ──
+  useEffect(() => {
+    if (!isSignedIn) return;
+    fetch("/api/user/last-preferences")
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.gender && !gender) setGender(data.gender as Gender);
+        if (data.profession && !profession) setProfession(data.profession as Profession);
+        if (data.specificRole && !specificRole) setSpecificRole(data.specificRole);
+      })
+      .catch(() => {}); // silently ignore — non-critical
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isSignedIn]);
 
   /** Redirect to Clerk sign-in preserving the current plan selection. */
   const redirectToSignIn = () => {

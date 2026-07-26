@@ -34,6 +34,7 @@ export async function GET(req: Request) {
       plan: true,
       profession: true,
       gender: true,
+      specificRole: true,
       status: true,
       promptIds: true,
       outputPhotos: true,
@@ -42,6 +43,7 @@ export async function GET(req: Request) {
       errorMessages: true,
       completedPredictions: true,
       createdAt: true,
+      user: { select: { email: true } },
     },
   });
 

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Loader2, Check, Copy, X } from "lucide-react";
+import { ArrowRight, Loader2, Check, Copy, Upload, X } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
 /*  Data                                                                      */
@@ -35,6 +35,11 @@ const GENDERS = [
 
 export default function ShowcasePage() {
   const [photoUrl, setPhotoUrl] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [preview, setPreview] = useState<string | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const [profession, setProfession] = useState<string>("general");
   const [gender, setGender] = useState<string>("male");
   const [count, setCount] = useState(5);
@@ -47,17 +52,57 @@ export default function ShowcasePage() {
     errors?: string[];
   } | null>(null);
 
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setSelectedFile(file);
+    setPhotoUrl(""); // clear any URL
+    setPreview(URL.createObjectURL(file));
+  }
+
+  function clearFile() {
+    setSelectedFile(null);
+    setPreview(null);
+    setPhotoUrl("");
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  }
+
   async function handleGenerate() {
-    if (!photoUrl.trim()) return;
+    if (!selectedFile && !photoUrl.trim()) return;
+
     setGenerating(true);
     setResult(null);
 
     try {
+      let targetUrl = photoUrl.trim();
+
+      // If file selected, upload first
+      if (selectedFile && !targetUrl) {
+        setUploading(true);
+        const formData = new FormData();
+        formData.append("photos", selectedFile);
+
+        const uploadRes = await fetch("/api/upload", {
+          method: "POST",
+          body: formData,
+        });
+        if (!uploadRes.ok) {
+          alert("Upload failed");
+          setGenerating(false);
+          setUploading(false);
+          return;
+        }
+        const { urls } = await uploadRes.json();
+        targetUrl = urls[0];
+        setPhotoUrl(targetUrl);
+        setUploading(false);
+      }
+
       const res = await fetch("/api/internal/generate-showcase", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          photoUrl: photoUrl.trim(),
+          photoUrl: targetUrl,
           profession,
           gender,
           count,
@@ -74,30 +119,60 @@ export default function ShowcasePage() {
       alert(String(e));
     } finally {
       setGenerating(false);
+      setUploading(false);
     }
   }
+
+  const isLoading = generating || uploading;
 
   return (
     <div className="container mx-auto max-w-2xl px-4 py-12">
       <h1 className="text-2xl font-bold">Showcase Generator</h1>
       <p className="mt-1 text-muted-foreground">
-        Generate profession-matched headshots for landing page / blog imagery.
+        Upload a photo, select profession & count, generate. Model: FLUX.2 pro.
       </p>
 
       <div className="mt-8 space-y-6">
-        {/* Photo URL */}
+        {/* Photo: file upload or URL */}
         <div>
-          <label className="block text-sm font-medium mb-1">Photo URL</label>
+          <label className="block text-sm font-medium mb-1">Photo</label>
+          {preview ? (
+            <div className="relative inline-block">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={preview}
+                alt="Preview"
+                className="h-32 w-auto rounded-lg border border-border object-cover"
+              />
+              <button
+                onClick={clearFile}
+                className="absolute -top-2 -right-2 rounded-full bg-destructive text-destructive-foreground p-0.5 shadow"
+              >
+                <X className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          ) : (
+            <button
+              type="button"
+              onClick={() => fileInputRef.current?.click()}
+              className="w-full rounded-lg border-2 border-dashed border-border p-8 text-center hover:border-primary/50 hover:bg-muted/30 transition-colors"
+            >
+              <Upload className="mx-auto h-8 w-8 text-muted-foreground" />
+              <p className="mt-2 text-sm text-muted-foreground">
+                Click to select a photo
+              </p>
+              <p className="text-xs text-muted-foreground/60">
+                JPG or PNG, any resolution
+              </p>
+            </button>
+          )}
           <input
-            type="url"
-            value={photoUrl}
-            onChange={(e) => setPhotoUrl(e.target.value)}
-            placeholder="https://your-uploaded-photo-url.jpg"
-            className="w-full rounded-lg border border-border bg-background px-4 py-2.5 text-base focus:outline-none focus:ring-2 focus:ring-primary/50"
+            ref={fileInputRef}
+            type="file"
+            accept="image/jpeg,image/png,image/webp"
+            onChange={handleFileChange}
+            className="hidden"
           />
-          <p className="mt-1 text-xs text-muted-foreground">
-            Upload a photo somewhere first, then paste the URL here.
-          </p>
         </div>
 
         {/* Profession & Gender row */}
@@ -159,10 +234,15 @@ export default function ShowcasePage() {
         <Button
           size="lg"
           onClick={handleGenerate}
-          disabled={!photoUrl.trim() || generating}
+          disabled={(!selectedFile && !photoUrl.trim()) || isLoading}
           className="w-full h-12 text-base"
         >
-          {generating ? (
+          {uploading ? (
+            <>
+              <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+              Uploading...
+            </>
+          ) : generating ? (
             <>
               <Loader2 className="mr-2 h-5 w-5 animate-spin" />
               Generating...

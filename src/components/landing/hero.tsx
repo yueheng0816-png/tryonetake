@@ -95,7 +95,7 @@ export function Hero() {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500" />
             </span>
-            AI professional headshots — from just 1 photo
+            The most effortless AI professional headshot generator.
           </div>
 
           {/* Headline */}

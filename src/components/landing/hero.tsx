@@ -100,19 +100,17 @@ export function Hero() {
 
           {/* Headline */}
           <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
-            Professional headshots
+            Professional headshots in one click.
             <br />
-            don&apos;t need a photographer.
+            No menus. No decisions.
           </h1>
-          <p className="mt-6 text-balance text-lg text-muted-foreground md:text-xl">
-            They just need you.
-          </p>
 
           {/* Subhead */}
           <p className="mt-6 text-balance text-lg text-muted-foreground md:text-xl">
-            Upload 1 photo. Get 30 studio-quality headshots that{" "}
-            <span className="font-medium text-foreground">actually look like you</span>.
-            No plastic skin. No 20-photo uploads.
+            Upload 1 photo, tell us your profession, and get 30 studio-quality
+            portraits — the right outfits, backgrounds, and style for your
+            industry. No picking through outfit menus or background catalogs.
+            Under 5 minutes.
           </p>
 
           {/* CTA */}

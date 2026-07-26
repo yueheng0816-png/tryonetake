@@ -33,7 +33,7 @@ const PLAN_CARDS = [
     photos: "30 professional headshots",
     styles: "10 style variations",
     description: "Excellent quality for professional headshots",
-    badge: null,
+    badge: "Most Popular",
   },
   {
     key: "pro" as PlanOption,
@@ -43,7 +43,7 @@ const PLAN_CARDS = [
     photos: "30 professional headshots",
     styles: "25 style variations",
     description: "Maximum sharpness, detail, and variety",
-    badge: "Best Quality",
+    badge: null,
   },
 ];
 

@@ -1399,6 +1399,72 @@ export const blogPosts: BlogPost[] = [
 <p><strong>Our rating: 3/5 stars.</strong> Good concept, inconsistent execution.</p>
 <p><a href="/generate">Try TryOneTake (FLUX.2, 1 photo, under 5 min, free to try) →</a> or read our full <a href="/blog/best-ai-headshot-generator-2026">top 7 AI headshot tools comparison</a> to see the full competitive landscape.</p>`,
   },
+  {
+    slug: "rebuilding-professional-brand-after-career-break",
+    title: "Rebuilding Your Professional Brand After a Career Break — Start With Your Headshot",
+    description:
+      "Returning to work after a layoff, burnout, or career break? A fresh professional headshot is the fastest way to rebuild credibility on LinkedIn. Complete guide for career changers in 2026.",
+    keywords: [
+      "professional headshot after career break",
+      "LinkedIn photo career change",
+      "returning to work professional photo",
+      "rebuild professional brand after layoff",
+      "LinkedIn makeover after burnout",
+      "career comeback headshot",
+      "AI headshots for job seekers",
+    ],
+    date: "2026-07-26",
+    author: "TryOneTake Team",
+    readTime: "6 min read",
+    body: `<h2>Your career break doesn't define you — but your LinkedIn photo might</h2>
+<p>If you're returning to work after a layoff, burnout, health challenge, or career pivot, you know the drill: update the resume, refresh the LinkedIn, start networking again. But there's one piece of the puzzle that job seekers consistently overlook — and it's the first thing recruiters see.</p>
+<p>Your LinkedIn photo. That tiny circle. It's the handshake that happens before the interview, before the phone screen, before they even read your headline. And if your photo still reflects the exhausted, stressed-out version of you from six months ago — or worse, if there's no photo at all — you're starting the race with a limp.</p>
+
+<h2>The career break stigma is fading — but first impressions still happen in 0.05 seconds</h2>
+<p>Let's clear something up right away: career breaks are more common and more accepted than ever. A 2025 LinkedIn survey found that 62% of hiring managers say a career gap no longer carries the stigma it once did. Layoffs happen. Burnout is real. Health issues are nobody's fault. A two-year gap to raise a kid isn't a "gap" — it's a job.</p>
+<p>But while the stigma is fading, the mechanics of hiring haven't changed. Recruiters spend an average of 6–8 seconds on your LinkedIn profile before deciding whether to read more. In that window, your photo is the heaviest piece of visual real estate. A study from Princeton found that people form judgments about competence and trustworthiness from a photo in 100 milliseconds — less than a single blink.</p>
+<p>Your headshot is doing more work in those milliseconds than your entire About section. So what does yours say?</p>
+
+<h2>What your current headshot might be signaling (without you knowing)</h2>
+<ul>
+<li><strong>No photo:</strong> "I haven't been active professionally." Or worse: "I'm hiding something." Profiles without photos get 14× fewer views.</li>
+<li><strong>A photo from three years ago:</strong> "I'm not current." Also risky: if you look noticeably different in an interview, recruiters notice — and mention it in feedback.</li>
+<li><strong>A cropped wedding photo or bar shot:</strong> "I don't understand professional norms." Harsh, but recruiters are judging in milliseconds — context matters.</li>
+<li><strong>The tired, stressed-out you:</strong> Even if it's a decent photo, if it was taken during a low point — during burnout, between sleepless nights with a newborn, in the middle of a health battle — it telegraphs exhaustion. You want to look like the version of you that's ready to crush the next chapter, not the one still recovering from the last.</li>
+</ul>
+
+<h2>Why a fresh headshot is the highest-ROI career comeback move</h2>
+<p>Updating your LinkedIn photo takes 5 minutes. The impact: profiles with professional photos get 21× more views and 9× more connection requests. No resume tweak, no networking strategy, no cover letter rewrite delivers that kind of multiplier for that little effort.</p>
+<p>And here's what's changed since your last job search: you don't need a photographer anymore. AI headshots have crossed the quality threshold — modern models like FLUX.2 produce studio-quality portraits from a single selfie, in under 5 minutes, for a fraction of the cost. You can do it on a Tuesday afternoon between updating your resume and reaching out to old colleagues.</p>
+
+<h2>The psychology of a fresh photo</h2>
+<p>This part matters more than the technical specs. When you upload a new headshot — crisp, professional, looking forward — you're not just updating a profile. You're making a statement to yourself: <strong>I'm back. This is the version of me that's interviewing. The old chapter is closed.</strong></p>
+<p>It's a small act of professional self-care with outsized psychological returns. Every recruiter who views your profile sees the new you. Every connection request carries the new image. Every interview starts with a first impression you've chosen, not one you've settled for.</p>
+
+<h2>How to get a career-comeback headshot in 5 minutes</h2>
+<ol>
+<li><strong>Take a fresh selfie.</strong> Natural window light, plain background, looking at the lens. Doesn't need to be perfect — just well-lit and current. <a href="/blog/how-to-take-perfect-selfie-for-ai-headshots">Full selfie guide →</a></li>
+<li><strong>Upload to TryOneTake.</strong> Our FLUX.2 AI generates 30 professional headshots with different outfits, backgrounds, and lighting setups. You'll see yourself in styles suited for your target industry — whether that's corporate, tech, creative, or consulting.</li>
+<li><strong>Pick the one that feels like the comeback you.</strong> Not the exhausted you from six months ago. Not a generic stock-photo version. The professional, capable, ready-for-what's-next you.</li>
+<li><strong>Update LinkedIn, upload to job platforms, use everywhere.</strong> Same photo across LinkedIn, Indeed profiles, Handshake, email signature — consistent, professional, current.</li>
+</ol>
+
+<h2>Dress for the role you want, not the one you left</h2>
+<p>If you're pivoting industries — from hospitality to tech, from corporate to nonprofit, from military to civilian — your headshot outfit should match the target, not the past. AI headshots let you see yourself in the wardrobe of the industry you're moving toward, which is both practical (you'll have the right photo) and psychological (you'll see yourself belonging there). See <a href="/blog/what-to-wear-for-ai-headshots">what to wear for AI headshots</a> for industry-specific guidance.</p>
+
+<h2>What to tackle after the headshot</h2>
+<p>A fresh photo opens the door. Here's the 30-minute career comeback checklist to walk through it:</p>
+<ol>
+<li><strong>Update your LinkedIn headline</strong> (5 min). Don't say "Seeking opportunities." Say what you do and who you do it for.</li>
+<li><strong>Rewrite your About section</strong> (15 min). Three sentences: what you've done, what you're good at, what you're looking for. No need to address the gap unless you want to — and if you do, one sentence is enough.</li>
+<li><strong>Reach out to 5 former colleagues</strong> (10 min). Not asking for a job. Just reconnecting. "Hey, I'm rejoining the workforce and would love to catch up."</li>
+</ol>
+
+<h2>The bottom line</h2>
+<p>Your career break is a chapter, not the book. A fresh professional headshot is the cover image for the next chapter — and it costs less than a parking-garage fee compared to a photographer, takes less time than a lunch break, and does more for your first impression than any bullet point on your resume.</p>
+<p>Don't let a tired, outdated photo be the reason a recruiter scrolls past. Five minutes. One selfie. Thirty headshots. The comeback starts with how you show up.</p>
+<p><a href="/generate">Get your career-comeback headshot — try free, under 5 minutes →</a>. Also read: <a href="/blog/can-you-use-ai-headshots-on-resume">can you use AI headshots on your resume?</a> and <a href="/blog/linkedin-photo-tips">17 LinkedIn photo tips</a>.</p>`,
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

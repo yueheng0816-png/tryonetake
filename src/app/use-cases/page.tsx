@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: "/use-cases",
   },
   openGraph: {
-    title: "AI Headshot Use Cases — For Every Profession | TryOneTake",
+    title: "AI Headshot Use Cases — For Every Profession",
     description:
       "Explore how TryOneTake AI headshots serve different professions. LinkedIn, corporate, actors, real estate agents — try free, under 5 minutes.",
     url: `${siteUrl}/use-cases`,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Headshot Use Cases — For Every Profession | TryOneTake",
+    title: "AI Headshot Use Cases — For Every Profession",
     description:
       "Explore how TryOneTake AI headshots serve different professions. try free, under 5 minutes.",
     images: ["/og-image.jpg"],

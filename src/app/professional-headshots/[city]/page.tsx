@@ -31,7 +31,7 @@ export async function generateMetadata({
       locale: "en_US",
       url: `${siteUrl}/professional-headshots/${data.slug}`,
       siteName: "TryOneTake",
-      title: `Professional Headshots in ${data.city}, ${data.state} — AI vs Photographer | TryOneTake`,
+      title: `Professional Headshots in ${data.city}, ${data.state} — AI vs Photographer`,
       description: data.description,
       images: [
         {

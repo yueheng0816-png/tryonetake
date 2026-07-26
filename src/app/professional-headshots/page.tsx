@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: `${siteUrl}/professional-headshots`,
     siteName: "TryOneTake",
-    title: "Professional Headshots — The Complete 2026 Guide | TryOneTake",
+    title: "Professional Headshots — The Complete 2026 Guide",
     description:
       "Everything about professional headshots: what they are, cost comparison (AI vs photography), how to get them, and what to look for. The complete 2026 guide.",
     images: [
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Professional Headshots — The Complete 2026 Guide | TryOneTake",
+    title: "Professional Headshots — The Complete 2026 Guide",
     description:
       "Everything about professional headshots: what they are, cost comparison, how to get them, and what to look for.",
     images: ["/og-image.jpg"],

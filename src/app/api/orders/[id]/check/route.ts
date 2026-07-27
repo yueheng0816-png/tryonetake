@@ -57,16 +57,21 @@ export async function GET(
     }
 
     // Accept "paid" and "generating" states.
-    // Also accept "completed" if outputPhotos is corrupted —
-    // the old webhook race condition could write all-empty arrays
-    // to completed orders. We detect this by checking whether
-    // completedPredictions > 0 but all outputPhotos are empty.
+    // Also accept "completed" if outputPhotos is corrupted or has gaps —
+    // webhook delivery races, transferToBlob failures, or the old race
+    // condition can all leave some slots empty even though predictions
+    // completed. We detect this by checking whether there are prediction
+    // slots that haven't been filled with a usable image URL.
     const validOutputCount = order.outputPhotos.filter(Boolean).length;
+    const expectedSlots = Math.max(
+      order.predictionIds.length,
+      order.completedPredictions,
+      PHOTOS_PER_ORDER
+    );
     const needsRecovery =
       order.status === "completed" &&
-      order.predictionIds.length > 0 &&
       order.completedPredictions > 0 &&
-      validOutputCount < order.predictionIds.filter(Boolean).length;
+      validOutputCount < expectedSlots;
 
     if (
       order.status !== "generating" &&

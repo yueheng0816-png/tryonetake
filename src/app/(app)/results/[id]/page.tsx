@@ -44,23 +44,31 @@ export default function ResultsPage() {
       const data = await res.json();
       setOrder(data);
 
-      // Detect data corruption: order says "completed" with predictions
-      // done, but outputPhotos has zero valid URLs.
-      // This happens when the old webhook race condition corrupted the
-      // outputPhotos array. Kick off a recovery via the check route.
+      // Detect data gaps: order has predictions completed but outputPhotos
+      // has missing slots. This happens when:
+      //  – A webhook was lost (Replicate delivery race)
+      //  – transferToBlob failed temporarily (network blip)
+      //  – The old webhook race condition left gaps
+      // Kick off the check route to poll Replicate and fill gaps.
       const validOutputs = (data.outputPhotos as string[]).filter(Boolean).length;
-      const needsRecovery =
+      const totalSlots = (data.predictionIds as string[]).length || 0;
+      const actualSlots = Math.max(
+        totalSlots,
+        (data.completedPredictions as number) || 0,
+        PHOTOS_PER_ORDER
+      );
+      const hasGaps =
         data.status === "completed" &&
         data.completedPredictions > 0 &&
-        validOutputs === 0;
+        validOutputs < actualSlots;
 
-      if (needsRecovery && !recoveringRef.current) {
+      if (hasGaps && !recoveringRef.current) {
         recoveringRef.current = true;
         setRecovering(true);
-        setPolling(true); // Start polling to recover
+        setPolling(true); // Start polling to fill gaps
       } else if (data.status === "generating" || data.status === "paid") {
         setPolling(true);
-      } else if (!needsRecovery) {
+      } else if (!hasGaps) {
         recoveringRef.current = false;
         setPolling(false);
         setRecovering(false);

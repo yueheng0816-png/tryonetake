@@ -142,7 +142,34 @@ export async function GET(
 
       // Already have output for this slot
       if (outputPhotos[i]) {
-        pollSkipped++;
+        // If the URL is a Replicate CDN link, it may have expired (~24h TTL).
+        // Go back to Replicate, fetch a fresh output URL, and re-transfer to Blob.
+        if (
+          outputPhotos[i].includes("replicate.delivery") ||
+          outputPhotos[i].includes("replicate.com")
+        ) {
+          polledCount++;
+          try {
+            const prediction = await getPrediction(predictionId);
+            if (prediction?.status === "succeeded") {
+              const freshOutput = Array.isArray(prediction.output)
+                ? prediction.output[0]
+                : prediction.output;
+              if (typeof freshOutput === "string" && freshOutput.length > 0) {
+                outputPhotos[i] = await transferToBlob(freshOutput, id, i);
+                newlyCompleted++;
+                pollSuccess++;
+                console.log(
+                  `[OneTake] Healed slot ${i}: re-transferred expired Replicate URL to Blob`
+                );
+              }
+            }
+          } catch {
+            pollFailed++;
+          }
+        } else {
+          pollSkipped++;
+        }
         continue;
       }
 

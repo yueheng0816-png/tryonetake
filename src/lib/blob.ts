@@ -7,8 +7,8 @@
  * and the Hobby plan includes 5 GB free.
  */
 
-const BLOB_RETRY_MAX = 3;
-const BLOB_RETRY_BASE_DELAY = 1000; // ms
+const BLOB_RETRY_MAX = 5;
+const BLOB_RETRY_BASE_DELAY = 2000; // ms — 2s, 4s, 8s, 16s, 32s = ~62s total window
 
 /**
  * Download an image from a URL and upload it to Vercel Blob.

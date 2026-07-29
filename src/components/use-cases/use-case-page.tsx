@@ -80,6 +80,7 @@ function ExampleStrip({ imageIndices }: { imageIndices: number[] }) {
                 src={`${BASE}/example-${idx}.jpg`}
                 alt={`AI-generated professional headshot example ${idx}`}
                 fill
+                unoptimized
                 className="object-cover"
                 sizes="(max-width: 768px) 33vw, 300px"
               />

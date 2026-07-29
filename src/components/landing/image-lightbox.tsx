@@ -100,6 +100,7 @@ export function ImageLightbox({
           alt={current.alt}
           width={1200}
           height={1600}
+          unoptimized
           className="max-h-[90vh] w-auto h-auto object-contain rounded-lg"
           sizes="90vw"
           priority

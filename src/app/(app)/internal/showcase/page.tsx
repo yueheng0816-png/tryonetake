@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Loader2, Check, Copy, Upload, X } from "lucide-react";
+import { Loader2, Upload, X, RefreshCw, ExternalLink, ImageIcon } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
 /*  Data                                                                      */
@@ -30,6 +30,20 @@ const GENDERS = [
 ] as const;
 
 /* -------------------------------------------------------------------------- */
+/*  Order data (from polling)                                                 */
+/* -------------------------------------------------------------------------- */
+
+interface OrderData {
+  id: string;
+  status: string;
+  outputPhotos: string[];
+  promptIds: string[];
+  predictionIds: string[];
+  completedPredictions: number;
+  profession: string;
+}
+
+/* -------------------------------------------------------------------------- */
 /*  Page                                                                      */
 /* -------------------------------------------------------------------------- */
 
@@ -44,19 +58,20 @@ export default function ShowcasePage() {
   const [gender, setGender] = useState<string>("male");
   const [count, setCount] = useState(5);
   const [generating, setGenerating] = useState(false);
-  const [result, setResult] = useState<{
-    predictionIds: string[];
-    prompts: string[];
-    profession: string;
-    count: number;
-    errors?: string[];
-  } | null>(null);
+  const [genError, setGenError] = useState<string | null>(null);
+
+  // Results state
+  const [orderId, setOrderId] = useState<string | null>(null);
+  const [order, setOrder] = useState<OrderData | null>(null);
+  const [polling, setPolling] = useState(false);
+
+  /* ---- Upload helpers ---- */
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
     setSelectedFile(file);
-    setPhotoUrl(""); // clear any URL
+    setPhotoUrl("");
     setPreview(URL.createObjectURL(file));
   }
 
@@ -67,16 +82,49 @@ export default function ShowcasePage() {
     if (fileInputRef.current) fileInputRef.current.value = "";
   }
 
+  /* ---- Poll order ---- */
+
+  const fetchOrder = useCallback(async () => {
+    if (!orderId) return;
+    try {
+      const res = await fetch(`/api/orders/${orderId}`);
+      if (!res.ok) return;
+      const data: OrderData = await res.json();
+      setOrder(data);
+      if (data.status === "completed" || data.status === "failed") {
+        setPolling(false);
+      }
+    } catch {
+      // retry on next poll
+    }
+  }, [orderId]);
+
+  useEffect(() => {
+    if (!polling) return;
+    const tick = async () => {
+      await fetch(`/api/orders/${orderId}/check`).catch(() => {});
+      await fetchOrder();
+    };
+    tick();
+    const interval = setInterval(tick, 3000);
+    return () => clearInterval(interval);
+  }, [polling, fetchOrder, orderId]);
+
+  /* ---- Generate ---- */
+
   async function handleGenerate() {
     if (!selectedFile && !photoUrl.trim()) return;
 
     setGenerating(true);
-    setResult(null);
+    setGenError(null);
+    setOrder(null);
+    setOrderId(null);
+    setPolling(false);
 
     try {
       let targetUrl = photoUrl.trim();
 
-      // If file selected, upload first
+      // Upload file first if needed
       if (selectedFile && !targetUrl) {
         setUploading(true);
         const formData = new FormData();
@@ -87,7 +135,7 @@ export default function ShowcasePage() {
           body: formData,
         });
         if (!uploadRes.ok) {
-          alert("Upload failed");
+          setGenError("Upload failed");
           setGenerating(false);
           setUploading(false);
           return;
@@ -111,13 +159,23 @@ export default function ShowcasePage() {
 
       const data = await res.json();
       if (!res.ok) {
-        alert(data.error || "Generation failed");
+        setGenError(data.error || "Generation failed");
+        setGenerating(false);
         return;
       }
-      setResult(data);
+
+      setOrderId(data.orderId);
+      setPolling(true);
+      setGenerating(false);
+      setUploading(false);
+
+      // Fetch immediately to show initial state
+      fetch(`/api/orders/${data.orderId}`)
+        .then((r) => r.json())
+        .then(setOrder)
+        .catch(() => {});
     } catch (e) {
-      alert(String(e));
-    } finally {
+      setGenError(String(e));
       setGenerating(false);
       setUploading(false);
     }
@@ -125,15 +183,26 @@ export default function ShowcasePage() {
 
   const isLoading = generating || uploading;
 
+  /* ---- Render ---- */
+
+  const validPhotos = (order?.outputPhotos ?? []).filter(Boolean);
+  const totalExpected = order?.promptIds.length ?? count;
+  const isGenerating = order?.status === "generating" || order?.status === "paid";
+
   return (
-    <div className="container mx-auto max-w-2xl px-4 py-12">
+    <div className="container mx-auto max-w-4xl px-4 py-12">
       <h1 className="text-2xl font-bold">Showcase Generator</h1>
       <p className="mt-1 text-muted-foreground">
-        Upload a photo, select profession & count, generate. Model: FLUX.2 pro.
+        Upload a photo, select profession & count, generate. Results sync to{" "}
+        <a href="/internal/orders" className="text-primary underline" target="_blank">
+          Orders Dashboard
+        </a>
+        .
       </p>
 
+      {/* ── Form ──────────────────────────────────────────────── */}
       <div className="mt-8 space-y-6">
-        {/* Photo: file upload or URL */}
+        {/* Photo upload */}
         <div>
           <label className="block text-sm font-medium mb-1">Photo</label>
           {preview ? (
@@ -175,7 +244,7 @@ export default function ShowcasePage() {
           />
         </div>
 
-        {/* Profession & Gender row */}
+        {/* Profession & Gender */}
         <div className="grid gap-4 sm:grid-cols-2">
           <div>
             <label className="block text-sm font-medium mb-1">
@@ -209,7 +278,7 @@ export default function ShowcasePage() {
           </div>
         </div>
 
-        {/* Count */}
+        {/* Count slider */}
         <div>
           <label className="block text-sm font-medium mb-1">
             Number of headshots:{" "}
@@ -230,11 +299,11 @@ export default function ShowcasePage() {
           </div>
         </div>
 
-        {/* Generate */}
+        {/* Generate button */}
         <Button
           size="lg"
           onClick={handleGenerate}
-          disabled={(!selectedFile && !photoUrl.trim()) || isLoading}
+          disabled={(!selectedFile && !photoUrl.trim()) || isLoading || polling}
           className="w-full h-12 text-base"
         >
           {uploading ? (
@@ -245,98 +314,117 @@ export default function ShowcasePage() {
           ) : generating ? (
             <>
               <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-              Generating...
+              Creating predictions...
             </>
           ) : (
-            <>
-              Generate {count} headshots
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </>
+            <>Generate {count} headshots</>
           )}
         </Button>
+
+        {genError && (
+          <p className="text-sm text-destructive font-medium">{genError}</p>
+        )}
       </div>
 
-      {/* Results */}
-      {result && (
-        <div className="mt-10 space-y-6">
-          <div className="rounded-xl border border-green-500/30 bg-green-50 dark:bg-green-950/20 p-5">
-            <div className="flex items-center gap-2">
-              <Check className="h-5 w-5 text-green-600" />
-              <span className="font-semibold text-green-700 dark:text-green-400">
-                Generated {result.count} headshots
-              </span>
+      {/* ── Results ────────────────────────────────────────────── */}
+      {order && (
+        <div className="mt-10 space-y-4">
+          {/* Status bar */}
+          <div className="rounded-xl border border-border bg-card p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-semibold">
+                  Order{" "}
+                  <code className="text-sm bg-muted px-1 rounded">{order.id}</code>
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  Profession: {order.profession} &middot;{" "}
+                  {isGenerating ? (
+                    <span className="text-amber-600">
+                      Generating {order.completedPredictions}/{totalExpected}
+                    </span>
+                  ) : (
+                    <span className="text-green-600">
+                      Completed — {validPhotos.length} photos
+                    </span>
+                  )}
+                </p>
+              </div>
+              <div className="flex items-center gap-2">
+                {isGenerating && (
+                  <RefreshCw className="h-4 w-4 animate-spin text-amber-500" />
+                )}
+                <a
+                  href={`/internal/orders`}
+                  target="_blank"
+                  className="inline-flex items-center gap-1 text-sm text-primary underline"
+                >
+                  Orders Dashboard <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
             </div>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Profession: {result.profession} &middot; Prediction IDs below
-            </p>
+
+            {/* Progress bar */}
+            {isGenerating && (
+              <div className="mt-3 h-2 overflow-hidden rounded-full bg-muted">
+                <div
+                  className="h-full rounded-full bg-primary transition-all duration-700"
+                  style={{
+                    width: `${totalExpected > 0 ? (order.completedPredictions / totalExpected) * 100 : 0}%`,
+                  }}
+                />
+              </div>
+            )}
           </div>
 
-          {/* Prediction IDs */}
-          <div>
-            <h3 className="text-sm font-semibold mb-2">
-              Prediction IDs ({result.predictionIds.length})
-            </h3>
-            <div className="space-y-1">
-              {result.predictionIds.map((id, i) => (
-                <PredictionIdRow key={id} id={id} index={i} />
-              ))}
-            </div>
-            <Button
-              variant="outline"
-              size="sm"
-              className="mt-2"
-              onClick={() => {
-                navigator.clipboard.writeText(result.predictionIds.join("\n"));
-              }}
-            >
-              <Copy className="mr-1 h-3.5 w-3.5" />
-              Copy all IDs
-            </Button>
+          {/* Image grid */}
+          <div className="grid gap-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+            {order.promptIds.map((pid, i) => (
+              <div
+                key={i}
+                className="rounded-lg border border-border bg-card overflow-hidden"
+              >
+                {validPhotos[i] ? (
+                  <a
+                    href={validPhotos[i]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={validPhotos[i]}
+                      alt={`Prompt ${pid}`}
+                      className="w-full aspect-[3/4] object-cover"
+                      loading="lazy"
+                    />
+                  </a>
+                ) : (
+                  <div className="w-full aspect-[3/4] flex items-center justify-center bg-muted">
+                    {isGenerating ? (
+                      <Loader2 className="h-6 w-6 animate-spin text-muted-foreground/40" />
+                    ) : (
+                      <ImageIcon className="h-6 w-6 text-muted-foreground/40" />
+                    )}
+                  </div>
+                )}
+                <div className="p-1.5">
+                  <p
+                    className="text-xs font-mono text-muted-foreground truncate"
+                    title={pid}
+                  >
+                    {pid}
+                  </p>
+                  {order.predictionIds[i] && (
+                    <p className="text-[10px] text-muted-foreground/60 truncate">
+                      {order.predictionIds[i].slice(0, 16)}...
+                    </p>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
-
-          {/* Errors */}
-          {result.errors && result.errors.length > 0 && (
-            <div className="rounded-xl border border-red-500/30 bg-red-50 dark:bg-red-950/20 p-5">
-              <h3 className="text-sm font-semibold text-red-700 dark:text-red-400 mb-2">
-                Errors ({result.errors.length})
-              </h3>
-              <ul className="space-y-1 text-sm text-muted-foreground">
-                {result.errors.map((e, i) => (
-                  <li key={i}>{e}</li>
-                ))}
-              </ul>
-            </div>
-          )}
         </div>
       )}
-    </div>
-  );
-}
-
-/* -------------------------------------------------------------------------- */
-/*  Prediction ID Row                                                         */
-/* -------------------------------------------------------------------------- */
-
-function PredictionIdRow({ id, index }: { id: string; index: number }) {
-  const [copied, setCopied] = useState(false);
-  return (
-    <div className="flex items-center gap-2 rounded-md border border-border bg-card px-3 py-2 font-mono text-sm">
-      <span className="text-muted-foreground shrink-0">#{index + 1}</span>
-      <span className="truncate">{id}</span>
-      <button
-        className="ml-auto shrink-0 text-muted-foreground hover:text-foreground"
-        onClick={() => {
-          navigator.clipboard.writeText(id);
-          setCopied(true);
-          setTimeout(() => setCopied(false), 1500);
-        }}
-      >
-        {copied ? (
-          <Check className="h-4 w-4 text-green-500" />
-        ) : (
-          <Copy className="h-4 w-4" />
-        )}
-      </button>
     </div>
   );
 }

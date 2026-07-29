@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { PHOTOS_PER_ORDER } from "@/lib/constants";
 import { handleOrderCompletion } from "@/lib/refund";
-import { transferToBlob } from "@/lib/blob";
 
 /**
  * Optimistic-lock retry helper.
@@ -92,9 +91,10 @@ export async function POST(req: Request) {
         if (isSucceeded && outputUrl) {
           // Don't overwrite an already-populated slot (defense against duplicate webhooks)
           if (!outputPhotos[slotIndex]) {
-            // Transfer to Vercel Blob for permanent storage
-            // (Replicate CDN URLs expire after ~24h)
-            outputPhotos[slotIndex] = await transferToBlob(outputUrl, orderId, slotIndex);
+            // Store the Replicate CDN URL immediately — webhook must return
+            // in under 10 s (Vercel Hobby limit). Background blob transfer
+            // happens later in the check route (polled by the results page).
+            outputPhotos[slotIndex] = outputUrl;
           }
         }
         // For failed predictions, leave slot empty (already "")

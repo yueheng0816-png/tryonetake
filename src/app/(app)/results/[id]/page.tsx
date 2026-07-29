@@ -62,11 +62,22 @@ export default function ResultsPage() {
         data.completedPredictions > 0 &&
         validOutputs < actualSlots;
 
+      // Detect Replicate CDN URLs that haven't been migrated to Vercel Blob yet.
+      // The check route transfers up to 5 per poll call, so keep polling
+      // until all URLs are permanent. Images are visible via CDN in the
+      // meantime — this is a silent background upgrade.
+      const hasNonBlobUrls = (data.outputPhotos as string[]).some(
+        (url: string) => url && url.length > 0 && !url.includes("public.blob.vercel-storage.com")
+      );
+
       if (hasGaps && !recoveringRef.current) {
         recoveringRef.current = true;
         setRecovering(true);
         setPolling(true); // Start polling to fill gaps
       } else if (data.status === "generating" || data.status === "paid") {
+        setPolling(true);
+      } else if (hasNonBlobUrls) {
+        // Silent background blob migration — no "recovering" indicator needed
         setPolling(true);
       } else if (!hasGaps) {
         recoveringRef.current = false;

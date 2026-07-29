@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { auth } from "@clerk/nextjs/server";
+import { db, ensureUser } from "@/lib/db";
+import { createPrediction } from "@/lib/replicate";
 import {
   distributePromptsV3,
   type Gender,
   type Profession,
 } from "@/lib/prompts";
-import { createPrediction } from "@/lib/replicate";
 
 /** Only these emails can use the showcase generator */
 const ALLOWED_EMAILS = new Set([
@@ -51,54 +52,86 @@ export async function POST(req: Request) {
     ? (profession as Profession)
     : "general";
 
-  // ── Generate prompts ──
-  const assignments = distributePromptsV3(
-    1,               // single photo
-    "starter",       // FLUX.2 pro (good enough for showcase)
-    gender as Gender,
-    prof,
-    undefined,       // no expression data
-    undefined        // no custom prompts
-  );
+  // ── Get or create user ──
+  const user = await ensureUser(userId, email);
 
-  // Take only `count` prompts
-  const selected = assignments.slice(0, count);
-
-  console.log(
-    `[Showcase] Generating ${count} headshots: profession=${prof} gender=${gender}`
-  );
-
-  // ── Create predictions in parallel ──
-  const results = await Promise.allSettled(
-    selected.map((a) =>
-      createPrediction({
-        photoUrl,
-        prompt: a.prompt,
-        plan: "starter",
-      })
-    )
-  );
-
-  const predictionIds: string[] = [];
-  const errors: string[] = [];
-
-  results.forEach((r, i) => {
-    if (r.status === "fulfilled") {
-      if ("prediction" in r.value) {
-        predictionIds.push(r.value.prediction.id);
-      } else {
-        errors.push(`Prompt ${i}: ${r.value.error}`);
-      }
-    } else {
-      errors.push(`Prompt ${i}: ${String(r.reason)}`);
-    }
+  // ── Create Order record (so it appears in orders dashboard) ──
+  const order = await db.order.create({
+    data: {
+      userId: user.id,
+      plan: "starter",
+      profession: prof,
+      gender: gender as "male" | "female",
+      inputPhotos: [photoUrl],
+      status: "generating",
+      amount: 0, // internal showcase — no payment
+    },
   });
 
+  console.log(
+    `[Showcase] Order ${order.id}: generating ${count} headshots — ` +
+      `profession=${prof} gender=${gender}`
+  );
+
+  // ── Generate prompts ──
+  const assignments = distributePromptsV3(
+    1,
+    "starter",
+    gender as Gender,
+    prof,
+    undefined, // no expression data
+    undefined  // no custom prompts
+  ).slice(0, count);
+
+  // ── Build webhook URL for auto-sync ──
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const webhookUrl = `${baseUrl}/api/webhook/replicate?orderId=${order.id}`;
+
+  // ── Create predictions ──
+  const predictionIds: string[] = [];
+  const promptIds: string[] = [];
+  const errors: string[] = [];
+
+  for (let i = 0; i < assignments.length; i++) {
+    const a = assignments[i];
+    const result = await createPrediction({
+      photoUrl,
+      prompt: a.prompt,
+      plan: "starter",
+      webhookUrl: `${webhookUrl}&index=${i}`,
+    });
+
+    if ("prediction" in result) {
+      predictionIds.push(result.prediction.id);
+      promptIds.push(a.promptId);
+      console.log(
+        `[Showcase] Slot ${i + 1}/${assignments.length}: ${result.prediction.id} ← ${a.promptId}`
+      );
+    } else {
+      predictionIds.push(""); // failed slot
+      promptIds.push(a.promptId);
+      errors.push(`Slot ${i}: ${result.error}`);
+      console.error(
+        `[Showcase] Slot ${i + 1}/${assignments.length} FAILED: ${result.error}`
+      );
+    }
+  }
+
+  // ── Store prediction IDs in order ──
+  await db.order.update({
+    where: { id: order.id },
+    data: { predictionIds, promptIds },
+  });
+
+  const succeeded = predictionIds.filter(Boolean).length;
+  console.log(
+    `[Showcase] Order ${order.id}: ${succeeded}/${assignments.length} predictions created`
+  );
+
   return NextResponse.json({
-    predictionIds,
-    prompts: selected.map((a) => a.prompt),
+    orderId: order.id,
+    count: assignments.length,
+    succeeded,
     errors: errors.length > 0 ? errors : undefined,
-    profession: prof,
-    count: selected.length,
   });
 }

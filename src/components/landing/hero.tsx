@@ -64,6 +64,7 @@ function BeforeAfterImage({
         src={src}
         alt={alt}
         fill
+        unoptimized
         className="object-cover transition-transform duration-300 group-hover/image:scale-105"
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 45vw, 332px"
         onError={() => setErrored(true)}

@@ -27,6 +27,8 @@ export async function GET(
       completedPredictions: true,
       failedPredictions: true,
       predictionIds: true,
+      promptIds: true,
+      profession: true,
       refundedAmount: true,
       refundStatus: true,
       createdAt: true,

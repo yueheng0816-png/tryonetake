@@ -16,13 +16,16 @@ export const POST = Webhook({
 
     const checkoutId = order?.id as string | undefined;
 
-    // ── Atomic claim: only one path (webhook or trigger) can win ──
-    // Prevents duplicate generation if Creem retries the webhook
-    // or if both webhook and trigger race to start the batch.
+    // ── Atomic claim: pending → generating in one step ──
+    // Why: prior code set "pending" → "paid" first then launched
+    // startBatchGeneration in the background. During that window the
+    // order sat in "paid" with no predictionIds, and the results page
+    // could trigger a SECOND batch via the trigger route. Jumping
+    // straight to "generating" closes that window.
     const claim = await db.order.updateMany({
       where: { id: orderId, status: "pending" },
       data: {
-        status: "paid",
+        status: "generating",
         stripeSessionId: checkoutId ?? undefined,
       },
     });
@@ -87,7 +90,6 @@ export const POST = Webhook({
             await db.order.update({
               where: { id: orderId },
               data: {
-                status: "generating",
                 predictionIds: batch.predictionIds,
                 promptIds: batch.promptIds,
               },

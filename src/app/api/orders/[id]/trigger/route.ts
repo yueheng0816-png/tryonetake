@@ -71,14 +71,16 @@ export async function POST(
   }
 
   // ── Atomic claim: ensure only ONE trigger starts generation ──
-  // "pending" → "paid": webhook never fired, we claim the order.
-  // "paid" → "generating": webhook fired but generation failed silently.
-  // Both transitions are atomic — if another process claims first,
-  // count will be 0 and we bail.
-  if (order.status === "pending") {
+  // Jump straight to "generating" regardless of prior state.
+  // Why: prior code set "pending" → "paid" first then launched
+  // startBatchGeneration in the background. During that window the
+  // order sat in "paid" with no predictionIds, and the results page
+  // could trigger a SECOND batch via the "paid" → "generating" path.
+  // Double batches waste credits (60 predictions instead of 30).
+  if (order.status === "pending" || order.status === "paid") {
     const claim = await db.order.updateMany({
-      where: { id, status: "pending" },
-      data: { status: "paid" },
+      where: { id, status: order.status },
+      data: { status: "generating" },
     });
     if (claim.count === 0) {
       const current = await db.order.findUnique({
@@ -163,7 +165,6 @@ export async function POST(
         await db.order.update({
           where: { id },
           data: {
-            status: "generating",
             predictionIds: batch.predictionIds,
             promptIds: batch.promptIds,
             ...(failedCount > 0

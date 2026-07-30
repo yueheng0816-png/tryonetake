@@ -23,7 +23,7 @@ function Hero() {
         />
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-4 py-1.5 text-base text-muted-foreground">
           <Sparkles className="h-4 w-4 text-primary" />
-          No credit card required
+          Quick free account · No credit card
         </div>
         <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight md:text-5xl lg:text-6xl">
           Free AI Headshot Generator — Try Free, No Credit Card
@@ -111,8 +111,8 @@ function WhatYouGet() {
 const STEPS = [
   {
     step: "1",
-    title: "Create a free account",
-    body: "Sign up with Google or email in seconds. No payment info required — we never ask for your credit card for the free tier.",
+    title: "Sign up in seconds",
+    body: "Create a free account with Google or email — takes under 30 seconds. No payment info, no credit card. Just your name and email. We never charge without asking.",
   },
   {
     step: "2",
@@ -190,6 +190,12 @@ const COMPARISON_ROWS = [
     tryonetake: "$19 one-time (30 headshots, 10 styles)",
     tryonetakeGood: true,
     others: "Often subscription ($10–$30/month)",
+  },
+  {
+    label: "Watermark on free tier",
+    tryonetake: "None — free headshot is watermark-free",
+    tryonetakeGood: true,
+    others: "Most free tiers add heavy watermarks",
   },
 ];
 
@@ -459,6 +465,10 @@ const FREETOOL_FAQS = [
   {
     q: "Can I really use the free headshot on LinkedIn?",
     a: "The free headshot is a full-resolution, professional-quality photo — great for previewing the quality. For actual use on LinkedIn, your company website, or email signature, we recommend upgrading to Starter or Pro for the full set of 30 headshots with multiple styles. The AI quality is identical across all plans.",
+  },
+  {
+    q: "Can I use the free AI headshot generator without signing up?",
+    a: "TryOneTake requires a free account (Google or email sign-in) to generate your free headshot — this lets us save your result securely and prevent abuse of the free tier. The sign-up takes under 30 seconds and requires no credit card or payment information. Your free headshot is delivered instantly, and you can delete your account at any time. We'd love to offer a true no-sign-up preview in the future, but for now the quick account creation ensures a smooth, secure experience.",
   },
   {
     q: "What if I don't like my free headshot?",

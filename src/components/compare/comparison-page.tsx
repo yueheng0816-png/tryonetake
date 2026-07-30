@@ -21,11 +21,10 @@ function Hero({ data }: { data: ComparisonData }) {
           Honest Comparison
         </div>
         <h1 className="text-balance text-4xl font-bold leading-tight tracking-tight md:text-5xl">
-          TryOneTake vs {data.competitor}
+          {data.title}
         </h1>
         <p className="mt-6 text-balance text-lg text-muted-foreground md:text-xl max-w-2xl">
-          An honest, side-by-side comparison. No marketing fluff — just facts to
-          help you choose the right AI headshot tool.
+          Looking for a {data.competitor} alternative? We compared {data.competitor} vs TryOneTake side by side — pricing, AI model quality, speed, and features. No marketing fluff, just facts to help you choose the right AI headshot tool.
         </p>
         <div className="mt-8">
           <Link href="/">
@@ -48,7 +47,7 @@ function ComparisonTable({ data }: { data: ComparisonData }) {
     <section className="border-t border-border">
       <div className="container mx-auto max-w-4xl px-4 py-12 md:py-20">
         <h2 className="text-3xl font-bold tracking-tight text-center">
-          TryOneTake vs {data.competitor} — feature by feature
+          The best {data.competitor} alternative — feature by feature
         </h2>
         <div className="mt-8 overflow-x-auto">
           <table className="w-full border-collapse text-left">

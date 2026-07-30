@@ -1226,6 +1226,54 @@ export const useCases: UseCaseData[] = [
     ],
     exampleImages: [1, 4, 7],
   },
+  {
+    slug: "job-seeker-headshots",
+    title: "AI Headshots for Job Seekers — Professional Photos for Resumes & Applications",
+    description:
+      "Get AI-generated professional headshots for job seekers. Upload 1 photo, get 30 resume-ready portraits perfect for LinkedIn, job applications, and networking. Try free.",
+    keywords: [
+      "AI headshot generator for job seekers",
+      "AI headshot generator for resume",
+      "job application headshot AI",
+      "professional photo for job search",
+      "AI resume photo generator",
+      "career change headshot AI",
+    ],
+    badge: "For Job Seekers & Career Changers",
+    headline: "Land the interview — starting with your photo.",
+    subtitle:
+      "Recruiters look at your photo before they read your resume. A professional headshot on LinkedIn and job applications signals you're serious, prepared, and career-ready — whether you're a recent grad, career changer, or re-entering the workforce.",
+    benefitsHeading: "Why job seekers choose TryOneTake for their headshot",
+    benefits: [
+      {
+        title: "First impression that gets you to the interview",
+        body: "Studies show profiles with professional photos get up to 21x more views and significantly more messages from recruiters. Your headshot is often the first thing a recruiter notices — make it count before they even open your resume.",
+      },
+      {
+        title: "Resume-ready in minutes, not weeks",
+        body: "Got an interview tomorrow? Upload a selfie tonight and have a polished headshot ready in under 5 minutes. No photographer scheduling, no waiting for edits, no studio commute. When a recruiter asks for your photo, you have it instantly.",
+      },
+      {
+        title: "Multiple looks for different industries",
+        body: "Different industries expect different looks. Corporate formal for finance and law. Smart casual for tech and marketing. Approachable professional for customer-facing roles. TryOneTake's Pro plan gives you 25 variations — use the right one for each application.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Should I put a photo on my resume?",
+        a: "It depends on the country. In the US, UK, and Canada, photos on resumes are generally discouraged (and can introduce bias). In Germany, Japan, and many European and Asian countries, a professional photo on your CV is expected. Regardless of your resume, your LinkedIn profile photo is essential — and that's where recruiters will look first.",
+      },
+      {
+        q: "Can AI headshots help me get a job?",
+        a: "A professional headshot alone won't get you hired — but it significantly increases your LinkedIn profile views and recruiter InMail response rates. Your photo is the first thing a recruiter notices, often before they read a single word of your experience. A polished headshot signals you're career-oriented and detail-conscious — qualities every employer values.",
+      },
+      {
+        q: "What kind of headshot is best for job applications?",
+        a: "Match your target industry. Corporate/formal for finance, law, and consulting. Smart casual for tech, marketing, and creative roles. Approachable professional for customer-facing and healthcare roles. TryOneTake's Pro plan gives you 25 style variations so you can pick the right look for each application context.",
+      },
+    ],
+    exampleImages: [1, 3, 6],
+  },
 ];
 
 export function getUseCase(slug: string): UseCaseData | undefined {

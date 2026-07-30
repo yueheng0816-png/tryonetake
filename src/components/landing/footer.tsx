@@ -3,7 +3,7 @@ import Link from "next/link";
 const footerLinks = {
   Product: [
     { label: "How It Works", href: "/#how-it-works" },
-    { label: "Pricing", href: "/#pricing" },
+    { label: "Pricing", href: "/pricing" },
     { label: "FAQ", href: "/#faq" },
     { label: "Compare", href: "/#comparison" },
   ],
@@ -12,6 +12,7 @@ const footerLinks = {
     { label: "Headshot Guide", href: "/professional-headshots" },
     { label: "Free AI Headshots", href: "/free-ai-headshot-generator" },
     { label: "Use Cases", href: "/use-cases" },
+    { label: "One-Photo Headshots", href: "/one-photo-ai-headshots" },
     { label: "Comparisons", href: "/vs" },
     { label: "LinkedIn Headshots", href: "/use-cases/linkedin-headshots" },
     { label: "Corporate Headshots", href: "/use-cases/corporate-headshots" },

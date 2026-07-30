@@ -28,6 +28,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    // Pricing page
+    {
+      url: `${siteUrl}/pricing`,
+      lastModified: new Date("2026-07-30"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    // One-photo AI headshots landing page
+    {
+      url: `${siteUrl}/one-photo-ai-headshots`,
+      lastModified: new Date("2026-07-30"),
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
     // Pillar page
     {
       url: `${siteUrl}/professional-headshots`,

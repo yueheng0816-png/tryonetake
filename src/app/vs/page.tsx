@@ -8,9 +8,9 @@ const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "TryOneTake vs Competitors — Honest AI Headshot Comparisons",
+  title: "Best AI Headshot Generator Alternatives — TryOneTake vs Competitors (2026)",
   description:
-    "Honest, side-by-side comparisons of TryOneTake vs other AI headshot generators. Compare pricing, speed, quality, and features. Find the best AI headshot tool for your needs.",
+    "Looking for HeadshotPro alternatives? BetterPic alternatives? We compare TryOneTake vs 13 competitors — pricing, AI model quality, speed, and features. Find the best AI headshot generator alternative for your needs.",
   keywords: [
     "AI headshot comparison",
     "TryOneTake vs competitors",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     canonical: "/vs",
   },
   openGraph: {
-    title: "TryOneTake vs Competitors — Honest AI Headshot Comparisons",
+    title: "Best AI Headshot Generator Alternatives — TryOneTake vs Competitors (2026)",
     description:
       "Honest, side-by-side comparisons of TryOneTake vs other AI headshot generators. Compare pricing, speed, quality, and features.",
     url: `${siteUrl}/vs`,
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TryOneTake vs Competitors — Honest AI Headshot Comparisons",
+    title: "Best AI Headshot Generator Alternatives — TryOneTake vs Competitors (2026)",
     description:
       "Honest, side-by-side comparisons of TryOneTake vs other AI headshot generators.",
     images: ["/og-image.jpg"],

@@ -16,6 +16,9 @@ export const metadata: Metadata = {
     "no credit card headshot generator",
     "free LinkedIn photo AI",
     "AI headshot no payment",
+    "AI headshot generator no sign up",
+    "free AI headshot no registration",
+    "AI headshot generator without account",
   ],
   alternates: {
     canonical: "/free-ai-headshot-generator",

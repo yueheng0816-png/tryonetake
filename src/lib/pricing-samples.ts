@@ -72,7 +72,7 @@ function placeholder30(): string[] {
 export const FREE_SAMPLE: SampleSet = {
   profession: "General Professional",
   specificRole: "",
-  images: ["/images/landing/example-1.jpg"], // ← replace with your free sample
+  images: ["/images/samples/free/free-sample.jpg"],
 };
 
 // ── Starter (2 sets) ────────────────────────────────────────────
@@ -80,14 +80,12 @@ export const STARTER_SAMPLES: SampleSet[] = [
   {
     profession: "Engineering & Technical",
     specificRole: "Software Engineer",
-    // TODO: replace with → sampleImages("starter/software-engineer")
-    images: placeholder30(),
+    images: sampleImages("starter/software-engineer"),
   },
   {
     profession: "K-12 Education & Teaching",
     specificRole: "5th Grade Teacher",
-    // TODO: replace with → sampleImages("starter/5th-grade-teacher")
-    images: placeholder30(),
+    images: sampleImages("starter/5th-grade-teacher"),
   },
 ];
 
@@ -96,7 +94,6 @@ export const PRO_SAMPLES: SampleSet[] = [
   {
     profession: "Finance & Accounting",
     specificRole: "Finance Director",
-    // TODO: replace with → sampleImages("pro/finance-director")
-    images: placeholder30(),
+    images: sampleImages("pro/finance-director"),
   },
 ];

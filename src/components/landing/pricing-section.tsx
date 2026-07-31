@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Check, ArrowRight } from "lucide-react";
+import { PricingPreview } from "@/components/landing/pricing-preview";
 
 const plans = [
   {
@@ -115,6 +116,7 @@ export function PricingSection() {
                 ))}
               </ul>
 
+              <PricingPreview plan={plan.name.toLowerCase() as "free" | "starter" | "pro"} />
               <Link href={plan.href} className="block">
                 <Button
                   variant={plan.featured ? "default" : "outline"}

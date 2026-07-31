@@ -13,6 +13,7 @@ import {
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 import type { UseCaseData } from "@/lib/use-case-data";
+import { PricingPreview } from "@/components/landing/pricing-preview";
 
 const BASE = "/images/landing";
 
@@ -293,6 +294,7 @@ function CompactPricing() {
                 ))}
               </ul>
 
+              <PricingPreview plan={plan.name.toLowerCase() as "free" | "starter" | "pro"} />
               <Link href={plan.href} className="block">
                 <Button
                   variant={plan.featured ? "default" : "outline"}

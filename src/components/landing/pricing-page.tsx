@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Breadcrumb } from "@/components/ui/breadcrumb";
 import { ArrowRight, Check, ChevronDown, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { PricingPreview } from "@/components/landing/pricing-preview";
 
 /* -------------------------------------------------------------------------- */
 /*  Plans data (mirrors pricing-section.tsx — single source of truth target)   */
@@ -168,6 +169,7 @@ function PricingCards() {
                   </li>
                 ))}
               </ul>
+              <PricingPreview plan={plan.name.toLowerCase() as "free" | "starter" | "pro"} />
               <Link href={plan.href} className="block">
                 <Button
                   variant={plan.featured ? "default" : "outline"}

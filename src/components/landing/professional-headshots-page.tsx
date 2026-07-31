@@ -8,6 +8,7 @@ import { ArrowRight, Check, ChevronDown, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCases } from "@/lib/use-case-data";
 import { comparisons } from "@/lib/comparison-data";
+import { PricingPreview } from "@/components/landing/pricing-preview";
 import { cities } from "@/lib/city-data";
 
 /* -------------------------------------------------------------------------- */
@@ -594,6 +595,7 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
+              <PricingPreview plan={plan.name.toLowerCase() as "free" | "starter" | "pro"} />
               <Link href={plan.href} className="block">
                 <Button
                   variant={plan.featured ? "default" : "outline"}

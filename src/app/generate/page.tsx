@@ -7,6 +7,7 @@ import { PhotoUploader } from "@/components/upload/photo-uploader";
 import { StylePreference } from "@/components/upload/style-preference";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Loader2, Users, Briefcase } from "lucide-react";
+import { PricingPreview } from "@/components/landing/pricing-preview";
 import { toast } from "sonner";
 import type { Gender, Profession } from "@/lib/prompts";
 import { PROFESSION_OPTIONS, GENDER_OPTIONS } from "@/lib/prompts";
@@ -358,6 +359,14 @@ function GeneratePageInner() {
               </button>
             ))}
           </div>
+        </div>
+
+        {/* ── Sample preview ───────────────────────────── */}
+        <div className="rounded-xl border bg-card p-6 text-center">
+          <h4 className="mb-4 text-sm font-semibold uppercase tracking-wide text-muted-foreground">
+            What you&apos;ll get
+          </h4>
+          <PricingPreview plan={plan} />
         </div>
 
         {/* ── Submit button ──────────────────────────────── */}
